@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Namelivia\TravelPerk;
+
+use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\Client\Client;
+
+class ServiceProvider
+{
+    public function build(
+        string $apiKey
+    ) {
+        $client = new Client($apiKey);
+		return new \Namelivia\TravelPerk\Api\TravelPerk($client);
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "name": "namelivia/travelperk-http-php",
+    "description": "PHP SDK for accessing the TravelPerk API",
+    "license": "MIT",
+    "keywords": ["travelperk", "sdk", "api"],
+    "authors": [
+        {
+            "name": "José Ignacio Amelivia Santiago",
+            "email": "jignacio.amelivia@gmail.com",
+            "homepage": "https://namelivia.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "guzzlehttp/guzzle": "^6.3",
+        "nesbot/carbon": "^2.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^8.5.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Namelivia\\TravelPerk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Namelivia\\TravelPerk\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
