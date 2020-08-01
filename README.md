@@ -1,7 +1,7 @@
-# travelperk-http-php [![tag](https://img.shields.io/github/tag/namelivia/travelperk-http-php.svg)](https://github.com/namelivia/travelperk-http-php/releases) [![Build Status](https://travis-ci.org/namelivia/travelperk-http-php.svg?branch=master)](https://travis-ci.org/namelivia/travelperk-http-php) [![codecov](https://codecov.io/gh/namelivia/travelperk-http-php/branch/master/graph/badge.svg)](https://codecov.io/gh/namelivia/travelperk-http-php)
+# travelperk-http-php [![tag](https://img.shields.io/github/tag/namelivia/travelperk-http-php.svg)](https://github.com/namelivia/travelperk-http-php/releases) [![Build Status](https://travis-ci.com/namelivia/travelperk-http-php.svg?branch=master)](https://travis-ci.com/namelivia/travelperk-http-php) [![codecov](https://codecov.io/gh/namelivia/travelperk-http-php/branch/master/graph/badge.svg)](https://codecov.io/gh/namelivia/travelperk-http-php)
 
 <p align="center">
-  <img src="" alt="TravelPerk PHP SDK" />
+  <img src="https://user-images.githubusercontent.com/1571416/89100428-2c30cd00-d3f7-11ea-9c4a-37b17f9e9ae4.png" alt="TravelPerk PHP SDK" />
 </p>
 
 ## About
