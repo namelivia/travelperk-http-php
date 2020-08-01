@@ -14,7 +14,6 @@ class Client extends GuzzleClient
         string $apiKey
     ) {
         return parent::__construct([
-            'debug' => true,
             'headers' => [
                 # TODO: In the future this will seteable from the config
                 'Api-Version' => '1',
