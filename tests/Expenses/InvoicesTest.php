@@ -23,7 +23,7 @@ class InvoicesTest extends TestCase
 
     public function testGettingAllInvoicesNoParams()
     {
-        $this->travelPerk->shouldReceive('get')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices')
             ->andReturn('allInvoices');
@@ -35,7 +35,7 @@ class InvoicesTest extends TestCase
 
     public function testGettingAllInvoicesWithParams()
     {
-        $this->travelPerk->shouldReceive('get')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices?offset=5&limit=10')
             ->andReturn('allInvoices');
@@ -50,7 +50,7 @@ class InvoicesTest extends TestCase
 
     public function testGettingAnInvoiceDetail()
     {
-        $this->travelPerk->shouldReceive('get')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices/serialNumber')
             ->andReturn('invoiceDetail');
@@ -74,7 +74,7 @@ class InvoicesTest extends TestCase
 
     public function testGettingAnInvoiceLines()
     {
-        $this->travelPerk->shouldReceive('get')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices/lines')
             ->andReturn('invoiceLines');

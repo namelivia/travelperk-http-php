@@ -22,7 +22,7 @@ class Invoices
     public function all(InvoicesInputParams $params = null)
     {
         $params = isset($params) ? '?' . $params->asUrlParam() : null;
-        return $this->travelPerk->get(implode('/', ['invoices']) .  $params);
+        return $this->travelPerk->getJson(implode('/', ['invoices']) .  $params);
     }
 
     /**
@@ -30,7 +30,7 @@ class Invoices
      */
     public function get(string $serialNumber)
     {
-        return $this->travelPerk->get(implode('/', ['invoices', $serialNumber]));
+        return $this->travelPerk->getJson(implode('/', ['invoices', $serialNumber]));
     }
 
     /**
@@ -47,6 +47,6 @@ class Invoices
     #TODO: This endpoint accepts a LOT more params
     public function lines()
     {
-        return $this->travelPerk->get(implode('/', ['invoices', 'lines']));
+        return $this->travelPerk->getJson(implode('/', ['invoices', 'lines']));
     }
 }

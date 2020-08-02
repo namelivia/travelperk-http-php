@@ -23,7 +23,7 @@ class InvoiceProfilesTest extends TestCase
 
     public function testGettingAllInvoiceProfilesNoPagination()
     {
-        $this->travelPerk->shouldReceive('get')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('profiles')
             ->andReturn('allInvoiceProfiles');
@@ -35,7 +35,7 @@ class InvoiceProfilesTest extends TestCase
 
     public function testGettingAllInvoiceProfilesWithPagination()
     {
-        $this->travelPerk->shouldReceive('get')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('profiles?offset=20&limit=30')
             ->andReturn('allInvoiceProfiles');

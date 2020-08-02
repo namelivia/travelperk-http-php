@@ -22,6 +22,6 @@ class InvoiceProfiles
     public function all(Pagination $pagination = null)
     {
         $params = isset($pagination) ? '?' . $pagination->asUrlParam() : null;
-        return $this->travelPerk->get(implode('/', ['profiles']) . $params);
+        return $this->travelPerk->getJson(implode('/', ['profiles']) . $params);
     }
 }

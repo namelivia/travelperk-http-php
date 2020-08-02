@@ -23,6 +23,15 @@ class TravelPerk
         return $this->client->getAuthUri();
     }
 
+    public function getJson($url)
+    {
+        return json_decode(
+            $this->client->get(
+                $this->baseUrl . $url
+            )->getBody()->getContents()
+        );
+    }
+
     public function get($url)
     {
         return $this->client->get(
