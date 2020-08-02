@@ -6,6 +6,7 @@ namespace Namelivia\TravelPerk\Expenses;
 
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Expenses\InvoicesInputParams;
+use Namelivia\TravelPerk\Expenses\InvoiceLinesInputParams;
 
 class Invoices
 {
@@ -44,9 +45,9 @@ class Invoices
     /**
      * Get list of invoices lines
      */
-    #TODO: This endpoint accepts a LOT more params
-    public function lines()
+    public function lines(InvoiceLinesInputParams $params = null)
     {
-        return $this->travelPerk->getJson(implode('/', ['invoices', 'lines']));
+        $params = isset($params) ? '?' . $params->asUrlParam() : null;
+        return $this->travelPerk->getJson(implode('/', ['invoices', 'lines']) .  $params);
     }
 }

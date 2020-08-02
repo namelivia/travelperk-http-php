@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Expenses;
 
-use Namelivia\TravelPerk\Expenses\Sorting;
 use Namelivia\TravelPerk\Expenses\Status;
 use Namelivia\TravelPerk\Expenses\BillingPeriod;
 use Carbon\Carbon;
 
-class InvoicesInputParams
+class InvoiceLinesInputParams
 {
     private $profileId;
     private $serialNumber;
@@ -22,9 +21,10 @@ class InvoicesInputParams
     private $issuingDateLte;
     private $dueDateGte;
     private $dueDateLte;
+    private $expenseDateGte;
+    private $expenseDateLte;
     private $offset;
     private $limit;
-    private $sort;
 
     public function setProfileId(array $profileId)
     {
@@ -92,10 +92,15 @@ class InvoicesInputParams
         return $this;
     }
 
-    # TODO : In the documeantation there is an error on the type here
-    public function setSort(Sorting $sort)
+    public function setExpenseDateGte(Carbon $expenseDateGte)
     {
-        $this->sort = $sort;
+        $this->expenseDateGte = $expenseDateGte;
+        return $this;
+    }
+
+    public function setExpenseDateLte(Carbon $expenseDateLte)
+    {
+        $this->expenseDateLte = $expenseDateLte;
         return $this;
     }
 
@@ -125,9 +130,10 @@ class InvoicesInputParams
             'issuing_date_lte' => isset($this->issuingDateLte) ? $this->issuingDateLte->format('Y-m-d') : null,
             'due_date_gte' => isset($this->dueDateGte) ? $this->dueDateGte->format('Y-m-d') : null,
             'due_date_lte' => isset($this->dueDateLte) ? $this->dueDateLte->format('Y-m-d') : null,
+            'expense_date_gte' => isset($this->expenseDateGte) ? $this->expenseDateGte->format('Y-m-d') : null,
+            'expense_date_lte' => isset($this->expenseDateLte) ? $this->expenseDateLte->format('Y-m-d') : null,
             'offset' => $this->offset,
-            'limit' => $this->limit,
-            'sort' => isset($this->sort) ? strval($this->sort) : null,
+            'limit' => $this->limit
         ]);
     }
 }

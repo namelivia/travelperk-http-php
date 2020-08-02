@@ -8,6 +8,7 @@ use Mockery;
 use Namelivia\TravelPerk\Expenses\Invoices;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Expenses\InvoicesInputParams;
+use Namelivia\TravelPerk\Expenses\InvoiceLinesInputParams;
 
 class InvoicesTest extends TestCase
 {
@@ -72,7 +73,22 @@ class InvoicesTest extends TestCase
         );
     }
 
-    public function testGettingAnInvoiceLines()
+    public function testGettingAllInvoiceLinesWithParams()
+    {
+        $this->travelPerk->shouldReceive('getJson')
+            ->once()
+            ->with('invoices/lines?offset=5&limit=10')
+            ->andReturn('invoiceLines');
+        $params = (new InvoiceLinesInputParams())
+            ->setOffset(5)
+            ->setLimit(10);
+        $this->assertEquals(
+            'invoiceLines',
+            $this->invoices->lines($params)
+        );
+    }
+
+    public function testGettingAllInvoiceLinesNoParams()
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
