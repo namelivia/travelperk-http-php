@@ -46,7 +46,7 @@ Also you can refer to the [official TravelPerk Web API documentation](https://de
 [MIT](LICENSE)
 
 ## Contributing
-Any suggestion, bug reports, prs or any other kind enhacements are welcome. Just [open anissue first](https://github.com/namelivia/travelperk-http-php/issues/new), for creating a PR remember this project has linting checkings and unit tests so any PR should comply with both before beign merged, this checks will be automatically applied when opening or modifying the PRs.
+Any suggestion, bug reports, prs or any other kind enhacements are welcome. Just [open an issue first](https://github.com/namelivia/travelperk-http-php/issues/new), for creating a PR remember this project has linting checkings and unit tests so any PR should comply with both before beign merged, this checks will be automatically applied when opening or modifying the PRs.
 
 ## Local development
 
