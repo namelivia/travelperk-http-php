@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Expenses;
 
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Pagination\Pagination;
+use Namelivia\TravelPerk\Expenses\InvoicesInputParams;
 
 class Invoices
 {
@@ -19,10 +19,9 @@ class Invoices
     /**
      * Get list of invoices
      */
-    #TODO This endpoint accepts a LOT more params
-    public function all(Pagination $pagination = null)
+    public function all(InvoicesInputParams $params = null)
     {
-        $params = isset($pagination) ? '?' . $pagination->asUrlParam() : null;
+        $params = isset($params) ? '?' . $params->asUrlParam() : null;
         return $this->travelPerk->get(implode('/', ['invoices']) .  $params);
     }
 

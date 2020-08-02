@@ -7,7 +7,7 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Expenses\Invoices;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Pagination\Pagination;
+use Namelivia\TravelPerk\Expenses\InvoicesInputParams;
 
 class InvoicesTest extends TestCase
 {
@@ -21,7 +21,7 @@ class InvoicesTest extends TestCase
         $this->invoices = new Invoices($this->travelPerk);
     }
 
-    public function testGettingAllInvoicesNoPagination()
+    public function testGettingAllInvoicesNoParams()
     {
         $this->travelPerk->shouldReceive('get')
             ->once()
@@ -33,15 +33,18 @@ class InvoicesTest extends TestCase
         );
     }
 
-    public function testGettingAllInvoicesWithPagination()
+    public function testGettingAllInvoicesWithParams()
     {
         $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('invoices?offset=5&limit=10')
             ->andReturn('allInvoices');
+        $params = (new InvoicesInputParams())
+            ->setOffset(5)
+            ->setLimit(10);
         $this->assertEquals(
             'allInvoices',
-            $this->invoices->all(new Pagination(5, 10))
+            $this->invoices->all($params)
         );
     }
 
