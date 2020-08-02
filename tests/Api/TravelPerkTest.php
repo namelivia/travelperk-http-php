@@ -36,6 +36,22 @@ class TravelPerkTest extends TestCase
         );
     }
 
+    public function testMakingAJSONGetCall()
+    {
+        $this->client->shouldReceive('get')
+            ->once()
+            ->with('https://api.travelperk.com/sampleurl')
+            ->andReturn($this->client);
+        $this->client->shouldReceive('getBody->getContents')
+            ->once()
+            ->with()
+            ->andReturn('{"key" : "value"}');
+        $this->assertEquals(
+            'value',
+            $this->travelPerk->getJson('sampleurl')->key
+        );
+    }
+
     public function testMakingAPostCall()
     {
         $this->client->shouldReceive('post')
