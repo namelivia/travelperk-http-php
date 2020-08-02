@@ -37,11 +37,11 @@ class InvoiceProfilesTest extends TestCase
     {
         $this->travelPerk->shouldReceive('get')
             ->once()
-            ->with('profiles?offset=20&limit=30&total=40')
+            ->with('profiles?offset=20&limit=30')
             ->andReturn('allInvoiceProfiles');
         $this->assertEquals(
             'allInvoiceProfiles',
-            $this->invoiceProfiles->all(new Pagination(20, 30, 40))
+            $this->invoiceProfiles->all(new Pagination(20, 30))
         );
     }
 }
