@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Expenses;
 
+use Namelivia\TravelPerk\Expenses\Sorting;
+
 class InvoicesInputParams
 {
     private $profileId;
@@ -92,9 +94,8 @@ class InvoicesInputParams
         return $this;
     }
 
-    # TODO : This should be a Constant
     # TODO : In the documeantation there is an error on the type here
-    public function setSort(string $sort)
+    public function setSort(Sorting $sort)
     {
         $this->sort = $sort;
         return $this;
@@ -128,7 +129,7 @@ class InvoicesInputParams
             'due_date_lte' => $this->dueDateLte,
             'offset' => $this->offset,
             'limit' => $this->limit,
-            'sort' => $this->sort
+            'sort' => isset($this->sort) ? strval($this->sort) : null,
         ]);
     }
 }

@@ -6,6 +6,7 @@ namespace Namelivia\TravelPerk\Tests;
 
 use Mockery;
 use Namelivia\TravelPerk\Expenses\InvoicesInputParams;
+use Namelivia\TravelPerk\Expenses\Sorting;
 
 class InvoicesInputParamTest extends TestCase
 {
@@ -25,7 +26,7 @@ class InvoicesInputParamTest extends TestCase
             ->setDueDateLte('due_date_lte')
             ->setOffset(32)
             ->setLimit(64)
-            ->setSort('sort');
+            ->setSort(new Sorting(Sorting::ISSUING_DATE_ASC));
         $this->assertEquals(
             'profile_id=profile_id1,profile_id2&' .
             'serial_number=serial_number1,serial_number2&' .
@@ -40,7 +41,7 @@ class InvoicesInputParamTest extends TestCase
             'due_date_lte=due_date_lte&' .
             'offset=32&' .
             'limit=64&' .
-            'sort=sort',
+            'sort=issuing_date',
             urldecode($inputParams->asUrlParam())
         );
     }
@@ -49,12 +50,10 @@ class InvoicesInputParamTest extends TestCase
     {
         $inputParams = new InvoicesInputParams();
         $inputParams->setSerialNumber(['serial_number1', 'serial_number2'])
-            ->setStatus('status')
-            ->setSort('sort');
+            ->setStatus('status');
         $this->assertEquals(
             'serial_number=serial_number1,serial_number2&' .
-            'status=status&' .
-            'sort=sort',
+            'status=status',
             urldecode($inputParams->asUrlParam())
         );
     }
