@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Expenses;
 
 use Namelivia\TravelPerk\Expenses\Sorting;
+use Namelivia\TravelPerk\Expenses\Status;
+use Namelivia\TravelPerk\Expenses\BillingPeriod;
 use Carbon\Carbon;
 
 class InvoicesInputParams
@@ -41,8 +43,7 @@ class InvoicesInputParams
         return $this;
     }
 
-    # TODO : This should be a constant
-    public function setBillingPeriod(string $billingPeriod)
+    public function setBillingPeriod(BillingPeriod $billingPeriod)
     {
         $this->billingPeriod = $billingPeriod;
         return $this;
@@ -60,8 +61,7 @@ class InvoicesInputParams
         return $this;
     }
 
-    # TODO : This should be a constant
-    public function setStatus(string $status)
+    public function setStatus(Status $status)
     {
         $this->status = $status;
         return $this;
@@ -116,10 +116,10 @@ class InvoicesInputParams
             'profile_id' => isset($this->profileId) ? implode(',', $this->profileId) : null,
             'serial_number' => isset($this->serialNumber) ? implode(',', $this->serialNumber) : null,
             'serial_number_contains' => $this->serialNumberContains,
-            'billing_period' => $this->billingPeriod,
+            'billing_period' => isset($this->billingPeriod) ? strval($this->billingPeriod) : null,
             'travelperk_bank_account_number' => $this->accountNumber,
             'customer_country_name' => $this->customerCountryName,
-            'status' => $this->status,
+            'status' => isset($this->status) ? strval($this->status) : null,
             'issuing_date_gte' => isset($this->issuingDateGte) ? $this->issuingDateGte->format('Y-m-d') : null,
             'issuing_date_lte' => isset($this->issuingDateLte) ? $this->issuingDateLte->format('Y-m-d') : null,
             'due_date_gte' => isset($this->dueDateGte) ? $this->dueDateGte->format('Y-m-d') : null,
