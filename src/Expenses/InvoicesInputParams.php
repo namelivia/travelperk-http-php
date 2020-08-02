@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Expenses;
 
 use Namelivia\TravelPerk\Expenses\Sorting;
+use Carbon\Carbon;
 
 class InvoicesInputParams
 {
@@ -66,29 +67,25 @@ class InvoicesInputParams
         return $this;
     }
 
-    # TODO : This should be a Carbon Date
-    public function setIssuingDateGte(string $issuingDateGte)
+    public function setIssuingDateGte(Carbon $issuingDateGte)
     {
         $this->issuingDateGte = $issuingDateGte;
         return $this;
     }
 
-    # TODO : This should be a Carbon Date
-    public function setIssuingDateLte(string $issuingDateLte)
+    public function setIssuingDateLte(Carbon $issuingDateLte)
     {
         $this->issuingDateLte = $issuingDateLte;
         return $this;
     }
 
-    # TODO : This should be a Carbon Date
-    public function setDueDateGte(string $dueDateGte)
+    public function setDueDateGte(Carbon $dueDateGte)
     {
         $this->dueDateGte = $dueDateGte;
         return $this;
     }
 
-    # TODO : This should be a Carbon Date
-    public function setDueDateLte(string $dueDateLte)
+    public function setDueDateLte(Carbon $dueDateLte)
     {
         $this->dueDateLte = $dueDateLte;
         return $this;
@@ -123,10 +120,10 @@ class InvoicesInputParams
             'travelperk_bank_account_number' => $this->accountNumber,
             'customer_country_name' => $this->customerCountryName,
             'status' => $this->status,
-            'issuing_date_gte' => $this->issuingDateGte,
-            'issuing_date_lte' => $this->issuingDateLte,
-            'due_date_gte' => $this->dueDateGte,
-            'due_date_lte' => $this->dueDateLte,
+            'issuing_date_gte' => isset($this->issuingDateGte) ? $this->issuingDateGte->format('Y-m-d') : null,
+            'issuing_date_lte' => isset($this->issuingDateLte) ? $this->issuingDateLte->format('Y-m-d') : null,
+            'due_date_gte' => isset($this->dueDateGte) ? $this->dueDateGte->format('Y-m-d') : null,
+            'due_date_lte' => isset($this->dueDateLte) ? $this->dueDateLte->format('Y-m-d') : null,
             'offset' => $this->offset,
             'limit' => $this->limit,
             'sort' => isset($this->sort) ? strval($this->sort) : null,

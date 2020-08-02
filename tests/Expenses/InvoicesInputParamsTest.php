@@ -7,6 +7,7 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Expenses\InvoicesInputParams;
 use Namelivia\TravelPerk\Expenses\Sorting;
+use Carbon\Carbon;
 
 class InvoicesInputParamTest extends TestCase
 {
@@ -20,10 +21,10 @@ class InvoicesInputParamTest extends TestCase
             ->setTravelperkBankAccountNumber('bank_account_number')
             ->setCustomerCountryName('customer_country_name')
             ->setStatus('status')
-            ->setIssuingDateGte('issuing_date_gte')
-            ->setIssuingDateLte('issuing_date_lte')
-            ->setDueDateGte('due_date_gte')
-            ->setDueDateLte('due_date_lte')
+            ->setIssuingDateGte(Carbon::today())
+            ->setIssuingDateLte(Carbon::tomorrow())
+            ->setDueDateGte(Carbon::yesterday())
+            ->setDueDateLte(Carbon::today()->endOfMonth())
             ->setOffset(32)
             ->setLimit(64)
             ->setSort(new Sorting(Sorting::ISSUING_DATE_ASC));
@@ -35,10 +36,10 @@ class InvoicesInputParamTest extends TestCase
             'travelperk_bank_account_number=bank_account_number&' .
             'customer_country_name=customer_country_name&' .
             'status=status&' .
-            'issuing_date_gte=issuing_date_gte&' .
-            'issuing_date_lte=issuing_date_lte&' .
-            'due_date_gte=due_date_gte&' .
-            'due_date_lte=due_date_lte&' .
+            'issuing_date_gte=2019-03-21&' .
+            'issuing_date_lte=2019-03-22&' .
+            'due_date_gte=2019-03-20&' .
+            'due_date_lte=2019-03-31&' .
             'offset=32&' .
             'limit=64&' .
             'sort=issuing_date',
