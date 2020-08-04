@@ -43,10 +43,19 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
-    public function post($url)
+    public function post($url, $legacy = false)
     {
+        $baseUrl = $legacy ? $this->legacyBaseUrl : $this->baseUrl;
         return $this->client->post(
-            $this->baseUrl . $url
+            $baseUrl . $url
+        )->getBody()->getContents();
+    }
+
+    public function patch($url, $legacy = false)
+    {
+        $baseUrl = $legacy ? $this->legacyBaseUrl : $this->baseUrl;
+        return $this->client->patch(
+            $baseUrl . $url
         )->getBody()->getContents();
     }
 
