@@ -52,6 +52,22 @@ class TravelPerkTest extends TestCase
         );
     }
 
+    public function testMakingAJSONGetCallLegacyEndpoint()
+    {
+        $this->client->shouldReceive('get')
+            ->once()
+            ->with('https://app.travelperk.com/api/v2/sampleurl')
+            ->andReturn($this->client);
+        $this->client->shouldReceive('getBody->getContents')
+            ->once()
+            ->with()
+            ->andReturn('{"key" : "value"}');
+        $this->assertEquals(
+            'value',
+            $this->travelPerk->getJson('sampleurl', True)->key
+        );
+    }
+
     public function testMakingAPostCall()
     {
         $this->client->shouldReceive('post')
@@ -87,5 +103,10 @@ class TravelPerkTest extends TestCase
     public function testGettingAnExpensesInstance()
     {
         $this->assertTrue($this->travelPerk->expenses() instanceof \Namelivia\TravelPerk\Api\Expenses);
+    }
+
+    public function testGettingASCIMInstance()
+    {
+        $this->assertTrue($this->travelPerk->scim() instanceof \Namelivia\TravelPerk\Api\SCIM);
     }
 }
