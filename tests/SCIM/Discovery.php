@@ -31,4 +31,52 @@ class InvoiceProfilesTest extends TestCase
             $this->discovery->serviceProviderConfig()
         );
     }
+
+    public function testGettingResourceTypes()
+    {
+        $this->travelPerk->shouldReceive('getJsonLegacy')
+            ->once()
+            ->with('scim/ResourceTypes')
+            ->andReturn('resourceTypes');
+        $this->assertEquals(
+            'resourceTypes',
+            $this->discovery->resourceTypes()
+        );
+    }
+
+    public function testGettingSchemas()
+    {
+        $this->travelPerk->shouldReceive('getJsonLegacy')
+            ->once()
+            ->with('scim/Schemas')
+            ->andReturn('schemas');
+        $this->assertEquals(
+            'schemas',
+            $this->discovery->schemas()
+        );
+    }
+
+    public function testGettingUserSchema()
+    {
+        $this->travelPerk->shouldReceive('getJsonLegacy')
+            ->once()
+            ->with('scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User')
+            ->andReturn('userSchema');
+        $this->assertEquals(
+            'userSchema',
+            $this->discovery->userSchema()
+        );
+    }
+
+    public function testGettingEnterpriseUserSchema()
+    {
+        $this->travelPerk->shouldReceive('getJsonLegacy')
+            ->once()
+            ->with('scim/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User')
+            ->andReturn('enterpriseUserSchema');
+        $this->assertEquals(
+            'enterpriseUserSchema',
+            $this->discovery->enterpriseUserSchema()
+        );
+    }
 }
