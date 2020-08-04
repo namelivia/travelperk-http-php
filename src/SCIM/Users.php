@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\SCIM;
 
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\SCIM\UsersInputParams;
 
 class Users
 {
@@ -18,9 +19,18 @@ class Users
     /**
      * List all users associated to this account.
      */
-    public function all()
+    public function all(UsersInputParams $params = null)
     {
-        return $this->travelPerk->getJsonLegacy(implode('/', ['scim', 'Users']));
+        $params = isset($params) ? '?' . $params->asUrlParam() : null;
+        return $this->travelPerk->getJsonLegacy(implode('/', ['scim', 'Users']) . $params);
+    }
+
+    /**
+     * Retrieve a user from TravelPerk.
+     */
+    public function get(int $id)
+    {
+        return $this->travelPerk->getJsonLegacy(implode('/', ['scim', 'Users', $id]));
     }
 
 }
