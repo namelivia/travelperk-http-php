@@ -24,4 +24,9 @@ class SCIMTest extends TestCase
     {
         $this->assertTrue($this->scim->discovery() instanceof \Namelivia\TravelPerk\SCIM\Discovery);
     }
+
+    public function testGettingAUsersInstance()
+    {
+        $this->assertTrue($this->scim->users() instanceof \Namelivia\TravelPerk\SCIM\Users);
+    }
 }

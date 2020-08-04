@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Api;
 
 use Namelivia\TravelPerk\SCIM\Discovery;
+use Namelivia\TravelPerk\SCIM\Users;
 
 class SCIM
 {
@@ -13,10 +14,16 @@ class SCIM
     public function __construct(TravelPerk $travelPerk)
     {
         $this->discovery  = new Discovery($travelPerk);
+        $this->users  = new Users($travelPerk);
     }
 
     public function discovery()
     {
         return $this->discovery;
+    }
+
+    public function users()
+    {
+        return $this->users;
     }
 }
