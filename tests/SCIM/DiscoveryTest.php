@@ -8,7 +8,7 @@ use Mockery;
 use Namelivia\TravelPerk\SCIM\Discovery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 
-class InvoiceProfilesTest extends TestCase
+class DiscoveryTest extends TestCase
 {
     private $travelPerk;
     private $discovery;
@@ -22,9 +22,9 @@ class InvoiceProfilesTest extends TestCase
 
     public function testGettingServiceProviderConfig()
     {
-        $this->travelPerk->shouldReceive('getJsonLegacy')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/ServiceProviderConfig')
+            ->with('scim/ServiceProviderConfig', true)
             ->andReturn('serviceProviderConfig');
         $this->assertEquals(
             'serviceProviderConfig',
@@ -34,9 +34,9 @@ class InvoiceProfilesTest extends TestCase
 
     public function testGettingResourceTypes()
     {
-        $this->travelPerk->shouldReceive('getJsonLegacy')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/ResourceTypes')
+            ->with('scim/ResourceTypes', true)
             ->andReturn('resourceTypes');
         $this->assertEquals(
             'resourceTypes',
@@ -46,9 +46,9 @@ class InvoiceProfilesTest extends TestCase
 
     public function testGettingSchemas()
     {
-        $this->travelPerk->shouldReceive('getJsonLegacy')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Schemas')
+            ->with('scim/Schemas', true)
             ->andReturn('schemas');
         $this->assertEquals(
             'schemas',
@@ -58,9 +58,9 @@ class InvoiceProfilesTest extends TestCase
 
     public function testGettingUserSchema()
     {
-        $this->travelPerk->shouldReceive('getJsonLegacy')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User')
+            ->with('scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User', true)
             ->andReturn('userSchema');
         $this->assertEquals(
             'userSchema',
@@ -70,9 +70,9 @@ class InvoiceProfilesTest extends TestCase
 
     public function testGettingEnterpriseUserSchema()
     {
-        $this->travelPerk->shouldReceive('getJsonLegacy')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User')
+            ->with('scim/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User', true)
             ->andReturn('enterpriseUserSchema');
         $this->assertEquals(
             'enterpriseUserSchema',

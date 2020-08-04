@@ -100,6 +100,22 @@ class TravelPerkTest extends TestCase
         );
     }
 
+    public function testMakingADeleteCallLegacyEndpoint()
+    {
+        $this->client->shouldReceive('delete')
+            ->once()
+            ->with('https://app.travelperk.com/api/v2/sampleurl')
+            ->andReturn($this->client);
+        $this->client->shouldReceive('getBody->getContents')
+            ->once()
+            ->with()
+            ->andReturn('responseContent');
+        $this->assertEquals(
+            'responseContent',
+            $this->travelPerk->delete('sampleurl', true)
+        );
+    }
+
     public function testGettingAnExpensesInstance()
     {
         $this->assertTrue($this->travelPerk->expenses() instanceof \Namelivia\TravelPerk\Api\Expenses);

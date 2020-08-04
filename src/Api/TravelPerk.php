@@ -26,7 +26,7 @@ class TravelPerk
         return $this->client->getAuthUri();
     }
 
-    public function getJson($url, $legacy = False)
+    public function getJson($url, $legacy = false)
     {
         $baseUrl = $legacy ? $this->legacyBaseUrl : $this->baseUrl;
         return json_decode(
@@ -50,10 +50,11 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
-    public function delete($url)
+    public function delete($url, $legacy = false)
     {
+        $baseUrl = $legacy ? $this->legacyBaseUrl : $this->baseUrl;
         return $this->client->delete(
-            $this->baseUrl . $url
+            $baseUrl . $url
         )->getBody()->getContents();
     }
 

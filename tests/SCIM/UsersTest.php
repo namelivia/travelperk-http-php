@@ -23,9 +23,9 @@ class UsersTest extends TestCase
 
     public function testGettingAllUsersNoParams()
     {
-        $this->travelPerk->shouldReceive('getJsonLegacy')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Users')
+            ->with('scim/Users', true)
             ->andReturn('allUsers');
         $this->assertEquals(
             'allUsers',
@@ -35,9 +35,9 @@ class UsersTest extends TestCase
 
     public function testGettingAllUsersWithParams()
     {
-        $this->travelPerk->shouldReceive('getJsonLegacy')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Users?count=5&start_index=3')
+            ->with('scim/Users?count=5&start_index=3', true)
             ->andReturn('allUsers');
         $params = (new UsersInputParams())
             ->setCount(5)
@@ -50,13 +50,25 @@ class UsersTest extends TestCase
 
     public function testGettingAUserDetail()
     {
-        $this->travelPerk->shouldReceive('getJsonLegacy')
+        $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Users/1')
+            ->with('scim/Users/1', true)
             ->andReturn('userDetail');
         $this->assertEquals(
             'userDetail',
             $this->users->get(1)
+        );
+    }
+
+    public function testDeletingAUser()
+    {
+        $this->travelPerk->shouldReceive('delete')
+            ->once()
+            ->with('scim/Users/1', true)
+            ->andReturn('userDeleted');
+        $this->assertEquals(
+            'userDeleted',
+            $this->users->delete(1)
         );
     }
 }

@@ -22,7 +22,7 @@ class Users
     public function all(UsersInputParams $params = null)
     {
         $params = isset($params) ? '?' . $params->asUrlParam() : null;
-        return $this->travelPerk->getJsonLegacy(implode('/', ['scim', 'Users']) . $params);
+        return $this->travelPerk->getJson(implode('/', ['scim', 'Users']) . $params, true);
     }
 
     /**
@@ -30,7 +30,14 @@ class Users
      */
     public function get(int $id)
     {
-        return $this->travelPerk->getJsonLegacy(implode('/', ['scim', 'Users', $id]));
+        return $this->travelPerk->getJson(implode('/', ['scim', 'Users', $id]), true);
     }
 
+    /**
+     * Deletes a user from TravelPerk.
+     */
+    public function delete(int $id)
+    {
+        return $this->travelPerk->delete(implode('/', ['scim', 'Users', $id]), true);
+    }
 }
