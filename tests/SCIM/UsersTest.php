@@ -8,6 +8,7 @@ use Mockery;
 use Namelivia\TravelPerk\SCIM\Users;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
+use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 
 class UsersTest extends TestCase
 {
@@ -69,6 +70,23 @@ class UsersTest extends TestCase
         $this->assertEquals(
             'userDeleted',
             $this->users->delete(1)
+        );
+    }
+
+    public function testCreatingAUser()
+    {
+        $newUser = Mockery::mock(CreateUserInputParams::class);
+        $newUser->shouldReceive('asArray')
+            ->once()
+            ->with()
+            ->andReturn(['params']);
+        $this->travelPerk->shouldReceive('post')
+            ->once()
+            ->with('scim/Users/', ['params'], true)
+            ->andReturn('userCreated');
+        $this->assertEquals(
+            'userCreated',
+            $this->users->create($newUser)
         );
     }
 }

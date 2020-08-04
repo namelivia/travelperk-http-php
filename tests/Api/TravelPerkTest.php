@@ -72,7 +72,7 @@ class TravelPerkTest extends TestCase
     {
         $this->client->shouldReceive('post')
             ->once()
-            ->with('https://api.travelperk.com/sampleurl')
+            ->with('https://api.travelperk.com/sampleurl', ['json' => ['params']])
             ->andReturn($this->client);
         $this->client->shouldReceive('getBody->getContents')
             ->once()
@@ -80,7 +80,7 @@ class TravelPerkTest extends TestCase
             ->andReturn('responseContent');
         $this->assertEquals(
             'responseContent',
-            $this->travelPerk->post('sampleurl')
+            $this->travelPerk->post('sampleurl', ['params'])
         );
     }
 
@@ -88,7 +88,7 @@ class TravelPerkTest extends TestCase
     {
         $this->client->shouldReceive('post')
             ->once()
-            ->with('https://app.travelperk.com/api/v2/sampleurl')
+            ->with('https://app.travelperk.com/api/v2/sampleurl', ['json' => ['params']])
             ->andReturn($this->client);
         $this->client->shouldReceive('getBody->getContents')
             ->once()
@@ -96,7 +96,7 @@ class TravelPerkTest extends TestCase
             ->andReturn('responseContent');
         $this->assertEquals(
             'responseContent',
-            $this->travelPerk->post('sampleurl', true)
+            $this->travelPerk->post('sampleurl', ['params'], true)
         );
     }
 
@@ -104,7 +104,7 @@ class TravelPerkTest extends TestCase
     {
         $this->client->shouldReceive('patch')
             ->once()
-            ->with('https://api.travelperk.com/sampleurl')
+            ->with('https://api.travelperk.com/sampleurl', ['json' => ['params']])
             ->andReturn($this->client);
         $this->client->shouldReceive('getBody->getContents')
             ->once()
@@ -112,7 +112,7 @@ class TravelPerkTest extends TestCase
             ->andReturn('responseContent');
         $this->assertEquals(
             'responseContent',
-            $this->travelPerk->patch('sampleurl')
+            $this->travelPerk->patch('sampleurl', ['params'])
         );
     }
 
@@ -120,7 +120,7 @@ class TravelPerkTest extends TestCase
     {
         $this->client->shouldReceive('patch')
             ->once()
-            ->with('https://app.travelperk.com/api/v2/sampleurl')
+            ->with('https://app.travelperk.com/api/v2/sampleurl', ['json' => ['params']])
             ->andReturn($this->client);
         $this->client->shouldReceive('getBody->getContents')
             ->once()
@@ -128,7 +128,7 @@ class TravelPerkTest extends TestCase
             ->andReturn('responseContent');
         $this->assertEquals(
             'responseContent',
-            $this->travelPerk->patch('sampleurl', true)
+            $this->travelPerk->patch('sampleurl', ['params'], true)
         );
     }
 

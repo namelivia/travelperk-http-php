@@ -43,19 +43,21 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
-    public function post($url, $legacy = false)
+    public function post($url, array $params, $legacy = false)
     {
         $baseUrl = $legacy ? $this->legacyBaseUrl : $this->baseUrl;
         return $this->client->post(
-            $baseUrl . $url
+            $baseUrl . $url,
+            [\GuzzleHttp\RequestOptions::JSON => $params]
         )->getBody()->getContents();
     }
 
-    public function patch($url, $legacy = false)
+    public function patch($url, array $params, $legacy = false)
     {
         $baseUrl = $legacy ? $this->legacyBaseUrl : $this->baseUrl;
         return $this->client->patch(
-            $baseUrl . $url
+            $baseUrl . $url,
+            [\GuzzleHttp\RequestOptions::JSON => $params]
         )->getBody()->getContents();
     }
 
