@@ -9,6 +9,7 @@ use Namelivia\TravelPerk\SCIM\Users;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
 use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
+use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
 
 class UsersTest extends TestCase
 {
@@ -82,11 +83,47 @@ class UsersTest extends TestCase
             ->andReturn(['params']);
         $this->travelPerk->shouldReceive('post')
             ->once()
-            ->with('scim/Users/', ['params'], true)
+            ->with('scim/Users', ['params'], true)
             ->andReturn('userCreated');
         $this->assertEquals(
             'userCreated',
             $this->users->create($newUser)
+        );
+    }
+
+    public function testUpdatingAUser()
+    {
+        $params = Mockery::mock(UpdateUserInputParams::class);
+        $userId = 1;
+        $params->shouldReceive('asArray')
+            ->once()
+            ->with()
+            ->andReturn(['params']);
+        $this->travelPerk->shouldReceive('patch')
+            ->once()
+            ->with('scim/Users/1', ['params'], true)
+            ->andReturn('userUpdated');
+        $this->assertEquals(
+            'userUpdated',
+            $this->users->update($userId, $params)
+        );
+    }
+
+    public function testReplacingAUser()
+    {
+        $params = Mockery::mock(UpdateUserInputParams::class);
+        $userId = 1;
+        $params->shouldReceive('asArray')
+            ->once()
+            ->with()
+            ->andReturn(['params']);
+        $this->travelPerk->shouldReceive('put')
+            ->once()
+            ->with('scim/Users/1', ['params'], true)
+            ->andReturn('userReplaced');
+        $this->assertEquals(
+            'userReplaced',
+            $this->users->replace($userId, $params)
         );
     }
 }

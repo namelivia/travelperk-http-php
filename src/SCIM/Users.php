@@ -7,6 +7,7 @@ namespace Namelivia\TravelPerk\SCIM;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
 use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
+use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
 
 class Users
 {
@@ -47,6 +48,22 @@ class Users
      */
     public function create(CreateUserInputParams $params)
     {
-        return $this->travelPerk->post(implode('/', ['scim', 'Users', $id]), $params->asArray(), true);
+        return $this->travelPerk->post(implode('/', ['scim', 'Users']), $params->asArray(), true);
+    }
+
+    /**
+     * Update an existing user in TravelPerk.
+     */
+    public function update(int $id, UpdateUserInputParams $params)
+    {
+        return $this->travelPerk->patch(implode('/', ['scim', 'Users', $id]), $params->asArray(), true);
+    }
+
+    /**
+     * Replace an existing user in TravelPerk.
+     */
+    public function replace(int $id, UpdateUserInputParams $params)
+    {
+        return $this->travelPerk->put(implode('/', ['scim', 'Users', $id]), $params->asArray(), true);
     }
 }
