@@ -42,9 +42,9 @@ class Webhooks
     /**
      * Create a webhook endpoint
      */
-    public function create(string $id)
+    public function create(CreateWebhookInputParams $params)
     {
-        throw \RuntimeException('Not implemented yet');
+        return $this->travelPerk->post(implode('/', ['webhooks']), $params->asArray());
     }
 
     /**
