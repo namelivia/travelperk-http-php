@@ -173,4 +173,9 @@ class TravelPerkTest extends TestCase
     {
         $this->assertTrue($this->travelPerk->scim() instanceof \Namelivia\TravelPerk\Api\SCIM);
     }
+
+    public function testGettingAWebhooksInstance()
+    {
+        $this->assertTrue($this->travelPerk->webhooks() instanceof \Namelivia\TravelPerk\Api\WebhooksAPI);
+    }
 }
