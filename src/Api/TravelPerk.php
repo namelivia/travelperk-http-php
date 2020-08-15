@@ -54,6 +54,15 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
+    public function postJson($url, array $params, $legacy = false)
+    {
+        $baseUrl = $legacy ? $this->legacyBaseUrl : $this->baseUrl;
+        return json_decode($this->client->post(
+            $baseUrl . $url,
+            [\GuzzleHttp\RequestOptions::JSON => $params]
+        )->getBody()->getContents());
+    }
+
     public function patch($url, array $params, $legacy = false)
     {
         $baseUrl = $legacy ? $this->legacyBaseUrl : $this->baseUrl;

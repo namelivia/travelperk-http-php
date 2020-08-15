@@ -44,7 +44,7 @@ class Webhooks
      */
     public function create(CreateWebhookInputParams $params)
     {
-        return $this->travelPerk->post(implode('/', ['webhooks']), $params->asArray());
+        return $this->travelPerk->postJson(implode('/', ['webhooks']), $params->asArray());
     }
 
     /**
@@ -60,7 +60,7 @@ class Webhooks
      */
     public function test(string $id, array $payload)
     {
-        return $this->travelPerk->post(implode('/', ['webhooks', $id]), $payload);
+        return $this->travelPerk->postJson(implode('/', ['webhooks', $id]), $payload);
     }
 
     /**

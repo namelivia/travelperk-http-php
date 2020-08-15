@@ -62,7 +62,7 @@ class WebhooksTest extends TestCase
     {
         $webhookId = '1a';
         $payload = ['foo' => 'bar'];
-        $this->travelPerk->shouldReceive('post')
+        $this->travelPerk->shouldReceive('postJson')
             ->once()
             ->with('webhooks/1a', $payload)
             ->andReturn('webhookTestResponse');
@@ -92,7 +92,7 @@ class WebhooksTest extends TestCase
             ->once()
             ->with()
             ->andReturn(['params']);
-        $this->travelPerk->shouldReceive('post')
+        $this->travelPerk->shouldReceive('postJson')
             ->once()
             ->with('webhooks', ['params'])
             ->andReturn('webhookCreated');
