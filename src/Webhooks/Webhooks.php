@@ -34,7 +34,7 @@ class Webhooks
     /**
      * Get details for a specific webhook endpoint
      */
-    public function get(int $id)
+    public function get(string $id)
     {
         return $this->travelPerk->getJson(implode('/', ['webhooks', $id]));
     }
@@ -42,7 +42,7 @@ class Webhooks
     /**
      * Create a webhook endpoint
      */
-    public function create(int $id)
+    public function create(string $id)
     {
         throw \RuntimeException('Not implemented yet');
     }
@@ -50,7 +50,7 @@ class Webhooks
     /**
      * Updates the webhook endpoint
      */
-    public function update(int $id)
+    public function update(string $id)
     {
         throw \RuntimeException('Not implemented yet');
     }
@@ -58,7 +58,7 @@ class Webhooks
     /**
      * Sends a sample payload to the webhook target URL
      */
-    public function test(int $id, array $payload)
+    public function test(string $id, array $payload)
     {
         return $this->travelPerk->post(implode('/', ['webhooks', $id]), $payload);
     }
@@ -66,7 +66,7 @@ class Webhooks
     /**
      * Deletes a webhook endpoint
      */
-    public function delete(int $id)
+    public function delete(string $id)
     {
         return $this->travelPerk->delete(implode('/', ['webhooks', $id]));
     }

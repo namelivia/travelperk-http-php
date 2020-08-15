@@ -46,10 +46,10 @@ class WebhooksTest extends TestCase
 
     public function testGettingAWebhookDetail()
     {
-        $webhookId = 1;
+        $webhookId = '1a';
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('webhooks/1')
+            ->with('webhooks/1a')
             ->andReturn('webhookDetails');
         $this->assertEquals(
             'webhookDetails',
@@ -59,11 +59,11 @@ class WebhooksTest extends TestCase
 
     public function testTestingAWebhook()
     {
-        $webhookId = 1;
+        $webhookId = '1a';
         $payload = ['foo' => 'bar'];
         $this->travelPerk->shouldReceive('post')
             ->once()
-            ->with('webhooks/1', $payload)
+            ->with('webhooks/1a', $payload)
             ->andReturn('webhookTestResponse');
         $this->assertEquals(
             'webhookTestResponse',
@@ -73,10 +73,10 @@ class WebhooksTest extends TestCase
 
     public function testDeletingAWebhook()
     {
-        $webhookId = 1;
+        $webhookId = '1a';
         $this->travelPerk->shouldReceive('delete')
             ->once()
-            ->with('webhooks/1')
+            ->with('webhooks/1a')
             ->andReturn('webhookDeleted');
         $this->assertEquals(
             'webhookDeleted',
