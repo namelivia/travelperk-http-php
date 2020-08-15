@@ -13,12 +13,14 @@ class TravelPerk
     private $client;
     private $expenses;
     private $scim;
+    private $webhooks;
 
     public function __construct(Client $client)
     {
         $this->client = $client;
         $this->expenses = new Expenses($this);
         $this->scim = new SCIM($this);
+        $this->webhooks = new WebhooksAPI($this);
     }
 
     public function getAuthUri()
@@ -77,5 +79,10 @@ class TravelPerk
     public function scim()
     {
         return $this->scim;
+    }
+
+    public function webhooks()
+    {
+        return $this->webhooks;
     }
 }
