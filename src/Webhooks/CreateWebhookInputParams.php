@@ -11,7 +11,7 @@ class CreateWebhookInputParams
     private $secret;
     private $events;
 
-    public function __construct(string $name, string $url, string $secret, string $events)
+    public function __construct(string $name, string $url, string $secret, array $events)
     {
         $this->name = $name;
         $this->url = $url;
@@ -37,7 +37,7 @@ class CreateWebhookInputParams
         return $this;
     }
 
-    public function setEvents(string $events)
+    public function setEvents(array $events)
     {
         $this->events = $events;
         return $this;

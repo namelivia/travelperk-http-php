@@ -15,14 +15,14 @@ class CreateWebhookInputParamTest extends TestCase
             'webhook',
             'https://test.com',
             'SECRET_KEY',
-            '[]'
+            []
         );
         $this->assertEquals(
             [
                 'name' => 'webhook',
                 'url' => 'https://test.com',
                 'secret' => 'SECRET_KEY',
-                'events' => '[]',
+                'events' => [],
             ],
             $inputParams->asArray()
         );
