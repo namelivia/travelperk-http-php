@@ -7,6 +7,7 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Webhooks\Webhooks;
 use Namelivia\TravelPerk\Webhooks\CreateWebhookInputParams;
+use Namelivia\TravelPerk\Webhooks\WebhooksInputParams;
 use Namelivia\TravelPerk\Api\TravelPerk;
 
 class WebhooksTest extends TestCase
@@ -42,6 +43,21 @@ class WebhooksTest extends TestCase
         $this->assertEquals(
             'allWebhooks',
             $this->webhooks->all()
+        );
+    }
+
+    public function testGettingAllWebhooksWithParams()
+    {
+        $this->travelPerk->shouldReceive('getJson')
+            ->once()
+            ->with('webhooks?offset=5&limit=10')
+            ->andReturn('allWebhooks');
+        $params = (new WebhooksInputParams())
+            ->setOffset(5)
+            ->setLimit(10);
+        $this->assertEquals(
+            'allWebhooks',
+            $this->webhooks->all($params)
         );
     }
 

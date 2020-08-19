@@ -92,7 +92,6 @@ class InvoicesInputParams
         return $this;
     }
 
-    # TODO : In the documeantation there is an error on the type here
     public function setSort(Sorting $sort)
     {
         $this->sort = $sort;
