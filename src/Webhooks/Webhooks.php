@@ -60,7 +60,7 @@ class Webhooks
      */
     public function test(string $id, array $payload)
     {
-        return $this->travelPerk->postJson(implode('/', ['webhooks', $id]), $payload);
+        return $this->travelPerk->postJson(implode('/', ['webhooks', $id, 'test']), $payload);
     }
 
     /**

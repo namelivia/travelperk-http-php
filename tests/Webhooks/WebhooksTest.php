@@ -64,7 +64,7 @@ class WebhooksTest extends TestCase
         $payload = ['foo' => 'bar'];
         $this->travelPerk->shouldReceive('postJson')
             ->once()
-            ->with('webhooks/1a', $payload)
+            ->with('webhooks/1a/test', $payload)
             ->andReturn('webhookTestResponse');
         $this->assertEquals(
             'webhookTestResponse',
