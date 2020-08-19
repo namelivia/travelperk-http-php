@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Webhooks;
 
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\Webhooks\CreateWebhooksInputParams;
+use Namelivia\TravelPerk\Webhooks\UpdateWebhooksInputParams;
 use Namelivia\TravelPerk\Webhooks\WebhooksInputParams;
 
 class Webhooks
@@ -52,9 +54,9 @@ class Webhooks
     /**
      * Updates the webhook endpoint
      */
-    public function update(string $id)
+    public function update(string $id, UpdateWebhookInputParams $params)
     {
-        throw \RuntimeException('Not implemented yet');
+        return $this->travelPerk->patchJson(implode('/', ['webhooks', $id]), $params->asArray());
     }
 
     /**
