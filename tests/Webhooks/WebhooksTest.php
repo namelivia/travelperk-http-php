@@ -8,7 +8,6 @@ use Mockery;
 use Namelivia\TravelPerk\Webhooks\Webhooks;
 use Namelivia\TravelPerk\Webhooks\CreateWebhookInputParams;
 use Namelivia\TravelPerk\Webhooks\UpdateWebhookInputParams;
-use Namelivia\TravelPerk\Webhooks\WebhooksInputParams;
 use Namelivia\TravelPerk\Api\TravelPerk;
 
 class WebhooksTest extends TestCase
@@ -47,21 +46,6 @@ class WebhooksTest extends TestCase
         );
     }
 
-    public function testGettingAllWebhooksWithParams()
-    {
-        $this->travelPerk->shouldReceive('getJson')
-            ->once()
-            ->with('webhooks?offset=5&limit=10')
-            ->andReturn('allWebhooks');
-        $params = (new WebhooksInputParams())
-            ->setOffset(5)
-            ->setLimit(10);
-        $this->assertEquals(
-            'allWebhooks',
-            $this->webhooks->all($params)
-        );
-    }
-
     public function testGettingAWebhookDetail()
     {
         $webhookId = '1a';
@@ -78,14 +62,13 @@ class WebhooksTest extends TestCase
     public function testTestingAWebhook()
     {
         $webhookId = '1a';
-        $payload = ['foo' => 'bar'];
-        $this->travelPerk->shouldReceive('postJson')
+        $this->travelPerk->shouldReceive('post')
             ->once()
-            ->with('webhooks/1a/test', $payload)
+            ->with('webhooks/1a/test', [])
             ->andReturn('webhookTestResponse');
         $this->assertEquals(
             'webhookTestResponse',
-            $this->webhooks->test($webhookId, $payload)
+            $this->webhooks->test($webhookId)
         );
     }
 

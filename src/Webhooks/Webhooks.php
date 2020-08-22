@@ -7,7 +7,6 @@ namespace Namelivia\TravelPerk\Webhooks;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Webhooks\CreateWebhooksInputParams;
 use Namelivia\TravelPerk\Webhooks\UpdateWebhooksInputParams;
-use Namelivia\TravelPerk\Webhooks\WebhooksInputParams;
 
 class Webhooks
 {
@@ -29,10 +28,9 @@ class Webhooks
     /**
      * List all webhook subscriptions
      */
-    public function all(WebhooksInputParams $params = null)
+    public function all()
     {
-        $params = isset($params) ? '?' . $params->asUrlParam() : null;
-        return $this->travelPerk->getJson(implode('/', ['webhooks']) . $params);
+        return $this->travelPerk->getJson(implode('/', ['webhooks']));
     }
 
     /**
@@ -60,11 +58,11 @@ class Webhooks
     }
 
     /**
-     * Sends a sample payload to the webhook target URL
+     * Performs a webhook test call
      */
-    public function test(string $id, array $payload)
+    public function test(string $id)
     {
-        return $this->travelPerk->postJson(implode('/', ['webhooks', $id, 'test']), $payload);
+        return $this->travelPerk->post(implode('/', ['webhooks', $id, 'test']), []);
     }
 
     /**
