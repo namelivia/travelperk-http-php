@@ -13,11 +13,13 @@ class UpdateWebhookInputParamTest extends TestCase
     {
         $inputParams = new UpdateWebhookInputParams();
         $inputParams->setEnabled(false)
-            ->setName('New name');
+            ->setName('New name')
+            ->setUrl('New url');
         $this->assertEquals(
             [
                 'name' => 'New name',
                 'status' => 'disabled',
+                'url' => 'New url'
             ],
             $inputParams->asArray()
         );

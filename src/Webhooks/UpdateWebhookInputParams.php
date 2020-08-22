@@ -24,7 +24,7 @@ class UpdateWebhookInputParams
         return $this;
     }
 
-    public function setUrl(string $Url)
+    public function setUrl(string $url)
     {
         $this->url = $url;
         return $this;
