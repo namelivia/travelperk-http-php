@@ -9,7 +9,7 @@ class UpdateWebhookInputParams
     private $name;
     private $url;
     private $secret;
-    private $status;
+    private $enabled;
     private $events;
 
     public function setName(string $name)
@@ -20,7 +20,7 @@ class UpdateWebhookInputParams
 
     public function setEnabled(bool $enabled)
     {
-        $this->status = $enabled;
+        $this->enabled = $enabled;
         return $this;
     }
 
@@ -48,8 +48,8 @@ class UpdateWebhookInputParams
             'name' => $this->name,
             'url' => $this->url,
             'secret' => $this->secret,
-            'status' => $this->status ? 'enabled' : 'disabled',
+            'enabled' => $this->enabled,
             'events' => $this->events,
-        ]);
+        ], function($value) {return !is_null($value);});
     }
 }

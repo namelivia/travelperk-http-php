@@ -18,7 +18,7 @@ class UpdateWebhookInputParamTest extends TestCase
         $this->assertEquals(
             [
                 'name' => 'New name',
-                'status' => 'disabled',
+                'enabled' => false,
                 'url' => 'New url'
             ],
             $inputParams->asArray()
