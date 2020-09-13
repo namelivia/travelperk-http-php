@@ -38,7 +38,7 @@ For further information refer to the documentation linked in the next section.
 
 ## Documentation
 
-The full documentation can be found [in the wiki section of the github repository](https://github.com/namelivia/travelperk-http-php/wiki).
+The full documentation can be found [in the wiki section of this github repository](https://github.com/namelivia/travelperk-http-php/wiki).
 Also you can refer to the [official TravelPerk Web API documentation](https://developers.travelperk.com/reference)
 
 ## License
