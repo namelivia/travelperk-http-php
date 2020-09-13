@@ -22,11 +22,14 @@ Before getting started retrieving querying information from the TravelPerk Web A
 
 ### Getting a TravelPerk instance
 
-For querying the data you need to get a TravelPerk instance, and for doing so you need to pass your api key to the service provider like this:
+For querying the data you need to get a TravelPerk instance, and for doing so you need to pass your api key to the service provider, and a boolean indicating if you like to use the sandbox environment or not like this:
 ```php
 use Namelivia\TravelPerk\ServiceProvider;
-$travelperk = (new ServiceProvider())->build($apiKey);
+$isSandbox = false;
+$travelperk = (new ServiceProvider())->build($apiKey, $isSandbox);
 ```
+
+The sandbox environment is for testing purposes and its described [here](https://developers.travelperk.com/docs/postman-collection#step-2---configure-the-postman-environment).
 
 ### Retrieving data
 
