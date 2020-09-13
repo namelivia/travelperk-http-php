@@ -7,6 +7,7 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Client\Client;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Psr\Http\Message\ResponseInterface;
 
 class TravelPerkTest extends TestCase
 {
@@ -18,6 +19,7 @@ class TravelPerkTest extends TestCase
         parent::setUp();
         $this->client = Mockery::mock(Client::class);
         $this->travelPerk = new TravelPerk($this->client, false);
+        $this->responseMock = Mockery::mock(ResponseInterface::class);
     }
 
     public function testMakingAGetCall()
@@ -25,8 +27,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('get')
             ->once()
             ->with('https://api.travelperk.com/sampleurl')
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('responseContent');
@@ -41,8 +43,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('get')
             ->once()
             ->with('https://api.travelperk.com/sampleurl')
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('{"key" : "value"}');
@@ -57,8 +59,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('get')
             ->once()
             ->with('https://app.travelperk.com/api/v2/sampleurl')
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('{"key" : "value"}');
@@ -73,8 +75,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('post')
             ->once()
             ->with('https://api.travelperk.com/sampleurl', ['json' => ['params']])
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('responseContent');
@@ -89,8 +91,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('post')
             ->once()
             ->with('https://app.travelperk.com/api/v2/sampleurl', ['json' => ['params']])
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('responseContent');
@@ -105,8 +107,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('patch')
             ->once()
             ->with('https://api.travelperk.com/sampleurl', ['json' => ['params']])
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('responseContent');
@@ -121,8 +123,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('patch')
             ->once()
             ->with('https://app.travelperk.com/api/v2/sampleurl', ['json' => ['params']])
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('responseContent');
@@ -137,8 +139,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('delete')
             ->once()
             ->with('https://api.travelperk.com/sampleurl')
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('responseContent');
@@ -153,8 +155,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('delete')
             ->once()
             ->with('https://app.travelperk.com/api/v2/sampleurl')
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('responseContent');
@@ -185,8 +187,8 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('get')
             ->once()
             ->with('https://test.travelperk.com/sampleurl')
-            ->andReturn($this->client);
-        $this->client->shouldReceive('getBody->getContents')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
             ->andReturn('responseContent');

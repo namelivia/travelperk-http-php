@@ -20,7 +20,7 @@ class FeatureTest extends TestCase
     {
         $this->markTestSkipped('Badly written test');
 		$apiKey = 'apiKey';
-		$travelPerk = (new ServiceProvider())->build($apiKey);
+		$travelPerk = (new ServiceProvider())->build($apiKey, false);
 		var_dump($travelPerk->expenses()->invoiceProfiles()->all());
     }
 }
