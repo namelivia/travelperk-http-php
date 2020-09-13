@@ -10,9 +10,10 @@ use Namelivia\TravelPerk\Client\Client;
 class ServiceProvider
 {
     public function build(
-        string $apiKey
+        string $apiKey,
+        bool $isSandbox
     ) {
         $client = new Client($apiKey);
-		return new \Namelivia\TravelPerk\Api\TravelPerk($client);
+		return new \Namelivia\TravelPerk\Api\TravelPerk($client, $isSandbox);
     }
 }

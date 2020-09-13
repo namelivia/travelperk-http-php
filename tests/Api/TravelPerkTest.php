@@ -17,7 +17,7 @@ class TravelPerkTest extends TestCase
     {
         parent::setUp();
         $this->client = Mockery::mock(Client::class);
-        $this->travelPerk = new TravelPerk($this->client);
+        $this->travelPerk = new TravelPerk($this->client, false);
     }
 
     public function testMakingAGetCall()
@@ -178,4 +178,22 @@ class TravelPerkTest extends TestCase
     {
         $this->assertTrue($this->travelPerk->webhooks() instanceof \Namelivia\TravelPerk\Api\WebhooksAPI);
     }
+
+    public function testQueryingTheSandboxEnvironment()
+    {
+        $sandboxApi = new TravelPerk($this->client, true);
+        $this->client->shouldReceive('get')
+            ->once()
+            ->with('https://test.travelperk.com/sampleurl')
+            ->andReturn($this->client);
+        $this->client->shouldReceive('getBody->getContents')
+            ->once()
+            ->with()
+            ->andReturn('responseContent');
+        $this->assertEquals(
+            'responseContent',
+            $sandboxApi->get('sampleurl')
+        );
+    }
+
 }

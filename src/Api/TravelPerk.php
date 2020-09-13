@@ -8,19 +8,22 @@ use Namelivia\TravelPerk\Client\Client;
 
 class TravelPerk
 {
-    private $baseUrl = 'https://api.travelperk.com/';
+    const BASE_URL = 'https://api.travelperk.com/';
+    const SANDBOX_BASE_URL = 'https://test.travelperk.com/';
+
     private $legacyBaseUrl = 'https://app.travelperk.com/api/v2/';
     private $client;
     private $expenses;
     private $scim;
     private $webhooks;
 
-    public function __construct(Client $client)
+    public function __construct(Client $client, bool $isSandbox)
     {
         $this->client = $client;
         $this->expenses = new Expenses($this);
         $this->scim = new SCIM($this);
         $this->webhooks = new WebhooksAPI($this);
+        $this->baseUrl = $isSandbox ? TravelPerk::SANDBOX_BASE_URL : TravelPerk::BASE_URL;
     }
 
     public function getAuthUri()
