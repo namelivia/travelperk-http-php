@@ -9,9 +9,12 @@ use Namelivia\TravelPerk\Client\Client;
 class TravelPerk
 {
     const BASE_URL = 'https://api.travelperk.com/';
-    const SANDBOX_BASE_URL = 'https://test.travelperk.com/';
+    const SANDBOX_BASE_URL = 'https://sandbox.travelperk.com/';
+    const LEGACY_BASE_URL = 'https://app.travelperk.com/api/v2/';
+    const LEGACY_SANDBOX_BASE_URL = 'https://sandbox.travelperk.com/api/v2/';
 
-    private $legacyBaseUrl = 'https://app.travelperk.com/api/v2/';
+    private $legacyBaseUrl;
+    private $baseUrl;
     private $client;
     private $expenses;
     private $scim;
@@ -24,6 +27,7 @@ class TravelPerk
         $this->scim = new SCIM($this);
         $this->webhooks = new WebhooksAPI($this);
         $this->baseUrl = $isSandbox ? TravelPerk::SANDBOX_BASE_URL : TravelPerk::BASE_URL;
+        $this->legacyBaseUrl = $isSandbox ? TravelPerk::LEGACY_SANDBOX_BASE_URL : TravelPerk::LEGACY_BASE_URL;
     }
 
     public function getAuthUri()

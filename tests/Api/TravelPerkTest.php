@@ -186,7 +186,7 @@ class TravelPerkTest extends TestCase
         $sandboxApi = new TravelPerk($this->client, true);
         $this->client->shouldReceive('get')
             ->once()
-            ->with('https://test.travelperk.com/sampleurl')
+            ->with('https://sandbox.travelperk.com/sampleurl')
             ->andReturn($this->responseMock);
         $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
@@ -198,4 +198,20 @@ class TravelPerkTest extends TestCase
         );
     }
 
+    public function testQueryingTheSandboxEnvironmentLegacyEndpoint()
+    {
+        $sandboxApi = new TravelPerk($this->client, true);
+        $this->client->shouldReceive('delete')
+            ->once()
+            ->with('https://sandbox.travelperk.com/api/v2/sampleurl')
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
+            ->once()
+            ->with()
+            ->andReturn('responseContent');
+        $this->assertEquals(
+            'responseContent',
+            $sandboxApi->delete('sampleurl', true)
+        );
+    }
 }
