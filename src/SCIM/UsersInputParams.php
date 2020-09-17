@@ -32,7 +32,7 @@ class UsersInputParams
     {
         return http_build_query([
             'count' => $this->count,
-            'start_index' => $this->startIndex,
+            'startIndex' => $this->startIndex,
             'filter' => $this->filter,
         ]);
     }

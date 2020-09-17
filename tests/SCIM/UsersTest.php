@@ -39,7 +39,7 @@ class UsersTest extends TestCase
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Users?count=5&start_index=3', true)
+            ->with('scim/Users?count=5&startIndex=3', true)
             ->andReturn('allUsers');
         $params = (new UsersInputParams())
             ->setCount(5)

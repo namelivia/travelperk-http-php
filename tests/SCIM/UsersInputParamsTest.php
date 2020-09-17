@@ -21,7 +21,7 @@ class UsersInputParamTest extends TestCase
             ->setFilter('filter');
         $this->assertEquals(
             'count=4&' .
-            'start_index=3&' .
+            'startIndex=3&' .
             'filter=filter',
             urldecode($inputParams->asUrlParam())
         );
@@ -32,7 +32,7 @@ class UsersInputParamTest extends TestCase
         $inputParams = new UsersInputParams();
         $inputParams->setStartIndex(3);
         $this->assertEquals(
-            'start_index=3',
+            'startIndex=3',
             urldecode($inputParams->asUrlParam())
         );
     }
