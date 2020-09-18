@@ -21,7 +21,7 @@ class Discovery
      */
     public function serviceProviderConfig()
     {
-        return $this->travelPerk->getJson(implode('/', ['scim', 'ServiceProviderConfig']), true);
+        return $this->travelPerk->getJson(implode('/', ['scim', 'ServiceProviderConfig']));
     }
 
     /**
@@ -29,7 +29,7 @@ class Discovery
      */
     public function resourceTypes()
     {
-        return $this->travelPerk->getJson(implode('/', ['scim', 'ResourceTypes']), true);
+        return $this->travelPerk->getJson(implode('/', ['scim', 'ResourceTypes']));
     }
 
     /**
@@ -37,7 +37,7 @@ class Discovery
      */
     public function schemas()
     {
-        return $this->travelPerk->getJson(implode('/', ['scim', 'Schemas']), true);
+        return $this->travelPerk->getJson(implode('/', ['scim', 'Schemas']));
     }
 
     /**
@@ -45,7 +45,7 @@ class Discovery
      */
     public function userSchema()
     {
-        return $this->travelPerk->getJson(implode('/', ['scim', 'Schemas', 'urn:ietf:params:scim:schemas:core:2.0:User']), true);
+        return $this->travelPerk->getJson(implode('/', ['scim', 'Schemas', 'urn:ietf:params:scim:schemas:core:2.0:User']));
     }
 
     /**
@@ -53,6 +53,6 @@ class Discovery
      */
     public function enterpriseUserSchema()
     {
-        return $this->travelPerk->getJson(implode('/', ['scim', 'Schemas', 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User']), true);
+        return $this->travelPerk->getJson(implode('/', ['scim', 'Schemas', 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User']));
     }
 }

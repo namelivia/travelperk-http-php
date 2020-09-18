@@ -24,7 +24,7 @@ class DiscoveryTest extends TestCase
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/ServiceProviderConfig', true)
+            ->with('scim/ServiceProviderConfig')
             ->andReturn('serviceProviderConfig');
         $this->assertEquals(
             'serviceProviderConfig',
@@ -36,7 +36,7 @@ class DiscoveryTest extends TestCase
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/ResourceTypes', true)
+            ->with('scim/ResourceTypes')
             ->andReturn('resourceTypes');
         $this->assertEquals(
             'resourceTypes',
@@ -48,7 +48,7 @@ class DiscoveryTest extends TestCase
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Schemas', true)
+            ->with('scim/Schemas')
             ->andReturn('schemas');
         $this->assertEquals(
             'schemas',
@@ -60,7 +60,7 @@ class DiscoveryTest extends TestCase
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User', true)
+            ->with('scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User')
             ->andReturn('userSchema');
         $this->assertEquals(
             'userSchema',
@@ -72,7 +72,7 @@ class DiscoveryTest extends TestCase
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User', true)
+            ->with('scim/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User')
             ->andReturn('enterpriseUserSchema');
         $this->assertEquals(
             'enterpriseUserSchema',
