@@ -24,7 +24,7 @@ class Users
     public function all(UsersInputParams $params = null)
     {
         $params = isset($params) ? '?' . $params->asUrlParam() : null;
-        return $this->travelPerk->getJson(implode('/', ['scim', 'Users']) . $params, true);
+        return $this->travelPerk->getJson(implode('/', ['scim', 'Users']) . $params);
     }
 
     /**
@@ -32,7 +32,7 @@ class Users
      */
     public function get(int $id)
     {
-        return $this->travelPerk->getJson(implode('/', ['scim', 'Users', $id]), true);
+        return $this->travelPerk->getJson(implode('/', ['scim', 'Users', $id]));
     }
 
     /**
@@ -40,7 +40,7 @@ class Users
      */
     public function delete(int $id)
     {
-        return $this->travelPerk->delete(implode('/', ['scim', 'Users', $id]), true);
+        return $this->travelPerk->delete(implode('/', ['scim', 'Users', $id]));
     }
 
     /**
@@ -48,7 +48,7 @@ class Users
      */
     public function create(CreateUserInputParams $params)
     {
-        return $this->travelPerk->post(implode('/', ['scim', 'Users']), $params->asArray(), true);
+        return $this->travelPerk->post(implode('/', ['scim', 'Users']), $params->asArray());
     }
 
     /**
@@ -56,7 +56,7 @@ class Users
      */
     public function update(int $id, UpdateUserInputParams $params)
     {
-        return $this->travelPerk->patch(implode('/', ['scim', 'Users', $id]), $params->asArray(), true);
+        return $this->travelPerk->patch(implode('/', ['scim', 'Users', $id]), $params->asArray());
     }
 
     /**
@@ -64,6 +64,6 @@ class Users
      */
     public function replace(int $id, UpdateUserInputParams $params)
     {
-        return $this->travelPerk->put(implode('/', ['scim', 'Users', $id]), $params->asArray(), true);
+        return $this->travelPerk->put(implode('/', ['scim', 'Users', $id]), $params->asArray());
     }
 }

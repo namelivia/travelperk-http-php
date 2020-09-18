@@ -54,22 +54,6 @@ class TravelPerkTest extends TestCase
         );
     }
 
-    public function testMakingAJSONGetCallLegacyEndpoint()
-    {
-        $this->client->shouldReceive('get')
-            ->once()
-            ->with('https://app.travelperk.com/api/v2/sampleurl')
-            ->andReturn($this->responseMock);
-        $this->responseMock->shouldReceive('getBody->getContents')
-            ->once()
-            ->with()
-            ->andReturn('{"key" : "value"}');
-        $this->assertEquals(
-            'value',
-            $this->travelPerk->getJson('sampleurl', True)->key
-        );
-    }
-
     public function testMakingAPostCall()
     {
         $this->client->shouldReceive('post')
@@ -83,22 +67,6 @@ class TravelPerkTest extends TestCase
         $this->assertEquals(
             'responseContent',
             $this->travelPerk->post('sampleurl', ['params'])
-        );
-    }
-
-    public function testMakingAPostCallLegacyEndpoint()
-    {
-        $this->client->shouldReceive('post')
-            ->once()
-            ->with('https://app.travelperk.com/api/v2/sampleurl', ['json' => ['params']])
-            ->andReturn($this->responseMock);
-        $this->responseMock->shouldReceive('getBody->getContents')
-            ->once()
-            ->with()
-            ->andReturn('responseContent');
-        $this->assertEquals(
-            'responseContent',
-            $this->travelPerk->post('sampleurl', ['params'], true)
         );
     }
 
@@ -118,22 +86,6 @@ class TravelPerkTest extends TestCase
         );
     }
 
-    public function testMakingAPatchCallLegacyEndpoint()
-    {
-        $this->client->shouldReceive('patch')
-            ->once()
-            ->with('https://app.travelperk.com/api/v2/sampleurl', ['json' => ['params']])
-            ->andReturn($this->responseMock);
-        $this->responseMock->shouldReceive('getBody->getContents')
-            ->once()
-            ->with()
-            ->andReturn('responseContent');
-        $this->assertEquals(
-            'responseContent',
-            $this->travelPerk->patch('sampleurl', ['params'], true)
-        );
-    }
-
     public function testMakingADeleteCall()
     {
         $this->client->shouldReceive('delete')
@@ -147,22 +99,6 @@ class TravelPerkTest extends TestCase
         $this->assertEquals(
             'responseContent',
             $this->travelPerk->delete('sampleurl')
-        );
-    }
-
-    public function testMakingADeleteCallLegacyEndpoint()
-    {
-        $this->client->shouldReceive('delete')
-            ->once()
-            ->with('https://app.travelperk.com/api/v2/sampleurl')
-            ->andReturn($this->responseMock);
-        $this->responseMock->shouldReceive('getBody->getContents')
-            ->once()
-            ->with()
-            ->andReturn('responseContent');
-        $this->assertEquals(
-            'responseContent',
-            $this->travelPerk->delete('sampleurl', true)
         );
     }
 
@@ -195,23 +131,6 @@ class TravelPerkTest extends TestCase
         $this->assertEquals(
             'responseContent',
             $sandboxApi->get('sampleurl')
-        );
-    }
-
-    public function testQueryingTheSandboxEnvironmentLegacyEndpoint()
-    {
-        $sandboxApi = new TravelPerk($this->client, true);
-        $this->client->shouldReceive('delete')
-            ->once()
-            ->with('https://sandbox.travelperk.com/api/v2/sampleurl')
-            ->andReturn($this->responseMock);
-        $this->responseMock->shouldReceive('getBody->getContents')
-            ->once()
-            ->with()
-            ->andReturn('responseContent');
-        $this->assertEquals(
-            'responseContent',
-            $sandboxApi->delete('sampleurl', true)
         );
     }
 }

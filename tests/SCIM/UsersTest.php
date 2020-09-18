@@ -27,7 +27,7 @@ class UsersTest extends TestCase
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Users', true)
+            ->with('scim/Users')
             ->andReturn('allUsers');
         $this->assertEquals(
             'allUsers',
@@ -39,7 +39,7 @@ class UsersTest extends TestCase
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Users?count=5&startIndex=3', true)
+            ->with('scim/Users?count=5&startIndex=3')
             ->andReturn('allUsers');
         $params = (new UsersInputParams())
             ->setCount(5)
@@ -54,7 +54,7 @@ class UsersTest extends TestCase
     {
         $this->travelPerk->shouldReceive('getJson')
             ->once()
-            ->with('scim/Users/1', true)
+            ->with('scim/Users/1')
             ->andReturn('userDetail');
         $this->assertEquals(
             'userDetail',
@@ -66,7 +66,7 @@ class UsersTest extends TestCase
     {
         $this->travelPerk->shouldReceive('delete')
             ->once()
-            ->with('scim/Users/1', true)
+            ->with('scim/Users/1')
             ->andReturn('userDeleted');
         $this->assertEquals(
             'userDeleted',
@@ -83,7 +83,7 @@ class UsersTest extends TestCase
             ->andReturn(['params']);
         $this->travelPerk->shouldReceive('post')
             ->once()
-            ->with('scim/Users', ['params'], true)
+            ->with('scim/Users', ['params'])
             ->andReturn('userCreated');
         $this->assertEquals(
             'userCreated',
@@ -101,7 +101,7 @@ class UsersTest extends TestCase
             ->andReturn(['params']);
         $this->travelPerk->shouldReceive('patch')
             ->once()
-            ->with('scim/Users/1', ['params'], true)
+            ->with('scim/Users/1', ['params'])
             ->andReturn('userUpdated');
         $this->assertEquals(
             'userUpdated',
@@ -119,7 +119,7 @@ class UsersTest extends TestCase
             ->andReturn(['params']);
         $this->travelPerk->shouldReceive('put')
             ->once()
-            ->with('scim/Users/1', ['params'], true)
+            ->with('scim/Users/1', ['params'])
             ->andReturn('userReplaced');
         $this->assertEquals(
             'userReplaced',
