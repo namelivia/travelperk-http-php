@@ -79,6 +79,14 @@ class TravelPerk
         )->getBody()->getContents());
     }
 
+    public function putJson($url, array $params)
+    {
+        return json_decode($this->client->put(
+            $this->baseUrl . $url,
+            [\GuzzleHttp\RequestOptions::JSON => $params]
+        )->getBody()->getContents());
+    }
+
     public function delete($url)
     {
         return $this->client->delete(

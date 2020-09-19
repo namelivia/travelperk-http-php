@@ -64,6 +64,6 @@ class Users
      */
     public function replace(int $id, ReplaceUserInputParams $params)
     {
-        return $this->travelPerk->put(implode('/', ['scim', 'Users', $id]), $params->asArray());
+        return $this->travelPerk->putJson(implode('/', ['scim', 'Users', $id]), $params->asArray());
     }
 }

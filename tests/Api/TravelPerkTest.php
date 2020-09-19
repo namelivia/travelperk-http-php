@@ -70,6 +70,22 @@ class TravelPerkTest extends TestCase
         );
     }
 
+    public function testMakingAJSONPutCall()
+    {
+        $this->client->shouldReceive('put')
+            ->once()
+            ->with('https://api.travelperk.com/sampleurl', ['json' => ['params']])
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
+            ->once()
+            ->with()
+            ->andReturn('{"key" : "value"}');
+        $this->assertEquals(
+            'value',
+            $this->travelPerk->putJson('sampleurl', ['params'])->key
+        );
+    }
+
     public function testMakingAPatchCall()
     {
         $this->client->shouldReceive('patch')

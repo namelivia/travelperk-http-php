@@ -118,7 +118,7 @@ class UsersTest extends TestCase
             ->once()
             ->with()
             ->andReturn(['params']);
-        $this->travelPerk->shouldReceive('put')
+        $this->travelPerk->shouldReceive('putJson')
             ->once()
             ->with('scim/Users/1', ['params'])
             ->andReturn('userReplaced');
