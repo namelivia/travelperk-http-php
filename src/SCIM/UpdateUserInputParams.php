@@ -29,4 +29,13 @@ class UpdateUserInputParams
         $this->name = $name;
         return $this;
     }
+
+    public function asArray()
+    {
+        return array_filter([
+            'userName' => $this->userName,
+            'name' => $this->name->asArray(),
+            'active' => $this->active,
+        ], function($value) {return !is_null($value);});
+    }
 }
