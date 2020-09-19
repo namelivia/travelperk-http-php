@@ -8,6 +8,7 @@ use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
 use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
+use Namelivia\TravelPerk\NotImplementedException;
 
 class Users
 {
@@ -56,6 +57,7 @@ class Users
      */
     public function update(int $id, UpdateUserInputParams $params)
     {
+        throw new NotImplementedException('https://github.com/namelivia/travelperk-http-php/issues/7');
         return $this->travelPerk->patch(implode('/', ['scim', 'Users', $id]), $params->asArray());
     }
 

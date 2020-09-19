@@ -11,6 +11,7 @@ use Namelivia\TravelPerk\SCIM\UsersInputParams;
 use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
 use Namelivia\TravelPerk\SCIM\ReplaceUserInputParams;
+use Namelivia\TravelPerk\NotImplementedException;
 
 class UsersTest extends TestCase
 {
@@ -96,18 +97,9 @@ class UsersTest extends TestCase
     {
         $params = Mockery::mock(UpdateUserInputParams::class);
         $userId = 1;
-        $params->shouldReceive('asArray')
-            ->once()
-            ->with()
-            ->andReturn(['params']);
-        $this->travelPerk->shouldReceive('patch')
-            ->once()
-            ->with('scim/Users/1', ['params'])
-            ->andReturn('userUpdated');
-        $this->assertEquals(
-            'userUpdated',
-            $this->users->update($userId, $params)
-        );
+        $this->expectException(NotImplementedException::class);
+        $this->expectExceptionMessage('https://github.com/namelivia/travelperk-http-php/issues/7');
+        $this->users->update($userId, $params);
     }
 
     public function testReplacingAUser()
