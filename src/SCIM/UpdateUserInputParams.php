@@ -34,7 +34,7 @@ class UpdateUserInputParams
     {
         return array_filter([
             'userName' => $this->userName,
-            'name' => $this->name->asArray(),
+            'name' => $this->name ? $this->name->asArray() : null,
             'active' => $this->active,
         ], function($value) {return !is_null($value);});
     }
