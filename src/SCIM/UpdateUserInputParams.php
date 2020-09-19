@@ -18,7 +18,7 @@ class UpdateUserInputParams
         return $this;
     }
 
-    public function setActive(boolean $active)
+    public function setActive(bool $active)
     {
         $this->active = $active;
         return $this;
