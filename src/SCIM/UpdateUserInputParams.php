@@ -12,20 +12,21 @@ class UpdateUserInputParams
     private $active;
     private $name;
 
-    public function __construct(string $userName, bool $active, NameInputParams $name)
+    public function setUserName(string $userName)
     {
-        #TODO: Many fields are still missing
         $this->userName = $userName;
-        $this->active = $active;
-        $this->name = $name;
+        return $this;
     }
 
-    public function asArray()
+    public function setActive(boolean $active)
     {
-        return [
-            'userName' => $this->userName,
-            'name' => $this->name->asArray(),
-            'active' => $this->active,
-        ];
+        $this->active = $active;
+        return $this;
+    }
+
+    public function setName(NameInputParams $name)
+    {
+        $this->name = $name;
+        return $this;
     }
 }
