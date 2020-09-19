@@ -11,7 +11,7 @@ class NameInputParams
 
     public function __construct(string $givenName, string $familyName)
     {
-        #TODO: Many fields are still missing
+        //TODO: Many fields are still missing
         $this->givenName = $givenName;
         $this->familyName = $familyName;
     }
@@ -19,8 +19,8 @@ class NameInputParams
     public function asArray()
     {
         return [
-            'givenName' => $this->givenName,
-            'familyName' => $this->familyName
+            'givenName'  => $this->givenName,
+            'familyName' => $this->familyName,
         ];
     }
 }

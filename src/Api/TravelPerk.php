@@ -35,7 +35,7 @@ class TravelPerk
     {
         return json_decode(
             $this->client->get(
-                $this->baseUrl . $url
+                $this->baseUrl.$url
             )->getBody()->getContents()
         );
     }
@@ -43,14 +43,14 @@ class TravelPerk
     public function get($url)
     {
         return $this->client->get(
-            $this->baseUrl . $url
+            $this->baseUrl.$url
         )->getBody()->getContents();
     }
 
     public function post($url, array $params)
     {
         return $this->client->post(
-            $this->baseUrl . $url,
+            $this->baseUrl.$url,
             [\GuzzleHttp\RequestOptions::JSON => $params]
         )->getBody()->getContents();
     }
@@ -58,7 +58,7 @@ class TravelPerk
     public function postJson($url, array $params)
     {
         return json_decode($this->client->post(
-            $this->baseUrl . $url,
+            $this->baseUrl.$url,
             [\GuzzleHttp\RequestOptions::JSON => $params]
         )->getBody()->getContents());
     }
@@ -66,7 +66,7 @@ class TravelPerk
     public function patch($url, array $params)
     {
         return $this->client->patch(
-            $this->baseUrl . $url,
+            $this->baseUrl.$url,
             [\GuzzleHttp\RequestOptions::JSON => $params]
         )->getBody()->getContents();
     }
@@ -74,7 +74,7 @@ class TravelPerk
     public function patchJson($url, array $params)
     {
         return json_decode($this->client->patch(
-            $this->baseUrl . $url,
+            $this->baseUrl.$url,
             [\GuzzleHttp\RequestOptions::JSON => $params]
         )->getBody()->getContents());
     }
@@ -82,7 +82,7 @@ class TravelPerk
     public function putJson($url, array $params)
     {
         return json_decode($this->client->put(
-            $this->baseUrl . $url,
+            $this->baseUrl.$url,
             [\GuzzleHttp\RequestOptions::JSON => $params]
         )->getBody()->getContents());
     }
@@ -90,7 +90,7 @@ class TravelPerk
     public function delete($url)
     {
         return $this->client->delete(
-            $this->baseUrl . $url
+            $this->baseUrl.$url
         )->getBody()->getContents();
     }
 

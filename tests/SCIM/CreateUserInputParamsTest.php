@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Mockery;
 use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 use Namelivia\TravelPerk\SCIM\NameInputParams;
 
@@ -16,8 +15,8 @@ class CreateUserInputParamTest extends TestCase
         $this->assertEquals(
             [
                 'userName' => 'username',
-                'name' => [
-                    'givenName' => 'given_name',
+                'name'     => [
+                    'givenName'  => 'given_name',
                     'familyName' => 'family_name',
                 ],
                 'active' => true,

@@ -13,7 +13,7 @@ class ExpensesTest extends TestCase
     private $travelPerk;
     private $expenses;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);

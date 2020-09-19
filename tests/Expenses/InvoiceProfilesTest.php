@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Tests;
 
 use Mockery;
-use Namelivia\TravelPerk\Expenses\InvoiceProfiles;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\Expenses\InvoiceProfiles;
 use Namelivia\TravelPerk\Pagination\Pagination;
 
 class InvoiceProfilesTest extends TestCase
@@ -14,7 +14,7 @@ class InvoiceProfilesTest extends TestCase
     private $travelPerk;
     private $invoiceProfiles;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);

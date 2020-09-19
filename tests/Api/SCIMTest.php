@@ -13,7 +13,7 @@ class SCIMTest extends TestCase
     private $travelPerk;
     private $scim;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);

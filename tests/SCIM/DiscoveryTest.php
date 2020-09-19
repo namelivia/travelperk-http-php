@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Tests;
 
 use Mockery;
-use Namelivia\TravelPerk\SCIM\Discovery;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\SCIM\Discovery;
 
 class DiscoveryTest extends TestCase
 {
     private $travelPerk;
     private $discovery;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);

@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Tests;
 
 use Mockery;
-use Namelivia\TravelPerk\Expenses\Invoices;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Expenses\InvoicesInputParams;
 use Namelivia\TravelPerk\Expenses\InvoiceLinesInputParams;
+use Namelivia\TravelPerk\Expenses\Invoices;
+use Namelivia\TravelPerk\Expenses\InvoicesInputParams;
 
 class InvoicesTest extends TestCase
 {
     private $travelPerk;
     private $invoices;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);

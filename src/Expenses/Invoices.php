@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Expenses;
 
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Expenses\InvoicesInputParams;
-use Namelivia\TravelPerk\Expenses\InvoiceLinesInputParams;
 
 class Invoices
 {
@@ -18,16 +16,17 @@ class Invoices
     }
 
     /**
-     * List all invoices
+     * List all invoices.
      */
     public function all(InvoicesInputParams $params = null)
     {
-        $params = isset($params) ? '?' . $params->asUrlParam() : null;
-        return $this->travelPerk->getJson(implode('/', ['invoices']) .  $params);
+        $params = isset($params) ? '?'.$params->asUrlParam() : null;
+
+        return $this->travelPerk->getJson(implode('/', ['invoices']).$params);
     }
 
     /**
-     * Get invoice detail
+     * Get invoice detail.
      */
     public function get(string $serialNumber)
     {
@@ -35,7 +34,7 @@ class Invoices
     }
 
     /**
-     * Get invoice in PDF format
+     * Get invoice in PDF format.
      */
     public function pdf(string $serialNumber)
     {
@@ -43,11 +42,12 @@ class Invoices
     }
 
     /**
-     * Get list of invoices lines
+     * Get list of invoices lines.
      */
     public function lines(InvoiceLinesInputParams $params = null)
     {
-        $params = isset($params) ? '?' . $params->asUrlParam() : null;
-        return $this->travelPerk->getJson(implode('/', ['invoices', 'lines']) .  $params);
+        $params = isset($params) ? '?'.$params->asUrlParam() : null;
+
+        return $this->travelPerk->getJson(implode('/', ['invoices', 'lines']).$params);
     }
 }

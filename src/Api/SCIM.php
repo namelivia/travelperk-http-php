@@ -13,8 +13,8 @@ class SCIM
 
     public function __construct(TravelPerk $travelPerk)
     {
-        $this->discovery  = new Discovery($travelPerk);
-        $this->users  = new Users($travelPerk);
+        $this->discovery = new Discovery($travelPerk);
+        $this->users = new Users($travelPerk);
     }
 
     public function discovery()

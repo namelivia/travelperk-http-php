@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Mockery;
+use Carbon\Carbon;
+use Namelivia\TravelPerk\Expenses\BillingPeriod;
 use Namelivia\TravelPerk\Expenses\InvoiceLinesInputParams;
 use Namelivia\TravelPerk\Expenses\Status;
-use Namelivia\TravelPerk\Expenses\BillingPeriod;
-use Carbon\Carbon;
 
 class InvoiceLinesInputParamTest extends TestCase
 {
@@ -31,20 +30,20 @@ class InvoiceLinesInputParamTest extends TestCase
             ->setOffset(32)
             ->setLimit(64);
         $this->assertEquals(
-            'profile_id=profile_id1,profile_id2&' .
-            'serial_number=serial_number1,serial_number2&' .
-            'serial_number_contains=serial_number_contains&' .
-            'billing_period=monthly&' .
-            'travelperk_bank_account_number=bank_account_number&' .
-            'customer_country_name=customer_country_name&' .
-            'status=paid&' .
-            'issuing_date_gte=2019-03-21&' .
-            'issuing_date_lte=2019-03-22&' .
-            'due_date_gte=2019-03-20&' .
-            'due_date_lte=2019-03-31&' .
-            'expense_date_gte=2019-03-01&' .
-            'expense_date_lte=2019-03-01&' .
-            'offset=32&' .
+            'profile_id=profile_id1,profile_id2&'.
+            'serial_number=serial_number1,serial_number2&'.
+            'serial_number_contains=serial_number_contains&'.
+            'billing_period=monthly&'.
+            'travelperk_bank_account_number=bank_account_number&'.
+            'customer_country_name=customer_country_name&'.
+            'status=paid&'.
+            'issuing_date_gte=2019-03-21&'.
+            'issuing_date_lte=2019-03-22&'.
+            'due_date_gte=2019-03-20&'.
+            'due_date_lte=2019-03-31&'.
+            'expense_date_gte=2019-03-01&'.
+            'expense_date_lte=2019-03-01&'.
+            'offset=32&'.
             'limit=64',
             urldecode($inputParams->asUrlParam())
         );
@@ -56,7 +55,7 @@ class InvoiceLinesInputParamTest extends TestCase
         $inputParams->setSerialNumber(['serial_number1', 'serial_number2'])
             ->setStatus(new Status(Status::PAID));
         $this->assertEquals(
-            'serial_number=serial_number1,serial_number2&' .
+            'serial_number=serial_number1,serial_number2&'.
             'status=paid',
             urldecode($inputParams->asUrlParam())
         );

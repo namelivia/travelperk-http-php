@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Tests;
 
 use Mockery;
-use Namelivia\TravelPerk\Webhooks\Webhooks;
+use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Webhooks\CreateWebhookInputParams;
 use Namelivia\TravelPerk\Webhooks\UpdateWebhookInputParams;
-use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\Webhooks\Webhooks;
 
 class WebhooksTest extends TestCase
 {
     private $travelPerk;
     private $webhooks;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);

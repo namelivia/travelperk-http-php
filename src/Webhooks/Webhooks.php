@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Webhooks;
 
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Webhooks\CreateWebhooksInputParams;
-use Namelivia\TravelPerk\Webhooks\UpdateWebhooksInputParams;
 
 class Webhooks
 {
@@ -18,7 +16,7 @@ class Webhooks
     }
 
     /**
-     * List all events you can subscribe to
+     * List all events you can subscribe to.
      */
     public function events()
     {
@@ -26,7 +24,7 @@ class Webhooks
     }
 
     /**
-     * List all webhook subscriptions
+     * List all webhook subscriptions.
      */
     public function all()
     {
@@ -34,7 +32,7 @@ class Webhooks
     }
 
     /**
-     * Get details for a specific webhook endpoint
+     * Get details for a specific webhook endpoint.
      */
     public function get(string $id)
     {
@@ -42,7 +40,7 @@ class Webhooks
     }
 
     /**
-     * Create a webhook endpoint
+     * Create a webhook endpoint.
      */
     public function create(CreateWebhookInputParams $params)
     {
@@ -50,7 +48,7 @@ class Webhooks
     }
 
     /**
-     * Updates the webhook endpoint
+     * Updates the webhook endpoint.
      */
     public function update(string $id, UpdateWebhookInputParams $params)
     {
@@ -58,7 +56,7 @@ class Webhooks
     }
 
     /**
-     * Performs a webhook test call
+     * Performs a webhook test call.
      */
     public function test(string $id)
     {
@@ -66,7 +64,7 @@ class Webhooks
     }
 
     /**
-     * Deletes a webhook endpoint
+     * Deletes a webhook endpoint.
      */
     public function delete(string $id)
     {
