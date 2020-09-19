@@ -13,27 +13,30 @@ class UsersInputParams
     public function setCount(int $count)
     {
         $this->count = $count;
+
         return $this;
     }
 
     public function setStartIndex(int $startIndex)
     {
         $this->startIndex = $startIndex;
+
         return $this;
     }
 
     public function setFilter(string $filter)
     {
         $this->filter = $filter;
+
         return $this;
     }
 
     public function asUrlParam()
     {
         return http_build_query([
-            'count' => $this->count,
+            'count'      => $this->count,
             'startIndex' => $this->startIndex,
-            'filter' => $this->filter,
+            'filter'     => $this->filter,
         ]);
     }
 }

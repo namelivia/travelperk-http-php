@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk;
 
-use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Client\Client;
 
 class ServiceProvider
@@ -14,6 +13,7 @@ class ServiceProvider
         bool $isSandbox
     ) {
         $client = new Client($apiKey);
-		return new \Namelivia\TravelPerk\Api\TravelPerk($client, $isSandbox);
+
+        return new \Namelivia\TravelPerk\Api\TravelPerk($client, $isSandbox);
     }
 }

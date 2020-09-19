@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Mockery;
 use Namelivia\TravelPerk\Webhooks\CreateWebhookInputParams;
 
 class CreateWebhookInputParamsTest extends TestCase
@@ -19,8 +18,8 @@ class CreateWebhookInputParamsTest extends TestCase
         );
         $this->assertEquals(
             [
-                'name' => 'webhook',
-                'url' => 'https://test.com',
+                'name'   => 'webhook',
+                'url'    => 'https://test.com',
                 'secret' => 'SECRET_KEY',
                 'events' => [],
             ],

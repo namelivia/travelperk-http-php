@@ -17,11 +17,12 @@ class InvoiceProfiles
     }
 
     /**
-     * List all invoice profiles associated to this account
+     * List all invoice profiles associated to this account.
      */
     public function all(Pagination $pagination = null)
     {
-        $params = isset($pagination) ? '?' . $pagination->asUrlParam() : null;
-        return $this->travelPerk->getJson(implode('/', ['profiles']) . $params);
+        $params = isset($pagination) ? '?'.$pagination->asUrlParam() : null;
+
+        return $this->travelPerk->getJson(implode('/', ['profiles']).$params);
     }
 }

@@ -22,8 +22,8 @@ class CreateWebhookInputParams
     public function asArray()
     {
         return [
-            'name' => $this->name,
-            'url' => $this->url,
+            'name'   => $this->name,
+            'url'    => $this->url,
             'secret' => $this->secret,
             'events' => $this->events,
         ];

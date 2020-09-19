@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Tests;
 
 use Mockery;
-use Namelivia\TravelPerk\Client\Client;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\Client\Client;
 use Psr\Http\Message\ResponseInterface;
 
 class TravelPerkTest extends TestCase
@@ -14,7 +14,7 @@ class TravelPerkTest extends TestCase
     private $client;
     private $travelPerk;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->client = Mockery::mock(Client::class);

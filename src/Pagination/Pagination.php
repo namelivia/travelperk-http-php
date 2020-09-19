@@ -19,7 +19,7 @@ class Pagination
     {
         return http_build_query([
             'offset' => $this->offset,
-            'limit' => $this->limit
+            'limit'  => $this->limit,
         ]);
     }
 }

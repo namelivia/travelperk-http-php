@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Namelivia\TravelPerk\BasicEnum;
-use Namelivia\TravelPerk\Tests\BasicEnumForTest;
 use Namelivia\TravelPerk\Exceptions\InvalidConstantValueException;
 
 class BasicEnumTest extends TestCase

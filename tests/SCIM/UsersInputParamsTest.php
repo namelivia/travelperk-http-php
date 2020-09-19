@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Mockery;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
-use Namelivia\TravelPerk\SCIM\Sorting;
-use Namelivia\TravelPerk\SCIM\Status;
-use Namelivia\TravelPerk\SCIM\BillingPeriod;
-use Carbon\Carbon;
 
 class UsersInputParamTest extends TestCase
 {
@@ -20,8 +15,8 @@ class UsersInputParamTest extends TestCase
             ->setStartIndex(3)
             ->setFilter('filter');
         $this->assertEquals(
-            'count=4&' .
-            'startIndex=3&' .
+            'count=4&'.
+            'startIndex=3&'.
             'filter=filter',
             urldecode($inputParams->asUrlParam())
         );

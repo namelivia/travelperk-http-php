@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Mockery;
 use Namelivia\TravelPerk\Pagination\Pagination;
 
 class PaginationTest extends TestCase

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\SCIM;
 
-use Namelivia\TravelPerk\SCIM\NameInputParams;
-
 class CreateUserInputParams
 {
     private $userName;
@@ -14,7 +12,7 @@ class CreateUserInputParams
 
     public function __construct(string $userName, bool $active, NameInputParams $name)
     {
-        #TODO: Many fields are still missing
+        //TODO: Many fields are still missing
         $this->userName = $userName;
         $this->active = $active;
         $this->name = $name;
@@ -24,8 +22,8 @@ class CreateUserInputParams
     {
         return [
             'userName' => $this->userName,
-            'name' => $this->name->asArray(),
-            'active' => $this->active,
+            'name'     => $this->name->asArray(),
+            'active'   => $this->active,
         ];
     }
 }

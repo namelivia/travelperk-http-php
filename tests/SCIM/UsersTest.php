@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Tests;
 
 use Mockery;
-use Namelivia\TravelPerk\SCIM\Users;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\SCIM\UsersInputParams;
-use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
-use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
-use Namelivia\TravelPerk\SCIM\ReplaceUserInputParams;
 use Namelivia\TravelPerk\Exceptions\NotImplementedException;
+use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
+use Namelivia\TravelPerk\SCIM\ReplaceUserInputParams;
+use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
+use Namelivia\TravelPerk\SCIM\Users;
+use Namelivia\TravelPerk\SCIM\UsersInputParams;
 
 class UsersTest extends TestCase
 {
     private $travelPerk;
     private $users;
 
-    public function setUp():void
+    public function setUp(): void
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);

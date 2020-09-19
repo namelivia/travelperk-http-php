@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\SCIM;
 
-use Namelivia\TravelPerk\SCIM\NameInputParams;
-
 class UpdateUserInputParams
 {
     private $userName;
@@ -15,18 +13,21 @@ class UpdateUserInputParams
     public function setUserName(string $userName)
     {
         $this->userName = $userName;
+
         return $this;
     }
 
     public function setActive(bool $active)
     {
         $this->active = $active;
+
         return $this;
     }
 
     public function setName(NameInputParams $name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -34,8 +35,8 @@ class UpdateUserInputParams
     {
         return array_filter([
             'userName' => $this->userName,
-            'name' => $this->name ? $this->name->asArray() : null,
-            'active' => $this->active,
-        ], function($value) {return !is_null($value);});
+            'name'     => $this->name ? $this->name->asArray() : null,
+            'active'   => $this->active,
+        ], function ($value) {return !is_null($value); });
     }
 }

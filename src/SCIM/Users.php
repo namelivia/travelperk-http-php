@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\SCIM;
 
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\SCIM\UsersInputParams;
-use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
-use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
 use Namelivia\TravelPerk\Exceptions\NotImplementedException;
 
 class Users
@@ -24,8 +21,9 @@ class Users
      */
     public function all(UsersInputParams $params = null)
     {
-        $params = isset($params) ? '?' . $params->asUrlParam() : null;
-        return $this->travelPerk->getJson(implode('/', ['scim', 'Users']) . $params);
+        $params = isset($params) ? '?'.$params->asUrlParam() : null;
+
+        return $this->travelPerk->getJson(implode('/', ['scim', 'Users']).$params);
     }
 
     /**
@@ -58,6 +56,7 @@ class Users
     public function update(int $id, UpdateUserInputParams $params)
     {
         throw new NotImplementedException('https://github.com/namelivia/travelperk-http-php/issues/7');
+
         return $this->travelPerk->patch(implode('/', ['scim', 'Users', $id]), $params->asArray());
     }
 
