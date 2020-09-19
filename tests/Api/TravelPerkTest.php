@@ -86,6 +86,38 @@ class TravelPerkTest extends TestCase
         );
     }
 
+    public function testMakingAJSONPostCall()
+    {
+        $this->client->shouldReceive('post')
+            ->once()
+            ->with('https://api.travelperk.com/sampleurl', ['json' => ['params']])
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
+            ->once()
+            ->with()
+            ->andReturn('{"key" : "value"}');
+        $this->assertEquals(
+            'value',
+            $this->travelPerk->postJson('sampleurl', ['params'])->key
+        );
+    }
+
+    public function testMakingAJSONPatchCall()
+    {
+        $this->client->shouldReceive('patch')
+            ->once()
+            ->with('https://api.travelperk.com/sampleurl', ['json' => ['params']])
+            ->andReturn($this->responseMock);
+        $this->responseMock->shouldReceive('getBody->getContents')
+            ->once()
+            ->with()
+            ->andReturn('{"key" : "value"}');
+        $this->assertEquals(
+            'value',
+            $this->travelPerk->patchJson('sampleurl', ['params'])->key
+        );
+    }
+
     public function testMakingAPatchCall()
     {
         $this->client->shouldReceive('patch')
@@ -147,6 +179,17 @@ class TravelPerkTest extends TestCase
         $this->assertEquals(
             'responseContent',
             $sandboxApi->get('sampleurl')
+        );
+    }
+
+    public function testGettingAuthUri()
+    {
+        $this->client->shouldReceive('getAuthUri')
+            ->once()
+            ->andReturn('authURI');
+        $this->assertEquals(
+            'authURI',
+            $this->travelPerk->getAuthUri()
         );
     }
 }
