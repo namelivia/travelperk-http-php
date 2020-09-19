@@ -1,8 +1,7 @@
-enabled:
-  - unalign_double_arrow
-  - concat_with_spaces
-
-disabled:
-  - concat_without_spaces
-  - align_double_arrow
-  - phpdoc_align
+risky: false
+version: 7
+preset: recommended
+finder:
+  exclude:
+    - "vendor"
+  name: "*.php"
