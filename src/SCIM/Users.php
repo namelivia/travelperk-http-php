@@ -8,7 +8,7 @@ use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
 use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
-use Namelivia\TravelPerk\NotImplementedException;
+use Namelivia\TravelPerk\Exceptions\NotImplementedException;
 
 class Users
 {
