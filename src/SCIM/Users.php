@@ -62,7 +62,7 @@ class Users
     /**
      * Replace an existing user in TravelPerk.
      */
-    public function replace(int $id, UpdateUserInputParams $params)
+    public function replace(int $id, ReplaceUserInputParams $params)
     {
         return $this->travelPerk->put(implode('/', ['scim', 'Users', $id]), $params->asArray());
     }

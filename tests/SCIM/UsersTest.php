@@ -10,6 +10,7 @@ use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
 use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
+use Namelivia\TravelPerk\SCIM\ReplaceUserInputParams;
 
 class UsersTest extends TestCase
 {
@@ -111,7 +112,7 @@ class UsersTest extends TestCase
 
     public function testReplacingAUser()
     {
-        $params = Mockery::mock(UpdateUserInputParams::class);
+        $params = Mockery::mock(ReplaceUserInputParams::class);
         $userId = 1;
         $params->shouldReceive('asArray')
             ->once()
