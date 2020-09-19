@@ -19,30 +19,6 @@ class CreateWebhookInputParams
         $this->events = $events;
     }
 
-    public function setName(string $name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    public function setUrl(string $Url)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    public function setSecret(string $secret)
-    {
-        $this->secret = $secret;
-        return $this;
-    }
-
-    public function setEvents(array $events)
-    {
-        $this->events = $events;
-        return $this;
-    }
-
     public function asArray()
     {
         return [

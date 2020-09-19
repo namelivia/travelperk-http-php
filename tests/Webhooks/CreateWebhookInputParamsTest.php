@@ -7,7 +7,7 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Webhooks\CreateWebhookInputParams;
 
-class CreateWebhookInputParamTest extends TestCase
+class CreateWebhookInputParamsTest extends TestCase
 {
     public function testSettingCreateWebhookInputParams()
     {

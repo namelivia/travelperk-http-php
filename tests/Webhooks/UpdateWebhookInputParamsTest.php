@@ -7,19 +7,23 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Webhooks\UpdateWebhookInputParams;
 
-class UpdateWebhookInputParamTest extends TestCase
+class UpdateWebhookInputParamsTest extends TestCase
 {
     public function testSettingUpdateWebhookInputParams()
     {
         $inputParams = new UpdateWebhookInputParams();
         $inputParams->setEnabled(false)
             ->setName('New name')
-            ->setUrl('New url');
+            ->setUrl('New url')
+            ->setSecret('New secret')
+            ->setEvents(['New event']);
         $this->assertEquals(
             [
                 'name' => 'New name',
                 'enabled' => false,
-                'url' => 'New url'
+                'url' => 'New url',
+                'secret' => 'New secret',
+                'events' => ['New event'],
             ],
             $inputParams->asArray()
         );
