@@ -7,6 +7,7 @@ namespace Namelivia\TravelPerk\Tests;
 use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 use Namelivia\TravelPerk\SCIM\NameInputParams;
 use Namelivia\TravelPerk\SCIM\Language;
+use Namelivia\TravelPerk\SCIM\PhoneNumber;
 
 class CreateUserInputParamTest extends TestCase
 {
@@ -28,11 +29,15 @@ class CreateUserInputParamTest extends TestCase
 
     public function testSettingCreateUserInputParamsWithOptionalParameters()
     {
+        $phoneNumber = new PhoneNumber('787281928', 'work');
+        $phoneNumber2  = new PhoneNumber('61846271', 'personal');
         $inputParams = new CreateUserInputParams('username', true, (new NameInputParams('given_name', 'family_name')));
         $inputParams->setLanguage(new Language(Language::SPANISH))
             ->setLocale('en-gb')
             ->setTitle('Manager')
-            ->setExternalId('external-id');
+            ->setExternalId('external-id')
+            ->addPhoneNumber($phoneNumber)
+            ->addPhoneNumber($phoneNumber2);
         $this->assertEquals(
             [
                 'userName' => 'username',
@@ -45,6 +50,16 @@ class CreateUserInputParamTest extends TestCase
                 'locale' => 'en-gb',
                 'title' => 'Manager',
                 'externalId' => 'external-id',
+                'phoneNumbers' => [
+                    [
+                        'value' => '787281928',
+                        'type' => 'work',
+                    ],
+                    [
+                        'value' => '61846271',
+                        'type' => 'personal',
+                    ]
+                ],
             ],
             $inputParams->asArray()
         );

@@ -13,6 +13,7 @@ class ReplaceUserInputParams
     private $locale;
     private $title;
     private $externalId;
+    private $phoneNumbers;
 
     public function __construct(string $userName, bool $active, NameInputParams $name)
     {
@@ -20,6 +21,7 @@ class ReplaceUserInputParams
         $this->userName = $userName;
         $this->active = $active;
         $this->name = $name;
+        $this->phoneNumbers = [];
     }
 
     public function setLanguage(Language $language)
@@ -50,6 +52,13 @@ class ReplaceUserInputParams
         return $this;
     }
 
+    public function addPhoneNumber(PhoneNumber $phoneNumber)
+    {
+        array_push($this->phoneNumbers, $phoneNumber);
+
+        return $this;
+    }
+
     public function asArray()
     {
         return array_filter([
@@ -60,6 +69,9 @@ class ReplaceUserInputParams
             'locale'   => $this->locale,
             'title'   => $this->title,
             'externalId'   => $this->externalId,
+            'phoneNumbers'   => empty($this->phoneNumbers) ? null : array_map(function($phoneNumber) {
+                return $phoneNumber->asArray();
+            }, $this->phoneNumbers),
         ]);
     }
 }
