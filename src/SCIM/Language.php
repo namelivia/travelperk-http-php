@@ -6,7 +6,7 @@ namespace Namelivia\TravelPerk\SCIM;
 
 use Namelivia\TravelPerk\BasicEnum;
 
-class LANGUAGE extends BasicEnum
+class Language extends BasicEnum
 {
     const ENGLISH = 'en';
     const FRENCH = 'fr';
