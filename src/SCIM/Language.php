@@ -10,7 +10,7 @@ class Language extends BasicEnum
 {
     const ENGLISH = 'en';
     const FRENCH = 'fr';
-    const DEUTCH = 'de';
+    const DEUTSCH = 'de';
     const SPANISH = 'es';
 
     private $status;
