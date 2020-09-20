@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\SCIM;
 
+use Carbon\Carbon;
+
 class CreateUserInputParams
 {
     private $userName;
@@ -14,6 +16,9 @@ class CreateUserInputParams
     private $title;
     private $externalId;
     private $phoneNumber;
+    private $gender;
+    private $dateOfBirth;
+    private $travelPolicy;
 
     public function __construct(string $userName, bool $active, NameInputParams $name)
     {
@@ -58,6 +63,27 @@ class CreateUserInputParams
         return $this;
     }
 
+    public function setGender(Gender $gender)
+    {
+       $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function setDateOfBirth(Carbon $dateOfBirth)
+    {
+       $this->dateOfBirth = $dateOfBirth;
+
+        return $this;
+    }
+
+    public function setTravelPolicy(string $travelPolicy)
+    {
+       $this->travelPolicy = $travelPolicy;
+
+        return $this;
+    }
+
     public function asArray()
     {
         return array_filter([
@@ -73,7 +99,10 @@ class CreateUserInputParams
                     'value' => $this->phoneNumber,
                     'type' => 'work',
                 ]
-            ]
+            ],
+            'gender'   => $this->gender ? strval($this->gender) : null,
+            'dateOfBirth'   => $this->dateOfBirth ? $this->dateOfBirth->format('Y/m/d') : null,
+            'travelPolicy'   => $this->travelPolicy,
         ]);
     }
 }

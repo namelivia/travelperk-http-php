@@ -8,6 +8,8 @@ use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 use Namelivia\TravelPerk\SCIM\NameInputParams;
 use Namelivia\TravelPerk\SCIM\Language;
 use Namelivia\TravelPerk\SCIM\PhoneNumber;
+use Namelivia\TravelPerk\SCIM\Gender;
+use Carbon\Carbon;
 
 class CreateUserInputParamTest extends TestCase
 {
@@ -34,7 +36,10 @@ class CreateUserInputParamTest extends TestCase
             ->setLocale('en-gb')
             ->setTitle('Manager')
             ->setExternalId('external-id')
-            ->setPhoneNumber('787281928');
+            ->setPhoneNumber('787281928')
+            ->setGender(new Gender(Gender::MALE))
+            ->setDateOfBirth(Carbon::create(1990,3,23))
+            ->setTravelPolicy('Travel Policy');
         $this->assertEquals(
             [
                 'userName' => 'username',
@@ -53,6 +58,9 @@ class CreateUserInputParamTest extends TestCase
                         'type' => 'work',
                     ]
                 ],
+                'gender' => 'M',
+                'dateOfBirth' => '1990/03/23',
+                'travelPolicy' => 'Travel Policy',
             ],
             $inputParams->asArray()
         );
