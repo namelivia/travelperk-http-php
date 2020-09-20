@@ -10,6 +10,9 @@ class ReplaceUserInputParams
     private $active;
     private $name;
     private $language;
+    private $locale;
+    private $title;
+    private $externalId;
 
     public function __construct(string $userName, bool $active, NameInputParams $name)
     {
@@ -26,6 +29,27 @@ class ReplaceUserInputParams
         return $this;
     }
 
+    public function setLocale(string $locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function setExternalId(string $externalId)
+    {
+        $this->externalId = $externalId;
+
+        return $this;
+    }
+
     public function asArray()
     {
         return array_filter([
@@ -33,6 +57,9 @@ class ReplaceUserInputParams
             'name'     => $this->name->asArray(),
             'active'   => $this->active,
             'preferredLanguage' => isset($this->language) ? strval($this->language) : null,
+            'locale'   => $this->locale,
+            'title'   => $this->title,
+            'externalId'   => $this->externalId,
         ]);
     }
 }

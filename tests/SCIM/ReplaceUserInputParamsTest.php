@@ -29,7 +29,10 @@ class ReplaceUserInputParamTest extends TestCase
     public function testSettingReplaceUserInputParamsWithOptionalParameters()
     {
         $inputParams = new ReplaceUserInputParams('username', true, (new NameInputParams('given_name', 'family_name')));
-        $inputParams->setLanguage(new Language(Language::SPANISH));
+        $inputParams->setLanguage(new Language(Language::SPANISH))
+            ->setLocale('en-gb')
+            ->setTitle('Manager')
+            ->setExternalId('external-id');
         $this->assertEquals(
             [
                 'userName' => 'username',
@@ -39,6 +42,9 @@ class ReplaceUserInputParamTest extends TestCase
                 ],
                 'active' => true,
                 'preferredLanguage' => 'es',
+                'locale' => 'en-gb',
+                'title' => 'Manager',
+                'externalId' => 'external-id',
             ],
             $inputParams->asArray()
         );
