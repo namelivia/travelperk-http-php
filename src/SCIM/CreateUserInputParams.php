@@ -84,7 +84,7 @@ class CreateUserInputParams
         return $this;
     }
 
-    private function hasEnterpriseData()
+    private function hasCustomUserData()
     {
         return array_filter([$this->gender, $this->dateOfBirth, $this->travelPolicy]);
     }
@@ -107,8 +107,8 @@ class CreateUserInputParams
             ],
         ];
 
-        if ($this->hasEnterpriseData()) {
-            $data["urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"] = [
+        if ($this->hasCustomUserData()) {
+            $data["urn:ietf:params:scim:schemas:extension:travelperk:2.0:User"] = [
                 'gender'   => $this->gender ? strval($this->gender) : null,
                 'dateOfBirth'   => $this->dateOfBirth ? $this->dateOfBirth->format('Y/m/d') : null,
                 'travelPolicy'   => $this->travelPolicy,

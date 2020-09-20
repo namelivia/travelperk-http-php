@@ -57,7 +57,7 @@ class ReplaceUserInputParamTest extends TestCase
                         'type' => 'work',
                     ]
                 ],
-                'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User' => [
+                'urn:ietf:params:scim:schemas:extension:travelperk:2.0:User' => [
                     'gender' => 'M',
                     'dateOfBirth' => '1990/03/23',
                     'travelPolicy' => 'Travel Policy',
