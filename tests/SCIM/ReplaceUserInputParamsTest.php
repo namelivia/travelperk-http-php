@@ -8,6 +8,7 @@ use Namelivia\TravelPerk\SCIM\NameInputParams;
 use Namelivia\TravelPerk\SCIM\ReplaceUserInputParams;
 use Namelivia\TravelPerk\SCIM\Language;
 use Namelivia\TravelPerk\SCIM\Gender;
+use Namelivia\TravelPerk\SCIM\EmergencyContact;
 use Carbon\Carbon;
 
 class ReplaceUserInputParamTest extends TestCase
@@ -38,7 +39,9 @@ class ReplaceUserInputParamTest extends TestCase
             ->setPhoneNumber('787281928')
             ->setGender(new Gender(Gender::MALE))
             ->setDateOfBirth(Carbon::create(1990,3,23))
-            ->setTravelPolicy('Travel Policy');
+            ->setTravelPolicy('Travel Policy')
+            ->setInvoiceProfiles(['Invoice Profile 1', 'Invoice Profile 2'])
+            ->setEmergencyContact(new EmergencyContact('Test contact', '679281923'));
         $this->assertEquals(
             [
                 'userName' => 'username',
@@ -61,7 +64,15 @@ class ReplaceUserInputParamTest extends TestCase
                     'gender' => 'M',
                     'dateOfBirth' => '1990/03/23',
                     'travelPolicy' => 'Travel Policy',
-                ]
+                    'emergencyContact' => [
+                        'name' => 'Test contact',
+                        'phone' => '679281923',
+                    ],
+                    'invoiceProfiles' => [
+                        ['value' => 'Invoice Profile 1'],
+                        ['value' => 'Invoice Profile 2'],
+                    ],
+                ],
             ],
             $inputParams->asArray()
         );

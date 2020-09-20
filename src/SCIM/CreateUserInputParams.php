@@ -19,6 +19,8 @@ class CreateUserInputParams
     private $gender;
     private $dateOfBirth;
     private $travelPolicy;
+    private $invoiceProfiles;
+    private $emergencyContact;
 
     public function __construct(string $userName, bool $active, NameInputParams $name)
     {
@@ -84,14 +86,34 @@ class CreateUserInputParams
         return $this;
     }
 
+    public function setEmergencyContact(EmergencyContact $emergencyContact)
+    {
+       $this->emergencyContact = $emergencyContact;
+
+        return $this;
+    }
+
+    public function setInvoiceProfiles(array $invoiceProfiles)
+    {
+       $this->invoiceProfiles = new InvoiceProfiles($invoiceProfiles);
+
+        return $this;
+    }
+
     private function hasCustomUserData()
     {
-        return array_filter([$this->gender, $this->dateOfBirth, $this->travelPolicy]);
+        return array_filter([
+            $this->gender,
+            $this->dateOfBirth,
+            $this->travelPolicy,
+            empty($this->invoicesProfiles) ? null : $this->invoicesProfiles,
+            $this->emergencyContact,
+        ]);
     }
 
     public function asArray()
     {
-        $data = [
+        $data = array_filter([
             'userName' => $this->userName,
             'name'     => $this->name->asArray(),
             'active'   => $this->active,
@@ -105,15 +127,17 @@ class CreateUserInputParams
                     'type' => 'work',
                 ]
             ],
-        ];
+        ]);
 
         if ($this->hasCustomUserData()) {
-            $data["urn:ietf:params:scim:schemas:extension:travelperk:2.0:User"] = [
+            $data["urn:ietf:params:scim:schemas:extension:travelperk:2.0:User"] = array_filter([
                 'gender'   => $this->gender ? strval($this->gender) : null,
                 'dateOfBirth'   => $this->dateOfBirth ? $this->dateOfBirth->format('Y/m/d') : null,
                 'travelPolicy'   => $this->travelPolicy,
-            ];
+                'emergencyContact'   => $this->emergencyContact ? $this->emergencyContact->asArray() : null,
+                'invoiceProfiles'   => $this->invoiceProfiles ? $this->invoiceProfiles->asArray() : null,
+            ]);
         }
-        return array_filter($data);
+        return $data;
     }
 }
