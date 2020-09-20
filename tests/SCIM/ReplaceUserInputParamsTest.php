@@ -57,9 +57,11 @@ class ReplaceUserInputParamTest extends TestCase
                         'type' => 'work',
                     ]
                 ],
-                'gender' => 'M',
-                'dateOfBirth' => '1990/03/23',
-                'travelPolicy' => 'Travel Policy',
+                'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User' => [
+                    'gender' => 'M',
+                    'dateOfBirth' => '1990/03/23',
+                    'travelPolicy' => 'Travel Policy',
+                ]
             ],
             $inputParams->asArray()
         );

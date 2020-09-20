@@ -84,9 +84,14 @@ class CreateUserInputParams
         return $this;
     }
 
+    private function hasEnterpriseData()
+    {
+        return array_filter([$this->gender, $this->dateOfBirth, $this->travelPolicy]);
+    }
+
     public function asArray()
     {
-        return array_filter([
+        $data = [
             'userName' => $this->userName,
             'name'     => $this->name->asArray(),
             'active'   => $this->active,
@@ -100,9 +105,15 @@ class CreateUserInputParams
                     'type' => 'work',
                 ]
             ],
-            'gender'   => $this->gender ? strval($this->gender) : null,
-            'dateOfBirth'   => $this->dateOfBirth ? $this->dateOfBirth->format('Y/m/d') : null,
-            'travelPolicy'   => $this->travelPolicy,
-        ]);
+        ];
+
+        if ($this->hasEnterpriseData()) {
+            $data["urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"] = [
+                'gender'   => $this->gender ? strval($this->gender) : null,
+                'dateOfBirth'   => $this->dateOfBirth ? $this->dateOfBirth->format('Y/m/d') : null,
+                'travelPolicy'   => $this->travelPolicy,
+            ];
+        }
+        return array_filter($data);
     }
 }
