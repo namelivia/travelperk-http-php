@@ -6,6 +6,7 @@ namespace Namelivia\TravelPerk\Tests;
 
 use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 use Namelivia\TravelPerk\SCIM\NameInputParams;
+use Namelivia\TravelPerk\SCIM\Language;
 
 class CreateUserInputParamTest extends TestCase
 {
@@ -20,6 +21,24 @@ class CreateUserInputParamTest extends TestCase
                     'familyName' => 'family_name',
                 ],
                 'active' => true,
+            ],
+            $inputParams->asArray()
+        );
+    }
+
+    public function testSettingCreateUserInputParamsWithOptionalParameters()
+    {
+        $inputParams = new CreateUserInputParams('username', true, (new NameInputParams('given_name', 'family_name')));
+        $inputParams->setLanguage(new Language(Language::SPANISH));
+        $this->assertEquals(
+            [
+                'userName' => 'username',
+                'name'     => [
+                    'givenName'  => 'given_name',
+                    'familyName' => 'family_name',
+                ],
+                'active' => true,
+                'preferredLanguage' => 'es',
             ],
             $inputParams->asArray()
         );
