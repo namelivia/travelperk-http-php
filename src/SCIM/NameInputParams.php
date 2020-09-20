@@ -9,6 +9,7 @@ class NameInputParams
     private $givenName;
     private $familyName;
     private $honorificPrefix;
+    private $middleName;
 
     public function __construct(string $givenName, string $familyName)
     {
