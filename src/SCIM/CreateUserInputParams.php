@@ -13,7 +13,7 @@ class CreateUserInputParams
     private $locale;
     private $title;
     private $externalId;
-    private $phoneNumbers;
+    private $phoneNumber;
 
     public function __construct(string $userName, bool $active, NameInputParams $name)
     {
@@ -21,7 +21,6 @@ class CreateUserInputParams
         $this->userName = $userName;
         $this->active = $active;
         $this->name = $name;
-        $this->phoneNumbers = [];
     }
 
     public function setLanguage(Language $language)
@@ -52,9 +51,9 @@ class CreateUserInputParams
         return $this;
     }
 
-    public function addPhoneNumber(PhoneNumber $phoneNumber)
+    public function setPhoneNumber(string $number)
     {
-        array_push($this->phoneNumbers, $phoneNumber);
+       $this->phoneNumber = $number;
 
         return $this;
     }
@@ -69,9 +68,12 @@ class CreateUserInputParams
             'locale'   => $this->locale,
             'title'   => $this->title,
             'externalId'   => $this->externalId,
-            'phoneNumbers'   => empty($this->phoneNumbers) ? null : array_map(function($phoneNumber) {
-                return $phoneNumber->asArray();
-            }, $this->phoneNumbers),
+            'phoneNumbers'   => is_null($this->phoneNumber) ? null : [
+                [
+                    'value' => $this->phoneNumber,
+                    'type' => 'work',
+                ]
+            ]
         ]);
     }
 }

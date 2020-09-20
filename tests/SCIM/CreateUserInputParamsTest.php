@@ -29,15 +29,12 @@ class CreateUserInputParamTest extends TestCase
 
     public function testSettingCreateUserInputParamsWithOptionalParameters()
     {
-        $phoneNumber = new PhoneNumber('787281928', 'work');
-        $phoneNumber2  = new PhoneNumber('61846271', 'personal');
         $inputParams = new CreateUserInputParams('username', true, (new NameInputParams('given_name', 'family_name')));
         $inputParams->setLanguage(new Language(Language::SPANISH))
             ->setLocale('en-gb')
             ->setTitle('Manager')
             ->setExternalId('external-id')
-            ->addPhoneNumber($phoneNumber)
-            ->addPhoneNumber($phoneNumber2);
+            ->setPhoneNumber('787281928');
         $this->assertEquals(
             [
                 'userName' => 'username',
@@ -54,10 +51,6 @@ class CreateUserInputParamTest extends TestCase
                     [
                         'value' => '787281928',
                         'type' => 'work',
-                    ],
-                    [
-                        'value' => '61846271',
-                        'type' => 'personal',
                     ]
                 ],
             ],

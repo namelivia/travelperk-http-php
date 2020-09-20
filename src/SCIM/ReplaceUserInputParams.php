@@ -52,9 +52,9 @@ class ReplaceUserInputParams
         return $this;
     }
 
-    public function addPhoneNumber(PhoneNumber $phoneNumber)
+    public function setPhoneNumber(string $number)
     {
-        array_push($this->phoneNumbers, $phoneNumber);
+       $this->phoneNumber = $number;
 
         return $this;
     }
@@ -69,9 +69,12 @@ class ReplaceUserInputParams
             'locale'   => $this->locale,
             'title'   => $this->title,
             'externalId'   => $this->externalId,
-            'phoneNumbers'   => empty($this->phoneNumbers) ? null : array_map(function($phoneNumber) {
-                return $phoneNumber->asArray();
-            }, $this->phoneNumbers),
+            'phoneNumbers'   => is_null($this->phoneNumber) ? null : [
+                [
+                    'value' => $this->phoneNumber,
+                    'type' => 'work',
+                ]
+            ]
         ]);
     }
 }
