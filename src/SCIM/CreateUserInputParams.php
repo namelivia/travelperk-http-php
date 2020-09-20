@@ -21,10 +21,11 @@ class CreateUserInputParams
     private $travelPolicy;
     private $invoiceProfiles;
     private $emergencyContact;
+    private $costCenter;
+    private $manager;
 
     public function __construct(string $userName, bool $active, NameInputParams $name)
     {
-        //TODO: Many fields are still missing
         $this->userName = $userName;
         $this->active = $active;
         $this->name = $name;
@@ -100,6 +101,20 @@ class CreateUserInputParams
         return $this;
     }
 
+    public function setCostCenter(string $costCenter)
+    {
+       $this->costCenter = $costCenter;
+
+        return $this;
+    }
+
+    public function setManager(int $manager)
+    {
+       $this->manager = $manager;
+
+        return $this;
+    }
+
     private function hasCustomUserData()
     {
         return array_filter([
@@ -108,6 +123,14 @@ class CreateUserInputParams
             $this->travelPolicy,
             empty($this->invoicesProfiles) ? null : $this->invoicesProfiles,
             $this->emergencyContact,
+        ]);
+    }
+
+    private function hasEnterpriseData()
+    {
+        return array_filter([
+            $this->costCenter,
+            $this->manager,
         ]);
     }
 
@@ -138,6 +161,14 @@ class CreateUserInputParams
                 'invoiceProfiles'   => $this->invoiceProfiles ? $this->invoiceProfiles->asArray() : null,
             ]);
         }
+
+        if ($this->hasEnterpriseData()) {
+            $data["urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"] = array_filter([
+                'costCenter'   => $this->costCenter,
+                'manager'   => $this->manager ? [ "value" => $this->manager ] : null,
+            ]);
+        }
+
         return $data;
     }
 }

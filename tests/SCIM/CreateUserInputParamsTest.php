@@ -42,7 +42,9 @@ class CreateUserInputParamTest extends TestCase
             ->setDateOfBirth(Carbon::create(1990,3,23))
             ->setTravelPolicy('Travel Policy')
             ->setInvoiceProfiles(['Invoice Profile 1', 'Invoice Profile 2'])
-            ->setEmergencyContact(new EmergencyContact('Test contact', '679281923'));
+            ->setEmergencyContact(new EmergencyContact('Test contact', '679281923'))
+            ->setCostCenter('Test Cost Center')
+            ->setManager(123);
         $this->assertEquals(
             [
                 'userName' => 'username',
@@ -73,7 +75,13 @@ class CreateUserInputParamTest extends TestCase
                         ['value' => 'Invoice Profile 1'],
                         ['value' => 'Invoice Profile 2'],
                     ],
-                ]
+                ],
+                'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User' => [
+                    'costCenter' => 'Test Cost Center',
+                    'manager' => [
+                        'value' => 123
+                    ],
+                ],
             ],
             $inputParams->asArray()
         );
