@@ -15,7 +15,7 @@ class ReplaceUserInputParams
     private $locale;
     private $title;
     private $externalId;
-    private $phoneNumbers;
+    private $phoneNumber;
     private $gender;
     private $dateOfBirth;
     private $travelPolicy;
