@@ -83,7 +83,7 @@ class UsersTest extends TestCase
             ->once()
             ->with()
             ->andReturn(['params']);
-        $this->travelPerk->shouldReceive('post')
+        $this->travelPerk->shouldReceive('postJson')
             ->once()
             ->with('scim/Users', ['params'])
             ->andReturn('userCreated');

@@ -47,7 +47,7 @@ class Users
      */
     public function create(CreateUserInputParams $params)
     {
-        return $this->travelPerk->post(implode('/', ['scim', 'Users']), $params->asArray());
+        return $this->travelPerk->postJson(implode('/', ['scim', 'Users']), $params->asArray());
     }
 
     /**
