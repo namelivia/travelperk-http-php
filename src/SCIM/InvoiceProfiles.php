@@ -16,7 +16,7 @@ class InvoiceProfiles
     public function asArray()
     {
         return array_map(function ($invoiceProfile) {
-            return [ "value" => $invoiceProfile ];
+            return ['value' => $invoiceProfile];
         }, $this->invoiceProfiles);
     }
 }
