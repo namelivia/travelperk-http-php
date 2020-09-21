@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
-use Namelivia\TravelPerk\SCIM\NameInputParams;
-use Namelivia\TravelPerk\SCIM\Language;
-use Namelivia\TravelPerk\SCIM\PhoneNumber;
-use Namelivia\TravelPerk\SCIM\Gender;
-use Namelivia\TravelPerk\SCIM\EmergencyContact;
 use Carbon\Carbon;
+use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
+use Namelivia\TravelPerk\SCIM\EmergencyContact;
+use Namelivia\TravelPerk\SCIM\Gender;
+use Namelivia\TravelPerk\SCIM\Language;
+use Namelivia\TravelPerk\SCIM\NameInputParams;
 
 class CreateUserInputParamTest extends TestCase
 {
@@ -39,7 +38,7 @@ class CreateUserInputParamTest extends TestCase
             ->setExternalId('external-id')
             ->setPhoneNumber('787281928')
             ->setGender(new Gender(Gender::MALE))
-            ->setDateOfBirth(Carbon::create(1990,3,23))
+            ->setDateOfBirth(Carbon::create(1990, 3, 23))
             ->setTravelPolicy('Travel Policy')
             ->setInvoiceProfiles(['Invoice Profile 1', 'Invoice Profile 2'])
             ->setEmergencyContact(new EmergencyContact('Test contact', '679281923'))
@@ -52,23 +51,23 @@ class CreateUserInputParamTest extends TestCase
                     'givenName'  => 'given_name',
                     'familyName' => 'family_name',
                 ],
-                'active' => true,
+                'active'            => true,
                 'preferredLanguage' => 'es',
-                'locale' => 'en-gb',
-                'title' => 'Manager',
-                'externalId' => 'external-id',
-                'phoneNumbers' => [
+                'locale'            => 'en-gb',
+                'title'             => 'Manager',
+                'externalId'        => 'external-id',
+                'phoneNumbers'      => [
                     [
                         'value' => '787281928',
-                        'type' => 'work',
-                    ]
+                        'type'  => 'work',
+                    ],
                 ],
                 'urn:ietf:params:scim:schemas:extension:travelperk:2.0:User' => [
-                    'gender' => 'M',
-                    'dateOfBirth' => '1990/03/23',
-                    'travelPolicy' => 'Travel Policy',
+                    'gender'           => 'M',
+                    'dateOfBirth'      => '1990/03/23',
+                    'travelPolicy'     => 'Travel Policy',
                     'emergencyContact' => [
-                        'name' => 'Test contact',
+                        'name'  => 'Test contact',
                         'phone' => '679281923',
                     ],
                     'invoiceProfiles' => [
@@ -78,8 +77,8 @@ class CreateUserInputParamTest extends TestCase
                 ],
                 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User' => [
                     'costCenter' => 'Test Cost Center',
-                    'manager' => [
-                        'value' => '123'
+                    'manager'    => [
+                        'value' => '123',
                     ],
                 ],
             ],

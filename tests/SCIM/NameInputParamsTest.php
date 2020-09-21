@@ -12,7 +12,7 @@ class NameInputParamsTest extends TestCase
     {
         $this->assertEquals(
             [
-                'givenName' => 'Given Name',
+                'givenName'  => 'Given Name',
                 'familyName' => 'Family Name',
             ],
             (new NameInputParams('Given Name', 'Family Name'))->asArray()
@@ -23,10 +23,10 @@ class NameInputParamsTest extends TestCase
     {
         $this->assertEquals(
             [
-                'givenName' => 'Given Name',
-                'familyName' => 'Family Name',
+                'givenName'       => 'Given Name',
+                'familyName'      => 'Family Name',
                 'honorificPrefix' => 'Honorific Prefix',
-                'middleName' => 'Middle Name',
+                'middleName'      => 'Middle Name',
             ],
             (new NameInputParams('Given Name', 'Family Name'))
                 ->setMiddleName('Middle Name')
