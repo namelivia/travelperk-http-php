@@ -108,7 +108,7 @@ class CreateUserInputParams
         return $this;
     }
 
-    public function setManager(int $manager)
+    public function setManager(string $manager)
     {
        $this->manager = $manager;
 

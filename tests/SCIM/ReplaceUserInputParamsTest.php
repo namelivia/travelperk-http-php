@@ -43,7 +43,7 @@ class ReplaceUserInputParamTest extends TestCase
             ->setInvoiceProfiles(['Invoice Profile 1', 'Invoice Profile 2'])
             ->setEmergencyContact(new EmergencyContact('Test contact', '679281923'))
             ->setCostCenter('Test Cost Center')
-            ->setManager(123);
+            ->setManager('123');
         $this->assertEquals(
             [
                 'userName' => 'username',
@@ -78,7 +78,7 @@ class ReplaceUserInputParamTest extends TestCase
                 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User' => [
                     'costCenter' => 'Test Cost Center',
                     'manager' => [
-                        'value' => 123
+                        'value' => '123'
                     ],
                 ],
             ],
