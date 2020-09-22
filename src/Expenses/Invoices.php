@@ -26,6 +26,14 @@ class Invoices
     }
 
     /**
+     * Query invoices.
+     */
+    public function query()
+    {
+        return new InvoicesQuery($this->travelPerk);
+    }
+
+    /**
      * Get invoice detail.
      */
     public function get(string $serialNumber)
