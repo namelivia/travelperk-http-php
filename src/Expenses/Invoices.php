@@ -16,13 +16,21 @@ class Invoices
     }
 
     /**
-     * List all invoices.
+     * List all invoices (Will be removed, use query instead).
      */
     public function all(InvoicesInputParams $params = null)
     {
         $params = isset($params) ? '?'.$params->asUrlParam() : null;
 
         return $this->travelPerk->getJson(implode('/', ['invoices']).$params);
+    }
+
+    /**
+     * Query invoices.
+     */
+    public function query()
+    {
+        return new InvoicesQuery($this->travelPerk);
     }
 
     /**

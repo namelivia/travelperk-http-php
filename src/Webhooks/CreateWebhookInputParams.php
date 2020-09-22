@@ -6,26 +6,19 @@ namespace Namelivia\TravelPerk\Webhooks;
 
 class CreateWebhookInputParams
 {
-    private $name;
-    private $url;
-    private $secret;
-    private $events;
+    private $params;
 
     public function __construct(string $name, string $url, string $secret, array $events)
     {
-        $this->name = $name;
-        $this->url = $url;
-        $this->secret = $secret;
-        $this->events = $events;
+        $this->params = (new UpdateWebhookInputParams())
+            ->setName($name)
+            ->setUrl($url)
+            ->setSecret($secret)
+            ->setEvents($events);
     }
 
     public function asArray()
     {
-        return [
-            'name'   => $this->name,
-            'url'    => $this->url,
-            'secret' => $this->secret,
-            'events' => $this->events,
-        ];
+        return $this->params->asArray();
     }
 }
