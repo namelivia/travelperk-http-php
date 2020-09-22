@@ -16,7 +16,7 @@ class Invoices
     }
 
     /**
-     * List all invoices.
+     * List all invoices (Will be removed, use query instead).
      */
     public function all(InvoicesInputParams $params = null)
     {
