@@ -27,6 +27,14 @@ class Users
     }
 
     /**
+     * Query users.
+     */
+    public function query()
+    {
+        return new UsersQuery($this->travelPerk);
+    }
+
+    /**
      * Retrieve a user from TravelPerk.
      */
     public function get(int $id)

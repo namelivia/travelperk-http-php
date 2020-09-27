@@ -52,6 +52,21 @@ class UsersTest extends TestCase
         );
     }
 
+    public function testGettingAllUsersWithParamsUsingQuery()
+    {
+        $this->travelPerk->shouldReceive('getJson')
+            ->once()
+            ->with('scim/Users?count=5&startIndex=3')
+            ->andReturn('allUsers');
+        $this->assertEquals(
+            'allUsers',
+            $this->users->query()
+            ->setCount(5)
+            ->setStartIndex(3)
+            ->get()
+        );
+    }
+
     public function testGettingAUserDetail()
     {
         $this->travelPerk->shouldReceive('getJson')
