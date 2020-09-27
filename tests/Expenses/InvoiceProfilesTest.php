@@ -44,4 +44,16 @@ class InvoiceProfilesTest extends TestCase
             $this->invoiceProfiles->all(new Pagination(20, 30))
         );
     }
+
+    public function testGettingAllInvoiceProfilesWithParamsUsingQuery()
+    {
+        $this->travelPerk->shouldReceive('getJson')
+            ->once()
+            ->with('profiles?offset=30&limit=20')
+            ->andReturn('allInvoiceProfiles');
+        $this->assertEquals(
+            'allInvoiceProfiles',
+            $this->invoiceProfiles->query()->setLimit(20)->setOffset(30)->get()
+        );
+    }
 }
