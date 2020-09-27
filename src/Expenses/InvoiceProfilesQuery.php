@@ -12,25 +12,28 @@ class InvoiceProfilesQuery
 
     public function __construct(TravelPerk $travelPerk)
     {
-        $this->params = new InvoiceProfilesInputParams;
+        $this->params = new InvoiceProfilesInputParams();
         $this->travelPerk = $travelPerk;
     }
 
     public function setOffset(int $offset)
     {
         $this->params->setOffset($offset);
+
         return $this;
     }
 
     public function setLimit(int $limit)
     {
         $this->params->setLimit($limit);
+
         return $this;
     }
 
-    public function get() {
+    public function get()
+    {
         return $this->travelPerk->getJson(
-            implode('/', ['profiles']). '?'. $this->params->asUrlParam()
+            implode('/', ['profiles']).'?'.$this->params->asUrlParam()
         );
     }
 }
