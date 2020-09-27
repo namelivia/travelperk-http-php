@@ -17,7 +17,7 @@ class InvoiceProfiles
     }
 
     /**
-     * Query invoice profiles
+     * Query invoice profiles.
      */
     public function query()
     {

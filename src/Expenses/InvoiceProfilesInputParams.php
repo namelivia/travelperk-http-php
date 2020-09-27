@@ -12,12 +12,14 @@ class InvoiceProfilesInputParams
     public function setOffset(int $offset)
     {
         $this->offset = $offset;
+
         return $this;
     }
 
     public function setLimit(int $limit)
     {
         $this->limit = $limit;
+
         return $this;
     }
 
