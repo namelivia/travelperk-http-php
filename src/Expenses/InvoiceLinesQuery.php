@@ -127,5 +127,4 @@ class InvoiceLinesQuery
 
         return $this;
     }
-
 }
