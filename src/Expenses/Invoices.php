@@ -58,4 +58,12 @@ class Invoices
 
         return $this->travelPerk->getJson(implode('/', ['invoices', 'lines']).$params);
     }
+
+    /**
+     * Query the invoices lines.
+     */
+    public function linesQuery()
+    {
+        return new InvoiceLinesQuery($this->travelPerk);
+    }
 }

@@ -103,6 +103,21 @@ class InvoicesTest extends TestCase
         );
     }
 
+    public function testGettingAllInvoiceLinesWithParamsUsingQuery()
+    {
+        $this->travelPerk->shouldReceive('getJson')
+            ->once()
+            ->with('invoices/lines?offset=5&limit=10')
+            ->andReturn('invoiceLines');
+        $this->assertEquals(
+            'invoiceLines',
+            $this->invoices->linesQuery()
+                ->setOffset(5)
+                ->setLimit(10)
+                ->get()
+        );
+    }
+
     public function testGettingAllInvoiceLinesNoParams()
     {
         $this->travelPerk->shouldReceive('getJson')
