@@ -57,19 +57,16 @@ class FeatureTest extends TestCase
 		//TODO: Also I'm not sure why is it making so many calls
 		$tokenMock = Mockery::mock(TokenInterface::class);
 		$tokenPersistence->shouldReceive('restoreToken')
-			->times(2)
+			->once()
 			->andReturn($tokenMock);
 		$tokenMock->shouldReceive('isExpired')
-			->times(3)
+			->once()
 			->with()
 			->andReturn(false);
 		$tokenMock->shouldReceive('getAccessToken')
-			->times(3)
+			->once()
 			->with()
 			->andReturn('SomeAccessToken');
-		$tokenPersistence->shouldReceive('deleteToken')
-			->once()
-			->with();
 		$clientId = 'clientId';
 		$clientSecret = 'clientSecret';
 		$redirectUrl = 'redirectUrl';

@@ -9,6 +9,7 @@ use Namelivia\TravelPerk\OAuth\Authorizator\Authorizator;
 use GuzzleHttp\HandlerStack;
 use Namelivia\TravelPerk\OAuth\MissingCodeException;
 use Namelivia\TravelPerk\OAuth\Middleware\MiddlewareFactory;
+use Psr\Http\Message\ResponseInterface;
 
 class Client extends OAuthClient
 {
@@ -49,33 +50,33 @@ class Client extends OAuthClient
     }
 
     //Before each method I will check if I am authorized
-    /*public function get($uri, array $options): \Psr\Http\Message\ResponseInterface
+    public function get($uri, array $options = []): ResponseInterface
     {
         $this->checkAuthorized();
         return parent::get($uri, $options);
     }
 
-    public function post($url)
+    public function post($uri, array $options = []): ResponseInterface
     {
         $this->checkAuthorized();
-        return parent::post($url);
+        return parent::post($uri, $options);
     }
 
-    public function patch($url)
+    public function put($uri, array $options = []): ResponseInterface
     {
         $this->checkAuthorized();
-        return parent::patch($url);
+        return parent::put($uri, $options);
     }
 
-    public function put($url)
+    public function patch($uri, array $options = []): ResponseInterface
     {
         $this->checkAuthorized();
-        return parent::put($url);
+        return parent::patch($uri, $options);
     }
 
-    public function delete($url)
+    public function delete($uri, array $options = []): ResponseInterface
     {
         $this->checkAuthorized();
-        return parent::delete($url);
-    }*/
+        return parent::delete($uri, $options);
+    }
 }
