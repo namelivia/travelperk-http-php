@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Api;
 
-use Namelivia\TravelPerk\Client\Client;
+use GuzzleHttp\Client;
 
 class TravelPerk
 {

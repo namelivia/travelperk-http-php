@@ -49,14 +49,33 @@ class Client extends OAuthClient
     }
 
     //Before each method I will check if I am authorized
-    public function get($url) {
+    /*public function get($uri, array $options): \Psr\Http\Message\ResponseInterface
+    {
         $this->checkAuthorized();
-        return parent::get($url);
+        return parent::get($uri, $options);
     }
 
-    public function post($url) {
+    public function post($url)
+    {
         $this->checkAuthorized();
         return parent::post($url);
     }
 
+    public function patch($url)
+    {
+        $this->checkAuthorized();
+        return parent::patch($url);
+    }
+
+    public function put($url)
+    {
+        $this->checkAuthorized();
+        return parent::put($url);
+    }
+
+    public function delete($url)
+    {
+        $this->checkAuthorized();
+        return parent::delete($url);
+    }*/
 }

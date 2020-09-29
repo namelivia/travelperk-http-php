@@ -15,10 +15,10 @@ use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 class ServiceProvider
 {
 	public function buildOAuth2(
+        TokenPersistenceInterface $tokenPersistence,
         string $clientId,
         string $clientSecret,
         string $redirectUrl,
-        TokenPersistenceInterface $tokenPersistence,
         bool $isSandbox
 	) {
 		$config = new Config($clientId, $clientSecret, $redirectUrl);
