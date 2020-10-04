@@ -23,6 +23,10 @@ class Client extends OAuthClient
         $this->middlewareFactory = $middlewareFactory;
         $this->authorizator = $authorizator;
         return parent::__construct([
+            'headers' => [
+                // TODO: In the future this will seteable from the config
+                'Api-Version'   => '1',
+            ],
             'handler' => $this->middlewareFactory->getStack(),
             'auth' => 'oauth',
         ]);
