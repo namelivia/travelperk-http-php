@@ -25,8 +25,6 @@ class Authorizator
             'redirect_uri' => $this->config->getRedirectUrl(),
             'scope' => implode(' ', [
                 //TODO: These scopes should be configurable by the user
-                'scim:read',
-                'scim:write,',
                 'expenses:read',
             ]),
             'response_type' => 'code',
