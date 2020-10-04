@@ -22,21 +22,15 @@ class Authorizator
     {
         return Constants::AUTHORIZE_URL . '?' . http_build_query([
             'client_id' => $this->config->getClientId(),
+            'redirect_uri' => $this->config->getRedirectUrl(),
             'scope' => implode(' ', [
-                'activity',
-                'nutrition',
-                'heartrate',
-                'location',
-                'nutrition',
-                'profile',
-                'settings',
-                'sleep',
-                'social',
-                'weight',
+                //TODO: These scopes should be configurable by the user
+                'scim:read',
+                'scim:write,',
+                'expenses:read',
             ]),
             'response_type' => 'code',
-            'redirect_uri' => $this->config->getRedirectUrl(),
-            'expires_in' => '604800',
+            'state' => uniqid(),
         ]);
     }
 
