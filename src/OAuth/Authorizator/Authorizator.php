@@ -18,7 +18,7 @@ class Authorizator
         $this->tokenPersistence = $tokenPersistence;
     }
 
-    public function getAuthUri()
+    public function getAuthUri(string $targetLinkUri)
     {
         return Constants::AUTHORIZE_URL . '?' . http_build_query([
             'client_id' => $this->config->getClientId(),
@@ -28,7 +28,11 @@ class Authorizator
                 'expenses:read',
             ]),
             'response_type' => 'code',
-            'state' => uniqid(),
+            //TODO: This should be more sofisticate to avoid vulnerabilities
+            //More info here: https://tools.ietf.org/id/draft-bradley-oauth-jwt-encoded-state-08.html
+            'state' => [
+                'target_link_uri' => $targetLinkUri
+            ],
         ]);
     }
 
