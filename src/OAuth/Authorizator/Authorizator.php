@@ -29,10 +29,9 @@ class Authorizator
             ]),
             'response_type' => 'code',
             //TODO: This should be more sofisticate to avoid vulnerabilities
+            //base64 encoded info could be sent to have url, method and also a nonce.
             //More info here: https://tools.ietf.org/id/draft-bradley-oauth-jwt-encoded-state-08.html
-            'state' => [
-                'target_link_uri' => $targetLinkUri
-            ],
+            'state' => $targetLinkUri,
         ]);
     }
 

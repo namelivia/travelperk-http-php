@@ -33,9 +33,9 @@ class Client extends OAuthClient
     }
 
     //TODO:Here I can retrieve the auth from the authorizator
-    public function getAuthUri()
+    public function getAuthUri(string $targetLinkUri)
     {
-        return $this->authorizator->getAuthUri();
+        return $this->authorizator->getAuthUri($targetLinkUri);
     }
 
     //TODO:Here I can check if I'm authorized or not
