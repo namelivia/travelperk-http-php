@@ -9,11 +9,11 @@ use Namelivia\TravelPerk\OAuth\Middleware\MiddlewareFactory;
 use Namelivia\TravelPerk\OAuth\Middleware\Middleware;
 use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 use Namelivia\TravelPerk\OAuth\Config\Config;
+use GuzzleHttp\HandlerStack;
 
 class MiddlewareFactoryTest extends TestCase
 {
     private $factory;
-    private $invoiceProfiles;
     private $config;
     private $tokenPersistence;
 
@@ -65,5 +65,10 @@ class MiddlewareFactoryTest extends TestCase
         $newMiddleware = $this->factory->recreateOAuthMiddleware();
         $this->assertTrue(is_a($newMiddleware, Middleware::class));
         $this->assertFalse($oldMiddleware === $newMiddleware);
+    }
+
+    public function testGettingStack()
+    {
+        $this->assertTrue(is_a($this->factory->getStack(), HandlerStack::class));
     }
 }
