@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
-use kamermans\OAuth2\Token\TokenInterface;
-use Mockery;
 use Namelivia\TravelPerk\ServiceProvider;
 
 class FeatureTest extends TestCase
