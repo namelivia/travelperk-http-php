@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\OAuth\Config;
 
-use GuzzleHttp\Client as OAuthClient;
-use GuzzleHttp\HandlerStack;
-
 class Config
 {
     private $clientId;
@@ -48,11 +45,10 @@ class Config
     public function toArray()
     {
         return [
-            'code' => $this->code,
-            'client_id' => $this->clientId,
+            'code'          => $this->code,
+            'client_id'     => $this->clientId,
             'client_secret' => $this->clientSecret,
-            'redirect_uri' => $this->redirectUrl,
+            'redirect_uri'  => $this->redirectUrl,
         ];
     }
-
 }

@@ -94,7 +94,8 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
-    public function setAuthorizationCode(string $authorizationCode) {
+    public function setAuthorizationCode(string $authorizationCode)
+    {
         $this->client->setAuthorizationCode($authorizationCode);
     }
 

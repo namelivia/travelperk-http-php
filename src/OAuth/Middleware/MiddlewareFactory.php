@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\OAuth\Middleware;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
 use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 use Namelivia\TravelPerk\OAuth\Config\Config;
-use Namelivia\TravelPerk\OAuth\Middleware\Middleware;
 use Namelivia\TravelPerk\OAuth\Constants\Constants;
-use GuzzleHttp\HandlerStack;
 
 class MiddlewareFactory
 {
@@ -26,17 +25,20 @@ class MiddlewareFactory
         $this->stack = HandlerStack::create();
     }
 
-    private function getOAuthMiddleware() {
+    private function getOAuthMiddleware()
+    {
         $middleware = new Middleware(
             new Client(['base_uri' => Constants::TOKEN_URL]),
             $this->config->toArray()
         );
         $middleware->setTokenPersistence($this->tokenPersistence);
+
         return $middleware;
     }
 
     //Will create the oauth middleware and add it to the stack
-    public function createOAuthMiddleware() {
+    public function createOAuthMiddleware()
+    {
         $middleware = $this->getOAuthMiddleware();
         $this->stack->push($middleware, 'oauth');
     }
@@ -46,12 +48,13 @@ class MiddlewareFactory
     ) {
         $this->stack->remove('oauth');
         $middleware = $this->getOAuthMiddleware();
-        #Force the retrieval of an access token on creation so it gets persisted
+        //Force the retrieval of an access token on creation so it gets persisted
         $middleware->getAccessToken();
         $this->stack->push($middleware, 'oauth');
     }
 
-    public function getStack() {
+    public function getStack()
+    {
         return $this->stack;
     }
 }
