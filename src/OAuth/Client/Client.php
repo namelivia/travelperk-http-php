@@ -32,13 +32,11 @@ class Client extends OAuthClient
         ]);
     }
 
-    //TODO:Here I can retrieve the auth from the authorizator
     public function getAuthUri(string $targetLinkUri)
     {
         return $this->authorizator->getAuthUri($targetLinkUri);
     }
 
-    //TODO:Here I can check if I'm authorized or not
     private function checkAuthorized()
     {
         if (!$this->authorizator->isAuthorized()) {
@@ -46,14 +44,13 @@ class Client extends OAuthClient
         }
     }
 
-    //TODO:Here I set the code and replace the middleware
     public function setAuthorizationCode(string $code)
     {
         $this->authorizator->setAuthorizationCode($code);
         $this->middlewareFactory->recreateOAuthMiddleware();
     }
 
-    //Before each method I will check if I am authorized
+    //Checks if authorized before every HTTP method
     public function get($uri, array $options = []): ResponseInterface
     {
         $this->checkAuthorized();

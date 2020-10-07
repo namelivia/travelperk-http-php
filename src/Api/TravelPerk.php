@@ -94,7 +94,6 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
-    //TODO: What if this is not an OAuth client?
     public function setAuthorizationCode(string $authorizationCode) {
         $this->client->setAuthorizationCode($authorizationCode);
     }
