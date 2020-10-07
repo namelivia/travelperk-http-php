@@ -23,11 +23,13 @@ class Client extends GuzzleClient
         ]);
     }
 
-    public function setAuthorizationCode(string $authorizationCode) {
+    public function setAuthorizationCode(string $authorizationCode)
+    {
         throw new NotImplementedException('No authorization code needed for simple api key authentication');
     }
 
-    public function getAuthUri(string $targetLinkUri) {
+    public function getAuthUri(string $targetLinkUri)
+    {
         throw new NotImplementedException('No authorization URI for simple api key authentication');
     }
 }

@@ -20,10 +20,10 @@ class Authorizator
 
     public function getAuthUri(string $targetLinkUri)
     {
-        return Constants::AUTHORIZE_URL . '?' . http_build_query([
-            'client_id' => $this->config->getClientId(),
+        return Constants::AUTHORIZE_URL.'?'.http_build_query([
+            'client_id'    => $this->config->getClientId(),
             'redirect_uri' => $this->config->getRedirectUrl(),
-            'scope' => implode(' ', [
+            'scope'        => implode(' ', [
                 //TODO: These scopes should be configurable by the user
                 'expenses:read',
             ]),
