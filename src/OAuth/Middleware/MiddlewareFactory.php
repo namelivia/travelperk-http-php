@@ -36,14 +36,13 @@ class MiddlewareFactory
         return $middleware;
     }
 
-    //Will create the oauth middleware and add it to the stack
     public function createOAuthMiddleware()
     {
         $middleware = $this->getOAuthMiddleware();
         $this->stack->push($middleware, 'oauth');
+        return $middleware;
     }
 
-    //Will create the oauth middleware and readd it to the stack
     public function recreateOAuthMiddleware(
     ) {
         $this->stack->remove('oauth');
@@ -51,6 +50,7 @@ class MiddlewareFactory
         //Force the retrieval of an access token on creation so it gets persisted
         $middleware->getAccessToken();
         $this->stack->push($middleware, 'oauth');
+        return $middleware;
     }
 
     public function getStack()
