@@ -193,4 +193,12 @@ class TravelPerkTest extends TestCase
             $this->travelPerk->getAuthUri('target/link/uri')
         );
     }
+
+    public function testSettingAuthCode()
+    {
+        $this->client->shouldReceive('setAuthorizationCode')
+            ->once()
+            ->with('auth-code');
+        $this->travelPerk->setAuthorizationCode('auth-code');
+    }
 }
