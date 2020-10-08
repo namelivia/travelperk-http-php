@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Mockery;
-use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Client\Client;
 use Namelivia\TravelPerk\Exceptions\NotImplementedException;
 

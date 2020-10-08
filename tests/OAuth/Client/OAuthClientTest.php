@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
+use GuzzleHttp\HandlerStack;
 use Mockery;
-use Namelivia\TravelPerk\OAuth\Client\Client;
 use Namelivia\TravelPerk\OAuth\Authorizator\Authorizator;
+use Namelivia\TravelPerk\OAuth\Client\Client;
 use Namelivia\TravelPerk\OAuth\Middleware\MiddlewareFactory;
 use Namelivia\TravelPerk\OAuth\MissingCodeException;
-use GuzzleHttp\HandlerStack;
 
 class OAuthClientTest extends TestCase
 {

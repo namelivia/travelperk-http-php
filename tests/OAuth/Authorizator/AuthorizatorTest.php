@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Mockery;
 use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
-use Namelivia\TravelPerk\OAuth\Config\Config;
+use Mockery;
 use Namelivia\TravelPerk\OAuth\Authorizator\Authorizator;
+use Namelivia\TravelPerk\OAuth\Config\Config;
 
 class AuthorizatorTest extends TestCase
 {
