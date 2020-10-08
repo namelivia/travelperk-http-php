@@ -62,5 +62,37 @@ class OAuthClientTest extends TestCase
         $this->expectException(MissingCodeException::class);
         $this->expectExceptionMessage('No auth code or token');
         $this->client->get('/some/uri');
+
+        $this->authorizator->shouldReceive('isAuthorized')
+            ->once()
+            ->with()
+            ->andReturn(false);
+        $this->expectException(MissingCodeException::class);
+        $this->expectExceptionMessage('No auth code or token');
+        $this->client->post('/some/uri');
+
+        $this->authorizator->shouldReceive('isAuthorized')
+            ->once()
+            ->with()
+            ->andReturn(false);
+        $this->expectException(MissingCodeException::class);
+        $this->expectExceptionMessage('No auth code or token');
+        $this->client->put('/some/uri');
+
+        $this->authorizator->shouldReceive('isAuthorized')
+            ->once()
+            ->with()
+            ->andReturn(false);
+        $this->expectException(MissingCodeException::class);
+        $this->expectExceptionMessage('No auth code or token');
+        $this->client->patch('/some/uri');
+
+        $this->authorizator->shouldReceive('isAuthorized')
+            ->once()
+            ->with()
+            ->andReturn(false);
+        $this->expectException(MissingCodeException::class);
+        $this->expectExceptionMessage('No auth code or token');
+        $this->client->delete('/some/uri');
     }
 }
