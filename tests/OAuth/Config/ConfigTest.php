@@ -36,10 +36,10 @@ class ConfigTest extends TestCase
     public function testGettingTheConfigAsAnArray()
     {
         $this->assertEquals([
-            'client_id' => 'client-id',
-            'code' => null,
+            'client_id'     => 'client-id',
+            'code'          => null,
             'client_secret' => 'client-secret',
-            'redirect_uri' => 'http://redirect.url',
+            'redirect_uri'  => 'http://redirect.url',
         ], $this->config->toArray());
     }
 }

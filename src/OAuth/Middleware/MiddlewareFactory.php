@@ -40,6 +40,7 @@ class MiddlewareFactory
     {
         $middleware = $this->getOAuthMiddleware();
         $this->stack->push($middleware, 'oauth');
+
         return $middleware;
     }
 
@@ -50,6 +51,7 @@ class MiddlewareFactory
         //Force the retrieval of an access token on creation so it gets persisted
         $middleware->getAccessToken();
         $this->stack->push($middleware, 'oauth');
+
         return $middleware;
     }
 

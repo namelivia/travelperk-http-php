@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Mockery;
-use Namelivia\TravelPerk\OAuth\Middleware\MiddlewareFactory;
-use Namelivia\TravelPerk\OAuth\Middleware\Middleware;
-use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
-use Namelivia\TravelPerk\OAuth\Config\Config;
 use GuzzleHttp\HandlerStack;
+use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
+use Mockery;
+use Namelivia\TravelPerk\OAuth\Config\Config;
+use Namelivia\TravelPerk\OAuth\Middleware\Middleware;
+use Namelivia\TravelPerk\OAuth\Middleware\MiddlewareFactory;
 
 class MiddlewareFactoryTest extends TestCase
 {
@@ -32,7 +32,7 @@ class MiddlewareFactoryTest extends TestCase
             ->with()
             ->andReturn([
                 'client_id' => 'client_id',
-                'code' => null,
+                'code'      => null,
             ]);
         $middleware = $this->factory->createOAuthMiddleware();
         $this->assertTrue(is_a($middleware, Middleware::class));
@@ -46,7 +46,7 @@ class MiddlewareFactoryTest extends TestCase
             ->with()
             ->andReturn([
                 'client_id' => 'client_id',
-                'code' => null,
+                'code'      => null,
             ]);
         $tokenMock = Mockery::mock();
         $this->tokenPersistence->shouldReceive('restoreToken')
