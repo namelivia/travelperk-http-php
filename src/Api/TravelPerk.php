@@ -97,6 +97,7 @@ class TravelPerk
     public function setAuthorizationCode(string $authorizationCode)
     {
         $this->client->setAuthorizationCode($authorizationCode);
+        return $this;
     }
 
     public function expenses()

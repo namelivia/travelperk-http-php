@@ -199,6 +199,6 @@ class TravelPerkTest extends TestCase
         $this->client->shouldReceive('setAuthorizationCode')
             ->once()
             ->with('auth-code');
-        $this->travelPerk->setAuthorizationCode('auth-code');
+        $this->assertEquals($this->travelPerk, $this->travelPerk->setAuthorizationCode('auth-code'));
     }
 }
