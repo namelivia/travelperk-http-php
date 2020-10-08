@@ -48,6 +48,7 @@ class Client extends OAuthClient
     {
         $this->authorizator->setAuthorizationCode($code);
         $this->middlewareFactory->recreateOAuthMiddleware();
+        return $this;
     }
 
     //Checks if authorized before every HTTP method
