@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Client;
 
 use GuzzleHttp\Client as GuzzleClient;
+use Namelivia\TravelPerk\Exceptions\NotImplementedException;
 
 class Client extends GuzzleClient
 {
@@ -20,5 +21,15 @@ class Client extends GuzzleClient
                 'Authorization' => 'ApiKey '.$apiKey,
             ],
         ]);
+    }
+
+    public function setAuthorizationCode(string $authorizationCode)
+    {
+        throw new NotImplementedException('No authorization code needed for simple api key authentication');
+    }
+
+    public function getAuthUri(string $targetLinkUri)
+    {
+        throw new NotImplementedException('No authorization URI for simple api key authentication');
     }
 }

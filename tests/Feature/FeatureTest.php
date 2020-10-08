@@ -15,7 +15,7 @@ class FeatureTest extends TestCase
 
     // TODO: This test is actually making an HTTP request
     // TODO: So as the api key is not a real one, this is failing.
-    public function testCodeIsSet()
+    public function testServiceProvider()
     {
         $this->markTestSkipped('Badly written test');
         $apiKey = 'apiKey';

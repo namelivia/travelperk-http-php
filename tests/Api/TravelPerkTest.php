@@ -186,10 +186,19 @@ class TravelPerkTest extends TestCase
     {
         $this->client->shouldReceive('getAuthUri')
             ->once()
+            ->with('target/link/uri')
             ->andReturn('authURI');
         $this->assertEquals(
             'authURI',
-            $this->travelPerk->getAuthUri()
+            $this->travelPerk->getAuthUri('target/link/uri')
         );
+    }
+
+    public function testSettingAuthCode()
+    {
+        $this->client->shouldReceive('setAuthorizationCode')
+            ->once()
+            ->with('auth-code');
+        $this->assertEquals($this->travelPerk, $this->travelPerk->setAuthorizationCode('auth-code'));
     }
 }

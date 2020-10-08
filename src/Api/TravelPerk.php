@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Api;
 
-use Namelivia\TravelPerk\Client\Client;
+use GuzzleHttp\Client;
 
 class TravelPerk
 {
@@ -26,9 +26,9 @@ class TravelPerk
         $this->baseUrl = $isSandbox ? TravelPerk::SANDBOX_BASE_URL : TravelPerk::BASE_URL;
     }
 
-    public function getAuthUri()
+    public function getAuthUri(string $targetLinkUri)
     {
-        return $this->client->getAuthUri();
+        return $this->client->getAuthUri($targetLinkUri);
     }
 
     public function getJson($url)
@@ -92,6 +92,13 @@ class TravelPerk
         return $this->client->delete(
             $this->baseUrl.$url
         )->getBody()->getContents();
+    }
+
+    public function setAuthorizationCode(string $authorizationCode)
+    {
+        $this->client->setAuthorizationCode($authorizationCode);
+
+        return $this;
     }
 
     public function expenses()
