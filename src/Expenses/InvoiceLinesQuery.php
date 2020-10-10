@@ -54,7 +54,7 @@ class InvoiceLinesQuery
 
     public function setTravelperkBankAccountNumber(string $accountNumber)
     {
-        $this->params->setAccountNumber($accountNumber);
+        $this->params->setTravelperkBankAccountNumber($accountNumber);
 
         return $this;
     }
