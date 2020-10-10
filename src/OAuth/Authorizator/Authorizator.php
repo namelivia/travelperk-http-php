@@ -12,10 +12,12 @@ class Authorizator
 {
     public function __construct(
         Config $config,
-        TokenPersistenceInterface $tokenPersistence
+        TokenPersistenceInterface $tokenPersistence,
+        array $scopes
     ) {
         $this->config = $config;
         $this->tokenPersistence = $tokenPersistence;
+        $this->scopes = new Scopes($scopes);
     }
 
     public function getAuthUri(string $targetLinkUri)
@@ -23,10 +25,7 @@ class Authorizator
         return Constants::AUTHORIZE_URL.'?'.http_build_query([
             'client_id'    => $this->config->getClientId(),
             'redirect_uri' => $this->config->getRedirectUrl(),
-            'scope'        => implode(' ', [
-                //TODO: These scopes should be configurable by the user. https://github.com/namelivia/travelperk-http-php/issues/20
-                'expenses:read',
-            ]),
+            'scope'        => $this->scopes->asUrlParam(),
             'response_type' => 'code',
             //TODO: This should be more sofisticate to avoid vulnerabilities. https://github.com/namelivia/travelperk-http-php/issues/21
             //base64 encoded info could be sent to have url, method and also a nonce.
