@@ -8,19 +8,22 @@ use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 use Mockery;
 use Namelivia\TravelPerk\OAuth\Authorizator\Authorizator;
 use Namelivia\TravelPerk\OAuth\Config\Config;
+use Namelivia\TravelPerk\Exceptions\InvalidScopeException;
 
 class AuthorizatorTest extends TestCase
 {
     private $authorizator;
     private $config;
     private $tokenPersistence;
+    private $scopes;
 
     public function setUp(): void
     {
         parent::setUp();
         $this->config = Mockery::mock(Config::class);
         $this->tokenPersistence = Mockery::mock(TokenPersistenceInterface::class);
-        $this->authorizator = new Authorizator($this->config, $this->tokenPersistence);
+        $this->scopes = ['expenses:read'];
+        $this->authorizator = new Authorizator($this->config, $this->tokenPersistence, $this->scopes);
     }
 
     public function testCheckingAuthorized()
@@ -81,5 +84,11 @@ class AuthorizatorTest extends TestCase
             'scope=expenses%3Aread&response_type=code&state=%2Ftarget%2Flink',
             $this->authorizator->getAuthUri('/target/link')
         );
+    }
+
+    public function testBuildingWithInvalidScopesRiseException() {
+        $this->expectException(InvalidScopeException::class);
+        $this->expectExceptionMessage('The scope invalid:scope is invalid');
+        new Authorizator($this->config, $this->tokenPersistence, array_merge($this->scopes, ['invalid:scope']));
     }
 }
