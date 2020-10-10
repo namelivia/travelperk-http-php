@@ -40,7 +40,7 @@ class InvoiceLinesQuery
 
     public function setSerialContains(string $serialNumberContains)
     {
-        $this->params->setSerialNumberContains($serialNumberContains);
+        $this->params->setSerialContains($serialNumberContains);
 
         return $this;
     }
