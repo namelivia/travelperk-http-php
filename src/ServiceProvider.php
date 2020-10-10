@@ -22,7 +22,7 @@ class ServiceProvider
         bool $isSandbox
     ) {
         $config = new Config($clientId, $clientSecret, $redirectUrl);
-        $authorizator = new Authorizator($config, $tokenPersistence);
+        $authorizator = new Authorizator($config, $tokenPersistence, $scopes);
         $middlewareFactory = new MiddlewareFactory($config, $tokenPersistence);
         $middlewareFactory->createOAuthMiddleware();
         $client = new OAuth2Client($middlewareFactory, $authorizator);
