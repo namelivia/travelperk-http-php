@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Expenses;
 
-use Namelivia\TravelPerk\Api\TravelPerk;
 use Carbon\Carbon;
+use Namelivia\TravelPerk\Api\TravelPerk;
 
 class InvoiceLinesQuery
 {
