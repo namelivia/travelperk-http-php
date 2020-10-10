@@ -18,7 +18,7 @@ class ServiceProvider
         string $clientId,
         string $clientSecret,
         string $redirectUrl,
-		array $scopes,
+        array $scopes,
         bool $isSandbox
     ) {
         $config = new Config($clientId, $clientSecret, $redirectUrl);

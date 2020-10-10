@@ -6,9 +6,9 @@ namespace Namelivia\TravelPerk\Tests;
 
 use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 use Mockery;
+use Namelivia\TravelPerk\Exceptions\InvalidScopeException;
 use Namelivia\TravelPerk\OAuth\Authorizator\Authorizator;
 use Namelivia\TravelPerk\OAuth\Config\Config;
-use Namelivia\TravelPerk\Exceptions\InvalidScopeException;
 
 class AuthorizatorTest extends TestCase
 {
@@ -86,7 +86,8 @@ class AuthorizatorTest extends TestCase
         );
     }
 
-    public function testBuildingWithInvalidScopesRiseException() {
+    public function testBuildingWithInvalidScopesRiseException()
+    {
         $this->expectException(InvalidScopeException::class);
         $this->expectExceptionMessage('The scope invalid:scope is invalid');
         new Authorizator($this->config, $this->tokenPersistence, array_merge($this->scopes, ['invalid:scope']));
