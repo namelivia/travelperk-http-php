@@ -23,9 +23,9 @@ class Authorizator
     public function getAuthUri(string $targetLinkUri)
     {
         return Constants::AUTHORIZE_URL.'?'.http_build_query([
-            'client_id'    => $this->config->getClientId(),
-            'redirect_uri' => $this->config->getRedirectUrl(),
-            'scope'        => $this->scopes->asUrlParam(),
+            'client_id'     => $this->config->getClientId(),
+            'redirect_uri'  => $this->config->getRedirectUrl(),
+            'scope'         => $this->scopes->asUrlParam(),
             'response_type' => 'code',
             //TODO: This should be more sofisticate to avoid vulnerabilities. https://github.com/namelivia/travelperk-http-php/issues/21
             //base64 encoded info could be sent to have url, method and also a nonce.
