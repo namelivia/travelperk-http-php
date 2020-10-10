@@ -16,7 +16,6 @@ class Client extends GuzzleClient
     ) {
         return parent::__construct([
             'headers' => [
-                // TODO: In the future this will seteable from the config
                 'Api-Version'   => '1',
                 'Authorization' => 'ApiKey '.$apiKey,
             ],

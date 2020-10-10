@@ -24,11 +24,11 @@ class Authorizator
             'client_id'    => $this->config->getClientId(),
             'redirect_uri' => $this->config->getRedirectUrl(),
             'scope'        => implode(' ', [
-                //TODO: These scopes should be configurable by the user
+                //TODO: These scopes should be configurable by the user. https://github.com/namelivia/travelperk-http-php/issues/20
                 'expenses:read',
             ]),
             'response_type' => 'code',
-            //TODO: This should be more sofisticate to avoid vulnerabilities
+            //TODO: This should be more sofisticate to avoid vulnerabilities. https://github.com/namelivia/travelperk-http-php/issues/21
             //base64 encoded info could be sent to have url, method and also a nonce.
             //More info here: https://tools.ietf.org/id/draft-bradley-oauth-jwt-encoded-state-08.html
             'state' => $targetLinkUri,
