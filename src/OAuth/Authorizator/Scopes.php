@@ -8,7 +8,17 @@ use Namelivia\TravelPerk\Exceptions\InvalidScopeException;
 
 class Scopes
 {
-    const SCOPES = ['expenses:read'];
+    const SCOPES = [
+        'scim:read',
+        'scim:write',
+        'scim:delete',
+        'channels:read',
+        'channels:write',
+        'tripadmin:read',
+        'user:read',
+        'alertsadmin:read',
+        'expenses:read',
+    ];
 
     public function __construct(
         array $scopes
