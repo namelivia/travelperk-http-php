@@ -6,7 +6,6 @@ namespace Namelivia\TravelPerk\Tests;
 
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Webhooks\CreateWebhookInputParams;
 use Namelivia\TravelPerk\Webhooks\UpdateWebhookInputParams;
 use Namelivia\TravelPerk\Webhooks\Webhooks;
 
@@ -87,18 +86,23 @@ class WebhooksTest extends TestCase
 
     public function testCreatingAWebhook()
     {
-        $newWebhook = Mockery::mock(CreateWebhookInputParams::class);
-        $newWebhook->shouldReceive('asArray')
-            ->once()
-            ->with()
-            ->andReturn(['params']);
         $this->travelPerk->shouldReceive('postJson')
             ->once()
-            ->with('webhooks', ['params'])
+            ->with('webhooks', [
+                'name' => 'name',
+                'url' => 'url',
+                'secret' => 'secret',
+                'events' => ['event1', 'event2'],
+            ])
             ->andReturn('webhookCreated');
         $this->assertEquals(
             'webhookCreated',
-            $this->webhooks->create($newWebhook)
+            $this->webhooks->create(
+                'name',
+                'url',
+                'secret',
+                ['event1', 'event2'],
+            )
         );
     }
 
