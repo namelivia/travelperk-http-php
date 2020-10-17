@@ -45,6 +45,7 @@ class Webhooks
     public function create(string $name, string $url, string $secret, array $events)
     {
         $params = new CreateWebhookInputParams($name, $url, $secret, $events);
+
         return $this->travelPerk->postJson(implode('/', ['webhooks']), $params->asArray());
     }
 
@@ -57,7 +58,7 @@ class Webhooks
     }
 
     /**
-     * Update the webhook endpoint
+     * Update the webhook endpoint.
      */
     public function modify(string $id)
     {

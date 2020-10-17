@@ -89,8 +89,8 @@ class WebhooksTest extends TestCase
         $this->travelPerk->shouldReceive('postJson')
             ->once()
             ->with('webhooks', [
-                'name' => 'name',
-                'url' => 'url',
+                'name'   => 'name',
+                'url'    => 'url',
                 'secret' => 'secret',
                 'events' => ['event1', 'event2'],
             ])
