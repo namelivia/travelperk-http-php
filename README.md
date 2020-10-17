@@ -22,14 +22,33 @@ Before getting started retrieving querying information from the TravelPerk Web A
 
 ### Getting a TravelPerk instance
 
-For querying the data you need to get a TravelPerk instance, and for doing so you need to pass your api key to the service provider, and a boolean indicating if you like to use the sandbox environment or not like this:
+For querying the data you need to get a TravelPerk instance, here are two ways to get a TravelPerk API instance depending on how you authenticate with their API.
+
+At TravelPerk there are [two ways to authenticate](https://developers.travelperk.com/reference#authentication), using an API Key or OAuth2.
+
+#### For API Key Authentication
+
+If you have an [API Key](https://developers.travelperk.com/reference#api-keys-1) for authenticating you need to call the Service Provider's `build` method passing your api key, and a boolean indicating if you will be using the [sandbox environment](https://developers.travelperk.com/docs/postman-collection#step-2---configure-the-postman-environment) or not like this:
 ```php
 use Namelivia\TravelPerk\ServiceProvider;
 $isSandbox = false;
-$travelperk = (new ServiceProvider())->build($apiKey, $isSandbox);
+$travelperk = (new ServiceProvider())->build('your-api-key', $isSandbox);
 ```
 
-The sandbox environment is for testing purposes and its described [here](https://developers.travelperk.com/docs/postman-collection#step-2---configure-the-postman-environment).
+#### For OAuth Authentication
+
+If you want to use [OAuth](https://developers.travelperk.com/reference#oauth) for authenticating you need to call the Service Provider's `buildOAuth2` method passing [your desired access token peristence method](https://github.com/kamermans/guzzle-oauth2-subscriber#access-token-persistence), your oauth credentials, an array of scopes your application will be accessing to, and a boolean indicating if you will be using the [sandbox environment](https://developers.travelperk.com/docs/postman-collection#step-2---configure-the-postman-environment) or not like this:
+```php
+use Namelivia\TravelPerk\ServiceProvider;
+$isSandbox = false;
+$travelperk = (new ServiceProvider())->buildOAuth2(
+  'your-client-id',
+  'your-client-secret',
+  'http://your-app/redirect-url',
+  ['expenses:read', 'scim:read'],
+  $isSandbox
+);
+```
 
 ### Retrieving data
 
