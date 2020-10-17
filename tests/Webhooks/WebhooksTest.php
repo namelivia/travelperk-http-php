@@ -123,4 +123,17 @@ class WebhooksTest extends TestCase
             $this->webhooks->update($id, $webhookData)
         );
     }
+
+    public function testModifyingAWebhook()
+    {
+        $id = '1a';
+        $this->travelPerk->shouldReceive('patchJson')
+            ->once()
+            ->with('webhooks/1a', ['name' => 'newName', 'enabled' => false])
+            ->andReturn('webhookUpdated');
+        $this->assertEquals(
+            'webhookUpdated',
+            $this->webhooks->modify($id)->setName('newName')->setEnabled(false)->save()
+        );
+    }
 }

@@ -9,6 +9,7 @@ use Namelivia\TravelPerk\Api\TravelPerk;
 class InvoiceProfilesQuery
 {
     private $params;
+    private $travelPerk;
 
     public function __construct(TravelPerk $travelPerk)
     {

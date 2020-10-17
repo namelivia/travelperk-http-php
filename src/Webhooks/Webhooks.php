@@ -49,11 +49,19 @@ class Webhooks
     }
 
     /**
-     * Updates the webhook endpoint.
+     * Updates the webhook endpoint. (Will be removed, use modify instead).
      */
     public function update(string $id, UpdateWebhookInputParams $params)
     {
         return $this->travelPerk->patchJson(implode('/', ['webhooks', $id]), $params->asArray());
+    }
+
+    /**
+     * Update the webhook endpoint
+     */
+    public function modify(string $id)
+    {
+        return new UpdateWebhookRequest($id, $this->travelPerk);
     }
 
     /**
