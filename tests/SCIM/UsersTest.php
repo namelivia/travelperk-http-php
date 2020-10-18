@@ -91,6 +91,32 @@ class UsersTest extends TestCase
         );
     }
 
+    public function testMakingAndSavingAUser()
+    {
+        $this->travelPerk->shouldReceive('postJson')
+            ->once()
+            ->with('scim/Users', [
+                'userName' => 'testuser@test.com',
+                'name' => [
+                    'givenName' => 'Test',
+                    'familyName' => 'User',
+                ],
+                'active' => true,
+                'locale' => 'en',
+                'title' => 'manager',
+            ])
+            ->andReturn('userCreated');
+        $this->assertEquals(
+            'userCreated',
+            $this->users->make(
+                'testuser@test.com',
+                true,
+                'Test',
+                'User',
+            )->setLocale('en')->setTitle('manager')->save()
+        );
+    }
+
     public function testCreatingAUser()
     {
         $this->travelPerk->shouldReceive('postJson')
