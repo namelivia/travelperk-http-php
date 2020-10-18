@@ -16,8 +16,7 @@ class CreateUserQuery
         string $username,
         bool $active,
         NameInputParams $name
-    )
-    {
+    ) {
         $this->travelPerk = $travelPerk;
         $this->params = new CreateUserInputParams($username, $active, $name);
     }
@@ -30,72 +29,84 @@ class CreateUserQuery
     public function setLanguage(Language $language)
     {
         $this->params->setLanguage($language);
+
         return $this;
     }
 
     public function setLocale(string $locale)
     {
         $this->params->setLocale($locale);
+
         return $this;
     }
 
     public function setTitle(string $title)
     {
         $this->params->setTitle($title);
+
         return $this;
     }
 
     public function setExternalId(string $externalId)
     {
         $this->params->setExternalId($externalId);
+
         return $this;
     }
 
     public function setPhoneNumber(string $number)
     {
         $this->params->setPhoneNumber($number);
+
         return $this;
     }
 
     public function setGender(Gender $gender)
     {
         $this->params->setGender($gender);
+
         return $this;
     }
 
     public function setDateOfBirth(Carbon $dateOfBirth)
     {
         $this->params->setDateOfBirth($dateOfBirth);
+
         return $this;
     }
 
     public function setTravelPolicy(string $travelPolicy)
     {
         $this->params->setTravelPolicy($travelPolicy);
+
         return $this;
     }
 
     public function setEmergencyContact(EmergencyContact $emergencyContact)
     {
         $this->params->setEmergencyContact($emergencyContact);
+
         return $this;
     }
 
     public function setInvoiceProfiles(array $invoiceProfiles)
     {
         $this->params->setInvoiceProfiles($invoiceProfiles);
+
         return $this;
     }
 
     public function setCostCenter(string $costCenter)
     {
         $this->params->setCostCenter($costCenter);
+
         return $this;
     }
 
     public function setManager(string $manager)
     {
         $this->params->setManager($manager);
+
         return $this;
     }
 
