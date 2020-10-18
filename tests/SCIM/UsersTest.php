@@ -99,6 +99,7 @@ class UsersTest extends TestCase
                 'name'     => [
                     'givenName'  => 'Test',
                     'familyName' => 'User',
+                    'honorificPrefix' => 'Dr',
                 ],
                 'active' => true,
                 'locale' => 'en',
@@ -112,7 +113,7 @@ class UsersTest extends TestCase
                 true,
                 'Test',
                 'User',
-            )->setLocale('en')->setTitle('manager')->save()
+            )->setHonorificPrefix('Dr')->setLocale('en')->setTitle('manager')->save()
         );
     }
 

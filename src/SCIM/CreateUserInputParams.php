@@ -115,6 +115,20 @@ class CreateUserInputParams
         return $this;
     }
 
+    public function setHonorificPrefix(string $honorificPrefix)
+    {
+        $this->name->setHonorificPrefix($honorificPrefix);
+
+        return $this;
+    }
+
+    public function setMiddleName(string $middleName)
+    {
+        $this->name->setMiddleName($middleName);
+
+        return $this;
+    }
+
     private function hasCustomUserData()
     {
         return array_filter([

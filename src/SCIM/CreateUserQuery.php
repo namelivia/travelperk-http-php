@@ -110,6 +110,20 @@ class CreateUserQuery
         return $this;
     }
 
+    public function setHonorificPrefix(string $honorificPrefix)
+    {
+        $this->params->setHonorificPrefix($honorificPrefix);
+
+        return $this;
+    }
+
+    public function setMiddleName(string $middleName)
+    {
+        $this->params->setMiddleName($middleName);
+
+        return $this;
+    }
+
     private function hasCustomUserData()
     {
         return $this->params->hasCustomUserData();
