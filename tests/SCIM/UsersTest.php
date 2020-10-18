@@ -7,7 +7,6 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Exceptions\NotImplementedException;
-use Namelivia\TravelPerk\SCIM\CreateUserInputParams;
 use Namelivia\TravelPerk\SCIM\ReplaceUserInputParams;
 use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
 use Namelivia\TravelPerk\SCIM\Users;
@@ -91,20 +90,53 @@ class UsersTest extends TestCase
         );
     }
 
-    public function testCreatingAUser()
+    public function testMakingAndSavingAUser()
     {
-        $newUser = Mockery::mock(CreateUserInputParams::class);
-        $newUser->shouldReceive('asArray')
-            ->once()
-            ->with()
-            ->andReturn(['params']);
         $this->travelPerk->shouldReceive('postJson')
             ->once()
-            ->with('scim/Users', ['params'])
+            ->with('scim/Users', [
+                'userName' => 'testuser@test.com',
+                'name'     => [
+                    'givenName'  => 'Test',
+                    'familyName' => 'User',
+                ],
+                'active' => true,
+                'locale' => 'en',
+                'title'  => 'manager',
+            ])
             ->andReturn('userCreated');
         $this->assertEquals(
             'userCreated',
-            $this->users->create($newUser)
+            $this->users->make(
+                'testuser@test.com',
+                true,
+                'Test',
+                'User',
+            )->setLocale('en')->setTitle('manager')->save()
+        );
+    }
+
+    public function testCreatingAUser()
+    {
+        $this->travelPerk->shouldReceive('postJson')
+            ->once()
+            ->with('scim/Users', [
+                'userName' => 'testuser@test.com',
+                'name'     => [
+                    'givenName'  => 'Test',
+                    'familyName' => 'User',
+                ],
+                'active' => true,
+            ])
+            ->andReturn('userCreated');
+        $this->assertEquals(
+            'userCreated',
+            $this->users->create(
+                'testuser@test.com',
+                true,
+                'Test',
+                'User',
+            )
         );
     }
 
