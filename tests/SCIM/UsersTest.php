@@ -93,18 +93,25 @@ class UsersTest extends TestCase
 
     public function testCreatingAUser()
     {
-        $newUser = Mockery::mock(CreateUserInputParams::class);
-        $newUser->shouldReceive('asArray')
-            ->once()
-            ->with()
-            ->andReturn(['params']);
         $this->travelPerk->shouldReceive('postJson')
             ->once()
-            ->with('scim/Users', ['params'])
+            ->with('scim/Users', [
+                'userName' => 'testuser@test.com',
+                'name' => [
+                    'givenName' => 'Test',
+                    'familyName' => 'User',
+                ],
+                'active' => true,
+            ])
             ->andReturn('userCreated');
         $this->assertEquals(
             'userCreated',
-            $this->users->create($newUser)
+            $this->users->create(
+                'testuser@test.com',
+                true,
+                'Test',
+                'User',
+            )
         );
     }
 

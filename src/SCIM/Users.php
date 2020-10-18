@@ -53,8 +53,14 @@ class Users
     /**
      * Create a new user in TravelPerk.
      */
-    public function create(CreateUserInputParams $params)
-    {
+    public function create(
+        string $username,
+        bool $active,
+        string $givenName,
+        string $familyName
+    ) {
+        $name = new NameInputParams($givenName, $familyName);
+        $params = new CreateUserInputParams($username, $active, $name);
         return $this->travelPerk->postJson(implode('/', ['scim', 'Users']), $params->asArray());
     }
 
