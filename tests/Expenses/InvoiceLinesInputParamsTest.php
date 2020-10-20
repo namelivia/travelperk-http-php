@@ -17,10 +17,10 @@ class InvoiceLinesInputParamTest extends TestCase
         $inputParams->setProfileId(['profile_id1', 'profile_id2'])
             ->setSerialNumber(['serial_number1', 'serial_number2'])
             ->setSerialContains('serial_number_contains')
-            ->setBillingPeriod(new BillingPeriod(BillingPeriod::MONTHLY))
+            ->setBillingPeriod(BillingPeriod::MONTHLY)
             ->setTravelperkBankAccountNumber('bank_account_number')
             ->setCustomerCountryName('customer_country_name')
-            ->setStatus(new Status(Status::PAID))
+            ->setStatus(Status::PAID)
             ->setIssuingDateGte(Carbon::today())
             ->setIssuingDateLte(Carbon::tomorrow())
             ->setDueDateGte(Carbon::yesterday())
@@ -53,7 +53,7 @@ class InvoiceLinesInputParamTest extends TestCase
     {
         $inputParams = new InvoiceLinesInputParams();
         $inputParams->setSerialNumber(['serial_number1', 'serial_number2'])
-            ->setStatus(new Status(Status::PAID));
+            ->setStatus(Status::PAID);
         $this->assertEquals(
             'serial_number=serial_number1,serial_number2&'.
             'status=paid',

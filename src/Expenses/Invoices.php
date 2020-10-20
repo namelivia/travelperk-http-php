@@ -66,4 +66,28 @@ class Invoices
     {
         return new InvoiceLinesQuery($this->travelPerk);
     }
+
+    /**
+     * Get all billing periods
+     */
+    public function billingPeriods()
+    {
+        return BillingPeriod::getConstantValues();
+    }
+
+    /**
+     * Get all statuses
+     */
+    public function statuses()
+    {
+        return Status::getConstantValues();
+    }
+
+    /**
+     * Get all sorting values
+     */
+    public function sorting()
+    {
+        return Sorting::getConstantValues();
+    }
 }

@@ -46,7 +46,7 @@ class InvoicesQuery
         return $this;
     }
 
-    public function setBillingPeriod(BillingPeriod $billingPeriod)
+    public function setBillingPeriod(string $billingPeriod)
     {
         $this->params->setBillingPeriod($billingPeriod);
     }
@@ -65,7 +65,7 @@ class InvoicesQuery
         return $this;
     }
 
-    public function setStatus(Status $status)
+    public function setStatus(string $status)
     {
         $this->params->setStatus($status);
 
@@ -100,7 +100,7 @@ class InvoicesQuery
         return $this;
     }
 
-    public function setSort(Sorting $sort)
+    public function setSort(string $sort)
     {
         $this->params->setSort($sort);
 
