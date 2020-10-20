@@ -89,7 +89,7 @@ class ReplaceUserInputParams
 
     public function setEmergencyContact(EmergencyContact $emergencyContact)
     {
-        $this->params->setEmergencyContact($emergencyContact);
+        $this->emergencyContact = $emergencyContact;
 
         return $this;
     }

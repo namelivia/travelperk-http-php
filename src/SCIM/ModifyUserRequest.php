@@ -88,7 +88,7 @@ class ModifyUserRequest
     public function setEmergencyContact(string $emergencyContactName, string $emergencyContactPhone)
     {
         $emergencyContact = new EmergencyContact($emergencyContactName, $emergencyContactPhone);
-        $this->emergencyContact = $emergencyContact;
+        $this->params->setEmergencyContact($emergencyContact);
 
         return $this;
     }
