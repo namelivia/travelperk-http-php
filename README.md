@@ -6,7 +6,7 @@
 
 ## About
 
-This is a package for acessing the [TravelPerk official Web API](https://developers.travelperk.com) from your PHP language project. It is designed so you can easily query and retrieve all data hold on their platform and accessible through the API.
+This is an unofficial package for acessing the [TravelPerk official Web API](https://developers.travelperk.com) from your PHP language project. It is designed so you can easily query and retrieve all data hold on their platform and accessible through the API.
 
 ## Installation
 
