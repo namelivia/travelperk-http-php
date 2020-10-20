@@ -7,7 +7,6 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Exceptions\NotImplementedException;
-use Namelivia\TravelPerk\SCIM\ReplaceUserInputParams;
 use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
 use Namelivia\TravelPerk\SCIM\Users;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
@@ -97,8 +96,8 @@ class UsersTest extends TestCase
             ->with('scim/Users', [
                 'userName' => 'testuser@test.com',
                 'name'     => [
-                    'givenName'  => 'Test',
-                    'familyName' => 'User',
+                    'givenName'       => 'Test',
+                    'familyName'      => 'User',
                     'honorificPrefix' => 'Dr',
                 ],
                 'active' => true,
@@ -158,12 +157,12 @@ class UsersTest extends TestCase
             ->with('scim/Users/1', [
                 'userName' => 'testuser@test.com',
                 'name'     => [
-                    'givenName'  => 'Test',
-                    'familyName' => 'User',
+                    'givenName'        => 'Test',
+                    'familyName'       => 'User',
                     'honorificPrefix'  => 'Dr',
                 ],
                 'active' => true,
-                'title' => 'manager',
+                'title'  => 'manager',
             ])
             ->andReturn('userReplaced');
         $this->assertEquals(

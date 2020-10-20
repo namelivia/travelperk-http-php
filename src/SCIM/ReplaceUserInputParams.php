@@ -129,7 +129,6 @@ class ReplaceUserInputParams
         return $this;
     }
 
-
     private function hasCustomUserData()
     {
         return array_filter([
