@@ -152,19 +152,29 @@ class UsersTest extends TestCase
 
     public function testReplacingAUser()
     {
-        $params = Mockery::mock(ReplaceUserInputParams::class);
         $userId = 1;
-        $params->shouldReceive('asArray')
-            ->once()
-            ->with()
-            ->andReturn(['params']);
         $this->travelPerk->shouldReceive('putJson')
             ->once()
-            ->with('scim/Users/1', ['params'])
+            ->with('scim/Users/1', [
+                'userName' => 'testuser@test.com',
+                'name'     => [
+                    'givenName'  => 'Test',
+                    'familyName' => 'User',
+                    'honorificPrefix'  => 'Dr',
+                ],
+                'active' => true,
+                'title' => 'manager',
+            ])
             ->andReturn('userReplaced');
         $this->assertEquals(
             'userReplaced',
-            $this->users->replace($userId, $params)
+            $this->users->modify(
+                $userId,
+                'testuser@test.com',
+                true,
+                'Test',
+                'User',
+            )->setHonorificPrefix('Dr')->setTitle('manager')->save()
         );
     }
 }

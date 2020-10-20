@@ -96,4 +96,18 @@ class Users
     {
         return $this->travelPerk->putJson(implode('/', ['scim', 'Users', $id]), $params->asArray());
     }
+
+    /**
+     * Modify an existing user in TravelPerk.
+     */
+    public function modify(
+        int $id,
+        string $username,
+        bool $active,
+        string $givenName,
+        string $familyName
+    ) {
+        $name = new NameInputParams($givenName, $familyName);
+        return new ModifyUserRequest($id, $this->travelPerk, $username, $active, $name);
+    }
 }
