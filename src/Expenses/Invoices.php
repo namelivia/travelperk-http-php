@@ -68,7 +68,7 @@ class Invoices
     }
 
     /**
-     * Get all billing periods
+     * Get all billing periods.
      */
     public function billingPeriods()
     {
@@ -76,7 +76,7 @@ class Invoices
     }
 
     /**
-     * Get all statuses
+     * Get all statuses.
      */
     public function statuses()
     {
@@ -84,7 +84,7 @@ class Invoices
     }
 
     /**
-     * Get all sorting values
+     * Get all sorting values.
      */
     public function sorting()
     {
