@@ -4,27 +4,29 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\SCIM;
 
-use Carbon\Carbon;
 use Namelivia\TravelPerk\Api\TravelPerk;
 
-class CreateUserQuery
+class ModifyUserRequest
 {
     private $params;
     private $travelPerk;
+    private $id;
 
     public function __construct(
+        int $id,
         TravelPerk $travelPerk,
         string $username,
         bool $active,
         NameInputParams $name
     ) {
+        $this->id = $id;
+        $this->params = new ReplaceUserInputParams($username, $active, $name);
         $this->travelPerk = $travelPerk;
-        $this->params = new CreateUserInputParams($username, $active, $name);
     }
 
     public function save()
     {
-        return $this->travelPerk->postJson(implode('/', ['scim', 'Users']), $this->params->asArray());
+        return $this->travelPerk->putJson(implode('/', ['scim', 'Users', $this->id]), $this->params->asArray());
     }
 
     public function setLanguage(Language $language)
@@ -132,6 +134,6 @@ class CreateUserQuery
 
     private function hasEnterpriseData()
     {
-        return $this->params->hasEnterpriseDat();
+        return $this->params->hasEnterpriseData();
     }
 }

@@ -7,7 +7,6 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Exceptions\NotImplementedException;
-use Namelivia\TravelPerk\SCIM\ReplaceUserInputParams;
 use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
 use Namelivia\TravelPerk\SCIM\Users;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
@@ -97,8 +96,8 @@ class UsersTest extends TestCase
             ->with('scim/Users', [
                 'userName' => 'testuser@test.com',
                 'name'     => [
-                    'givenName'  => 'Test',
-                    'familyName' => 'User',
+                    'givenName'       => 'Test',
+                    'familyName'      => 'User',
                     'honorificPrefix' => 'Dr',
                 ],
                 'active' => true,
@@ -152,19 +151,29 @@ class UsersTest extends TestCase
 
     public function testReplacingAUser()
     {
-        $params = Mockery::mock(ReplaceUserInputParams::class);
         $userId = 1;
-        $params->shouldReceive('asArray')
-            ->once()
-            ->with()
-            ->andReturn(['params']);
         $this->travelPerk->shouldReceive('putJson')
             ->once()
-            ->with('scim/Users/1', ['params'])
+            ->with('scim/Users/1', [
+                'userName' => 'testuser@test.com',
+                'name'     => [
+                    'givenName'        => 'Test',
+                    'familyName'       => 'User',
+                    'honorificPrefix'  => 'Dr',
+                ],
+                'active' => true,
+                'title'  => 'manager',
+            ])
             ->andReturn('userReplaced');
         $this->assertEquals(
             'userReplaced',
-            $this->users->replace($userId, $params)
+            $this->users->modify(
+                $userId,
+                'testuser@test.com',
+                true,
+                'Test',
+                'User',
+            )->setHonorificPrefix('Dr')->setTitle('manager')->save()
         );
     }
 }
