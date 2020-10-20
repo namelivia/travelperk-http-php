@@ -45,9 +45,9 @@ class InvoiceLinesInputParams
         return $this;
     }
 
-    public function setBillingPeriod(BillingPeriod $billingPeriod)
+    public function setBillingPeriod(string $billingPeriod)
     {
-        $this->billingPeriod = $billingPeriod;
+        $this->billingPeriod = new BillingPeriod($billingPeriod);
 
         return $this;
     }
@@ -66,9 +66,9 @@ class InvoiceLinesInputParams
         return $this;
     }
 
-    public function setStatus(Status $status)
+    public function setStatus(string $status)
     {
-        $this->status = $status;
+        $this->status = new Status($status);
 
         return $this;
     }

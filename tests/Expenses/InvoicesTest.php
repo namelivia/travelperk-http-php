@@ -129,4 +129,41 @@ class InvoicesTest extends TestCase
             $this->invoices->lines()
         );
     }
+
+    public function testGettingAllBillingPeriods()
+    {
+        $this->assertEquals(
+            [
+                'instant',
+                'weekly',
+                'biweekly',
+                'monthly',
+            ],
+            $this->invoices->billingPeriods()
+        );
+    }
+
+    public function testGettingAllStatuses()
+    {
+        $this->assertEquals(
+            [
+                'draft',
+                'open',
+                'paid',
+                'unpaid',
+            ],
+            $this->invoices->statuses()
+        );
+    }
+
+    public function testGettingAllSortingValues()
+    {
+        $this->assertEquals(
+            [
+                'issuing_date',
+                '-issuing_date',
+            ],
+            $this->invoices->sorting()
+        );
+    }
 }
