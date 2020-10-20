@@ -108,6 +108,7 @@ class Users
         string $familyName
     ) {
         $name = new NameInputParams($givenName, $familyName);
+
         return new ModifyUserRequest($id, $this->travelPerk, $username, $active, $name);
     }
 }
