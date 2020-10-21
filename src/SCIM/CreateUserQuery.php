@@ -27,7 +27,7 @@ class CreateUserQuery
         return $this->travelPerk->postJson(implode('/', ['scim', 'Users']), $this->params->asArray());
     }
 
-    public function setLanguage(Language $language)
+    public function setLanguage(string $language)
     {
         $this->params->setLanguage($language);
 
@@ -62,7 +62,7 @@ class CreateUserQuery
         return $this;
     }
 
-    public function setGender(Gender $gender)
+    public function setGender(string $gender)
     {
         $this->params->setGender($gender);
 

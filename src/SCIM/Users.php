@@ -111,4 +111,20 @@ class Users
 
         return new ModifyUserRequest($id, $this->travelPerk, $username, $active, $name);
     }
+
+    /**
+     * Get all genders.
+     */
+    public function genders()
+    {
+        return Gender::getConstantValues();
+    }
+
+    /**
+     * Get all languages.
+     */
+    public function languages()
+    {
+        return Language::getConstantValues();
+    }
 }

@@ -31,9 +31,9 @@ class CreateUserInputParams
         $this->name = $name;
     }
 
-    public function setLanguage(Language $language)
+    public function setLanguage(string $language)
     {
-        $this->language = $language;
+        $this->language = new Language($language);
 
         return $this;
     }
@@ -66,9 +66,9 @@ class CreateUserInputParams
         return $this;
     }
 
-    public function setGender(Gender $gender)
+    public function setGender(string $gender)
     {
-        $this->gender = $gender;
+        $this->gender = new Gender($gender);
 
         return $this;
     }
