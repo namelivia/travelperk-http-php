@@ -176,4 +176,28 @@ class UsersTest extends TestCase
             )->setHonorificPrefix('Dr')->setTitle('manager')->save()
         );
     }
+
+    public function testGettingAllGenders()
+    {
+        $this->assertEquals(
+            [
+                'M',
+                'F',
+            ],
+            $this->users->genders()
+        );
+    }
+
+    public function testGettingAllLanguages()
+    {
+        $this->assertEquals(
+            [
+                'en',
+                'fr',
+                'de',
+                'es',
+            ],
+            $this->users->languages()
+        );
+    }
 }

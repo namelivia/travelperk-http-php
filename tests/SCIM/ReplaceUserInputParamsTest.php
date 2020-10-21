@@ -32,12 +32,12 @@ class ReplaceUserInputParamTest extends TestCase
     public function testSettingReplaceUserInputParamsWithOptionalParameters()
     {
         $inputParams = new ReplaceUserInputParams('username', true, (new NameInputParams('given_name', 'family_name')));
-        $inputParams->setLanguage(new Language(Language::SPANISH))
+        $inputParams->setLanguage(Language::SPANISH)
             ->setLocale('en-gb')
             ->setTitle('Manager')
             ->setExternalId('external-id')
             ->setPhoneNumber('787281928')
-            ->setGender(new Gender(Gender::MALE))
+            ->setGender(Gender::MALE)
             ->setDateOfBirth(Carbon::create(1990, 3, 23))
             ->setTravelPolicy('Travel Policy')
             ->setInvoiceProfiles(['Invoice Profile 1', 'Invoice Profile 2'])
