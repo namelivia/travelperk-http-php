@@ -26,7 +26,7 @@ class Scopes
         $this->scopes = $scopes;
     }
 
-    public function asUrlParam()
+    public function asUrlParam(): string
     {
         return implode(' ', $this->scopes);
     }

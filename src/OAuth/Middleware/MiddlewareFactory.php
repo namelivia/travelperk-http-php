@@ -25,7 +25,7 @@ class MiddlewareFactory
         $this->stack = HandlerStack::create();
     }
 
-    private function getOAuthMiddleware()
+    private function getOAuthMiddleware(): Middleware
     {
         $middleware = new Middleware(
             new Client(['base_uri' => Constants::TOKEN_URL]),
@@ -36,7 +36,7 @@ class MiddlewareFactory
         return $middleware;
     }
 
-    public function createOAuthMiddleware()
+    public function createOAuthMiddleware(): Middleware
     {
         $middleware = $this->getOAuthMiddleware();
         $this->stack->push($middleware, 'oauth');
@@ -44,8 +44,7 @@ class MiddlewareFactory
         return $middleware;
     }
 
-    public function recreateOAuthMiddleware(
-    ) {
+    public function recreateOAuthMiddleware(): Middleware {
         $this->stack->remove('oauth');
         $middleware = $this->getOAuthMiddleware();
         //Force the retrieval of an access token on creation so it gets persisted
@@ -55,7 +54,7 @@ class MiddlewareFactory
         return $middleware;
     }
 
-    public function getStack()
+    public function getStack(): HandlerStack
     {
         return $this->stack;
     }

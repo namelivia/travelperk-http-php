@@ -10,6 +10,7 @@ use Namelivia\TravelPerk\OAuth\Authorizator\Authorizator;
 use Namelivia\TravelPerk\OAuth\Client\Client as OAuth2Client;
 use Namelivia\TravelPerk\OAuth\Config\Config;
 use Namelivia\TravelPerk\OAuth\Middleware\MiddlewareFactory;
+use Namelivia\TravelPerk\Api\TravelPerk;
 
 class ServiceProvider
 {
@@ -20,22 +21,22 @@ class ServiceProvider
         string $redirectUrl,
         array $scopes,
         bool $isSandbox
-    ) {
+    ) : TravelPerk {
         $config = new Config($clientId, $clientSecret, $redirectUrl);
         $authorizator = new Authorizator($config, $tokenPersistence, $scopes);
         $middlewareFactory = new MiddlewareFactory($config, $tokenPersistence);
         $middlewareFactory->createOAuthMiddleware();
         $client = new OAuth2Client($middlewareFactory, $authorizator);
 
-        return new \Namelivia\TravelPerk\Api\TravelPerk($client, $isSandbox);
+        return new TravelPerk($client, $isSandbox);
     }
 
     public function build(
         string $apiKey,
         bool $isSandbox
-    ) {
+    ): TravelPerk {
         $client = new Client($apiKey);
 
-        return new \Namelivia\TravelPerk\Api\TravelPerk($client, $isSandbox);
+        return new TravelPerk($client, $isSandbox);
     }
 }

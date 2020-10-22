@@ -19,7 +19,7 @@ class Gender extends BasicEnum
         $this->status = $status;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->status;
     }

@@ -12,7 +12,7 @@ abstract class BasicEnum
     private static $constCacheArray = null;
     private static $className = null;
 
-    private static function getConstants()
+    private static function getConstants(): array
     {
         if (self::$constCacheArray == null) {
             self::$constCacheArray = [];
@@ -26,12 +26,12 @@ abstract class BasicEnum
         return self::$constCacheArray[$calledClass];
     }
 
-    public static function getConstantValues()
+    public static function getConstantValues(): array
     {
         return array_values(self::getConstants());
     }
 
-    protected static function checkValidity($value)
+    protected static function checkValidity(string $value): void
     {
         $constants = self::getConstants();
         if (!in_array($value, $constants)) {

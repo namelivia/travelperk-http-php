@@ -19,7 +19,7 @@ class InvoiceProfiles
     /**
      * Query invoice profiles.
      */
-    public function query()
+    public function query(): InvoiceProfilesQuery
     {
         return new InvoiceProfilesQuery($this->travelPerk);
     }
@@ -27,7 +27,7 @@ class InvoiceProfiles
     /**
      * List all invoice profiles associated to this account.
      */
-    public function all(Pagination $pagination = null)
+    public function all(Pagination $pagination = null): object
     {
         $params = isset($pagination) ? '?'.$pagination->asUrlParam() : null;
 

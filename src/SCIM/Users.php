@@ -19,7 +19,7 @@ class Users
     /**
      * List all users associated to this account.
      */
-    public function all(UsersInputParams $params = null)
+    public function all(UsersInputParams $params = null): object
     {
         $params = isset($params) ? '?'.$params->asUrlParam() : null;
 
@@ -29,7 +29,7 @@ class Users
     /**
      * Query users.
      */
-    public function query()
+    public function query(): UsersQuery
     {
         return new UsersQuery($this->travelPerk);
     }
@@ -37,7 +37,7 @@ class Users
     /**
      * Retrieve a user from TravelPerk.
      */
-    public function get(int $id)
+    public function get(int $id): object
     {
         return $this->travelPerk->getJson(implode('/', ['scim', 'Users', $id]));
     }
@@ -45,7 +45,7 @@ class Users
     /**
      * Deletes a user from TravelPerk.
      */
-    public function delete(int $id)
+    public function delete(int $id): string
     {
         return $this->travelPerk->delete(implode('/', ['scim', 'Users', $id]));
     }
@@ -58,7 +58,7 @@ class Users
         bool $active,
         string $givenName,
         string $familyName
-    ) {
+    ): CreateUserQuery {
         $name = new NameInputParams($givenName, $familyName);
 
         return new CreateUserQuery($this->travelPerk, $username, $active, $name);
@@ -72,7 +72,7 @@ class Users
         bool $active,
         string $givenName,
         string $familyName
-    ) {
+    ): object {
         $name = new NameInputParams($givenName, $familyName);
         $params = new CreateUserInputParams($username, $active, $name);
 
@@ -82,7 +82,7 @@ class Users
     /**
      * Update an existing user in TravelPerk.
      */
-    public function update(int $id, UpdateUserInputParams $params)
+    public function update(int $id, UpdateUserInputParams $params): string
     {
         throw new NotImplementedException('https://github.com/namelivia/travelperk-http-php/issues/7');
 
@@ -92,7 +92,7 @@ class Users
     /**
      * Replace an existing user in TravelPerk.
      */
-    public function replace(int $id, ReplaceUserInputParams $params)
+    public function replace(int $id, ReplaceUserInputParams $params): object
     {
         return $this->travelPerk->putJson(implode('/', ['scim', 'Users', $id]), $params->asArray());
     }
@@ -106,7 +106,7 @@ class Users
         bool $active,
         string $givenName,
         string $familyName
-    ) {
+    ): ModifyUserRequest {
         $name = new NameInputParams($givenName, $familyName);
 
         return new ModifyUserRequest($id, $this->travelPerk, $username, $active, $name);
@@ -115,7 +115,7 @@ class Users
     /**
      * Get all genders.
      */
-    public function genders()
+    public function genders(): array
     {
         return Gender::getConstantValues();
     }
@@ -123,7 +123,7 @@ class Users
     /**
      * Get all languages.
      */
-    public function languages()
+    public function languages(): array
     {
         return Language::getConstantValues();
     }

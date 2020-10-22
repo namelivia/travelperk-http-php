@@ -17,12 +17,12 @@ class SCIM
         $this->users = new Users($travelPerk);
     }
 
-    public function discovery()
+    public function discovery(): Discovery
     {
         return $this->discovery;
     }
 
-    public function users()
+    public function users(): Users
     {
         return $this->users;
     }

@@ -15,7 +15,7 @@ class EmergencyContact
         $this->phone = $phone;
     }
 
-    public function asArray()
+    public function asArray(): array
     {
         return [
             'name'  => $this->name,

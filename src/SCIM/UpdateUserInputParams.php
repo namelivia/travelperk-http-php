@@ -10,28 +10,28 @@ class UpdateUserInputParams
     private $active;
     private $name;
 
-    public function setUserName(string $userName)
+    public function setUserName(string $userName): UpdateUserInputParams
     {
         $this->userName = $userName;
 
         return $this;
     }
 
-    public function setActive(bool $active)
+    public function setActive(bool $active): UpdateUserInputParams
     {
         $this->active = $active;
 
         return $this;
     }
 
-    public function setName(NameInputParams $name)
+    public function setName(NameInputParams $name): UpdateUserInputParams
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function asArray()
+    public function asArray(): array
     {
         return array_filter([
             'userName' => $this->userName,

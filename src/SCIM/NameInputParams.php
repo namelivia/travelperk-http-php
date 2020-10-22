@@ -17,21 +17,21 @@ class NameInputParams
         $this->familyName = $familyName;
     }
 
-    public function setHonorificPrefix(string $honorificPrefix)
+    public function setHonorificPrefix(string $honorificPrefix): NameInputParams
     {
         $this->honorificPrefix = $honorificPrefix;
 
         return $this;
     }
 
-    public function setMiddleName(string $middleName)
+    public function setMiddleName(string $middleName): NameInputParams
     {
         $this->middleName = $middleName;
 
         return $this;
     }
 
-    public function asArray()
+    public function asArray(): array
     {
         return array_filter([
             'givenName'       => $this->givenName,

@@ -15,7 +15,7 @@ class WebhooksAPI
         $this->webhooks = new Webhooks($travelPerk);
     }
 
-    public function webhooks()
+    public function webhooks(): Webhooks
     {
         return $this->webhooks;
     }

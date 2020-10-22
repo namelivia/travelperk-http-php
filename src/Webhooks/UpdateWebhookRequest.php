@@ -19,40 +19,40 @@ class UpdateWebhookRequest
         $this->travelPerk = $travelPerk;
     }
 
-    public function save()
+    public function save(): object
     {
         return $this->travelPerk->patchJson(implode('/', ['webhooks', $this->id]), $this->params->asArray());
     }
 
-    public function setName(string $name)
+    public function setName(string $name): UpdateWebhookRequest
     {
         $this->params->setName($name);
 
         return $this;
     }
 
-    public function setEnabled(bool $enabled)
+    public function setEnabled(bool $enabled): UpdateWebhookRequest
     {
         $this->params->setEnabled($enabled);
 
         return $this;
     }
 
-    public function setUrl(string $url)
+    public function setUrl(string $url): UpdateWebhookRequest
     {
         $this->params->setUrl($url);
 
         return $this;
     }
 
-    public function setSecret(string $secret)
+    public function setSecret(string $secret): UpdateWebhookRequest
     {
         $this->params->setSecret($secret);
 
         return $this;
     }
 
-    public function setEvents(string $events)
+    public function setEvents(string $events): UpdateWebhookRequest
     {
         $this->params->setEvents($events);
 

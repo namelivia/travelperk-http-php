@@ -18,12 +18,12 @@ class Expenses
         $this->invoices = new Invoices($travelPerk);
     }
 
-    public function invoiceProfiles()
+    public function invoiceProfiles(): InvoiceProfiles
     {
         return $this->invoiceProfiles;
     }
 
-    public function invoices()
+    public function invoices(): Invoices
     {
         return $this->invoices;
     }

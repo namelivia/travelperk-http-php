@@ -19,7 +19,7 @@ class Sorting extends BasicEnum
         $this->sorting = $sorting;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->sorting;
     }

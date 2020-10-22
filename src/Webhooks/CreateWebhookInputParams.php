@@ -17,7 +17,7 @@ class CreateWebhookInputParams
             ->setEvents($events);
     }
 
-    public function asArray()
+    public function asArray(): array
     {
         return $this->params->asArray();
     }

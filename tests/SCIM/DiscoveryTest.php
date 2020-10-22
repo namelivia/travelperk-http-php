@@ -25,9 +25,9 @@ class DiscoveryTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('scim/ServiceProviderConfig')
-            ->andReturn('serviceProviderConfig');
+            ->andReturn((object)['data' => 'serviceProviderConfig']);
         $this->assertEquals(
-            'serviceProviderConfig',
+            (object)['data' => 'serviceProviderConfig'],
             $this->discovery->serviceProviderConfig()
         );
     }
@@ -37,9 +37,9 @@ class DiscoveryTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('scim/ResourceTypes')
-            ->andReturn('resourceTypes');
+            ->andReturn((object)['data' => 'resourceTypes']);
         $this->assertEquals(
-            'resourceTypes',
+            (object)['data' => 'resourceTypes'],
             $this->discovery->resourceTypes()
         );
     }
@@ -49,9 +49,9 @@ class DiscoveryTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('scim/Schemas')
-            ->andReturn('schemas');
+            ->andReturn((object)['data' => 'schemas']);
         $this->assertEquals(
-            'schemas',
+            (object)['data' => 'schemas'],
             $this->discovery->schemas()
         );
     }
@@ -61,9 +61,9 @@ class DiscoveryTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User')
-            ->andReturn('userSchema');
+            ->andReturn((object)['data' => 'userSchema']);
         $this->assertEquals(
-            'userSchema',
+            (object)['data' => 'userSchema'],
             $this->discovery->userSchema()
         );
     }
@@ -73,9 +73,9 @@ class DiscoveryTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('scim/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User')
-            ->andReturn('enterpriseUserSchema');
+            ->andReturn((object)['data' => 'enterpriseUserSchema']);
         $this->assertEquals(
-            'enterpriseUserSchema',
+            (object)['data' => 'enterpriseUserSchema'],
             $this->discovery->enterpriseUserSchema()
         );
     }

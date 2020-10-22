@@ -9,21 +9,21 @@ class InvoiceProfilesInputParams
     private $offset;
     private $limit;
 
-    public function setOffset(int $offset)
+    public function setOffset(int $offset): InvoiceProfilesInputParams
     {
         $this->offset = $offset;
 
         return $this;
     }
 
-    public function setLimit(int $limit)
+    public function setLimit(int $limit): InvoiceProfilesInputParams
     {
         $this->limit = $limit;
 
         return $this;
     }
 
-    public function asUrlParam()
+    public function asUrlParam(): string
     {
         return http_build_query([
             'offset' => $this->offset,

@@ -19,7 +19,7 @@ class Discovery
      * Returns TravelPerk's configuration details for our SCIM API,
      * including which operations are supported.
      */
-    public function serviceProviderConfig()
+    public function serviceProviderConfig(): object
     {
         return $this->travelPerk->getJson(implode('/', ['scim', 'ServiceProviderConfig']));
     }
@@ -27,7 +27,7 @@ class Discovery
     /**
      * Returns all available resources types for our SCIM API.
      */
-    public function resourceTypes()
+    public function resourceTypes(): object
     {
         return $this->travelPerk->getJson(implode('/', ['scim', 'ResourceTypes']));
     }
@@ -35,7 +35,7 @@ class Discovery
     /**
      * List all schemas and their attributes.
      */
-    public function schemas()
+    public function schemas(): object
     {
         return $this->travelPerk->getJson(implode('/', ['scim', 'Schemas']));
     }
@@ -43,7 +43,7 @@ class Discovery
     /**
      * List all attributes for the User schema.
      */
-    public function userSchema()
+    public function userSchema(): object
     {
         return $this->travelPerk->getJson(implode('/', ['scim', 'Schemas', 'urn:ietf:params:scim:schemas:core:2.0:User']));
     }
@@ -51,7 +51,7 @@ class Discovery
     /**
      * List all attributes for the Enterprise User schema.
      */
-    public function enterpriseUserSchema()
+    public function enterpriseUserSchema(): object
     {
         return $this->travelPerk->getJson(implode('/', ['scim', 'Schemas', 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User']));
     }
