@@ -21,7 +21,7 @@ class BillingPeriod extends BasicEnum
         $this->billingPeriod = $billingPeriod;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->billingPeriod;
     }

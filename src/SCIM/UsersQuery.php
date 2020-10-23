@@ -16,28 +16,28 @@ class UsersQuery
         $this->travelPerk = $travelPerk;
     }
 
-    public function setCount(int $count)
+    public function setCount(int $count): UsersQuery
     {
         $this->params->setCount($count);
 
         return $this;
     }
 
-    public function setStartIndex(int $startIndex)
+    public function setStartIndex(int $startIndex): UsersQuery
     {
         $this->params->setStartIndex($startIndex);
 
         return $this;
     }
 
-    public function setFilter(string $filter)
+    public function setFilter(string $filter): UsersQuery
     {
         $this->params->setFilter($filter);
 
         return $this;
     }
 
-    public function get()
+    public function get(): object
     {
         return $this->travelPerk->getJson(
             implode('/', ['scim', 'Users']).'?'.$this->params->asUrlParam()

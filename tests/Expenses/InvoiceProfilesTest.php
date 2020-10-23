@@ -26,9 +26,9 @@ class InvoiceProfilesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('profiles')
-            ->andReturn('allInvoiceProfiles');
+            ->andReturn((object) ['data' => 'allInvoiceProfiles']);
         $this->assertEquals(
-            'allInvoiceProfiles',
+            (object) ['data' => 'allInvoiceProfiles'],
             $this->invoiceProfiles->all()
         );
     }
@@ -38,9 +38,9 @@ class InvoiceProfilesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('profiles?offset=20&limit=30')
-            ->andReturn('allInvoiceProfiles');
+            ->andReturn((object) ['data' => 'allInvoiceProfiles']);
         $this->assertEquals(
-            'allInvoiceProfiles',
+            (object) ['data' => 'allInvoiceProfiles'],
             $this->invoiceProfiles->all(new Pagination(20, 30))
         );
     }
@@ -50,9 +50,9 @@ class InvoiceProfilesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('profiles?offset=30&limit=20')
-            ->andReturn('allInvoiceProfiles');
+            ->andReturn((object) ['data' => 'allInvoiceProfiles']);
         $this->assertEquals(
-            'allInvoiceProfiles',
+            (object) ['data' => 'allInvoiceProfiles'],
             $this->invoiceProfiles->query()->setLimit(20)->setOffset(30)->get()
         );
     }

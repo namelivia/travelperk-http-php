@@ -26,9 +26,9 @@ class WebhooksTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('webhooks/events')
-            ->andReturn('allEvents');
+            ->andReturn((object) ['data' => 'allEvents']);
         $this->assertEquals(
-            'allEvents',
+            (object) ['data' => 'allEvents'],
             $this->webhooks->events()
         );
     }
@@ -38,9 +38,9 @@ class WebhooksTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('webhooks')
-            ->andReturn('allWebhooks');
+            ->andReturn((object) ['data' => 'allWebhooks']);
         $this->assertEquals(
-            'allWebhooks',
+            (object) ['data' => 'allWebhooks'],
             $this->webhooks->all()
         );
     }
@@ -51,9 +51,9 @@ class WebhooksTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('webhooks/1a')
-            ->andReturn('webhookDetails');
+            ->andReturn((object) ['data' => 'webhookDetails']);
         $this->assertEquals(
-            'webhookDetails',
+            (object) ['data' => 'webhookDetails'],
             $this->webhooks->get($webhookId)
         );
     }
@@ -94,9 +94,9 @@ class WebhooksTest extends TestCase
                 'secret' => 'secret',
                 'events' => ['event1', 'event2'],
             ])
-            ->andReturn('webhookCreated');
+            ->andReturn((object) ['data' => 'webhookCreated']);
         $this->assertEquals(
-            'webhookCreated',
+            (object) ['data' => 'webhookCreated'],
             $this->webhooks->create(
                 'name',
                 'url',
@@ -117,9 +117,9 @@ class WebhooksTest extends TestCase
         $this->travelPerk->shouldReceive('patchJson')
             ->once()
             ->with('webhooks/1a', ['params'])
-            ->andReturn('webhookUpdated');
+            ->andReturn((object) ['data' => 'webhookUpdated']);
         $this->assertEquals(
-            'webhookUpdated',
+            (object) ['data' => 'webhookUpdated'],
             $this->webhooks->update($id, $webhookData)
         );
     }
@@ -130,9 +130,9 @@ class WebhooksTest extends TestCase
         $this->travelPerk->shouldReceive('patchJson')
             ->once()
             ->with('webhooks/1a', ['name' => 'newName', 'enabled' => false])
-            ->andReturn('webhookUpdated');
+            ->andReturn((object) ['data' => 'webhookUpdated']);
         $this->assertEquals(
-            'webhookUpdated',
+            (object) ['data' => 'webhookUpdated'],
             $this->webhooks->modify($id)->setName('newName')->setEnabled(false)->save()
         );
     }

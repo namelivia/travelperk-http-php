@@ -27,9 +27,9 @@ class InvoicesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices')
-            ->andReturn('allInvoices');
+            ->andReturn((object) ['data' => 'allInvoices']);
         $this->assertEquals(
-            'allInvoices',
+            (object) ['data' => 'allInvoices'],
             $this->invoices->all()
         );
     }
@@ -39,12 +39,12 @@ class InvoicesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices?offset=5&limit=10')
-            ->andReturn('allInvoices');
+            ->andReturn((object) ['data' => 'allInvoices']);
         $params = (new InvoicesInputParams())
             ->setOffset(5)
             ->setLimit(10);
         $this->assertEquals(
-            'allInvoices',
+            (object) ['data' => 'allInvoices'],
             $this->invoices->all($params)
         );
     }
@@ -54,9 +54,9 @@ class InvoicesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices?offset=5&limit=10')
-            ->andReturn('allInvoices');
+            ->andReturn((object) ['data' => 'allInvoices']);
         $this->assertEquals(
-            'allInvoices',
+            (object) ['data' => 'allInvoices'],
             $this->invoices->query()
                  ->setOffset(5)
                  ->setLimit(10)
@@ -69,9 +69,9 @@ class InvoicesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices/serialNumber')
-            ->andReturn('invoiceDetail');
+            ->andReturn((object) ['data' => 'invoiceDetail']);
         $this->assertEquals(
-            'invoiceDetail',
+            (object) ['data' => 'invoiceDetail'],
             $this->invoices->get('serialNumber')
         );
     }
@@ -93,12 +93,12 @@ class InvoicesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices/lines?offset=5&limit=10')
-            ->andReturn('invoiceLines');
+            ->andReturn((object) ['data' => 'invoiceLines']);
         $params = (new InvoiceLinesInputParams())
             ->setOffset(5)
             ->setLimit(10);
         $this->assertEquals(
-            'invoiceLines',
+            (object) ['data' => 'invoiceLines'],
             $this->invoices->lines($params)
         );
     }
@@ -108,9 +108,9 @@ class InvoicesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices/lines?offset=5&limit=10')
-            ->andReturn('invoiceLines');
+            ->andReturn((object) ['data' => 'invoiceLines']);
         $this->assertEquals(
-            'invoiceLines',
+            (object) ['data' => 'invoiceLines'],
             $this->invoices->linesQuery()
                 ->setOffset(5)
                 ->setLimit(10)
@@ -123,9 +123,9 @@ class InvoicesTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('invoices/lines')
-            ->andReturn('invoiceLines');
+            ->andReturn((object) ['data' => 'invoiceLines']);
         $this->assertEquals(
-            'invoiceLines',
+            (object) ['data' => 'invoiceLines'],
             $this->invoices->lines()
         );
     }

@@ -31,19 +31,19 @@ class Client extends OAuthClient
         ]);
     }
 
-    public function getAuthUri(string $targetLinkUri)
+    public function getAuthUri(string $targetLinkUri): string
     {
         return $this->authorizator->getAuthUri($targetLinkUri);
     }
 
-    private function checkAuthorized()
+    private function checkAuthorized(): void
     {
         if (!$this->authorizator->isAuthorized()) {
             throw new MissingCodeException('No auth code or token');
         }
     }
 
-    public function setAuthorizationCode(string $code)
+    public function setAuthorizationCode(string $code): Client
     {
         $this->authorizator->setAuthorizationCode($code);
         $this->middlewareFactory->recreateOAuthMiddleware();

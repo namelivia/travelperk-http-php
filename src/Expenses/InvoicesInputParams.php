@@ -23,105 +23,105 @@ class InvoicesInputParams
     private $limit;
     private $sort;
 
-    public function setProfileId(array $profileId)
+    public function setProfileId(array $profileId): InvoicesInputParams
     {
         $this->profileId = $profileId;
 
         return $this;
     }
 
-    public function setSerialNumber(array $serialNumber)
+    public function setSerialNumber(array $serialNumber): InvoicesInputParams
     {
         $this->serialNumber = $serialNumber;
 
         return $this;
     }
 
-    public function setSerialContains(string $serialNumberContains)
+    public function setSerialContains(string $serialNumberContains): InvoicesInputParams
     {
         $this->serialNumberContains = $serialNumberContains;
 
         return $this;
     }
 
-    public function setBillingPeriod(string $billingPeriod)
+    public function setBillingPeriod(string $billingPeriod): InvoicesInputParams
     {
         $this->billingPeriod = new BillingPeriod($billingPeriod);
 
         return $this;
     }
 
-    public function setTravelperkBankAccountNumber(string $accountNumber)
+    public function setTravelperkBankAccountNumber(string $accountNumber): InvoicesInputParams
     {
         $this->accountNumber = $accountNumber;
 
         return $this;
     }
 
-    public function setCustomerCountryName(string $customerCountryName)
+    public function setCustomerCountryName(string $customerCountryName): InvoicesInputParams
     {
         $this->customerCountryName = $customerCountryName;
 
         return $this;
     }
 
-    public function setStatus(string $status)
+    public function setStatus(string $status): InvoicesInputParams
     {
         $this->status = new Status($status);
 
         return $this;
     }
 
-    public function setIssuingDateGte(Carbon $issuingDateGte)
+    public function setIssuingDateGte(Carbon $issuingDateGte): InvoicesInputParams
     {
         $this->issuingDateGte = $issuingDateGte;
 
         return $this;
     }
 
-    public function setIssuingDateLte(Carbon $issuingDateLte)
+    public function setIssuingDateLte(Carbon $issuingDateLte): InvoicesInputParams
     {
         $this->issuingDateLte = $issuingDateLte;
 
         return $this;
     }
 
-    public function setDueDateGte(Carbon $dueDateGte)
+    public function setDueDateGte(Carbon $dueDateGte): InvoicesInputParams
     {
         $this->dueDateGte = $dueDateGte;
 
         return $this;
     }
 
-    public function setDueDateLte(Carbon $dueDateLte)
+    public function setDueDateLte(Carbon $dueDateLte): InvoicesInputParams
     {
         $this->dueDateLte = $dueDateLte;
 
         return $this;
     }
 
-    public function setSort(string $sort)
+    public function setSort(string $sort): InvoicesInputParams
     {
         $this->sort = new Sorting($sort);
 
         return $this;
     }
 
-    public function setOffset(int $offset)
+    public function setOffset(int $offset): InvoicesInputParams
     {
         $this->offset = $offset;
 
         return $this;
     }
 
-    public function setLimit(int $limit)
+    public function setLimit(int $limit): InvoicesInputParams
     {
         $this->limit = $limit;
 
         return $this;
     }
 
-    public function asUrlParam()
+    public function asUrlParam(): string
     {
         return http_build_query([
             'profile_id'                     => isset($this->profileId) ? implode(',', $this->profileId) : null,

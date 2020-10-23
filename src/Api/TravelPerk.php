@@ -26,12 +26,12 @@ class TravelPerk
         $this->baseUrl = $isSandbox ? TravelPerk::SANDBOX_BASE_URL : TravelPerk::BASE_URL;
     }
 
-    public function getAuthUri(string $targetLinkUri)
+    public function getAuthUri(string $targetLinkUri): string
     {
         return $this->client->getAuthUri($targetLinkUri);
     }
 
-    public function getJson($url)
+    public function getJson($url): object
     {
         return json_decode(
             $this->client->get(
@@ -40,14 +40,14 @@ class TravelPerk
         );
     }
 
-    public function get($url)
+    public function get($url): string
     {
         return $this->client->get(
             $this->baseUrl.$url
         )->getBody()->getContents();
     }
 
-    public function post($url, array $params)
+    public function post($url, array $params): string
     {
         return $this->client->post(
             $this->baseUrl.$url,
@@ -55,7 +55,7 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
-    public function postJson($url, array $params)
+    public function postJson($url, array $params): object
     {
         return json_decode($this->client->post(
             $this->baseUrl.$url,
@@ -63,7 +63,7 @@ class TravelPerk
         )->getBody()->getContents());
     }
 
-    public function patch($url, array $params)
+    public function patch($url, array $params): string
     {
         return $this->client->patch(
             $this->baseUrl.$url,
@@ -71,7 +71,7 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
-    public function patchJson($url, array $params)
+    public function patchJson($url, array $params): object
     {
         return json_decode($this->client->patch(
             $this->baseUrl.$url,
@@ -79,7 +79,7 @@ class TravelPerk
         )->getBody()->getContents());
     }
 
-    public function putJson($url, array $params)
+    public function putJson($url, array $params): object
     {
         return json_decode($this->client->put(
             $this->baseUrl.$url,
@@ -87,31 +87,31 @@ class TravelPerk
         )->getBody()->getContents());
     }
 
-    public function delete($url)
+    public function delete($url): string
     {
         return $this->client->delete(
             $this->baseUrl.$url
         )->getBody()->getContents();
     }
 
-    public function setAuthorizationCode(string $authorizationCode)
+    public function setAuthorizationCode(string $authorizationCode): TravelPerk
     {
         $this->client->setAuthorizationCode($authorizationCode);
 
         return $this;
     }
 
-    public function expenses()
+    public function expenses(): Expenses
     {
         return $this->expenses;
     }
 
-    public function scim()
+    public function scim(): SCIM
     {
         return $this->scim;
     }
 
-    public function webhooks()
+    public function webhooks(): WebhooksAPI
     {
         return $this->webhooks;
     }

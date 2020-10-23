@@ -18,7 +18,7 @@ class Invoices
     /**
      * List all invoices (Will be removed, use query instead).
      */
-    public function all(InvoicesInputParams $params = null)
+    public function all(InvoicesInputParams $params = null): object
     {
         $params = isset($params) ? '?'.$params->asUrlParam() : null;
 
@@ -28,7 +28,7 @@ class Invoices
     /**
      * Query invoices.
      */
-    public function query()
+    public function query(): InvoicesQuery
     {
         return new InvoicesQuery($this->travelPerk);
     }
@@ -36,7 +36,7 @@ class Invoices
     /**
      * Get invoice detail.
      */
-    public function get(string $serialNumber)
+    public function get(string $serialNumber): object
     {
         return $this->travelPerk->getJson(implode('/', ['invoices', $serialNumber]));
     }
@@ -44,7 +44,7 @@ class Invoices
     /**
      * Get invoice in PDF format.
      */
-    public function pdf(string $serialNumber)
+    public function pdf(string $serialNumber): string
     {
         return $this->travelPerk->get(implode('/', ['invoices', $serialNumber, 'pdf']));
     }
@@ -52,7 +52,7 @@ class Invoices
     /**
      * Get list of invoices lines.
      */
-    public function lines(InvoiceLinesInputParams $params = null)
+    public function lines(InvoiceLinesInputParams $params = null): object
     {
         $params = isset($params) ? '?'.$params->asUrlParam() : null;
 
@@ -62,7 +62,7 @@ class Invoices
     /**
      * Query the invoices lines.
      */
-    public function linesQuery()
+    public function linesQuery(): InvoiceLinesQuery
     {
         return new InvoiceLinesQuery($this->travelPerk);
     }
@@ -70,7 +70,7 @@ class Invoices
     /**
      * Get all billing periods.
      */
-    public function billingPeriods()
+    public function billingPeriods(): array
     {
         return BillingPeriod::getConstantValues();
     }
@@ -78,7 +78,7 @@ class Invoices
     /**
      * Get all statuses.
      */
-    public function statuses()
+    public function statuses(): array
     {
         return Status::getConstantValues();
     }
@@ -86,7 +86,7 @@ class Invoices
     /**
      * Get all sorting values.
      */
-    public function sorting()
+    public function sorting(): array
     {
         return Sorting::getConstantValues();
     }

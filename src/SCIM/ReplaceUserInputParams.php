@@ -31,124 +31,124 @@ class ReplaceUserInputParams
         $this->name = $name;
     }
 
-    public function setLanguage(string $language)
+    public function setLanguage(string $language): ReplaceUserInputParams
     {
         $this->language = new Language($language);
 
         return $this;
     }
 
-    public function setLocale(string $locale)
+    public function setLocale(string $locale): ReplaceUserInputParams
     {
         $this->locale = $locale;
 
         return $this;
     }
 
-    public function setTitle(string $title)
+    public function setTitle(string $title): ReplaceUserInputParams
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function setExternalId(string $externalId)
+    public function setExternalId(string $externalId): ReplaceUserInputParams
     {
         $this->externalId = $externalId;
 
         return $this;
     }
 
-    public function setPhoneNumber(string $number)
+    public function setPhoneNumber(string $number): ReplaceUserInputParams
     {
         $this->phoneNumber = $number;
 
         return $this;
     }
 
-    public function setGender(string $gender)
+    public function setGender(string $gender): ReplaceUserInputParams
     {
         $this->gender = new Gender($gender);
 
         return $this;
     }
 
-    public function setDateOfBirth(Carbon $dateOfBirth)
+    public function setDateOfBirth(Carbon $dateOfBirth): ReplaceUserInputParams
     {
         $this->dateOfBirth = $dateOfBirth;
 
         return $this;
     }
 
-    public function setTravelPolicy(string $travelPolicy)
+    public function setTravelPolicy(string $travelPolicy): ReplaceUserInputParams
     {
         $this->travelPolicy = $travelPolicy;
 
         return $this;
     }
 
-    public function setEmergencyContact(EmergencyContact $emergencyContact)
+    public function setEmergencyContact(EmergencyContact $emergencyContact): ReplaceUserInputParams
     {
         $this->emergencyContact = $emergencyContact;
 
         return $this;
     }
 
-    public function setInvoiceProfiles(array $invoiceProfiles)
+    public function setInvoiceProfiles(array $invoiceProfiles): ReplaceUserInputParams
     {
         $this->invoiceProfiles = new InvoiceProfiles($invoiceProfiles);
 
         return $this;
     }
 
-    public function setCostCenter(string $costCenter)
+    public function setCostCenter(string $costCenter): ReplaceUserInputParams
     {
         $this->costCenter = $costCenter;
 
         return $this;
     }
 
-    public function setManager(string $manager)
+    public function setManager(string $manager): ReplaceUserInputParams
     {
         $this->manager = $manager;
 
         return $this;
     }
 
-    public function setHonorificPrefix(string $honorificPrefix)
+    public function setHonorificPrefix(string $honorificPrefix): ReplaceUserInputParams
     {
         $this->name->setHonorificPrefix($honorificPrefix);
 
         return $this;
     }
 
-    public function setMiddleName(string $middleName)
+    public function setMiddleName(string $middleName): ReplaceUserInputParams
     {
         $this->name->setMiddleName($middleName);
 
         return $this;
     }
 
-    private function hasCustomUserData()
+    private function hasCustomUserData(): bool
     {
-        return array_filter([
+        return !empty(array_filter([
             $this->gender,
             $this->dateOfBirth,
             $this->travelPolicy,
             empty($this->invoicesProfiles) ? null : $this->invoicesProfiles,
             $this->emergencyContact,
-        ]);
+        ]));
     }
 
-    private function hasEnterpriseData()
+    private function hasEnterpriseData(): bool
     {
-        return array_filter([
+        return !empty(array_filter([
             $this->costCenter,
             $this->manager,
-        ]);
+        ]));
     }
 
-    public function asArray()
+    public function asArray(): array
     {
         $data = array_filter([
             'userName'          => $this->userName,

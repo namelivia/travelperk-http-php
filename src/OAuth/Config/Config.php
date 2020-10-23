@@ -22,27 +22,29 @@ class Config
         $this->redirectUrl = $redirectUrl;
     }
 
-    public function getClientId()
+    public function getClientId(): string
     {
         return $this->clientId;
     }
 
-    public function getRedirectUrl()
+    public function getRedirectUrl(): string
     {
         return $this->redirectUrl;
     }
 
-    public function setCode(string $code)
+    public function setCode(string $code): Config
     {
-        return $this->code = $code;
+        $this->code = $code;
+
+        return $this;
     }
 
-    public function hasCode()
+    public function hasCode(): bool
     {
         return !is_null($this->code);
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'code'          => $this->code,

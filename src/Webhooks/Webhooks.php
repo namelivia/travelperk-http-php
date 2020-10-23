@@ -18,7 +18,7 @@ class Webhooks
     /**
      * List all events you can subscribe to.
      */
-    public function events()
+    public function events(): object
     {
         return $this->travelPerk->getJson(implode('/', ['webhooks', 'events']));
     }
@@ -26,7 +26,7 @@ class Webhooks
     /**
      * List all webhook subscriptions.
      */
-    public function all()
+    public function all(): object
     {
         return $this->travelPerk->getJson(implode('/', ['webhooks']));
     }
@@ -34,7 +34,7 @@ class Webhooks
     /**
      * Get details for a specific webhook endpoint.
      */
-    public function get(string $id)
+    public function get(string $id): object
     {
         return $this->travelPerk->getJson(implode('/', ['webhooks', $id]));
     }
@@ -42,7 +42,7 @@ class Webhooks
     /**
      * Create a webhook endpoint.
      */
-    public function create(string $name, string $url, string $secret, array $events)
+    public function create(string $name, string $url, string $secret, array $events): object
     {
         $params = new CreateWebhookInputParams($name, $url, $secret, $events);
 
@@ -52,7 +52,7 @@ class Webhooks
     /**
      * Updates the webhook endpoint. (Will be removed, use modify instead).
      */
-    public function update(string $id, UpdateWebhookInputParams $params)
+    public function update(string $id, UpdateWebhookInputParams $params): object
     {
         return $this->travelPerk->patchJson(implode('/', ['webhooks', $id]), $params->asArray());
     }
@@ -60,7 +60,7 @@ class Webhooks
     /**
      * Update the webhook endpoint.
      */
-    public function modify(string $id)
+    public function modify(string $id): UpdateWebhookRequest
     {
         return new UpdateWebhookRequest($id, $this->travelPerk);
     }
@@ -68,7 +68,7 @@ class Webhooks
     /**
      * Performs a webhook test call.
      */
-    public function test(string $id)
+    public function test(string $id): string
     {
         return $this->travelPerk->post(implode('/', ['webhooks', $id, 'test']), []);
     }
@@ -76,7 +76,7 @@ class Webhooks
     /**
      * Deletes a webhook endpoint.
      */
-    public function delete(string $id)
+    public function delete(string $id): string
     {
         return $this->travelPerk->delete(implode('/', ['webhooks', $id]));
     }

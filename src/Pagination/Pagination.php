@@ -15,7 +15,7 @@ class Pagination
         $this->limit = $limit;
     }
 
-    public function asUrlParam()
+    public function asUrlParam(): string
     {
         return http_build_query([
             'offset' => $this->offset,

@@ -12,42 +12,42 @@ class UpdateWebhookInputParams
     private $enabled;
     private $events;
 
-    public function setName(string $name)
+    public function setName(string $name): UpdateWebhookInputParams
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function setEnabled(bool $enabled)
+    public function setEnabled(bool $enabled): UpdateWebhookInputParams
     {
         $this->enabled = $enabled;
 
         return $this;
     }
 
-    public function setUrl(string $url)
+    public function setUrl(string $url): UpdateWebhookInputParams
     {
         $this->url = $url;
 
         return $this;
     }
 
-    public function setSecret(string $secret)
+    public function setSecret(string $secret): UpdateWebhookInputParams
     {
         $this->secret = $secret;
 
         return $this;
     }
 
-    public function setEvents(array $events)
+    public function setEvents(array $events): UpdateWebhookInputParams
     {
         $this->events = $events;
 
         return $this;
     }
 
-    public function asArray()
+    public function asArray(): array
     {
         return array_filter([
             'name'    => $this->name,
