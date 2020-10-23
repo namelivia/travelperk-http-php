@@ -28,9 +28,9 @@ class UsersTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('scim/Users')
-            ->andReturn((object)['data' => 'allUsers']);
+            ->andReturn((object) ['data' => 'allUsers']);
         $this->assertEquals(
-            (object)['data' => 'allUsers'],
+            (object) ['data' => 'allUsers'],
             $this->users->all()
         );
     }
@@ -40,12 +40,12 @@ class UsersTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('scim/Users?count=5&startIndex=3')
-            ->andReturn((object)['data' => 'allUsers']);
+            ->andReturn((object) ['data' => 'allUsers']);
         $params = (new UsersInputParams())
             ->setCount(5)
             ->setStartIndex(3);
         $this->assertEquals(
-            (object)['data' => 'allUsers'],
+            (object) ['data' => 'allUsers'],
             $this->users->all($params)
         );
     }
@@ -55,9 +55,9 @@ class UsersTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('scim/Users?count=5&startIndex=3')
-            ->andReturn((object)['data' => 'allUsers']);
+            ->andReturn((object) ['data' => 'allUsers']);
         $this->assertEquals(
-            (object)['data' => 'allUsers'],
+            (object) ['data' => 'allUsers'],
             $this->users->query()
             ->setCount(5)
             ->setStartIndex(3)
@@ -70,9 +70,9 @@ class UsersTest extends TestCase
         $this->travelPerk->shouldReceive('getJson')
             ->once()
             ->with('scim/Users/1')
-            ->andReturn((object)['data' => 'userDetail']);
+            ->andReturn((object) ['data' => 'userDetail']);
         $this->assertEquals(
-            (object)['data' => 'userDetail'],
+            (object) ['data' => 'userDetail'],
             $this->users->get(1)
         );
     }
@@ -104,9 +104,9 @@ class UsersTest extends TestCase
                 'locale' => 'en',
                 'title'  => 'manager',
             ])
-            ->andReturn((object)['data' => 'userCreated']);
+            ->andReturn((object) ['data' => 'userCreated']);
         $this->assertEquals(
-            (object)['data' => 'userCreated'],
+            (object) ['data' => 'userCreated'],
             $this->users->make(
                 'testuser@test.com',
                 true,
@@ -128,9 +128,9 @@ class UsersTest extends TestCase
                 ],
                 'active' => true,
             ])
-            ->andReturn((object)['data' => 'userCreated']);
+            ->andReturn((object) ['data' => 'userCreated']);
         $this->assertEquals(
-            (object)['data' => 'userCreated'],
+            (object) ['data' => 'userCreated'],
             $this->users->create(
                 'testuser@test.com',
                 true,
@@ -164,9 +164,9 @@ class UsersTest extends TestCase
                 'active' => true,
                 'title'  => 'manager',
             ])
-            ->andReturn((object)['data' => 'userReplaced']);
+            ->andReturn((object) ['data' => 'userReplaced']);
         $this->assertEquals(
-            (object)['data' => 'userReplaced'],
+            (object) ['data' => 'userReplaced'],
             $this->users->modify(
                 $userId,
                 'testuser@test.com',
