@@ -44,7 +44,8 @@ class MiddlewareFactory
         return $middleware;
     }
 
-    public function recreateOAuthMiddleware(): Middleware {
+    public function recreateOAuthMiddleware(): Middleware
+    {
         $this->stack->remove('oauth');
         $middleware = $this->getOAuthMiddleware();
         //Force the retrieval of an access token on creation so it gets persisted

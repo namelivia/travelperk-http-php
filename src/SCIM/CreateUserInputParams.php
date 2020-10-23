@@ -31,98 +31,98 @@ class CreateUserInputParams
         $this->name = $name;
     }
 
-    public function setLanguage(string $language):CreateUserInputParams
+    public function setLanguage(string $language): CreateUserInputParams
     {
         $this->language = new Language($language);
 
         return $this;
     }
 
-    public function setLocale(string $locale):CreateUserInputParams
+    public function setLocale(string $locale): CreateUserInputParams
     {
         $this->locale = $locale;
 
         return $this;
     }
 
-    public function setTitle(string $title) :CreateUserInputParams
+    public function setTitle(string $title): CreateUserInputParams
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function setExternalId(string $externalId) :CreateUserInputParams
+    public function setExternalId(string $externalId): CreateUserInputParams
     {
         $this->externalId = $externalId;
 
         return $this;
     }
 
-    public function setPhoneNumber(string $number) :CreateUserInputParams
+    public function setPhoneNumber(string $number): CreateUserInputParams
     {
         $this->phoneNumber = $number;
 
         return $this;
     }
 
-    public function setGender(string $gender) :CreateUserInputParams
+    public function setGender(string $gender): CreateUserInputParams
     {
         $this->gender = new Gender($gender);
 
         return $this;
     }
 
-    public function setDateOfBirth(Carbon $dateOfBirth) :CreateUserInputParams
+    public function setDateOfBirth(Carbon $dateOfBirth): CreateUserInputParams
     {
         $this->dateOfBirth = $dateOfBirth;
 
         return $this;
     }
 
-    public function setTravelPolicy(string $travelPolicy) :CreateUserInputParams
+    public function setTravelPolicy(string $travelPolicy): CreateUserInputParams
     {
         $this->travelPolicy = $travelPolicy;
 
         return $this;
     }
 
-    public function setEmergencyContact(EmergencyContact $emergencyContact) :CreateUserInputParams
+    public function setEmergencyContact(EmergencyContact $emergencyContact): CreateUserInputParams
     {
         $this->emergencyContact = $emergencyContact;
 
         return $this;
     }
 
-    public function setInvoiceProfiles(array $invoiceProfiles) :CreateUserInputParams
+    public function setInvoiceProfiles(array $invoiceProfiles): CreateUserInputParams
     {
         $this->invoiceProfiles = new InvoiceProfiles($invoiceProfiles);
 
         return $this;
     }
 
-    public function setCostCenter(string $costCenter) :CreateUserInputParams
+    public function setCostCenter(string $costCenter): CreateUserInputParams
     {
         $this->costCenter = $costCenter;
 
         return $this;
     }
 
-    public function setManager(string $manager) :CreateUserInputParams
+    public function setManager(string $manager): CreateUserInputParams
     {
         $this->manager = $manager;
 
         return $this;
     }
 
-    public function setHonorificPrefix(string $honorificPrefix) :CreateUserInputParams
+    public function setHonorificPrefix(string $honorificPrefix): CreateUserInputParams
     {
         $this->name->setHonorificPrefix($honorificPrefix);
 
         return $this;
     }
 
-    public function setMiddleName(string $middleName) :CreateUserInputParams
+    public function setMiddleName(string $middleName): CreateUserInputParams
     {
         $this->name->setMiddleName($middleName);
 
@@ -148,7 +148,7 @@ class CreateUserInputParams
         ]));
     }
 
-    public function asArray() :array
+    public function asArray(): array
     {
         $data = array_filter([
             'userName'          => $this->userName,
