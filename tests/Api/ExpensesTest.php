@@ -7,6 +7,7 @@ namespace Namelivia\TravelPerk\Tests;
 use Mockery;
 use Namelivia\TravelPerk\Api\Expenses;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use JsonMapper\JsonMapper;
 
 class ExpensesTest extends TestCase
 {
@@ -17,7 +18,7 @@ class ExpensesTest extends TestCase
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);
-        $this->expenses = new Expenses($this->travelPerk);
+        $this->expenses = new Expenses($this->travelPerk, Mockery::mock(JsonMapper::class));
     }
 
     public function testGettingAnInvoiceProfilesInstance()

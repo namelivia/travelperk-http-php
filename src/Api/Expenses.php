@@ -6,16 +6,17 @@ namespace Namelivia\TravelPerk\Api;
 
 use Namelivia\TravelPerk\Expenses\InvoiceProfiles;
 use Namelivia\TravelPerk\Expenses\Invoices;
+use JsonMapper\JsonMapper;
 
 class Expenses
 {
     private $invoiceProfiles;
     private $invoices;
 
-    public function __construct(TravelPerk $travelPerk)
+    public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {
-        $this->invoiceProfiles = new InvoiceProfiles($travelPerk);
-        $this->invoices = new Invoices($travelPerk);
+        $this->invoiceProfiles = new InvoiceProfiles($travelPerk, $mapper);
+        $this->invoices = new Invoices($travelPerk, $mapper);
     }
 
     public function invoiceProfiles(): InvoiceProfiles

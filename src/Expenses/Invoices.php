@@ -5,14 +5,29 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Expenses;
 
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\Expenses\Types\Invoice;
+use JsonMapper\JsonMapper;
 
 class Invoices
 {
     private $travelPerk;
 
-    public function __construct(TravelPerk $travelPerk)
+    public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {
         $this->travelPerk = $travelPerk;
+        $this->mapper = $mapper;
+    }
+
+    //TODO: This is temporary
+    private function execute(string $method, array $url, string $class)
+    {
+        $result = new $class;
+        $response = $this->travelPerk->{$method}(implode('/', $url));
+        $this->mapper->mapObject(
+            json_decode($response),
+            $result
+        );
+        return $result;
     }
 
     /**
@@ -36,9 +51,9 @@ class Invoices
     /**
      * Get invoice detail.
      */
-    public function get(string $serialNumber): object
+    public function get(string $serialNumber): Invoice
     {
-        return $this->travelPerk->getJson(implode('/', ['invoices', $serialNumber]));
+        return $this->execute('get', ['invoices', $serialNumber], Invoice::class);
     }
 
     /**

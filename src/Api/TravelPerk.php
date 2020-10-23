@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Api;
 
 use GuzzleHttp\Client;
+use JsonMapper\JsonMapper;
 
 class TravelPerk
 {
@@ -16,13 +17,14 @@ class TravelPerk
     private $expenses;
     private $scim;
     private $webhooks;
+    private $mapper;
 
-    public function __construct(Client $client, bool $isSandbox)
+    public function __construct(Client $client, bool $isSandbox, JsonMapper $mapper)
     {
         $this->client = $client;
-        $this->expenses = new Expenses($this);
-        $this->scim = new SCIM($this);
-        $this->webhooks = new WebhooksAPI($this);
+        $this->expenses = new Expenses($this, $mapper);
+        $this->scim = new SCIM($this, $mapper);
+        $this->webhooks = new WebhooksAPI($this, $mapper);
         $this->baseUrl = $isSandbox ? TravelPerk::SANDBOX_BASE_URL : TravelPerk::BASE_URL;
     }
 

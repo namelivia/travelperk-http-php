@@ -8,6 +8,7 @@ use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Expenses\InvoiceProfiles;
 use Namelivia\TravelPerk\Pagination\Pagination;
+use JsonMapper\JsonMapper;
 
 class InvoiceProfilesTest extends TestCase
 {
@@ -18,7 +19,7 @@ class InvoiceProfilesTest extends TestCase
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);
-        $this->invoiceProfiles = new InvoiceProfiles($this->travelPerk);
+        $this->invoiceProfiles = new InvoiceProfiles($this->travelPerk, Mockery::mock(JsonMapper::class));
     }
 
     public function testGettingAllInvoiceProfilesNoPagination()

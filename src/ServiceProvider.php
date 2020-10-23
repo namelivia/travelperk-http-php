@@ -11,9 +11,20 @@ use Namelivia\TravelPerk\OAuth\Authorizator\Authorizator;
 use Namelivia\TravelPerk\OAuth\Client\Client as OAuth2Client;
 use Namelivia\TravelPerk\OAuth\Config\Config;
 use Namelivia\TravelPerk\OAuth\Middleware\MiddlewareFactory;
+use JsonMapper\JsonMapperFactory;
+use JsonMapper\Middleware\CaseConversion;
+use JsonMapper\Enums\TextNotation;
 
 class ServiceProvider
 {
+	private $mapper;
+
+	public function __construct()
+	{
+        $this->mapper = (new JsonMapperFactory())->default();
+        $this->mapper->push(new CaseConversion(TextNotation::UNDERSCORE(), TextNotation::CAMEL_CASE()));
+	}
+
     public function buildOAuth2(
         TokenPersistenceInterface $tokenPersistence,
         string $clientId,
@@ -28,7 +39,7 @@ class ServiceProvider
         $middlewareFactory->createOAuthMiddleware();
         $client = new OAuth2Client($middlewareFactory, $authorizator);
 
-        return new TravelPerk($client, $isSandbox);
+        return new TravelPerk($client, $isSandbox, $this->mapper);
     }
 
     public function build(
@@ -37,6 +48,6 @@ class ServiceProvider
     ): TravelPerk {
         $client = new Client($apiKey);
 
-        return new TravelPerk($client, $isSandbox);
+        return new TravelPerk($client, $isSandbox, $this->mapper);
     }
 }

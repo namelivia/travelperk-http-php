@@ -6,14 +6,16 @@ namespace Namelivia\TravelPerk\Expenses;
 
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Pagination\Pagination;
+use JsonMapper\JsonMapper;
 
 class InvoiceProfiles
 {
     private $travelPerk;
 
-    public function __construct(TravelPerk $travelPerk)
+    public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {
         $this->travelPerk = $travelPerk;
+        $this->mapper = $mapper;
     }
 
     /**

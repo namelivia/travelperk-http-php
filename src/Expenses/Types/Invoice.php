@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Namelivia\TravelPerk\Responses;
+namespace Namelivia\TravelPerk\Expenses\Types;
 
 class Invoice
 {
