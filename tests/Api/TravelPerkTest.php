@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
+use JsonMapper\JsonMapper;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Client\Client;
 use Psr\Http\Message\ResponseInterface;
-use JsonMapper\JsonMapper;
 
 class TravelPerkTest extends TestCase
 {

@@ -6,93 +6,93 @@ namespace Namelivia\TravelPerk\Expenses\Types;
 
 class Invoice
 {
-  /**
-   * @var string
-  */
-  public $serialNumber;
+    /**
+     * @var string
+     */
+    public $serialNumber;
 
-  /**
-   * @var string
-   */
-  public $profileId;
+    /**
+     * @var string
+     */
+    public $profileId;
 
-  /**
-   * @var string
-   */
-  public $profileName;
+    /**
+     * @var string
+     */
+    public $profileName;
 
-  /**
-   * @var BillingInformation
-   */
-  public $billingInformation;
+    /**
+     * @var BillingInformation
+     */
+    public $billingInformation;
 
-  /**
-   * @var string
-   */
-  public $mode;
+    /**
+     * @var string
+     */
+    public $mode;
 
-  /**
-   * @var string
-   */
-  public $status;
+    /**
+     * @var string
+     */
+    public $status;
 
-  /**
-   * @var string
-   */
-  public $issuingDate;
+    /**
+     * @var string
+     */
+    public $issuingDate;
 
-  /**
-   * @var string
-   */
-  public $billingPeriod;
+    /**
+     * @var string
+     */
+    public $billingPeriod;
 
-  /**
-   * @var string
-   */
-  public $fromDate;
+    /**
+     * @var string
+     */
+    public $fromDate;
 
-  /**
-   * @var string
-   */
-  public $toDate;
+    /**
+     * @var string
+     */
+    public $toDate;
 
-  /**
-   * @var string
-   */
-  public $dueDate;
+    /**
+     * @var string
+     */
+    public $dueDate;
 
-  /**
-   * @var string
-   */
-  public $currency;
+    /**
+     * @var string
+     */
+    public $currency;
 
-  /**
-   * @var string
-   */
-  public $total;
+    /**
+     * @var string
+     */
+    public $total;
 
-  /**
-   * @var Lines
-   */
-  public $lines;
+    /**
+     * @var Lines
+     */
+    public $lines;
 
-  /**
-   * @var TaxesSummary[]
-   */
-  public $taxesSummary;
+    /**
+     * @var TaxesSummary[]
+     */
+    public $taxesSummary;
 
-  /**
-   * @var string
-   */
-  public $reference;
+    /**
+     * @var string
+     */
+    public $reference;
 
-  /**
-   * @var TravelperkBankAccount
-   */
-  public $travelperkBankAccount;
+    /**
+     * @var TravelperkBankAccount
+     */
+    public $travelperkBankAccount;
 
-  /**
-   * @var string
-   */
-  public $pdf;
+    /**
+     * @var string
+     */
+    public $pdf;
 }

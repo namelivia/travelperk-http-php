@@ -6,9 +6,8 @@ namespace Namelivia\TravelPerk\Expenses\Types;
 
 class Metadata
 {
-
     /**
-     * @var integer
+     * @var int
      */
     public $tripId;
 
@@ -53,7 +52,7 @@ class Metadata
     public $vendor;
 
     /**
-     * @var boolean
+     * @var bool
      */
     public $outOfPolicy;
 
@@ -66,5 +65,4 @@ class Metadata
      * @var User
      */
     public $booker;
-
 }

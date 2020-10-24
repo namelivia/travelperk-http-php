@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk;
 
+use JsonMapper\Enums\TextNotation;
+use JsonMapper\JsonMapperFactory;
+use JsonMapper\Middleware\CaseConversion;
 use kamermans\OAuth2\Persistence\TokenPersistenceInterface;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Client\Client;
@@ -11,19 +14,16 @@ use Namelivia\TravelPerk\OAuth\Authorizator\Authorizator;
 use Namelivia\TravelPerk\OAuth\Client\Client as OAuth2Client;
 use Namelivia\TravelPerk\OAuth\Config\Config;
 use Namelivia\TravelPerk\OAuth\Middleware\MiddlewareFactory;
-use JsonMapper\JsonMapperFactory;
-use JsonMapper\Middleware\CaseConversion;
-use JsonMapper\Enums\TextNotation;
 
 class ServiceProvider
 {
-	private $mapper;
+    private $mapper;
 
-	public function __construct()
-	{
+    public function __construct()
+    {
         $this->mapper = (new JsonMapperFactory())->default();
         $this->mapper->push(new CaseConversion(TextNotation::UNDERSCORE(), TextNotation::CAMEL_CASE()));
-	}
+    }
 
     public function buildOAuth2(
         TokenPersistenceInterface $tokenPersistence,

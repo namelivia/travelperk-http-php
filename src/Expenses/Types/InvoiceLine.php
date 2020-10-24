@@ -17,7 +17,7 @@ class InvoiceLine
     public $description;
 
     /**
-     * @var integer
+     * @var int
      */
     public $quantity;
 

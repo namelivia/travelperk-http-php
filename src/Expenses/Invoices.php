@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Expenses;
 
+use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Expenses\Types\Invoice;
 use Namelivia\TravelPerk\Expenses\Types\InvoiceLinesPage;
 use Namelivia\TravelPerk\Expenses\Types\InvoicesPage;
-use JsonMapper\JsonMapper;
 
 class Invoices
 {
@@ -23,12 +23,13 @@ class Invoices
     //TODO: This is temporary
     private function execute(string $method, string $url, string $class)
     {
-        $result = new $class;
+        $result = new $class();
         $response = $this->travelPerk->{$method}($url);
         $this->mapper->mapObject(
             json_decode($response),
             $result
         );
+
         return $result;
     }
 
