@@ -6,7 +6,6 @@ namespace Namelivia\TravelPerk\Expenses\Types;
 
 class User
 {
-
     /**
      * @var string
      */
@@ -21,5 +20,4 @@ class User
      * @var string
      */
     public $externalId;
-
 }

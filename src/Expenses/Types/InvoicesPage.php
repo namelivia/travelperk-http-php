@@ -6,23 +6,23 @@ namespace Namelivia\TravelPerk\Expenses\Types;
 
 class InvoicesPage
 {
-  /**
-   * @var integer
-  */
-  public $offset;
+    /**
+     * @var int
+     */
+    public $offset;
 
-  /**
-   * @var integer
-   */
-  public $limit;
+    /**
+     * @var int
+     */
+    public $limit;
 
-  /**
-   * @var integer
-   */
-  public $total;
+    /**
+     * @var int
+     */
+    public $total;
 
-  /**
-   * @var Invoice[]
-   */
-  public $invoices;
+    /**
+     * @var Invoice[]
+     */
+    public $invoices;
 }

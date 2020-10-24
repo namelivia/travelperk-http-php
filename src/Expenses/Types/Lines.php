@@ -6,18 +6,18 @@ namespace Namelivia\TravelPerk\Expenses\Types;
 
 class Lines
 {
-  /**
-   * @var string
-   */
+    /**
+     * @var string
+     */
     public $total;
 
-  /**
-   * @var InvoiceLine[]
-   */
+    /**
+     * @var InvoiceLine[]
+     */
     public $data;
 
-  /**
-   * @var string
-   */
+    /**
+     * @var string
+     */
     public $next;
 }

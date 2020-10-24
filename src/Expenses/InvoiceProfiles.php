@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Expenses;
 
-use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Pagination\Pagination;
-use Namelivia\TravelPerk\Expenses\Types\InvoiceProfilesPage;
 use JsonMapper\JsonMapper;
+use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\Expenses\Types\InvoiceProfilesPage;
+use Namelivia\TravelPerk\Pagination\Pagination;
 
 class InvoiceProfiles
 {
@@ -22,12 +22,13 @@ class InvoiceProfiles
     //TODO: This is temporary
     private function execute(string $method, string $url, string $class)
     {
-        $result = new $class;
+        $result = new $class();
         $response = $this->travelPerk->{$method}($url);
         $this->mapper->mapObject(
             json_decode($response),
             $result
         );
+
         return $result;
     }
 
@@ -46,6 +47,6 @@ class InvoiceProfiles
     {
         $params = isset($pagination) ? '?'.$pagination->asUrlParam() : null;
 
-        return $this->execute('get', implode('/', ['profiles']).$params , InvoiceProfilesPage::class);
+        return $this->execute('get', implode('/', ['profiles']).$params, InvoiceProfilesPage::class);
     }
 }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Expenses;
 
+use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Expenses\Types\InvoiceProfilesPage;
-use JsonMapper\JsonMapper;
 
 class InvoiceProfilesQuery
 {
@@ -24,15 +24,15 @@ class InvoiceProfilesQuery
     //TODO: This is temporary
     private function execute(string $method, string $url, string $class)
     {
-        $result = new $class;
+        $result = new $class();
         $response = $this->travelPerk->{$method}($url);
         $this->mapper->mapObject(
             json_decode($response),
             $result
         );
+
         return $result;
     }
-
 
     public function setOffset(int $offset): InvoiceProfilesQuery
     {
