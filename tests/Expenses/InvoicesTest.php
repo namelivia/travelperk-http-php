@@ -27,6 +27,52 @@ class InvoicesTest extends TestCase
         $this->invoices = new Invoices($this->travelPerk, $this->mapper);
     }
 
+    private function assertEqualsStub($invoiceLinesPage): void
+    {
+        $this->assertEquals(1, $invoiceLinesPage->total);
+        $this->assertEquals(0, $invoiceLinesPage->offset);
+        $this->assertEquals(10, $invoiceLinesPage->limit);
+        $this->assertEquals(1, count($invoiceLinesPage->invoiceLines));
+        $this->assertEquals("2020-02-13", $invoiceLinesPage->invoiceLines[0]->expenseDate);
+        $this->assertEquals("FLIGHT for Trip ID 1687664", $invoiceLinesPage->invoiceLines[0]->description);
+        $this->assertEquals(1, $invoiceLinesPage->invoiceLines[0]->quantity);
+        $this->assertEquals("20.00000000", $invoiceLinesPage->invoiceLines[0]->unitPrice);
+        $this->assertEquals("0E-8", $invoiceLinesPage->invoiceLines[0]->nonTaxableUnitPrice);
+        $this->assertEquals("0E-8", $invoiceLinesPage->invoiceLines[0]->taxPercentage);
+        $this->assertEquals("0E-8", $invoiceLinesPage->invoiceLines[0]->taxAmount);
+        $this->assertEquals("STAR", $invoiceLinesPage->invoiceLines[0]->taxRegime);
+        $this->assertEquals("20.00000000", $invoiceLinesPage->invoiceLines[0]->totalAmount);
+        $this->assertEquals("INV-01-190111", $invoiceLinesPage->invoiceLines[0]->invoiceSerialNumber);
+        $this->assertEquals("09d649d1-35fa-4d9f-b688-046d5790afd2", $invoiceLinesPage->invoiceLines[0]->profileId);
+        $this->assertEquals("My Company Ltd", $invoiceLinesPage->invoiceLines[0]->profileName);
+        $this->assertEquals("reseller", $invoiceLinesPage->invoiceLines[0]->invoiceMode);
+        $this->assertEquals("paid", $invoiceLinesPage->invoiceLines[0]->invoiceStatus);
+        $this->assertEquals("2020-02-13", $invoiceLinesPage->invoiceLines[0]->issuingDate);
+        $this->assertEquals("2020-02-13", $invoiceLinesPage->invoiceLines[0]->dueDate);
+        $this->assertEquals("EUR", $invoiceLinesPage->invoiceLines[0]->currency);
+        $this->assertEquals(1687664, $invoiceLinesPage->invoiceLines[0]->metadata->tripId);
+        $this->assertEquals("Meeting with German company GmbH", $invoiceLinesPage->invoiceLines[0]->metadata->tripName);
+        $this->assertEquals("flight", $invoiceLinesPage->invoiceLines[0]->metadata->service);
+        $this->assertEquals(1, count($invoiceLinesPage->invoiceLines[0]->metadata->travelers));
+        $this->assertEquals("John Doe", $invoiceLinesPage->invoiceLines[0]->metadata->travelers[0]->name);
+        $this->assertEquals("john.doe@mycompany.com", $invoiceLinesPage->invoiceLines[0]->metadata->travelers[0]->email);
+        $this->assertEquals("ASD123", $invoiceLinesPage->invoiceLines[0]->metadata->travelers[0]->externalId);
+        $this->assertEquals("2020-03-27", $invoiceLinesPage->invoiceLines[0]->metadata->startDate);
+        $this->assertEquals("2020-04-05", $invoiceLinesPage->invoiceLines[0]->metadata->endDate);
+        $this->assertEquals("DACH Accounts", $invoiceLinesPage->invoiceLines[0]->metadata->costCenter);
+        $this->assertEquals([ "Sales trips", "Special"], $invoiceLinesPage->invoiceLines[0]->metadata->labels);
+        $this->assertEquals("LH", $invoiceLinesPage->invoiceLines[0]->metadata->vendor->code);
+        $this->assertEquals("Lufthansa", $invoiceLinesPage->invoiceLines[0]->metadata->vendor->name);
+        $this->assertEquals(false, $invoiceLinesPage->invoiceLines[0]->metadata->outOfPolicy);
+        $this->assertEquals(1, count($invoiceLinesPage->invoiceLines[0]->metadata->approvers));
+        $this->assertEquals("Jake Bolt", $invoiceLinesPage->invoiceLines[0]->metadata->approvers[0]->name);
+        $this->assertEquals("jake.bolt@mycompany.com", $invoiceLinesPage->invoiceLines[0]->metadata->approvers[0]->email);
+        $this->assertEquals("ASD124", $invoiceLinesPage->invoiceLines[0]->metadata->approvers[0]->externalId);
+        $this->assertEquals("Marien Lint", $invoiceLinesPage->invoiceLines[0]->metadata->booker->name);
+        $this->assertEquals("marien.lint@mycompany.com", $invoiceLinesPage->invoiceLines[0]->metadata->booker->email);
+        $this->assertEquals("ASD124", $invoiceLinesPage->invoiceLines[0]->metadata->booker->externalId);
+    }
+
     public function testGettingAllInvoicesNoParams()
     {
         $this->travelPerk->shouldReceive('getJson')
@@ -132,44 +178,38 @@ class InvoicesTest extends TestCase
 
     public function testGettingAllInvoiceLinesWithParams()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('invoices/lines?offset=5&limit=10')
-            ->andReturn((object) ['data' => 'invoiceLines']);
+            ->andReturn(file_get_contents("tests/stubs/invoiceLines.json"));
         $params = (new InvoiceLinesInputParams())
             ->setOffset(5)
             ->setLimit(10);
-        $this->assertEquals(
-            (object) ['data' => 'invoiceLines'],
-            $this->invoices->lines($params)
-        );
+        $invoiceLines= $this->invoices->lines($params);
+        $this->assertEqualsStub($invoiceLines);
     }
 
     public function testGettingAllInvoiceLinesWithParamsUsingQuery()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('invoices/lines?offset=5&limit=10')
-            ->andReturn((object) ['data' => 'invoiceLines']);
-        $this->assertEquals(
-            (object) ['data' => 'invoiceLines'],
-            $this->invoices->linesQuery()
-                ->setOffset(5)
-                ->setLimit(10)
-                ->get()
-        );
+            ->andReturn(file_get_contents("tests/stubs/invoiceLines.json"));
+        $invoicesLines = $this->invoices->linesQuery()
+            ->setOffset(5)
+            ->setLimit(10)
+            ->get();
+        $this->assertEqualsStub($invoiceLines);
     }
 
     public function testGettingAllInvoiceLinesNoParams()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('invoices/lines')
-            ->andReturn((object) ['data' => 'invoiceLines']);
-        $this->assertEquals(
-            (object) ['data' => 'invoiceLines'],
-            $this->invoices->lines()
-        );
+            ->andReturn(file_get_contents("tests/stubs/invoiceLines.json"));
+        $invoiceLines = $this->invoices->lines();
+        $this->assertEqualsStub($invoiceLines);
     }
 
     public function testGettingAllBillingPeriods()

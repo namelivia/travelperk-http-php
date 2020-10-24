@@ -6,22 +6,40 @@ namespace Namelivia\TravelPerk\Expenses;
 
 use Carbon\Carbon;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\Expenses\Types\InvoiceLinesPage;
+use JsonMapper\JsonMapper;
 
 class InvoiceLinesQuery
 {
     private $params;
+    private $mapper;
     private $travelPerk;
 
-    public function __construct(TravelPerk $travelPerk)
+    public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {
         $this->params = new InvoiceLinesInputParams();
         $this->travelPerk = $travelPerk;
+        $this->mapper = $mapper;
     }
 
-    public function get(): object
+    //TODO: This is temporary
+    private function execute(string $method, string $url, string $class)
     {
-        return $this->travelPerk->getJson(
-            implode('/', ['invoices', 'lines']).'?'.$this->params->asUrlParam()
+        $result = new $class;
+        $response = $this->travelPerk->{$method}($url);
+        $this->mapper->mapObject(
+            json_decode($response),
+            $result
+        );
+        return $result;
+    }
+
+    public function get(): InvoiceLinesPage
+    {
+        return $this->execute(
+            'get',
+            implode('/', ['invoices', 'lines']).'?'.$this->params->asUrlParam(),
+            InvoiceLinesPage::class
         );
     }
 

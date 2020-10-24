@@ -11,7 +11,15 @@ use JsonMapper\JsonMapper;
 class InvoiceProfilesQuery
 {
     private $params;
+    private $mapper;
     private $travelPerk;
+
+    public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
+    {
+        $this->params = new InvoiceProfilesInputParams();
+        $this->travelPerk = $travelPerk;
+        $this->mapper = $mapper;
+    }
 
     //TODO: This is temporary
     private function execute(string $method, string $url, string $class)
@@ -25,12 +33,6 @@ class InvoiceProfilesQuery
         return $result;
     }
 
-    public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
-    {
-        $this->params = new InvoiceProfilesInputParams();
-        $this->travelPerk = $travelPerk;
-        $this->mapper = $mapper;
-    }
 
     public function setOffset(int $offset): InvoiceProfilesQuery
     {
