@@ -12,6 +12,11 @@ class Lines
     public $total;
 
   /**
+   * @var InvoiceLine[]
+   */
+    public $data;
+
+  /**
    * @var string
    */
     public $next;

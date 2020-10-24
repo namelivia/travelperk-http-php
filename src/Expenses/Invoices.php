@@ -7,6 +7,7 @@ namespace Namelivia\TravelPerk\Expenses;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Expenses\Types\Invoice;
 use Namelivia\TravelPerk\Expenses\Types\InvoiceLinesPage;
+use Namelivia\TravelPerk\Expenses\Types\InvoicesPage;
 use JsonMapper\JsonMapper;
 
 class Invoices
@@ -34,11 +35,11 @@ class Invoices
     /**
      * List all invoices (Will be removed, use query instead).
      */
-    public function all(InvoicesInputParams $params = null): object
+    public function all(InvoicesInputParams $params = null): InvoicesPage
     {
         $params = isset($params) ? '?'.$params->asUrlParam() : null;
 
-        return $this->travelPerk->getJson(implode('/', ['invoices']).$params);
+        return $this->execute('get', implode('/', ['invoices']).$params, InvoicesPage::class);
     }
 
     /**
@@ -46,7 +47,7 @@ class Invoices
      */
     public function query(): InvoicesQuery
     {
-        return new InvoicesQuery($this->travelPerk);
+        return new InvoicesQuery($this->travelPerk, $this->mapper);
     }
 
     /**

@@ -36,7 +36,6 @@ class Invoice
    */
   public $status;
 
-
   /**
    * @var string
    */
