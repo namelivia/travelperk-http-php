@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
+use JsonMapper\JsonMapper;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Client\Client;
@@ -18,7 +19,7 @@ class TravelPerkTest extends TestCase
     {
         parent::setUp();
         $this->client = Mockery::mock(Client::class);
-        $this->travelPerk = new TravelPerk($this->client, false);
+        $this->travelPerk = new TravelPerk($this->client, false, Mockery::mock(JsonMapper::class));
         $this->responseMock = Mockery::mock(ResponseInterface::class);
     }
 
@@ -167,7 +168,7 @@ class TravelPerkTest extends TestCase
 
     public function testQueryingTheSandboxEnvironment()
     {
-        $sandboxApi = new TravelPerk($this->client, true);
+        $sandboxApi = new TravelPerk($this->client, true, Mockery::mock(JsonMapper::class));
         $this->client->shouldReceive('get')
             ->once()
             ->with('https://sandbox.travelperk.com/sampleurl')

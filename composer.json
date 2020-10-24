@@ -14,7 +14,8 @@
         "php": "^7.3",
         "guzzlehttp/guzzle": "^7.0.1",
         "nesbot/carbon": "^2.0",
-        "kamermans/guzzle-oauth2-subscriber": "^1.0"
+        "kamermans/guzzle-oauth2-subscriber": "^1.0",
+        "json-mapper/json-mapper": "^1.4"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",
