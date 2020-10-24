@@ -195,7 +195,7 @@ class InvoicesTest extends TestCase
             ->once()
             ->with('invoices/lines?offset=5&limit=10')
             ->andReturn(file_get_contents("tests/stubs/invoiceLines.json"));
-        $invoicesLines = $this->invoices->linesQuery()
+        $invoiceLines = $this->invoices->linesQuery()
             ->setOffset(5)
             ->setLimit(10)
             ->get();
@@ -249,3 +249,4 @@ class InvoicesTest extends TestCase
         );
     }
 }
+
