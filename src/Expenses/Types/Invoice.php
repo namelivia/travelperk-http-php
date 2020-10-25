@@ -87,7 +87,7 @@ class Invoice
     public $reference;
 
     /**
-     * @var TravelperkBankAccount
+     * @var TravelperkBankAccount|null
      */
     public $travelperkBankAccount;
 
