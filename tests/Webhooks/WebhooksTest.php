@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
+use JsonMapper\Enums\TextNotation;
+use JsonMapper\JsonMapperFactory;
+use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Webhooks\UpdateWebhookInputParams;
@@ -17,20 +20,24 @@ class WebhooksTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
+        $this->mapper = (new JsonMapperFactory())->default();
+        $this->mapper->push(new CaseConversion(TextNotation::UNDERSCORE(), TextNotation::CAMEL_CASE()));
         $this->travelPerk = Mockery::mock(TravelPerk::class);
-        $this->webhooks = new Webhooks($this->travelPerk);
+        $this->webhooks = new Webhooks($this->travelPerk, $this->mapper);
     }
 
     public function testGettingAllEvents()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('webhooks/events')
-            ->andReturn((object) ['data' => 'allEvents']);
-        $this->assertEquals(
-            (object) ['data' => 'allEvents'],
-            $this->webhooks->events()
-        );
+            ->andReturn(file_get_contents('tests/stubs/events.json'));
+        $events = $this->webhooks->events();
+        $this->assertEquals(2, count($events));
+        $this->assertEquals("invoice.issued", $events[0]->name);
+        $this->assertEquals("invoices", $events[0]->topic);
+        $this->assertEquals("invoiceline.created", $events[1]->name);
+        $this->assertEquals("invoices", $events[0]->topic);
     }
 
     public function testGettingAllWebhooks()
@@ -48,14 +55,22 @@ class WebhooksTest extends TestCase
     public function testGettingAWebhookDetail()
     {
         $webhookId = '1a';
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('webhooks/1a')
-            ->andReturn((object) ['data' => 'webhookDetails']);
-        $this->assertEquals(
-            (object) ['data' => 'webhookDetails'],
-            $this->webhooks->get($webhookId)
-        );
+            ->andReturn(file_get_contents('tests/stubs/webhook.json'));
+        $webhook = $this->webhooks->get($webhookId);
+        $this->assertEquals(7, $webhook->id);
+        $this->assertEquals("invoice webhook", $webhook->name);
+        $this->assertEquals("https://mycompany.com/tk_webhook", $webhook->url);
+        $this->assertEquals("some secret", $webhook->secret);
+        $this->assertEquals("enabled", $webhook->status);
+        $this->assertEquals(2, count($webhook->events));
+        $this->assertEquals("invoice.issued", $webhook->events[0]);
+        $this->assertEquals("invoiceline.created", $webhook->events[1]);
+        $this->assertEquals(2, $webhook->successfullySent);
+        $this->assertEquals(0, $webhook->faiedSent);
+        $this->assertEquals(0.0, $webhook->errorRate);
     }
 
     public function testTestingAWebhook()

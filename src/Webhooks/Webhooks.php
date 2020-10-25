@@ -4,23 +4,48 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Webhooks;
 
+use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\SCIM\Types\Event;
+use Namelivia\TravelPerk\SCIM\Types\Webhook;
 
 class Webhooks
 {
     private $travelPerk;
 
-    public function __construct(TravelPerk $travelPerk)
+    public function __construct(TravelPerk $travelPerk,  JsonMapper $mapper)
     {
         $this->travelPerk = $travelPerk;
+        $this->mapper = $mapper;
+    }
+
+    //TODO: This is temporary
+    private function execute(string $method, string $url, string $class)
+    {
+        $result = new $class();
+        $response = $this->travelPerk->{$method}($url);
+        $this->mapper->mapObject(
+            json_decode($response),
+            $result
+        );
+
+        return $result;
     }
 
     /**
      * List all events you can subscribe to.
      */
-    public function events(): object
+    public function events(): array
     {
-        return $this->travelPerk->getJson(implode('/', ['webhooks', 'events']));
+        $events = $this->travelPerk->get(implode('/', ['webhooks', 'events']));
+        return array_map(function($event) {
+            $eventInstance = new Event();
+            $this->mapper->mapObject(
+                $event,
+                $eventInstance
+            );
+            return $eventInstance;
+        }, json_decode($events));
     }
 
     /**
@@ -36,7 +61,7 @@ class Webhooks
      */
     public function get(string $id): object
     {
-        return $this->travelPerk->getJson(implode('/', ['webhooks', $id]));
+        return $this->execute('get', implode('/', ['webhooks', $id]), Webhook::class);
     }
 
     /**
