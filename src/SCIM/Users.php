@@ -4,16 +4,36 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\SCIM;
 
+use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\SCIM\Types\User;
 use Namelivia\TravelPerk\Exceptions\NotImplementedException;
 
 class Users
 {
     private $travelPerk;
 
-    public function __construct(TravelPerk $travelPerk)
+    public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {
         $this->travelPerk = $travelPerk;
+        $this->mapper = $mapper;
+    }
+
+    //TODO: This is temporary
+    private function execute(string $method, string $url, string $class, array $params = null)
+    {
+        $result = new $class();
+        if (is_null($params)) {
+            $response = $this->travelPerk->{$method}($url);
+        } else {
+            $response = $this->travelPerk->{$method}($url, $params);
+        }
+        $this->mapper->mapObject(
+            json_decode($response),
+            $result
+        );
+
+        return $result;
     }
 
     /**
@@ -37,9 +57,9 @@ class Users
     /**
      * Retrieve a user from TravelPerk.
      */
-    public function get(int $id): object
+    public function get(int $id): User
     {
-        return $this->travelPerk->getJson(implode('/', ['scim', 'Users', $id]));
+        return $this->execute('get', implode('/', ['scim', 'Users', $id]), User::class);
     }
 
     /**

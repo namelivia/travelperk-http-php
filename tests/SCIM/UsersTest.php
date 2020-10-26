@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
+use JsonMapper\Enums\TextNotation;
+use JsonMapper\JsonMapperFactory;
+use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Exceptions\NotImplementedException;
@@ -19,8 +22,10 @@ class UsersTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
+        $this->mapper = (new JsonMapperFactory())->default();
+        $this->mapper->push(new CaseConversion(TextNotation::UNDERSCORE(), TextNotation::CAMEL_CASE()));
         $this->travelPerk = Mockery::mock(TravelPerk::class);
-        $this->users = new Users($this->travelPerk);
+        $this->users = new Users($this->travelPerk, $this->mapper);
     }
 
     public function testGettingAllUsersNoParams()
@@ -67,14 +72,35 @@ class UsersTest extends TestCase
 
     public function testGettingAUserDetail()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/Users/1')
-            ->andReturn((object) ['data' => 'userDetail']);
-        $this->assertEquals(
-            (object) ['data' => 'userDetail'],
-            $this->users->get(1)
-        );
+            ->andReturn(file_get_contents('tests/stubs/user.json'));
+        $user = $this->users->get(1);
+        $this->assertEquals([
+            "urn:ietf:params:scim:schemas:core:2.0:User",
+            "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+            "urn:ietf:params:scim:schemas:extension:travelperk:2.0:User"
+        ], $user->schemas);
+        $this->assertEquals("Marlen", $user->name->givenName);
+        $this->assertEquals("Col", $user->name->familyName);
+        $this->assertEquals("", $user->name->middleName);
+        $this->assertEquals("", $user->name->honorificPrefix);
+        $this->assertEquals("en", $user->locale);
+        $this->assertEquals("en", $user->preferredLanguage);
+        $this->assertEquals("Manager", $user->title);
+        $this->assertEquals("123455667", $user->externalId);
+        $this->assertEquals("29", $user->id);
+        $this->assertEquals([], $user->groups);
+        $this->assertEquals(true, $user->active);
+        $this->assertEquals("marlen.col@mycompany.com", $user->userName);
+        $this->assertEquals(1 , count($user->phoneNumbers));
+        $this->assertEquals("+34 1234567", $user->phoneNumbers[0]->value);
+        $this->assertEquals("work", $user->phoneNumbers[0]->type);
+        $this->assertEquals("User", $user->meta->resourceType);
+        $this->assertEquals("2020-04-01T22:24:44.137082+00:00", $user->meta->created);
+        $this->assertEquals("2020-04-01T22:24:44.137082+00:00", $user->meta->lastModified);
+        $this->assertEquals("http://app.travelperk.com/api/v2/scim/Users/29", $user->meta->location);
     }
 
     public function testDeletingAUser()

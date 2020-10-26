@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\SCIM\Types;
 
-class Event
+class PhoneNumber
 {
     /**
      * @var string
      */
-    public $name;
+    public $value;
 
     /**
      * @var string
      */
-    public $topic;
+    public $type;
 }

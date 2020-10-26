@@ -6,9 +6,9 @@ namespace Namelivia\TravelPerk\Webhooks;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\SCIM\Types\Event;
-use Namelivia\TravelPerk\SCIM\Types\Webhook;
-use Namelivia\TravelPerk\SCIM\Types\Webhooks as WebhooksType;
+use Namelivia\TravelPerk\Webhooks\Types\Event;
+use Namelivia\TravelPerk\Webhooks\Types\Webhook;
+use Namelivia\TravelPerk\Webhooks\Types\Webhooks as WebhooksType;
 
 class Webhooks
 {

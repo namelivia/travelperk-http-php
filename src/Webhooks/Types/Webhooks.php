@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Namelivia\TravelPerk\SCIM\Types;
+namespace Namelivia\TravelPerk\Webhooks\Types;
 
 class Webhooks
 {
