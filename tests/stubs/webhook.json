@@ -1,5 +1,5 @@
 {
-    "id": 7,
+    "id": "b42820bb-24c9-48da-bded-487681e9c851",
     "name": "invoice webhook",
     "url": "https://mycompany.com/tk_webhook",
     "secret": "some secret",

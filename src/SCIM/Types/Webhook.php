@@ -7,7 +7,7 @@ namespace Namelivia\TravelPerk\SCIM\Types;
 class Webhook
 {
     /**
-     * @var integer
+     * @var string
      */
     public $id;
 
