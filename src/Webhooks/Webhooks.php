@@ -8,6 +8,7 @@ use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\SCIM\Types\Event;
 use Namelivia\TravelPerk\SCIM\Types\Webhook;
+use Namelivia\TravelPerk\SCIM\Types\Webhooks as WebhooksType;
 
 class Webhooks
 {
@@ -20,10 +21,14 @@ class Webhooks
     }
 
     //TODO: This is temporary
-    private function execute(string $method, string $url, string $class)
+    private function execute(string $method, string $url, string $class, array $params = null)
     {
         $result = new $class();
-        $response = $this->travelPerk->{$method}($url);
+        if (is_null($params)) {
+            $response = $this->travelPerk->{$method}($url);
+        } else {
+            $response = $this->travelPerk->{$method}($url, $params);
+        }
         $this->mapper->mapObject(
             json_decode($response),
             $result
@@ -51,15 +56,15 @@ class Webhooks
     /**
      * List all webhook subscriptions.
      */
-    public function all(): object
+    public function all(): WebhooksType
     {
-        return $this->travelPerk->getJson(implode('/', ['webhooks']));
+        return $this->execute('get', implode('/', ['webhooks']), WebhooksType::class);
     }
 
     /**
      * Get details for a specific webhook endpoint.
      */
-    public function get(string $id): object
+    public function get(string $id): Webhook
     {
         return $this->execute('get', implode('/', ['webhooks', $id]), Webhook::class);
     }
@@ -67,19 +72,19 @@ class Webhooks
     /**
      * Create a webhook endpoint.
      */
-    public function create(string $name, string $url, string $secret, array $events): object
+    public function create(string $name, string $url, string $secret, array $events): Webhook
     {
         $params = new CreateWebhookInputParams($name, $url, $secret, $events);
 
-        return $this->travelPerk->postJson(implode('/', ['webhooks']), $params->asArray());
+        return $this->execute('post', implode('/', ['webhooks']), Webhook::class, $params->asArray());
     }
 
     /**
      * Updates the webhook endpoint. (Will be removed, use modify instead).
      */
-    public function update(string $id, UpdateWebhookInputParams $params): object
+    public function update(string $id, UpdateWebhookInputParams $params): Webhook
     {
-        return $this->travelPerk->patchJson(implode('/', ['webhooks', $id]), $params->asArray());
+        return $this->execute('patch', implode('/', ['webhooks', $id]), Webhook::class, $params->asArray());
     }
 
     /**
