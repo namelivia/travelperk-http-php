@@ -39,22 +39,6 @@ class TravelPerkTest extends TestCase
         );
     }
 
-    public function testMakingAJSONGetCall()
-    {
-        $this->client->shouldReceive('get')
-            ->once()
-            ->with('https://api.travelperk.com/sampleurl')
-            ->andReturn($this->responseMock);
-        $this->responseMock->shouldReceive('getBody->getContents')
-            ->once()
-            ->with()
-            ->andReturn('{"key" : "value"}');
-        $this->assertEquals(
-            'value',
-            $this->travelPerk->getJson('sampleurl')->key
-        );
-    }
-
     public function testMakingAPostCall()
     {
         $this->client->shouldReceive('post')
@@ -71,7 +55,7 @@ class TravelPerkTest extends TestCase
         );
     }
 
-    public function testMakingAJSONPutCall()
+    public function testMakingAPutCall()
     {
         $this->client->shouldReceive('put')
             ->once()
@@ -80,42 +64,10 @@ class TravelPerkTest extends TestCase
         $this->responseMock->shouldReceive('getBody->getContents')
             ->once()
             ->with()
-            ->andReturn('{"key" : "value"}');
+            ->andReturn('responseContent');
         $this->assertEquals(
-            'value',
-            $this->travelPerk->putJson('sampleurl', ['params'])->key
-        );
-    }
-
-    public function testMakingAJSONPostCall()
-    {
-        $this->client->shouldReceive('post')
-            ->once()
-            ->with('https://api.travelperk.com/sampleurl', ['json' => ['params']])
-            ->andReturn($this->responseMock);
-        $this->responseMock->shouldReceive('getBody->getContents')
-            ->once()
-            ->with()
-            ->andReturn('{"key" : "value"}');
-        $this->assertEquals(
-            'value',
-            $this->travelPerk->postJson('sampleurl', ['params'])->key
-        );
-    }
-
-    public function testMakingAJSONPatchCall()
-    {
-        $this->client->shouldReceive('patch')
-            ->once()
-            ->with('https://api.travelperk.com/sampleurl', ['json' => ['params']])
-            ->andReturn($this->responseMock);
-        $this->responseMock->shouldReceive('getBody->getContents')
-            ->once()
-            ->with()
-            ->andReturn('{"key" : "value"}');
-        $this->assertEquals(
-            'value',
-            $this->travelPerk->patchJson('sampleurl', ['params'])->key
+            'responseContent',
+            $this->travelPerk->put('sampleurl', ['params'])
         );
     }
 

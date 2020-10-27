@@ -33,15 +33,6 @@ class TravelPerk
         return $this->client->getAuthUri($targetLinkUri);
     }
 
-    public function getJson($url): object
-    {
-        return json_decode(
-            $this->client->get(
-                $this->baseUrl.$url
-            )->getBody()->getContents()
-        );
-    }
-
     public function get($url): string
     {
         return $this->client->get(
@@ -57,14 +48,6 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
-    public function postJson($url, array $params): object
-    {
-        return json_decode($this->client->post(
-            $this->baseUrl.$url,
-            [\GuzzleHttp\RequestOptions::JSON => $params]
-        )->getBody()->getContents());
-    }
-
     public function patch($url, array $params): string
     {
         return $this->client->patch(
@@ -73,20 +56,12 @@ class TravelPerk
         )->getBody()->getContents();
     }
 
-    public function patchJson($url, array $params): object
+    public function put($url, array $params): string
     {
-        return json_decode($this->client->patch(
+        return $this->client->put(
             $this->baseUrl.$url,
             [\GuzzleHttp\RequestOptions::JSON => $params]
-        )->getBody()->getContents());
-    }
-
-    public function putJson($url, array $params): object
-    {
-        return json_decode($this->client->put(
-            $this->baseUrl.$url,
-            [\GuzzleHttp\RequestOptions::JSON => $params]
-        )->getBody()->getContents());
+        )->getBody()->getContents();
     }
 
     public function delete($url): string
