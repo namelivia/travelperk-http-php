@@ -58,7 +58,7 @@ class WebhooksTest extends TestCase
         $this->assertEquals("invoiceline.created", $webhooks->webhooks[0]->events[1]);
         $this->assertEquals(2, $webhooks->webhooks[0]->successfullySent);
         $this->assertEquals(0, $webhooks->webhooks[0]->failedSent);
-        $this->assertEquals(0.0, $webhook[0]->errorRate);
+        $this->assertEquals(0.0, $webhooks->webhooks[0]->errorRate);
     }
 
     public function testGettingAWebhookDetail()
