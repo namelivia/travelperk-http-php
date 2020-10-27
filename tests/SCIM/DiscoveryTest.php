@@ -22,10 +22,10 @@ class DiscoveryTest extends TestCase
 
     public function testGettingServiceProviderConfig()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/ServiceProviderConfig')
-            ->andReturn((object) ['data' => 'serviceProviderConfig']);
+            ->andReturn('{"data": "serviceProviderConfig"}');
         $this->assertEquals(
             (object) ['data' => 'serviceProviderConfig'],
             $this->discovery->serviceProviderConfig()
@@ -34,10 +34,10 @@ class DiscoveryTest extends TestCase
 
     public function testGettingResourceTypes()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/ResourceTypes')
-            ->andReturn((object) ['data' => 'resourceTypes']);
+            ->andReturn('{"data": "resourceTypes"}');
         $this->assertEquals(
             (object) ['data' => 'resourceTypes'],
             $this->discovery->resourceTypes()
@@ -46,10 +46,10 @@ class DiscoveryTest extends TestCase
 
     public function testGettingSchemas()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/Schemas')
-            ->andReturn((object) ['data' => 'schemas']);
+            ->andReturn('{"data": "schemas"}');
         $this->assertEquals(
             (object) ['data' => 'schemas'],
             $this->discovery->schemas()
@@ -58,10 +58,10 @@ class DiscoveryTest extends TestCase
 
     public function testGettingUserSchema()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/Schemas/urn:ietf:params:scim:schemas:core:2.0:User')
-            ->andReturn((object) ['data' => 'userSchema']);
+            ->andReturn('{"data": "userSchema"}');
         $this->assertEquals(
             (object) ['data' => 'userSchema'],
             $this->discovery->userSchema()
@@ -70,10 +70,10 @@ class DiscoveryTest extends TestCase
 
     public function testGettingEnterpriseUserSchema()
     {
-        $this->travelPerk->shouldReceive('getJson')
+        $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User')
-            ->andReturn((object) ['data' => 'enterpriseUserSchema']);
+            ->andReturn('{"data": "enterpriseUserSchema"}');
         $this->assertEquals(
             (object) ['data' => 'enterpriseUserSchema'],
             $this->discovery->enterpriseUserSchema()

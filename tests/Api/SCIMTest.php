@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
+use JsonMapper\JsonMapper;
 use Mockery;
 use Namelivia\TravelPerk\Api\SCIM;
 use Namelivia\TravelPerk\Api\TravelPerk;
@@ -17,7 +18,7 @@ class SCIMTest extends TestCase
     {
         parent::setUp();
         $this->travelPerk = Mockery::mock(TravelPerk::class);
-        $this->scim = new SCIM($this->travelPerk);
+        $this->scim = new SCIM($this->travelPerk, Mockery::mock(JsonMapper::class));
     }
 
     public function testGettingADiscoveryInstance()
