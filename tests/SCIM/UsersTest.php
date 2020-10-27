@@ -34,7 +34,7 @@ class UsersTest extends TestCase
             ->once()
             ->with('scim/Users')
             ->andReturn(file_get_contents('tests/stubs/users.json'));
-        $users = $this->users->all($params);
+        $users = $this->users->all();
         $this->assertEquals([
             "urn:ietf:params:scim:api:messages:2.0:ListResponse"
         ], $users->schemas);

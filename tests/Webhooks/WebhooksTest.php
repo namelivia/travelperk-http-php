@@ -57,7 +57,7 @@ class WebhooksTest extends TestCase
         $this->assertEquals("invoice.issued", $webhooks->webhooks[0]->events[0]);
         $this->assertEquals("invoiceline.created", $webhooks->webhooks[0]->events[1]);
         $this->assertEquals(2, $webhooks->webhooks[0]->successfullySent);
-        $this->assertEquals(0, $webhooks->webhooks[0]->faiedSent);
+        $this->assertEquals(0, $webhooks->webhooks[0]->failedSent);
         $this->assertEquals(0.0, $webhook[0]->errorRate);
     }
 
@@ -78,7 +78,7 @@ class WebhooksTest extends TestCase
         $this->assertEquals("invoice.issued", $webhook->events[0]);
         $this->assertEquals("invoiceline.created", $webhook->events[1]);
         $this->assertEquals(2, $webhook->successfullySent);
-        $this->assertEquals(0, $webhook->faiedSent);
+        $this->assertEquals(0, $webhook->failedSent);
         $this->assertEquals(0.0, $webhook->errorRate);
     }
 
@@ -134,7 +134,7 @@ class WebhooksTest extends TestCase
         $this->assertEquals("invoice.issued", $newWebhook->events[0]);
         $this->assertEquals("invoiceline.created", $newWebhook->events[1]);
         $this->assertEquals(2, $newWebhook->successfullySent);
-        $this->assertEquals(0, $newWebhook->faiedSent);
+        $this->assertEquals(0, $newWebhook->failedSent);
         $this->assertEquals(0.0, $newWebhook->errorRate);
     }
 
@@ -160,7 +160,7 @@ class WebhooksTest extends TestCase
         $this->assertEquals("invoice.issued", $updatedWebhook->events[0]);
         $this->assertEquals("invoiceline.created", $updatedWebhook->events[1]);
         $this->assertEquals(2, $updatedWebhook->successfullySent);
-        $this->assertEquals(0, $updatedWebhook->faiedSent);
+        $this->assertEquals(0, $updatedWebhook->failedSent);
         $this->assertEquals(0.0, $updatedWebhook->errorRate);
     }
 
