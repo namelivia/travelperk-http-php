@@ -24,5 +24,5 @@ class Name
     /**
      * @var string
      */
-    public $setHonorificPrefix;
+    public $honorificPrefix;
 }
