@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\SCIM;
 
 use Carbon\Carbon;
+use JsonMapper\JsonMapper;
+use Namelivia\TravelPerk\SCIM\Types\User;
 use Namelivia\TravelPerk\Api\TravelPerk;
 
 class CreateUserQuery
@@ -14,17 +16,44 @@ class CreateUserQuery
 
     public function __construct(
         TravelPerk $travelPerk,
+        JsonMapper $mapper,
         string $username,
         bool $active,
         NameInputParams $name
     ) {
         $this->travelPerk = $travelPerk;
+        $this->mapper = $mapper;
         $this->params = new CreateUserInputParams($username, $active, $name);
+    }
+
+    //TODO: This is temporary
+    private function execute(string $method, string $url, string $class, array $params = null)
+    {
+        $result = new $class();
+        if (is_null($params)) {
+            $response = $this->travelPerk->{$method}($url);
+        } else {
+            $response = $this->travelPerk->{$method}($url, $params);
+        }
+
+        //TODO: This won't go here
+        $decoded = json_decode($response);
+        $decoded->enterprise_extension = $decoded->{'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User'};
+        $decoded->travelperk_extension = $decoded->{'urn:ietf:params:scim:schemas:extension:travelperk:2.0:User'};
+        $decoded->enterprise_extension->manager->ref = $decoded->enterprise_extension->manager->{'$ref'};
+        //TODO
+
+        $this->mapper->mapObject(
+            $decoded,
+            $result
+        );
+
+        return $result;
     }
 
     public function save(): object
     {
-        return $this->travelPerk->postJson(implode('/', ['scim', 'Users']), $this->params->asArray());
+        return $this->execute('post', implode('/', ['scim', 'Users']), User::class, $this->params->asArray());
     }
 
     public function setLanguage(string $language): CreateUserQuery

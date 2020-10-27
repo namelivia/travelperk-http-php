@@ -66,28 +66,13 @@ class User
      */
     public $meta;
 
-    /* TODO: This is missing
-      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
-        "costCenter": "Marketing",
-        "manager": {
-          "value": "123",
-          "$ref": "https://app.travelperk.com/api/v2/scim/Users/123/",
-          "displayName": "Jack Jackson"
-        }
-      },
-      "urn:ietf:params:scim:schemas:extension:travelperk:2.0:User": {
-        "gender": "M",
-        "dateOfBirth": "1980-02-02",
-        "travelPolicy": "Marketing travel policy",
-        "invoiceProfiles": [
-          {
-            "value": "My Company Ltd"
-          }
-        ],
-        "emergencyContact": {
-          "name": "Jane Goodie",
-          "phone": "+34 9874637"
-        }
-      }
+    /**
+     * @var EnterpriseExtension
      */
+    public $enterpriseExtension;
+
+    /**
+     * @var TravelperkExtension
+     */
+    public $travelperkExtension;
 }

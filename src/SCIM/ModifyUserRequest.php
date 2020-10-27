@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\SCIM;
 
+use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\SCIM\Types\User;
 
 class ModifyUserRequest
 {
@@ -15,6 +17,7 @@ class ModifyUserRequest
     public function __construct(
         int $id,
         TravelPerk $travelPerk,
+        JsonMapper $mapper,
         string $username,
         bool $active,
         NameInputParams $name
@@ -22,11 +25,37 @@ class ModifyUserRequest
         $this->id = $id;
         $this->params = new ReplaceUserInputParams($username, $active, $name);
         $this->travelPerk = $travelPerk;
+        $this->mapper = $mapper;
+    }
+
+    //TODO: This is temporary
+    private function execute(string $method, string $url, string $class, array $params = null)
+    {
+        $result = new $class();
+        if (is_null($params)) {
+            $response = $this->travelPerk->{$method}($url);
+        } else {
+            $response = $this->travelPerk->{$method}($url, $params);
+        }
+
+        //TODO: This won't go here
+        $decoded = json_decode($response);
+        $decoded->enterprise_extension = $decoded->{'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User'};
+        $decoded->travelperk_extension = $decoded->{'urn:ietf:params:scim:schemas:extension:travelperk:2.0:User'};
+        $decoded->enterprise_extension->manager->ref = $decoded->enterprise_extension->manager->{'$ref'};
+        //TODO
+
+        $this->mapper->mapObject(
+            $decoded,
+            $result
+        );
+
+        return $result;
     }
 
     public function save(): object
     {
-        return $this->travelPerk->putJson(implode('/', ['scim', 'Users', $this->id]), $this->params->asArray());
+        return $this->execute('put', implode('/', ['scim', 'Users', $this->id]), User::class, $this->params->asArray());
     }
 
     public function setLanguage(string $language): ModifyUserRequest
