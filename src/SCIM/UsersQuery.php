@@ -31,13 +31,13 @@ class UsersQuery
 
         //TODO: This won't go here. Ugly fix!
         $response = str_replace([
-            "\"urn:ietf:params:scim:schemas:extension:travelperk:2.0:User\":",
-            "\"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User\":",
-            "\"\$ref\":",
+            '"urn:ietf:params:scim:schemas:extension:travelperk:2.0:User":',
+            '"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User":',
+            '"$ref":',
         ], [
-            "\"travelperk_extension\":",
-            "\"enterprise_extension\":",
-            "\"ref\":",
+            '"travelperk_extension":',
+            '"enterprise_extension":',
+            '"ref":',
         ], $response);
         //TODO
 
@@ -72,6 +72,6 @@ class UsersQuery
 
     public function get(): object
     {
-        return $this->execute('get', implode('/', ['scim', 'Users']). '?' .$this->params->asUrlParam(), Users::class);
+        return $this->execute('get', implode('/', ['scim', 'Users']).'?'.$this->params->asUrlParam(), Users::class);
     }
 }

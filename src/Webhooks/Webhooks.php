@@ -14,7 +14,7 @@ class Webhooks
 {
     private $travelPerk;
 
-    public function __construct(TravelPerk $travelPerk,  JsonMapper $mapper)
+    public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {
         $this->travelPerk = $travelPerk;
         $this->mapper = $mapper;
@@ -43,12 +43,14 @@ class Webhooks
     public function events(): array
     {
         $events = $this->travelPerk->get(implode('/', ['webhooks', 'events']));
-        return array_map(function($event) {
+
+        return array_map(function ($event) {
             $eventInstance = new Event();
             $this->mapper->mapObject(
                 $event,
                 $eventInstance
             );
+
             return $eventInstance;
         }, json_decode($events));
     }

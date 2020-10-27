@@ -12,17 +12,17 @@ class Users
     public $schemas;
 
     /**
-     * @var integer
+     * @var int
      */
     public $totalResults;
 
     /**
-     * @var integer
+     * @var int
      */
     public $itemsPerPage;
 
     /**
-     * @var integer
+     * @var int
      */
     public $startIndex;
 

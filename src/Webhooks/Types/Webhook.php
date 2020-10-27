@@ -37,12 +37,12 @@ class Webhook
     public $events;
 
     /**
-     * @var integer
+     * @var int
      */
     public $successfullySent;
 
     /**
-     * @var integer
+     * @var int
      */
     public $failedSent;
 

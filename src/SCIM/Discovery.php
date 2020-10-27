@@ -53,8 +53,8 @@ class Discovery
      */
     public function enterpriseUserSchema(): object
     {
-		return json_decode(
-			$this->travelPerk->get(implode('/', ['scim', 'Schemas', 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User']))
-		);
+        return json_decode(
+            $this->travelPerk->get(implode('/', ['scim', 'Schemas', 'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User']))
+        );
     }
 }

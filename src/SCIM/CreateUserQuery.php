@@ -6,8 +6,8 @@ namespace Namelivia\TravelPerk\SCIM;
 
 use Carbon\Carbon;
 use JsonMapper\JsonMapper;
-use Namelivia\TravelPerk\SCIM\Types\User;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\SCIM\Types\User;
 
 class CreateUserQuery
 {
