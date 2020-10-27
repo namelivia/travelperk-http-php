@@ -34,10 +34,10 @@ class WebhooksTest extends TestCase
             ->andReturn(file_get_contents('tests/stubs/events.json'));
         $events = $this->webhooks->events();
         $this->assertEquals(2, count($events));
-        $this->assertEquals("invoice.issued", $events[0]->name);
-        $this->assertEquals("invoices", $events[0]->topic);
-        $this->assertEquals("invoiceline.created", $events[1]->name);
-        $this->assertEquals("invoices", $events[0]->topic);
+        $this->assertEquals('invoice.issued', $events[0]->name);
+        $this->assertEquals('invoices', $events[0]->topic);
+        $this->assertEquals('invoiceline.created', $events[1]->name);
+        $this->assertEquals('invoices', $events[0]->topic);
     }
 
     public function testGettingAllWebhooks()
@@ -48,14 +48,14 @@ class WebhooksTest extends TestCase
             ->andReturn(file_get_contents('tests/stubs/webhooks.json'));
         $webhooks = $this->webhooks->all();
         $this->assertEquals(1, count($webhooks->webhooks));
-        $this->assertEquals("b42820bb-24c9-48da-bded-487681e9c851", $webhooks->webhooks[0]->id);
-        $this->assertEquals("invoice webhook", $webhooks->webhooks[0]->name);
-        $this->assertEquals("https://mycompany/tkwebhook", $webhooks->webhooks[0]->url);
-        $this->assertEquals("some secret", $webhooks->webhooks[0]->secret);
-        $this->assertEquals("enabled", $webhooks->webhooks[0]->status);
+        $this->assertEquals('b42820bb-24c9-48da-bded-487681e9c851', $webhooks->webhooks[0]->id);
+        $this->assertEquals('invoice webhook', $webhooks->webhooks[0]->name);
+        $this->assertEquals('https://mycompany/tkwebhook', $webhooks->webhooks[0]->url);
+        $this->assertEquals('some secret', $webhooks->webhooks[0]->secret);
+        $this->assertEquals('enabled', $webhooks->webhooks[0]->status);
         $this->assertEquals(2, count($webhooks->webhooks[0]->events));
-        $this->assertEquals("invoice.issued", $webhooks->webhooks[0]->events[0]);
-        $this->assertEquals("invoiceline.created", $webhooks->webhooks[0]->events[1]);
+        $this->assertEquals('invoice.issued', $webhooks->webhooks[0]->events[0]);
+        $this->assertEquals('invoiceline.created', $webhooks->webhooks[0]->events[1]);
         $this->assertEquals(2, $webhooks->webhooks[0]->successfullySent);
         $this->assertEquals(0, $webhooks->webhooks[0]->faiedSent);
         $this->assertEquals(0.0, $webhook[0]->errorRate);
@@ -69,14 +69,14 @@ class WebhooksTest extends TestCase
             ->with('webhooks/1a')
             ->andReturn(file_get_contents('tests/stubs/webhook.json'));
         $webhook = $this->webhooks->get($webhookId);
-        $this->assertEquals("b42820bb-24c9-48da-bded-487681e9c851", $webhook->id);
-        $this->assertEquals("invoice webhook", $webhook->name);
-        $this->assertEquals("https://mycompany.com/tk_webhook", $webhook->url);
-        $this->assertEquals("some secret", $webhook->secret);
-        $this->assertEquals("enabled", $webhook->status);
+        $this->assertEquals('b42820bb-24c9-48da-bded-487681e9c851', $webhook->id);
+        $this->assertEquals('invoice webhook', $webhook->name);
+        $this->assertEquals('https://mycompany.com/tk_webhook', $webhook->url);
+        $this->assertEquals('some secret', $webhook->secret);
+        $this->assertEquals('enabled', $webhook->status);
         $this->assertEquals(2, count($webhook->events));
-        $this->assertEquals("invoice.issued", $webhook->events[0]);
-        $this->assertEquals("invoiceline.created", $webhook->events[1]);
+        $this->assertEquals('invoice.issued', $webhook->events[0]);
+        $this->assertEquals('invoiceline.created', $webhook->events[1]);
         $this->assertEquals(2, $webhook->successfullySent);
         $this->assertEquals(0, $webhook->faiedSent);
         $this->assertEquals(0.0, $webhook->errorRate);
@@ -125,14 +125,14 @@ class WebhooksTest extends TestCase
             'secret',
             ['event1', 'event2'],
         );
-        $this->assertEquals("b42820bb-24c9-48da-bded-487681e9c851", $newWebhook->id);
-        $this->assertEquals("invoice webhook", $newWebhook->name);
-        $this->assertEquals("https://mycompany.com/tk_webhook", $newWebhook->url);
-        $this->assertEquals("some secret", $newWebhook->secret);
-        $this->assertEquals("enabled", $newWebhook->status);
+        $this->assertEquals('b42820bb-24c9-48da-bded-487681e9c851', $newWebhook->id);
+        $this->assertEquals('invoice webhook', $newWebhook->name);
+        $this->assertEquals('https://mycompany.com/tk_webhook', $newWebhook->url);
+        $this->assertEquals('some secret', $newWebhook->secret);
+        $this->assertEquals('enabled', $newWebhook->status);
         $this->assertEquals(2, count($newWebhook->events));
-        $this->assertEquals("invoice.issued", $newWebhook->events[0]);
-        $this->assertEquals("invoiceline.created", $newWebhook->events[1]);
+        $this->assertEquals('invoice.issued', $newWebhook->events[0]);
+        $this->assertEquals('invoiceline.created', $newWebhook->events[1]);
         $this->assertEquals(2, $newWebhook->successfullySent);
         $this->assertEquals(0, $newWebhook->faiedSent);
         $this->assertEquals(0.0, $newWebhook->errorRate);
@@ -151,14 +151,14 @@ class WebhooksTest extends TestCase
             ->with('webhooks/1a', ['params'])
             ->andReturn(file_get_contents('tests/stubs/webhook.json'));
         $updatedWebhook = $this->webhooks->update($id, $webhookData);
-        $this->assertEquals("b42820bb-24c9-48da-bded-487681e9c851", $updatedWebhook->id);
-        $this->assertEquals("invoice webhook", $updatedWebhook->name);
-        $this->assertEquals("https://mycompany.com/tk_webhook", $updatedWebhook->url);
-        $this->assertEquals("some secret", $updatedWebhook->secret);
-        $this->assertEquals("enabled", $updatedWebhook->status);
+        $this->assertEquals('b42820bb-24c9-48da-bded-487681e9c851', $updatedWebhook->id);
+        $this->assertEquals('invoice webhook', $updatedWebhook->name);
+        $this->assertEquals('https://mycompany.com/tk_webhook', $updatedWebhook->url);
+        $this->assertEquals('some secret', $updatedWebhook->secret);
+        $this->assertEquals('enabled', $updatedWebhook->status);
         $this->assertEquals(2, count($updatedWebhook->events));
-        $this->assertEquals("invoice.issued", $updatedWebhook->events[0]);
-        $this->assertEquals("invoiceline.created", $updatedWebhook->events[1]);
+        $this->assertEquals('invoice.issued', $updatedWebhook->events[0]);
+        $this->assertEquals('invoiceline.created', $updatedWebhook->events[1]);
         $this->assertEquals(2, $updatedWebhook->successfullySent);
         $this->assertEquals(0, $updatedWebhook->faiedSent);
         $this->assertEquals(0.0, $updatedWebhook->errorRate);

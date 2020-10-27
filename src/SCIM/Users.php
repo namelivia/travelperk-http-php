@@ -6,9 +6,9 @@ namespace Namelivia\TravelPerk\SCIM;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\Exceptions\NotImplementedException;
 use Namelivia\TravelPerk\SCIM\Types\User;
 use Namelivia\TravelPerk\SCIM\Types\Users as UsersType;
-use Namelivia\TravelPerk\Exceptions\NotImplementedException;
 
 class Users
 {
@@ -32,13 +32,13 @@ class Users
 
         //TODO: This won't go here. Ugly fix!
         $response = str_replace([
-            "\"urn:ietf:params:scim:schemas:extension:travelperk:2.0:User\":",
-            "\"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User\":",
-            "\"\$ref\":",
+            '"urn:ietf:params:scim:schemas:extension:travelperk:2.0:User":',
+            '"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User":',
+            '"$ref":',
         ], [
-            "\"travelperk_extension\":",
-            "\"enterprise_extension\":",
-            "\"ref\":",
+            '"travelperk_extension":',
+            '"enterprise_extension":',
+            '"ref":',
         ], $response);
         //TODO
 
