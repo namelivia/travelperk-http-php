@@ -13,6 +13,7 @@ use Namelivia\TravelPerk\Webhooks\Webhooks\Webhooks as WebhooksType;
 class Webhooks
 {
     private $travelPerk;
+    private $mapper;
 
     public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {
