@@ -6,9 +6,9 @@ namespace Namelivia\TravelPerk\Expenses;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Expenses\Types\Invoice;
-use Namelivia\TravelPerk\Expenses\Types\InvoiceLinesPage;
-use Namelivia\TravelPerk\Expenses\Types\InvoicesPage;
+use Namelivia\TravelPerk\Expenses\Invoices\Invoice;
+use Namelivia\TravelPerk\Expenses\InvoiceLines\InvoiceLines as InvoiceLinesType;
+use Namelivia\TravelPerk\Expenses\Invoices\Invoices as InvoicesType;
 
 class Invoices
 {
@@ -36,11 +36,11 @@ class Invoices
     /**
      * List all invoices (Will be removed, use query instead).
      */
-    public function all(InvoicesInputParams $params = null): InvoicesPage
+    public function all(InvoicesInputParams $params = null): InvoicesType
     {
         $params = isset($params) ? '?'.$params->asUrlParam() : null;
 
-        return $this->execute('get', implode('/', ['invoices']).$params, InvoicesPage::class);
+        return $this->execute('get', implode('/', ['invoices']).$params, InvoicesType::class);
     }
 
     /**
@@ -70,11 +70,11 @@ class Invoices
     /**
      * Get list of invoices lines.
      */
-    public function lines(InvoiceLinesInputParams $params = null): InvoiceLinesPage
+    public function lines(InvoiceLinesInputParams $params = null): InvoiceLinesType
     {
         $params = isset($params) ? '?'.$params->asUrlParam() : null;
 
-        return $this->execute('get', implode('/', ['invoices', 'lines']).$params, InvoiceLinesPage::class);
+        return $this->execute('get', implode('/', ['invoices', 'lines']).$params, InvoiceLinesType::class);
     }
 
     /**

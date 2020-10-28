@@ -6,7 +6,7 @@ namespace Namelivia\TravelPerk\Expenses;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Expenses\Types\InvoiceProfilesPage;
+use Namelivia\TravelPerk\Expenses\InvoiceProfiles\InvoiceProfiles as InvoiceProfilesType;
 use Namelivia\TravelPerk\Pagination\Pagination;
 
 class InvoiceProfiles
@@ -43,10 +43,10 @@ class InvoiceProfiles
     /**
      * List all invoice profiles associated to this account.
      */
-    public function all(Pagination $pagination = null): InvoiceProfilesPage
+    public function all(Pagination $pagination = null): InvoiceProfilesType
     {
         $params = isset($pagination) ? '?'.$pagination->asUrlParam() : null;
 
-        return $this->execute('get', implode('/', ['profiles']).$params, InvoiceProfilesPage::class);
+        return $this->execute('get', implode('/', ['profiles']).$params, InvoiceProfilesType::class);
     }
 }
