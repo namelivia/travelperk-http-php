@@ -6,7 +6,7 @@ namespace Namelivia\TravelPerk\SCIM;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\SCIM\Types\Users;
+use Namelivia\TravelPerk\SCIM\Users\Users;
 
 class UsersQuery
 {

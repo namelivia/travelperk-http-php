@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a37b3d2adfa9b703a426db1c1d53448",
+    "content-hash": "1c9a152897b6e14f4b426f9512125c4f",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -384,6 +384,55 @@
                 "source": "https://github.com/myclabs/php-enum/tree/master"
             },
             "time": "2020-02-14T08:15:52+00:00"
+        },
+        {
+            "name": "namelivia/travelperk-php-api-types",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/namelivia/travelperk-php-api-types.git",
+                "reference": "cfebe02682b597c5c95db15705eada774c6bb923"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/namelivia/travelperk-php-api-types/zipball/cfebe02682b597c5c95db15705eada774c6bb923",
+                "reference": "cfebe02682b597c5c95db15705eada774c6bb923",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^8.5.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Namelivia\\TravelPerk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "José Ignacio Amelivia Santiago",
+                    "email": "jignacio.amelivia@gmail.com",
+                    "homepage": "https://namelivia.com"
+                }
+            ],
+            "description": "PHP types for the travelperk API entities",
+            "keywords": [
+                "api",
+                "travelperk"
+            ],
+            "support": {
+                "issues": "https://github.com/namelivia/travelperk-php-api-types/issues",
+                "source": "https://github.com/namelivia/travelperk-php-api-types/tree/0.0.3"
+            },
+            "time": "2020-10-28T18:43:16+00:00"
         },
         {
             "name": "nesbot/carbon",

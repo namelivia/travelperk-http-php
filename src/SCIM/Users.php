@@ -7,8 +7,8 @@ namespace Namelivia\TravelPerk\SCIM;
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Exceptions\NotImplementedException;
-use Namelivia\TravelPerk\SCIM\Types\User;
-use Namelivia\TravelPerk\SCIM\Types\Users as UsersType;
+use Namelivia\TravelPerk\SCIM\Users\User;
+use Namelivia\TravelPerk\SCIM\Users\Users as UsersType;
 
 class Users
 {

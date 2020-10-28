@@ -7,7 +7,7 @@ namespace Namelivia\TravelPerk\Expenses;
 use Carbon\Carbon;
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Expenses\Types\InvoicesPage;
+use Namelivia\TravelPerk\Expenses\Invoices\Invoices as InvoicesType;
 
 class InvoicesQuery
 {
@@ -35,12 +35,12 @@ class InvoicesQuery
         return $result;
     }
 
-    public function get(): InvoicesPage
+    public function get(): InvoicesType
     {
         return $this->execute(
             'get',
             implode('/', ['invoices']).'?'.$this->params->asUrlParam(),
-            InvoicesPage::class
+            InvoicesType::class
         );
     }
 
