@@ -6,8 +6,8 @@ namespace Namelivia\TravelPerk\Expenses;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\Expenses\Invoices\Invoice;
 use Namelivia\TravelPerk\Expenses\InvoiceLines\InvoiceLines as InvoiceLinesType;
+use Namelivia\TravelPerk\Expenses\Invoices\Invoice;
 use Namelivia\TravelPerk\Expenses\Invoices\Invoices as InvoicesType;
 
 class Invoices
