@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6ce2497ddbf514de2d9addf2894a9a6",
+    "content-hash": "7a37b3d2adfa9b703a426db1c1d53448",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -240,16 +240,16 @@
         },
         {
             "name": "json-mapper/json-mapper",
-            "version": "dev-fix_docblock_type_parsing",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/namelivia/JsonMapper.git",
-                "reference": "898e1c28a6974016dbdb0b4e3b6dc581623555e7"
+                "url": "https://github.com/JsonMapper/JsonMapper.git",
+                "reference": "6c6f42ad8aa5d99f9b490a1d3be1d9ec052ee145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/namelivia/JsonMapper/zipball/898e1c28a6974016dbdb0b4e3b6dc581623555e7",
-                "reference": "898e1c28a6974016dbdb0b4e3b6dc581623555e7",
+                "url": "https://api.github.com/repos/JsonMapper/JsonMapper/zipball/6c6f42ad8aa5d99f9b490a1d3be1d9ec052ee145",
+                "reference": "6c6f42ad8aa5d99f9b490a1d3be1d9ec052ee145",
                 "shasum": ""
             },
             "require": {
@@ -273,42 +273,22 @@
                     "JsonMapper\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "JsonMapper\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "phpcs": [
-                    "phpcs --standard=PSR12 src tests"
-                ],
-                "phpcbf": [
-                    "phpcbf --standard=PSR12 src tests"
-                ],
-                "phpstan": [
-                    "phpstan analyse"
-                ],
-                "unit-tests": [
-                    "phpunit --testsuite unit --testdox --coverage-clover=build/logs/clover-unit-tests.xml"
-                ],
-                "integration-tests": [
-                    "phpunit --testsuite integration --testdox --coverage-clover=build/logs/clover-integration-tests.xml"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Map JSON structures to PHP classes",
             "keywords": [
-                "JsonMapper",
                 "json",
+                "jsonmapper",
                 "mapper",
                 "middleware"
             ],
             "support": {
-                "source": "https://github.com/namelivia/JsonMapper/tree/fix_docblock_type_parsing"
+                "issues": "https://github.com/JsonMapper/JsonMapper/issues",
+                "source": "https://github.com/JsonMapper/JsonMapper/tree/1.4.1"
             },
-            "time": "2020-10-25T11:44:35+00:00"
+            "time": "2020-10-27T21:16:43+00:00"
         },
         {
             "name": "kamermans/guzzle-oauth2-subscriber",
@@ -1048,16 +1028,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v5.1.7",
+            "version": "v5.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "e3cdd5119b1b5bf0698c351b8ee20fb5a4ea248b"
+                "reference": "27980838fd261e04379fa91e94e81e662fe5a1b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/e3cdd5119b1b5bf0698c351b8ee20fb5a4ea248b",
-                "reference": "e3cdd5119b1b5bf0698c351b8ee20fb5a4ea248b",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/27980838fd261e04379fa91e94e81e662fe5a1b6",
+                "reference": "27980838fd261e04379fa91e94e81e662fe5a1b6",
                 "shasum": ""
             },
             "require": {
@@ -1093,11 +1073,6 @@
                 "symfony/yaml": ""
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.1-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Translation\\": ""
@@ -1123,7 +1098,7 @@
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v5.1.7"
+                "source": "https://github.com/symfony/translation/tree/v5.1.8"
             },
             "funding": [
                 {
@@ -1139,7 +1114,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-27T03:44:28+00:00"
+            "time": "2020-10-24T12:01:57+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -3029,9 +3004,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "json-mapper/json-mapper": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
