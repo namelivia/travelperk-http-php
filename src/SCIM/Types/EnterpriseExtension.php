@@ -7,7 +7,7 @@ namespace Namelivia\TravelPerk\SCIM\Types;
 class EnterpriseExtension
 {
     /**
-     * @var string
+     * @var string|null
      */
     public $costCenter;
 

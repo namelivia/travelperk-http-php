@@ -7,12 +7,12 @@ namespace Namelivia\TravelPerk\SCIM\Types;
 class Manager
 {
     /**
-     * @var string
+     * @var string|null
      */
     public $value;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $ref;
 

@@ -7,7 +7,7 @@ namespace Namelivia\TravelPerk\Expenses\Types;
 class Vendor
 {
     /**
-     * @var string
+     * @var string|null
      */
     public $code;
 

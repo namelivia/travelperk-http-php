@@ -27,12 +27,12 @@ class User
     public $preferredLanguage;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $title;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $externalId;
 

@@ -7,12 +7,12 @@ namespace Namelivia\TravelPerk\Expenses\Types;
 class Metadata
 {
     /**
-     * @var int
+     * @var int|null
      */
     public $tripId;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $tripName;
 
@@ -27,32 +27,32 @@ class Metadata
     public $travelers;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $startDate;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $endDate;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $costCenter;
 
     /**
-     * @var string[]
-     */
+    * @var string[]
+    */
     public $labels;
 
     /**
-     * @var Vendor
+     * @var Vendor|null
      */
     public $vendor;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     public $outOfPolicy;
 
@@ -62,7 +62,7 @@ class Metadata
     public $approvers;
 
     /**
-     * @var User
+     * @var User|null
      */
     public $booker;
 }

@@ -7,12 +7,12 @@ namespace Namelivia\TravelPerk\SCIM\Types;
 class EmergencyContact
 {
     /**
-     * @var string
+     * @var string|null
      */
     public $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $phone;
 }

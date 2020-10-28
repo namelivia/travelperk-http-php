@@ -17,7 +17,7 @@ class User
     public $email;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $externalId;
 }

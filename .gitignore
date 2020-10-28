@@ -1,4 +1,3 @@
 phpunit.xml
 vendor
-test.php
 .phpunit.result.cache

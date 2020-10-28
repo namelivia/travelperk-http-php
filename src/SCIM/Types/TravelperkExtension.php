@@ -7,17 +7,17 @@ namespace Namelivia\TravelPerk\SCIM\Types;
 class TravelperkExtension
 {
     /**
-     * @var string
+     * @var string|null
      */
     public $gender;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $dateOfBirth;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $travelPolicy;
 

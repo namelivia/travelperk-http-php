@@ -12,6 +12,11 @@ class Webhook
     public $id;
 
     /**
+     * @var boolean
+     */
+    public $enabled;
+
+    /**
      * @var string
      */
     public $name;

@@ -7,7 +7,7 @@ namespace Namelivia\TravelPerk\Expenses\Types;
 class TaxesSummary
 {
     /**
-     * @var string
+     * @var string|null
      */
     public $taxRegime;
     /**
