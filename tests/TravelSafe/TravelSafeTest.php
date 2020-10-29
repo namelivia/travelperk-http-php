@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
+use Carbon\Carbon;
 use JsonMapper\Enums\TextNotation;
 use JsonMapper\JsonMapperFactory;
 use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\TravelSafe\TravelSafe;
-use Carbon\Carbon;
 
 class TravelSafeTest extends TestCase
 {
@@ -31,7 +31,7 @@ class TravelSafeTest extends TestCase
         $this->travelPerk->shouldReceive('get')
             ->once()
             ->with(
-                'travelsafe/restrictions?' .
+                'travelsafe/restrictions?'.
                 'origin=ES&destination=FR&origin_type=country_code&destination_type=country_code&date=2019-03-21'
             )
             ->andReturn(file_get_contents('tests/stubs/restriction.json'));
