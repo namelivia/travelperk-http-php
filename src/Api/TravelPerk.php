@@ -17,6 +17,7 @@ class TravelPerk
     private $expenses;
     private $scim;
     private $webhooks;
+    private $travelSafe;
     private $mapper;
 
     public function __construct(Client $client, bool $isSandbox, JsonMapper $mapper)
@@ -25,6 +26,7 @@ class TravelPerk
         $this->expenses = new Expenses($this, $mapper);
         $this->scim = new SCIM($this, $mapper);
         $this->webhooks = new WebhooksAPI($this, $mapper);
+        $this->travelSafe = new TravelSafeAPI($this, $mapper);
         $this->baseUrl = $isSandbox ? TravelPerk::SANDBOX_BASE_URL : TravelPerk::BASE_URL;
     }
 
@@ -91,5 +93,10 @@ class TravelPerk
     public function webhooks(): WebhooksAPI
     {
         return $this->webhooks;
+    }
+
+    public function travelSafe(): TravelSafeAPI
+    {
+        return $this->travelSafe;
     }
 }
