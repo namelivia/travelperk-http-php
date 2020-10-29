@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\TravelSafe;
 
+use Carbon\Carbon;
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\TravelSafe\AirlineMeasures\AirlineMeasure;
 use Namelivia\TravelPerk\TravelSafe\Restrictions\Restriction;
 use Namelivia\TravelPerk\TravelSafe\Summary\Summary;
-use Carbon\Carbon;
 
 class TravelSafe
 {
@@ -49,7 +49,6 @@ class TravelSafe
         string $destinationType,
         Carbon $date
     ): Restriction {
-
         $params = new TravelRestrictionParams(
             $origin,
             $destination,
@@ -70,7 +69,6 @@ class TravelSafe
      */
     public function localSummary(string $location, string $locationType): Summary
     {
-
         $params = new LocalSummaryParams(
             $location,
             $locationType
@@ -78,7 +76,7 @@ class TravelSafe
 
         return $this->execute(
             'get',
-            implode('/', ['travelsafe', 'guidelines']).'?'. $params->asUrlParam(),
+            implode('/', ['travelsafe', 'guidelines']).'?'.$params->asUrlParam(),
             Summary::class
         );
     }
@@ -90,7 +88,7 @@ class TravelSafe
     {
         return $this->execute(
             'get',
-            implode('/', ['travelsafe', 'airline_safety_measures']).'?iata_code=' . $iata,
+            implode('/', ['travelsafe', 'airline_safety_measures']).'?iata_code='.$iata,
             AirlineMeasure::class
         );
     }
