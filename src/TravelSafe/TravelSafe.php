@@ -9,6 +9,7 @@ use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\TravelSafe\AirlineMeasures\AirlineMeasure;
 use Namelivia\TravelPerk\TravelSafe\Restrictions\Restriction;
 use Namelivia\TravelPerk\TravelSafe\Summary\Summary;
+use Carbon\Carbon;
 
 class TravelSafe
 {
@@ -46,48 +47,59 @@ class TravelSafe
         string $destination,
         string $originType,
         string $destinationType,
-        string $date
+        Carbon $date
     ): Restriction {
+
+        $params = new TravelRestrictionParams(
+            $origin,
+            $destination,
+            $originType,
+            $destinationType,
+            $date
+        );
+
         return $this->execute(
             'get',
-            implode('/', ['travelsafe', 'restriction']),
-            Restriction::class,
-            [
-                'origin'           => $origin,
-                'destination'      => $destination,
-                'origin_type'      => $originType,
-                'destination_type' => $destinationType,
-                'date'             => $date,
-            ]
+            implode('/', ['travelsafe', 'restrictions']).'?'.$params->asUrlParam(),
+            Restriction::class
         );
     }
 
     /**
      * Retrieve the local summary.
      */
-    public function localSummary(string $locationType, string $location): Summary
+    public function localSummary(string $location, string $locationType): Summary
     {
+
+        $params = new LocalSummaryParams(
+            $location,
+            $locationType
+        );
+
         return $this->execute(
             'get',
-            implode('/', ['travelsafe', 'guidelines']),
-            Summary::class,
-            [
-                'location_type' => $locationType,
-                'location'      => $location,
-            ]
+            implode('/', ['travelsafe', 'guidelines']).'?'. $params->asUrlParam(),
+            Summary::class
         );
     }
 
     /**
-     * Retrieve the local summary.
+     * Retrieve airline safety measures.
      */
     public function airlineSafetyMeasures(string $iata): AirlineMeasure
     {
         return $this->execute(
             'get',
-            implode('/', ['travelsafe', 'airline_safety_measures']),
-            AirlineMeasure::class,
-            ['iata_code' => $iata]
+            implode('/', ['travelsafe', 'airline_safety_measures']).'?iata_code=' . $iata,
+            AirlineMeasure::class
         );
+    }
+
+    /**
+     * Get all location types.
+     */
+    public function locationTypes(): array
+    {
+        return LocationType::getConstantValues();
     }
 }

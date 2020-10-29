@@ -10,6 +10,7 @@ use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\TravelSafe\TravelSafe;
+use Carbon\Carbon;
 
 class TravelSafeTest extends TestCase
 {
@@ -29,20 +30,17 @@ class TravelSafeTest extends TestCase
     {
         $this->travelPerk->shouldReceive('get')
             ->once()
-            ->with('travelsafe/restriction', [
-                'origin'           => 'origin',
-                'destination'      => 'destination',
-                'origin_type'      => 'originType',
-                'destination_type' => 'destinationType',
-                'date'             => 'date',
-            ])
+            ->with(
+                'travelsafe/restrictions?' .
+                'origin=ES&destination=FR&origin_type=country_code&destination_type=country_code&date=2019-03-21'
+            )
             ->andReturn(file_get_contents('tests/stubs/restriction.json'));
         $restriction = $this->travelSafe->travelRestrictions(
-            'origin',
-            'destination',
-            'originType',
-            'destinationType',
-            'date'
+            'ES',
+            'FR',
+            'country_code',
+            'country_code',
+            Carbon::today()
         );
         $this->assertEquals('France', $restriction->origin->name);
         $this->assertEquals('country', $restriction->origin->type);
@@ -81,12 +79,9 @@ class TravelSafeTest extends TestCase
     {
         $this->travelPerk->shouldReceive('get')
             ->once()
-            ->with('travelsafe/guidelines', [
-                'location_type' => 'locationType',
-                'location'      => 'location',
-            ])
+            ->with('travelsafe/guidelines?location_type=country_code&location=ES')
             ->andReturn(file_get_contents('tests/stubs/summary.json'));
-        $restriction = $this->travelSafe->localSummary('locationType', 'location');
+        $restriction = $this->travelSafe->localSummary('ES', 'country_code');
         $this->assertEquals('While traveling in Spain you will be required to follow the guidelines introduced by the local government. These regulations are based on risk levels and aimed at improving your safety.', $restriction->summary);
         $this->assertEquals('', $restriction->details);
         $this->assertEquals('high', $restriction->riskLevel->id);
@@ -112,7 +107,7 @@ class TravelSafeTest extends TestCase
     {
         $this->travelPerk->shouldReceive('get')
             ->once()
-            ->with('travelsafe/airline_safety_measures', ['iata_code' => 'iata'])
+            ->with('travelsafe/airline_safety_measures?iata_code=iata')
             ->andReturn(file_get_contents('tests/stubs/airlineMeasures.json'));
         $safetyMeasure = $this->travelSafe->airlineSafetyMeasures('iata');
         $this->assertEquals('Lufthansa', $safetyMeasure->airline->name);
@@ -127,5 +122,16 @@ class TravelSafeTest extends TestCase
         $this->assertEquals("Lufthansa' info source", $safetyMeasure->infoSource->name);
         $this->assertEquals('https://www.lufthansa.com/de/en/protection-measures', $safetyMeasure->infoSource->url);
         $this->assertEquals('2020-10-19T12:14:42.041298+00:00', $safetyMeasure->updatedAt);
+    }
+
+    public function testGettingAllLocationTypes()
+    {
+        $this->assertEquals(
+            [
+                'country_code',
+                'iata_code',
+            ],
+            $this->travelSafe->locationTypes()
+        );
     }
 }
