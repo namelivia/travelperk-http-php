@@ -6,9 +6,9 @@ namespace Namelivia\TravelPerk\TravelSafe;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
+use Namelivia\TravelPerk\TravelSafe\AirlineMeasures\AirlineMeasure;
 use Namelivia\TravelPerk\TravelSafe\Restrictions\Restriction;
 use Namelivia\TravelPerk\TravelSafe\Summary\Summary;
-use Namelivia\TravelPerk\TravelSafe\AirlineMeasures\AirlineMeasure;
 
 class TravelSafe
 {
@@ -47,18 +47,17 @@ class TravelSafe
         string $originType,
         string $destinationType,
         string $date
-    ): Restriction
-    {
+    ): Restriction {
         return $this->execute(
             'get',
             implode('/', ['travelsafe', 'restriction']),
             Restriction::class,
             [
-                'origin' => $origin,
-                'destination' => $destination,
-                'origin_type' => $originType,
+                'origin'           => $origin,
+                'destination'      => $destination,
+                'origin_type'      => $originType,
                 'destination_type' => $destinationType,
-                'date' => $date,
+                'date'             => $date,
             ]
         );
     }
@@ -74,7 +73,7 @@ class TravelSafe
             Summary::class,
             [
                 'location_type' => $locationType,
-                'location' => $location,
+                'location'      => $location,
             ]
         );
     }
