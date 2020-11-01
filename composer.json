@@ -15,7 +15,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "nesbot/carbon": "^2.0",
         "kamermans/guzzle-oauth2-subscriber": "^1.0",
-        "namelivia/travelperk-php-api-types": "^0.0.7",
+        "namelivia/travelperk-php-api-types": "^1.0.0",
         "json-mapper/json-mapper": "^1.4.2"
     },
     "require-dev": {

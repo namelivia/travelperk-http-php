@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "31fd9d634be4d474f044f680ebe66d59",
+    "content-hash": "6ca00188cece10b33a5597711e8d3e0e",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -387,7 +387,7 @@
         },
         {
             "name": "namelivia/travelperk-php-api-types",
-            "version": "0.0.7",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/namelivia/travelperk-php-api-types.git",
@@ -430,7 +430,7 @@
             ],
             "support": {
                 "issues": "https://github.com/namelivia/travelperk-php-api-types/issues",
-                "source": "https://github.com/namelivia/travelperk-php-api-types/tree/0.0.7"
+                "source": "https://github.com/namelivia/travelperk-php-api-types/tree/1.0.0"
             },
             "time": "2020-10-30T12:00:46+00:00"
         },
