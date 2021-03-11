@@ -123,6 +123,11 @@ class TravelPerkTest extends TestCase
         $this->assertTrue($this->travelPerk->travelSafe() instanceof \Namelivia\TravelPerk\Api\TravelSafeAPI);
     }
 
+    public function testGettingAUsersInstance()
+    {
+        $this->assertTrue($this->travelPerk->users() instanceof \Namelivia\TravelPerk\Api\UsersAPI);
+    }
+
     public function testQueryingTheSandboxEnvironment()
     {
         $sandboxApi = new TravelPerk($this->client, true, Mockery::mock(JsonMapper::class));

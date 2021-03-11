@@ -14,7 +14,7 @@ use Namelivia\TravelPerk\SCIM\UpdateUserInputParams;
 use Namelivia\TravelPerk\SCIM\Users;
 use Namelivia\TravelPerk\SCIM\UsersInputParams;
 
-class UsersTest extends TestCase
+class SCIMUsersTest extends TestCase
 {
     private $travelPerk;
     private $users;
@@ -33,7 +33,7 @@ class UsersTest extends TestCase
         $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/Users')
-            ->andReturn(file_get_contents('tests/stubs/users.json'));
+            ->andReturn(file_get_contents('tests/stubs/scim_users.json'));
         $users = $this->users->all();
         $this->assertEquals([
             'urn:ietf:params:scim:api:messages:2.0:ListResponse',
@@ -86,7 +86,7 @@ class UsersTest extends TestCase
         $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/Users?count=5&startIndex=3')
-            ->andReturn(file_get_contents('tests/stubs/users.json'));
+            ->andReturn(file_get_contents('tests/stubs/scim_users.json'));
         $params = (new UsersInputParams())
             ->setCount(5)
             ->setStartIndex(3);
@@ -139,7 +139,7 @@ class UsersTest extends TestCase
         $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/Users?count=5&startIndex=3')
-            ->andReturn(file_get_contents('tests/stubs/users.json'));
+            ->andReturn(file_get_contents('tests/stubs/scim_users.json'));
         $users = $this->users->query()
             ->setCount(5)
             ->setStartIndex(3)
@@ -192,7 +192,7 @@ class UsersTest extends TestCase
         $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('scim/Users/1')
-            ->andReturn(file_get_contents('tests/stubs/user.json'));
+            ->andReturn(file_get_contents('tests/stubs/scim_user.json'));
         $user = $this->users->get(1);
         $this->assertEquals([
             'urn:ietf:params:scim:schemas:core:2.0:User',
@@ -261,7 +261,7 @@ class UsersTest extends TestCase
                 'locale' => 'en',
                 'title'  => 'manager',
             ])
-            ->andReturn(file_get_contents('tests/stubs/user.json'));
+            ->andReturn(file_get_contents('tests/stubs/scim_user.json'));
         $user = $this->users->make(
             'testuser@test.com',
             true,
@@ -320,7 +320,7 @@ class UsersTest extends TestCase
                 ],
                 'active' => true,
             ])
-            ->andReturn(file_get_contents('tests/stubs/user.json'));
+            ->andReturn(file_get_contents('tests/stubs/scim_user.json'));
         $user = $this->users->create(
             'testuser@test.com',
             true,
@@ -391,7 +391,7 @@ class UsersTest extends TestCase
                 'active' => true,
                 'title'  => 'manager',
             ])
-            ->andReturn(file_get_contents('tests/stubs/user.json'));
+            ->andReturn(file_get_contents('tests/stubs/scim_user.json'));
         $user = $this->users->modify(
             $userId,
             'testuser@test.com',

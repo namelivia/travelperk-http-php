@@ -1,65 +1,46 @@
 {
-  "schemas": [
-    "urn:ietf:params:scim:api:messages:2.0:ListResponse"
-  ],
-  "totalResults": 2,
-  "itemsPerPage": 2,
-  "startIndex": 1,
-  "Resources": [
+  "users":[
     {
-      "schemas": [
-        "urn:ietf:params:scim:schemas:core:2.0:User",
-        "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
-        "urn:ietf:params:scim:schemas:extension:travelperk:2.0:User"
+      "id":"8",
+      "user_name":"boss@test.com",
+      "name":{
+        "last_name":"Morrison",
+        "first_name":"Boss",
+        "middle_name":"",
+        "title":"MR"
+      },
+      "preferred_language":"en",
+      "locale":"en-gb",
+      "active":true,
+      "job_title":"Boss",
+      "phone_numbers":[
+        "+34 123456789"
       ],
-      "name": {
-        "givenName": "Marlen",
-        "familyName": "Col",
-        "middleName": "",
-        "honorificPrefix": ""
-      },
-      "locale": "en",
-      "preferredLanguage": "en",
-      "title": "Manager",
-      "externalId": "123455667",
-      "id": "29",
-      "groups": [],
-      "active": true,
-      "userName": "marlen.col@mycompany.com",
-      "phoneNumbers": [
-        {
-          "value": "+34 1234567",
-          "type": "work"
-        }
-      ],
-      "meta": {
-        "resourceType": "User",
-        "created": "2020-04-01T22:24:44.137082+00:00",
-        "lastModified": "2020-04-01T22:24:44.137082+00:00",
-        "location": "http://app.travelperk.com/api/v2/scim/Users/29"
-      },
-      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
-        "costCenter": "Marketing",
-        "manager": {
-          "value": "123",
-          "$ref": "https://app.travelperk.com/api/v2/scim/Users/123/",
-          "displayName": "Jack Jackson"
-        }
-      },
-      "urn:ietf:params:scim:schemas:extension:travelperk:2.0:User": {
-        "gender": "M",
-        "dateOfBirth": "1980-02-02",
-        "travelPolicy": "Marketing travel policy",
-        "invoiceProfiles": [
-          {
-            "value": "My Company Ltd"
-          }
-        ],
-        "emergencyContact": {
-          "name": "Jane Goodie",
-          "phone": "+34 9874637"
-        }
+      "emergency_contact":{
+        "name":"Mrs. Morrison",
+        "phone":"+34 987654321"
       }
+    },
+    {
+      "id":"7",
+      "user_name":"manager@test.com",
+      "name":{
+        "last_name":"Roberts",
+        "first_name":"Manager",
+        "middle_name":"",
+        "title":"MRS"
+      },
+      "preferred_language":"en",
+      "locale":"en-gb",
+      "active":true,
+      "job_title":"Office Manager",
+      "phone_numbers":[
+
+      ],
+      "emergency_contact":null
     }
-  ]
+  ],
+  "limit":10,
+  "offset":0,
+  "total":2
 }
