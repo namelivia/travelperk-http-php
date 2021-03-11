@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Users;
 
-use Carbon\Carbon;
-
 class UsersInputParams
 {
     private $tripId;

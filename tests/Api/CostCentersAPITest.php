@@ -6,8 +6,8 @@ namespace Namelivia\TravelPerk\Tests;
 
 use JsonMapper\JsonMapper;
 use Mockery;
-use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Api\CostCentersAPI;
+use Namelivia\TravelPerk\Api\TravelPerk;
 
 class CostCentersAPITest extends TestCase
 {

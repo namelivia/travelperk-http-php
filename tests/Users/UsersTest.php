@@ -10,7 +10,6 @@ use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Users\Users;
-use Namelivia\TravelPerk\Users\Users\UsersInputParams;
 
 class UsersTest extends TestCase
 {
@@ -41,10 +40,10 @@ class UsersTest extends TestCase
         $this->assertEquals('en', $usersPage->users[0]->preferredLanguage);
         $this->assertEquals('en-gb', $usersPage->users[0]->locale);
         $this->assertEquals(true, $usersPage->users[0]->active);
-        $this->assertEquals("Boss", $usersPage->users[0]->jobTitle);
-        $this->assertEquals(["+34 123456789"], $usersPage->users[0]->phoneNumbers);
-        $this->assertEquals("Mrs. Morrison", $usersPage->users[0]->emergencyContact->name);
-        $this->assertEquals("+34 987654321", $usersPage->users[0]->emergencyContact->phone);
+        $this->assertEquals('Boss', $usersPage->users[0]->jobTitle);
+        $this->assertEquals(['+34 123456789'], $usersPage->users[0]->phoneNumbers);
+        $this->assertEquals('Mrs. Morrison', $usersPage->users[0]->emergencyContact->name);
+        $this->assertEquals('+34 987654321', $usersPage->users[0]->emergencyContact->phone);
         $this->assertEquals('7', $usersPage->users[1]->id);
         $this->assertEquals('manager@test.com', $usersPage->users[1]->userName);
         $this->assertEquals('Roberts', $usersPage->users[1]->name->lastName);
@@ -54,7 +53,7 @@ class UsersTest extends TestCase
         $this->assertEquals('en', $usersPage->users[1]->preferredLanguage);
         $this->assertEquals('en-gb', $usersPage->users[1]->locale);
         $this->assertEquals(true, $usersPage->users[1]->active);
-        $this->assertEquals("Office Manager", $usersPage->users[1]->jobTitle);
+        $this->assertEquals('Office Manager', $usersPage->users[1]->jobTitle);
         $this->assertEquals([], $usersPage->users[1]->phoneNumbers);
         $this->assertEquals(null, $usersPage->users[1]->emergencyContact);
     }

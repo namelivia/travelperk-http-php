@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Users;
 
-use Carbon\Carbon;
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Users\Users\Users;
