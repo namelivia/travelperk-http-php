@@ -20,5 +20,4 @@ class UsersAPI
     {
         return $this->users;
     }
-
 }
