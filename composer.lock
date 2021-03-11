@@ -240,16 +240,16 @@
         },
         {
             "name": "json-mapper/json-mapper",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JsonMapper/JsonMapper.git",
-                "reference": "2cd700a8e3928697691760e1dde2da5b02fd6aff"
+                "reference": "5743eedb9385939b39b0631c6f8e09a0a39cfeb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JsonMapper/JsonMapper/zipball/2cd700a8e3928697691760e1dde2da5b02fd6aff",
-                "reference": "2cd700a8e3928697691760e1dde2da5b02fd6aff",
+                "url": "https://api.github.com/repos/JsonMapper/JsonMapper/zipball/5743eedb9385939b39b0631c6f8e09a0a39cfeb0",
+                "reference": "5743eedb9385939b39b0631c6f8e09a0a39cfeb0",
                 "shasum": ""
             },
             "require": {
@@ -288,9 +288,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JsonMapper/JsonMapper/issues",
-                "source": "https://github.com/JsonMapper/JsonMapper/tree/2.1.0"
+                "source": "https://github.com/JsonMapper/JsonMapper/tree/2.2.0"
             },
-            "time": "2021-01-28T19:27:19+00:00"
+            "time": "2021-02-04T08:52:05+00:00"
         },
         {
             "name": "kamermans/guzzle-oauth2-subscriber",
