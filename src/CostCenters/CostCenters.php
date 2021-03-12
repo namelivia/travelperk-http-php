@@ -8,6 +8,7 @@ use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenters as CostCentersType;
 use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenterDetail;
+use Namelivia\TravelPerk\CostCenters\CostCenters\BulkUpdateResponse;
 
 class CostCenters
 {
@@ -51,5 +52,21 @@ class CostCenters
     public function get(string $id): CostCenterDetail
     {
         return $this->execute('get', implode('/', ['cost_centers', $id]), CostCenterDetail::class);
+    }
+
+    /**
+     * Update an existing cost center.
+     */
+    public function update(string $id, UpdateCostCenterInputParams $params): CostCenterDetail
+    {
+        return $this->execute('patch', implode('/', ['cost_centers', $id]), CostCenterDetail::class, $params->asArray());
+    }
+
+    /**
+     * Bulk update an several cost centers at once.
+     */
+    public function bulkUpdate(BulkUpdateCostCenterInputParams $params): BulkUpdateResponse
+    {
+        return $this->execute('patch', implode('/', ['cost_centers', 'bulk_update']), BulkUpdateResponse::class, $params->asArray());
     }
 }

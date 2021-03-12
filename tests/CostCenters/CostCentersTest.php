@@ -10,6 +10,8 @@ use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\CostCenters\CostCenters;
+use Namelivia\TravelPerk\CostCenters\UpdateCostCenterInputParams;
+use Namelivia\TravelPerk\CostCenters\BulkUpdateCostCenterInputParams;
 
 class CostCentersTest extends TestCase
 {
@@ -69,5 +71,34 @@ class CostCentersTest extends TestCase
             ->andReturn(file_get_contents('tests/stubs/cost_center.json'));
         $costCenter = $this->costCenters->get($costCenterId);
         $this->assertEqualsCostCenterStub($costCenter);
+    }
+
+    public function testUpdatingACostCenter()
+    {
+        $id = "1";
+        $params = (new UpdateCostCenterInputParams())->setArchive(false);
+        $this->travelPerk->shouldReceive('patch')
+            ->once()
+            ->with('cost_centers/1', [
+                'archive' => false,
+            ])
+            ->andReturn(file_get_contents('tests/stubs/cost_center.json'));
+        $costCenter = $this->costCenters->update($id, $params);
+        $this->assertEqualsCostCenterStub($costCenter);
+    }
+
+    public function testBulkUpdatingCostCenters()
+    {
+        $id = "1";
+        $params = (new BulkUpdateCostCenterInputParams())->addId(1)->addId(2)->addId(3)->addId(4)->setArchive(false);
+        $this->travelPerk->shouldReceive('patch')
+            ->once()
+            ->with('cost_centers/bulk_update', [
+                'id_list' => [1, 2, 3, 4],
+                'archive' => false,
+            ])
+            ->andReturn(file_get_contents('tests/stubs/bulk_update.json'));
+        $result = $this->costCenters->bulkUpdate($params);
+        $this->assertEquals(1, $result->updatedCount);
     }
 }
