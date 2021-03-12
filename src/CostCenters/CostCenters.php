@@ -69,4 +69,12 @@ class CostCenters
     {
         return $this->execute('patch', implode('/', ['cost_centers', 'bulk_update']), BulkUpdateResponse::class, $params->asArray());
     }
+
+    /**
+     * Set the users for a cost center.
+     */
+    public function setUsers(string $id, SetUsersForCostCenterInputParams $params): CostCenterDetail
+    {
+        return $this->execute('put', implode('/', ['cost_centers', $id, 'users']), CostCenterDetail::class, $params->asArray());
+    }
 }
