@@ -9,10 +9,10 @@ use JsonMapper\JsonMapperFactory;
 use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\CostCenters\CostCenters;
-use Namelivia\TravelPerk\CostCenters\UpdateCostCenterInputParams;
 use Namelivia\TravelPerk\CostCenters\BulkUpdateCostCenterInputParams;
+use Namelivia\TravelPerk\CostCenters\CostCenters;
 use Namelivia\TravelPerk\CostCenters\SetUsersForCostCenterInputParams;
+use Namelivia\TravelPerk\CostCenters\UpdateCostCenterInputParams;
 
 class CostCentersTest extends TestCase
 {
@@ -65,7 +65,7 @@ class CostCentersTest extends TestCase
 
     public function testGettingACostCenterDetails()
     {
-        $costCenterId = "1";
+        $costCenterId = '1';
         $this->travelPerk->shouldReceive('get')
             ->once()
             ->with('cost_centers/1')
@@ -76,7 +76,7 @@ class CostCentersTest extends TestCase
 
     public function testUpdatingACostCenter()
     {
-        $id = "1";
+        $id = '1';
         $params = (new UpdateCostCenterInputParams())->setArchive(false);
         $this->travelPerk->shouldReceive('patch')
             ->once()
@@ -104,7 +104,7 @@ class CostCentersTest extends TestCase
 
     public function testSettingUserIdsForACostCenter()
     {
-        $id = "1";
+        $id = '1';
         $params = (new SetUsersForCostCenterInputParams())->addId(1)->addId(2)->addId(3)->addId(4);
         $this->travelPerk->shouldReceive('put')
             ->once()
