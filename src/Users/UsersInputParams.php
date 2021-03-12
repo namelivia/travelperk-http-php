@@ -12,7 +12,7 @@ class UsersInputParams
 
     public function setTripId(string $tripId): UsersInputParams
     {
-        $this->profileId = $profileId;
+        $this->tripId = $tripId;
 
         return $this;
     }
@@ -34,7 +34,7 @@ class UsersInputParams
     public function asUrlParam(): string
     {
         return http_build_query([
-            'trip_id '                       => $this->tripId,
+            'trip_id'                        => $this->tripId,
             'offset'                         => $this->offset,
             'limit'                          => $this->limit,
         ]);
