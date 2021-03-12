@@ -7,6 +7,7 @@ namespace Namelivia\TravelPerk\CostCenters;
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenters as CostCentersType;
+use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenterDetail;
 
 class CostCenters
 {
@@ -42,5 +43,13 @@ class CostCenters
     public function all(): CostCentersType
     {
         return $this->execute('get', implode('/', ['cost_centers']), CostCentersType::class);
+    }
+
+    /**
+     * Get cost center detail.
+     */
+    public function get(string $id): CostCenterDetail
+    {
+        return $this->execute('get', implode('/', ['cost_centers', $id]), CostCenterDetail::class);
     }
 }

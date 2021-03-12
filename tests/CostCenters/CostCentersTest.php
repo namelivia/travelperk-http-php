@@ -35,6 +35,21 @@ class CostCentersTest extends TestCase
         $this->assertEquals('0', $costCentersPage->costCenters[0]->countUsers);
     }
 
+    private function assertEqualsCostCenterStub($costCenter): void
+    {
+        $this->assertEquals('1', $costCenter->id);
+        $this->assertEquals('iloveorange', $costCenter->name);
+        $this->assertEquals(true, $costCenter->archived);
+        $this->assertEquals(1, count($costCenter->users));
+        $this->assertEquals('Name', $costCenter->users[0]->firstName);
+        $this->assertEquals('Lastname', $costCenter->users[0]->lastName);
+        $this->assertEquals('email@email.com', $costCenter->users[0]->email);
+        $this->assertEquals(1, $costCenter->users[0]->id);
+        $this->assertEquals(null, $costCenter->users[0]->phone);
+        $this->assertEquals(null, $costCenter->users[0]->profilePicture);
+        $this->assertEquals(1, $costCenter->countUsers);
+    }
+
     public function testGettingAllCostCenters()
     {
         $this->travelPerk->shouldReceive('get')
@@ -43,5 +58,16 @@ class CostCentersTest extends TestCase
             ->andReturn(file_get_contents('tests/stubs/cost_centers.json'));
         $costCenters = $this->costCenters->all();
         $this->assertEqualsCostCentersStub($costCenters);
+    }
+
+    public function testGettingACostCenterDetails()
+    {
+        $costCenterId = "1";
+        $this->travelPerk->shouldReceive('get')
+            ->once()
+            ->with('cost_centers/1')
+            ->andReturn(file_get_contents('tests/stubs/cost_center.json'));
+        $costCenter = $this->costCenters->get($costCenterId);
+        $this->assertEqualsCostCenterStub($costCenter);
     }
 }
