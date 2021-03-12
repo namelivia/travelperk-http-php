@@ -12,6 +12,7 @@ use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\CostCenters\CostCenters;
 use Namelivia\TravelPerk\CostCenters\UpdateCostCenterInputParams;
 use Namelivia\TravelPerk\CostCenters\BulkUpdateCostCenterInputParams;
+use Namelivia\TravelPerk\CostCenters\SetUsersForCostCenterInputParams;
 
 class CostCentersTest extends TestCase
 {
@@ -89,7 +90,6 @@ class CostCentersTest extends TestCase
 
     public function testBulkUpdatingCostCenters()
     {
-        $id = "1";
         $params = (new BulkUpdateCostCenterInputParams())->addId(1)->addId(2)->addId(3)->addId(4)->setArchive(false);
         $this->travelPerk->shouldReceive('patch')
             ->once()
@@ -100,5 +100,19 @@ class CostCentersTest extends TestCase
             ->andReturn(file_get_contents('tests/stubs/bulk_update.json'));
         $result = $this->costCenters->bulkUpdate($params);
         $this->assertEquals(1, $result->updatedCount);
+    }
+
+    public function testSettingUserIdsForACostCenter()
+    {
+        $id = "1";
+        $params = (new SetUsersForCostCenterInputParams())->addId(1)->addId(2)->addId(3)->addId(4);
+        $this->travelPerk->shouldReceive('put')
+            ->once()
+            ->with('cost_centers/1/users', [
+                'user_ids' => [1, 2, 3, 4],
+            ])
+            ->andReturn(file_get_contents('tests/stubs/cost_center.json'));
+        $costCenter = $this->costCenters->setUsers($id, $params);
+        $this->assertEqualsCostCenterStub($costCenter);
     }
 }
