@@ -57,4 +57,15 @@ class TripsTest extends TestCase
              ->get();
         $this->assertEqualsTripsStub($trips);
     }
+
+    public function testGettingStatuses()
+    {
+        $this->assertEquals(
+            [
+                'booked',
+                'cancelled',
+            ],
+            $this->trips->statuses()
+        );
+    }
 }

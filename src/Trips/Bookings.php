@@ -42,4 +42,20 @@ class Bookings
     {
         return new BookingsQuery($this->travelPerk, $this->mapper);
     }
+
+    /**
+     * Get all statuses.
+     */
+    public function statuses(): array
+    {
+        return BookingStatus::getConstantValues();
+    }
+
+    /**
+     * Get all types.
+     */
+    public function types(): array
+    {
+        return Type::getConstantValues();
+    }
 }

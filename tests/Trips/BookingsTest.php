@@ -151,4 +151,29 @@ class BookingsTest extends TestCase
              ->get();
         $this->assertEqualsBookingsStub($bookings);
     }
+
+    public function testGettingStatuses()
+    {
+        $this->assertEquals(
+            [
+                'confirmed',
+                'cancelled',
+            ],
+            $this->bookings->statuses()
+        );
+    }
+
+    public function testGettingTypes()
+    {
+        $this->assertEquals(
+            [
+                'flight',
+                'hotel',
+                'train',
+                'car',
+                'other',
+            ],
+            $this->bookings->types()
+        );
+    }
 }

@@ -42,4 +42,12 @@ class Trips
     {
         return new TripsQuery($this->travelPerk, $this->mapper);
     }
+
+    /**
+     * Get all statuses.
+     */
+    public function statuses(): array
+    {
+        return Status::getConstantValues();
+    }
 }
