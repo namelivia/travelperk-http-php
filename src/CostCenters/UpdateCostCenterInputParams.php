@@ -26,7 +26,7 @@ class UpdateCostCenterInputParams
     public function asArray(): array
     {
         return array_filter([
-            'name' => $this->name,
+            'name'    => $this->name,
             'archive' => $this->archive,
         ], function ($value) {return !is_null($value); });
     }

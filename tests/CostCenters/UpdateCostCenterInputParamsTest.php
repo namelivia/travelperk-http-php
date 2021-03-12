@@ -26,7 +26,7 @@ class UpdateCostCenterInputParamTest extends TestCase
         $inputParams->setArchive(true)->setName('test name');
         $this->assertEquals(
             [
-                'name' => 'test name',
+                'name'    => 'test name',
                 'archive' => true,
             ],
             $inputParams->asArray()

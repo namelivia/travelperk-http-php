@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Trips;
 
+use Carbon\Carbon;
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\Trips\Bookings\Bookings;
-use Carbon\Carbon;
 
 class BookingsQuery
 {

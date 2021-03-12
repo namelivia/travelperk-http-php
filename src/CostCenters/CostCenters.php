@@ -6,9 +6,9 @@ namespace Namelivia\TravelPerk\CostCenters;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenters as CostCentersType;
-use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenterDetail;
 use Namelivia\TravelPerk\CostCenters\CostCenters\BulkUpdateResponse;
+use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenterDetail;
+use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenters as CostCentersType;
 
 class CostCenters
 {

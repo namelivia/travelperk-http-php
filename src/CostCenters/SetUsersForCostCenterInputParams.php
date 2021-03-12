@@ -8,7 +8,8 @@ class SetUsersForCostCenterInputParams
 {
     private $ids;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->ids = [];
     }
 

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Api;
 
 use JsonMapper\JsonMapper;
-use Namelivia\TravelPerk\Trips\Trips;
 use Namelivia\TravelPerk\Trips\Bookings;
+use Namelivia\TravelPerk\Trips\Trips;
 
 class TripsAPI
 {
