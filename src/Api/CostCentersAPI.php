@@ -9,7 +9,7 @@ use Namelivia\TravelPerk\CostCenters\CostCenters;
 
 class CostCentersAPI
 {
-    private $costCenters;
+    private $users;
 
     public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {

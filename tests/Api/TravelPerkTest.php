@@ -130,7 +130,12 @@ class TravelPerkTest extends TestCase
 
     public function testGettingATripsInstance()
     {
-        $this->assertTrue($this->travelPerk->Trips() instanceof \Namelivia\TravelPerk\Api\TripsAPI);
+        $this->assertTrue($this->travelPerk->trips() instanceof \Namelivia\TravelPerk\Api\TripsAPI);
+    }
+
+    public function testGettingACostCentersInstance()
+    {
+        $this->assertTrue($this->travelPerk->costCenters() instanceof \Namelivia\TravelPerk\Api\CostCentersAPI);
     }
 
     public function testQueryingTheSandboxEnvironment()
