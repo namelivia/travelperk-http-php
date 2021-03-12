@@ -6,6 +6,7 @@ namespace Namelivia\TravelPerk\Api;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Trips\Trips;
+use Namelivia\TravelPerk\Trips\Bookings;
 
 class TripsAPI
 {
@@ -14,10 +15,16 @@ class TripsAPI
     public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {
         $this->trips = new Trips($travelPerk, $mapper);
+        $this->bookings = new Bookings($travelPerk, $mapper);
     }
 
     public function trips(): Trips
     {
         return $this->trips;
+    }
+
+    public function bookings(): Bookings
+    {
+        return $this->bookings;
     }
 }
