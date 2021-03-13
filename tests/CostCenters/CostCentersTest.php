@@ -9,10 +9,7 @@ use JsonMapper\JsonMapperFactory;
 use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\CostCenters\BulkUpdateCostCenterInputParams;
 use Namelivia\TravelPerk\CostCenters\CostCenters;
-use Namelivia\TravelPerk\CostCenters\SetUsersForCostCenterInputParams;
-use Namelivia\TravelPerk\CostCenters\UpdateCostCenterInputParams;
 
 class CostCentersTest extends TestCase
 {
