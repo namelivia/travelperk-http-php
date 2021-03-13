@@ -13,7 +13,7 @@ This is an unofficial package for acessing the [TravelPerk official Web API](htt
 Require this package, with [Composer](https://getcomposer.org/), in the root directory of your project.
 
 ```bash
-$ composer require namelivia/travelperk-http-php:~1.0.0
+$ composer require namelivia/travelperk-http-php:~1.4.0
 ```
 
 ## Getting started
