@@ -6,7 +6,6 @@ namespace Namelivia\TravelPerk\CostCenters;
 
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\CostCenters\CostCenters\BulkUpdateResponse;
 use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenterDetail;
 use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenters as CostCentersType;
 
@@ -55,26 +54,26 @@ class CostCenters
     }
 
     /**
-     * Update an existing cost center.
+     * Update the cost center endpoint.
      */
-    public function update(string $id, UpdateCostCenterInputParams $params): CostCenterDetail
+    public function modify(string $id): UpdateCostCenterRequest
     {
-        return $this->execute('patch', implode('/', ['cost_centers', $id]), CostCenterDetail::class, $params->asArray());
+        return new UpdateCostCenterRequest($id, $this->travelPerk);
     }
 
     /**
      * Bulk update an several cost centers at once.
      */
-    public function bulkUpdate(BulkUpdateCostCenterInputParams $params): BulkUpdateResponse
+    public function bulkUpdate(): BulkUpdateCostCenterRequest
     {
-        return $this->execute('patch', implode('/', ['cost_centers', 'bulk_update']), BulkUpdateResponse::class, $params->asArray());
+        return new BulkUpdateCostCenterRequest($this->travelPerk);
     }
 
     /**
      * Set the users for a cost center.
      */
-    public function setUsers(string $id, SetUsersForCostCenterInputParams $params): CostCenterDetail
+    public function setUsers(string $id): SetUsersForCostCenterRequest
     {
-        return $this->execute('put', implode('/', ['cost_centers', $id, 'users']), CostCenterDetail::class, $params->asArray());
+        return new SetUsersForCostCenterRequest($id, $this->travelPerk);
     }
 }
