@@ -73,8 +73,8 @@ class CostCenters
     /**
      * Set the users for a cost center.
      */
-    public function setUsers(string $id, SetUsersForCostCenterInputParams $params): CostCenterDetail
+    public function setUsers(string $id): SetUsersForCostCenterRequest
     {
-        return $this->execute('put', implode('/', ['cost_centers', $id, 'users']), CostCenterDetail::class, $params->asArray());
+        return new SetUsersForCostCenterRequest($id, $this->travelPerk);
     }
 }
