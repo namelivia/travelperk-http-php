@@ -21,7 +21,7 @@ class SetUsersForCostCenterRequest
 
     public function save(): object
     {
-        return $this->travelPerk->putJson(implode('/', ['cost_centers', $this->id, 'users']), $this->params->asArray());
+        return json_decode($this->travelPerk->put(implode('/', ['cost_centers', $this->id, 'users']), $this->params->asArray()));
     }
 
     public function addId(int $id): SetUsersForCostCenterRequest
