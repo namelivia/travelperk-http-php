@@ -52,7 +52,7 @@ class UpdateWebhookRequest
         return $this;
     }
 
-    public function setEvents(string $events): UpdateWebhookRequest
+    public function setEvents(array $events): UpdateWebhookRequest
     {
         $this->params->setEvents($events);
 

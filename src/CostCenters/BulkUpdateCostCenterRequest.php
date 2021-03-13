@@ -22,9 +22,9 @@ class BulkUpdateCostCenterRequest
         return json_decode($this->travelPerk->patch(implode('/', ['cost_centers', 'bulk_update']), $this->params->asArray()));
     }
 
-    public function addId(int $id): BulkUpdateCostCenterRequest
+    public function setIds(array $ids): BulkUpdateCostCenterRequest
     {
-        $this->params->addId($id);
+        $this->params->setIds($ids);
 
         return $this;
     }

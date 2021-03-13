@@ -24,9 +24,9 @@ class SetUsersForCostCenterRequest
         return json_decode($this->travelPerk->put(implode('/', ['cost_centers', $this->id, 'users']), $this->params->asArray()));
     }
 
-    public function addId(int $id): SetUsersForCostCenterRequest
+    public function setIds(array $ids): SetUsersForCostCenterRequest
     {
-        $this->params->addId($id);
+        $this->params->setIds($ids);
 
         return $this;
     }

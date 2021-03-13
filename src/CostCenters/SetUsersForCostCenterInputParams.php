@@ -8,14 +8,9 @@ class SetUsersForCostCenterInputParams
 {
     private $ids;
 
-    public function __construct()
+    public function setIds(array $ids): SetUsersForCostCenterInputParams
     {
-        $this->ids = [];
-    }
-
-    public function addId(int $id): SetUsersForCostCenterInputParams
-    {
-        array_push($this->ids, $id);
+        $this->ids = $ids;
 
         return $this;
     }

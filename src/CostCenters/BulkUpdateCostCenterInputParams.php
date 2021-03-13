@@ -9,14 +9,9 @@ class BulkUpdateCostCenterInputParams
     private $ids;
     private $archive;
 
-    public function __construct()
+    public function setIds(array $ids): BulkUpdateCostCenterInputParams
     {
-        $this->ids = [];
-    }
-
-    public function addId(int $id): BulkUpdateCostCenterInputParams
-    {
-        array_push($this->ids, $id);
+        $this->ids = $ids;
 
         return $this;
     }
