@@ -74,10 +74,10 @@ class CostCentersTest extends TestCase
     public function testModifyingACostCenter()
     {
         $id = '1a';
-        $this->travelPerk->shouldReceive('patchJson')
+        $this->travelPerk->shouldReceive('patch')
             ->once()
             ->with('cost_centers/1a', ['name' => 'newName', 'archive' => false])
-            ->andReturn((object) ['data' => 'costCenterUpdated']);
+            ->andReturn('{"data": "costCenterUpdated"}');
         $this->assertEquals(
             (object) ['data' => 'costCenterUpdated'],
             $this->costCenters->modify($id)->setName('newName')->setArchive(false)->save()
@@ -86,13 +86,13 @@ class CostCentersTest extends TestCase
 
     public function testBulkUpdatingCostCenters()
     {
-        $this->travelPerk->shouldReceive('patchJson')
+        $this->travelPerk->shouldReceive('patch')
             ->once()
             ->with('cost_centers/bulk_update', [
                 'id_list' => [1, 2, 3, 4],
                 'archive' => false,
             ])
-            ->andReturn(json_decode(file_get_contents('tests/stubs/bulk_update.json')));
+            ->andReturn(file_get_contents('tests/stubs/bulk_update.json'));
         $result = $this->costCenters->bulkUpdate()->addId(1)->addId(2)->addId(3)->addId(4)->setArchive(false)->save();
         $this->assertEquals(1, $result->updated_count);
     }

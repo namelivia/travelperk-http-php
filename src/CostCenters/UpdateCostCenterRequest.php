@@ -21,7 +21,7 @@ class UpdateCostCenterRequest
 
     public function save(): object
     {
-        return $this->travelPerk->patchJson(implode('/', ['cost_centers', $this->id]), $this->params->asArray());
+        return json_decode($this->travelPerk->patch(implode('/', ['cost_centers', $this->id]), $this->params->asArray()));
     }
 
     public function setName(string $name): UpdateCostCenterRequest

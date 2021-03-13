@@ -167,10 +167,10 @@ class WebhooksTest extends TestCase
     public function testModifyingAWebhook()
     {
         $id = '1a';
-        $this->travelPerk->shouldReceive('patchJson')
+        $this->travelPerk->shouldReceive('patch')
             ->once()
             ->with('webhooks/1a', ['name' => 'newName', 'enabled' => false])
-            ->andReturn((object) ['data' => 'webhookUpdated']);
+            ->andReturn('{"data": "webhookUpdated"}');
         $this->assertEquals(
             (object) ['data' => 'webhookUpdated'],
             $this->webhooks->modify($id)->setName('newName')->setEnabled(false)->save()

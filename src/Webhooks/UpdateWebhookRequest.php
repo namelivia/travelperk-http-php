@@ -21,7 +21,7 @@ class UpdateWebhookRequest
 
     public function save(): object
     {
-        return $this->travelPerk->patchJson(implode('/', ['webhooks', $this->id]), $this->params->asArray());
+        return json_decode($this->travelPerk->patch(implode('/', ['webhooks', $this->id]), $this->params->asArray()));
     }
 
     public function setName(string $name): UpdateWebhookRequest
