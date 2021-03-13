@@ -74,18 +74,17 @@ class CostCentersTest extends TestCase
         $this->assertEqualsCostCenterStub($costCenter);
     }
 
-    public function testUpdatingACostCenter()
+    public function testModifyingACostCenter()
     {
-        $id = '1';
-        $params = (new UpdateCostCenterInputParams())->setArchive(false);
-        $this->travelPerk->shouldReceive('patch')
+        $id = '1a';
+        $this->travelPerk->shouldReceive('patchJson')
             ->once()
-            ->with('cost_centers/1', [
-                'archive' => false,
-            ])
-            ->andReturn(file_get_contents('tests/stubs/cost_center.json'));
-        $costCenter = $this->costCenters->update($id, $params);
-        $this->assertEqualsCostCenterStub($costCenter);
+            ->with('cost_centers/1a', ['name' => 'newName', 'archive' => false])
+            ->andReturn((object) ['data' => 'costCenterUpdated']);
+        $this->assertEquals(
+            (object) ['data' => 'costCenterUpdated'],
+            $this->costCenters->modify($id)->setName('newName')->setArchive(false)->save()
+        );
     }
 
     public function testBulkUpdatingCostCenters()

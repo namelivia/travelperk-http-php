@@ -55,11 +55,11 @@ class CostCenters
     }
 
     /**
-     * Update an existing cost center.
+     * Update the cost center endpoint.
      */
-    public function update(string $id, UpdateCostCenterInputParams $params): CostCenterDetail
+    public function modify(string $id): UpdateCostCenterRequest
     {
-        return $this->execute('patch', implode('/', ['cost_centers', $id]), CostCenterDetail::class, $params->asArray());
+        return new UpdateCostCenterRequest($id, $this->travelPerk);
     }
 
     /**
