@@ -65,9 +65,9 @@ class CostCenters
     /**
      * Bulk update an several cost centers at once.
      */
-    public function bulkUpdate(BulkUpdateCostCenterInputParams $params): BulkUpdateResponse
+    public function bulkUpdate(): BulkUpdateCostCenterRequest
     {
-        return $this->execute('patch', implode('/', ['cost_centers', 'bulk_update']), BulkUpdateResponse::class, $params->asArray());
+        return new BulkUpdateCostCenterRequest($this->travelPerk);
     }
 
     /**

@@ -89,16 +89,15 @@ class CostCentersTest extends TestCase
 
     public function testBulkUpdatingCostCenters()
     {
-        $params = (new BulkUpdateCostCenterInputParams())->addId(1)->addId(2)->addId(3)->addId(4)->setArchive(false);
-        $this->travelPerk->shouldReceive('patch')
+        $this->travelPerk->shouldReceive('patchJson')
             ->once()
             ->with('cost_centers/bulk_update', [
                 'id_list' => [1, 2, 3, 4],
                 'archive' => false,
             ])
-            ->andReturn(file_get_contents('tests/stubs/bulk_update.json'));
-        $result = $this->costCenters->bulkUpdate($params);
-        $this->assertEquals(1, $result->updatedCount);
+            ->andReturn(json_decode(file_get_contents('tests/stubs/bulk_update.json')));
+        $result = $this->costCenters->bulkUpdate()->addId(1)->addId(2)->addId(3)->addId(4)->setArchive(false)->save();
+        $this->assertEquals(1, $result->updated_count);
     }
 
     public function testSettingUserIdsForACostCenter()
