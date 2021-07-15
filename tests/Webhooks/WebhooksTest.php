@@ -52,7 +52,7 @@ class WebhooksTest extends TestCase
         $this->assertEquals('invoice webhook', $webhooks->webhooks[0]->name);
         $this->assertEquals('https://mycompany/tkwebhook', $webhooks->webhooks[0]->url);
         $this->assertEquals('some secret', $webhooks->webhooks[0]->secret);
-        $this->assertEquals('enabled', $webhooks->webhooks[0]->status);
+        $this->assertEquals(True, $webhooks->webhooks[0]->enabled);
         $this->assertEquals(2, count($webhooks->webhooks[0]->events));
         $this->assertEquals('invoice.issued', $webhooks->webhooks[0]->events[0]);
         $this->assertEquals('invoiceline.created', $webhooks->webhooks[0]->events[1]);
@@ -73,7 +73,7 @@ class WebhooksTest extends TestCase
         $this->assertEquals('invoice webhook', $webhook->name);
         $this->assertEquals('https://mycompany.com/tk_webhook', $webhook->url);
         $this->assertEquals('some secret', $webhook->secret);
-        $this->assertEquals('enabled', $webhook->status);
+        $this->assertEquals(True, $webhook->enabled);
         $this->assertEquals(2, count($webhook->events));
         $this->assertEquals('invoice.issued', $webhook->events[0]);
         $this->assertEquals('invoiceline.created', $webhook->events[1]);
@@ -129,7 +129,7 @@ class WebhooksTest extends TestCase
         $this->assertEquals('invoice webhook', $newWebhook->name);
         $this->assertEquals('https://mycompany.com/tk_webhook', $newWebhook->url);
         $this->assertEquals('some secret', $newWebhook->secret);
-        $this->assertEquals('enabled', $newWebhook->status);
+        $this->assertEquals(True, $newWebhook->enabled);
         $this->assertEquals(2, count($newWebhook->events));
         $this->assertEquals('invoice.issued', $newWebhook->events[0]);
         $this->assertEquals('invoiceline.created', $newWebhook->events[1]);
@@ -155,7 +155,7 @@ class WebhooksTest extends TestCase
         $this->assertEquals('invoice webhook', $updatedWebhook->name);
         $this->assertEquals('https://mycompany.com/tk_webhook', $updatedWebhook->url);
         $this->assertEquals('some secret', $updatedWebhook->secret);
-        $this->assertEquals('enabled', $updatedWebhook->status);
+        $this->assertEquals(True, $updatedWebhook->enabled);
         $this->assertEquals(2, count($updatedWebhook->events));
         $this->assertEquals('invoice.issued', $updatedWebhook->events[0]);
         $this->assertEquals('invoiceline.created', $updatedWebhook->events[1]);
