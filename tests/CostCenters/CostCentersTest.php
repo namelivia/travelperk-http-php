@@ -84,6 +84,18 @@ class CostCentersTest extends TestCase
         );
     }
 
+    public function testCreatingACostCenter()
+    {
+        $this->travelPerk->shouldReceive('post')
+            ->once()
+            ->with('cost_centers', [
+                'name'     => 'test',
+            ])
+            ->andReturn(file_get_contents('tests/stubs/cost_center.json'));
+        $costCenter = $this->costCenters->create('test');
+        $this->assertEqualsCostCenterStub($costCenter);
+    }
+
     public function testBulkUpdatingCostCenters()
     {
         $this->travelPerk->shouldReceive('patch')
