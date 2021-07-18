@@ -38,6 +38,17 @@ class CostCenters
     }
 
     /**
+     * Create a new cost center.
+     */
+    public function create(
+        string $name
+    ): CostCenterDetail {
+        $params = new CreateCostCenterInputParams($name);
+
+        return $this->execute('post', implode('/', ['cost_centers']), CostCenterDetail::class, $params->asArray());
+    }
+
+    /**
      * List all cost centers.
      */
     public function all(): CostCentersType
