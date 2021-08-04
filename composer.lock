@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c5dc089d2e462b6898978a2df37fff8",
+    "content-hash": "c51077c6b2f07b9a49a1d3f48d8837ea",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -246,16 +246,16 @@
         },
         {
             "name": "json-mapper/json-mapper",
-            "version": "2.5.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JsonMapper/JsonMapper.git",
-                "reference": "c6657bfc6fbae7782498100e8850dafaea7cf25f"
+                "reference": "72ab4df01c1dc98a9036f784c7b48726293fe31a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JsonMapper/JsonMapper/zipball/c6657bfc6fbae7782498100e8850dafaea7cf25f",
-                "reference": "c6657bfc6fbae7782498100e8850dafaea7cf25f",
+                "url": "https://api.github.com/repos/JsonMapper/JsonMapper/zipball/72ab4df01c1dc98a9036f784c7b48726293fe31a",
+                "reference": "72ab4df01c1dc98a9036f784c7b48726293fe31a",
                 "shasum": ""
             },
             "require": {
@@ -275,10 +275,6 @@
                 "phpunit/phpunit": "^8.5 || ^9.0",
                 "squizlabs/php_codesniffer": "^3.5"
             },
-            "suggest": {
-                "json-mapper/laravel-package": "Use JsonMapper directly with Laravel",
-                "json-mapper/symfony-bundle": "Use JsonMapper directly with Symfony"
-            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -290,7 +286,6 @@
                 "MIT"
             ],
             "description": "Map JSON structures to PHP classes",
-            "homepage": "https://jsonmapper.net",
             "keywords": [
                 "json",
                 "jsonmapper",
@@ -298,11 +293,10 @@
                 "middleware"
             ],
             "support": {
-                "docs": "https://jsonmapper.net",
                 "issues": "https://github.com/JsonMapper/JsonMapper/issues",
-                "source": "https://github.com/JsonMapper/JsonMapper"
+                "source": "https://github.com/JsonMapper/JsonMapper/tree/2.4.0"
             },
-            "time": "2021-07-06T19:09:52+00:00"
+            "time": "2021-04-15T20:22:40+00:00"
         },
         {
             "name": "kamermans/guzzle-oauth2-subscriber",
