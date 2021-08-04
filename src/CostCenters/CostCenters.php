@@ -77,7 +77,7 @@ class CostCenters
      */
     public function bulkUpdate(): BulkUpdateCostCenterRequest
     {
-        return new BulkUpdateCostCenterRequest($this->travelPerk);
+        return new BulkUpdateCostCenterRequest($this->travelPerk, $this->mapper);
     }
 
     /**

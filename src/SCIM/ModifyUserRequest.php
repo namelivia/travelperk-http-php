@@ -12,6 +12,7 @@ class ModifyUserRequest
 {
     private $params;
     private $travelPerk;
+    private $mapper;
     private $id;
 
     public function __construct(

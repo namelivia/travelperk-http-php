@@ -106,7 +106,7 @@ class CostCentersTest extends TestCase
             ])
             ->andReturn(file_get_contents('tests/stubs/bulk_update.json'));
         $result = $this->costCenters->bulkUpdate()->setIds([1, 2, 3, 4])->setArchive(false)->save();
-        $this->assertEquals(1, $result->updated_count);
+        $this->assertEquals(1, $result->updatedCount);
     }
 
     public function testSettingUserIdsForACostCenter()
