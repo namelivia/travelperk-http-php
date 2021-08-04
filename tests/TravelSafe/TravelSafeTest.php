@@ -11,6 +11,7 @@ use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\TravelSafe\TravelSafe;
+use Namelivia\TravelPerk\TravelSafe\Summary\Summary;
 
 class TravelSafeTest extends TestCase
 {
@@ -81,26 +82,27 @@ class TravelSafeTest extends TestCase
             ->once()
             ->with('travelsafe/guidelines?location_type=country_code&location=ES')
             ->andReturn(file_get_contents('tests/stubs/summary.json'));
-        $restriction = $this->travelSafe->localSummary('ES', 'country_code');
-        $this->assertEquals('While traveling in Spain you will be required to follow the guidelines introduced by the local government. These regulations are based on risk levels and aimed at improving your safety.', $restriction->summary);
-        $this->assertEquals('', $restriction->details);
-        $this->assertEquals('high', $restriction->riskLevel->id);
-        $this->assertEquals('High', $restriction->riskLevel->name);
-        $this->assertEquals('Covid cases are multiplying', $restriction->riskLevel->details);
-        $this->assertEquals('Spain', $restriction->location->name);
-        $this->assertEquals('country', $restriction->location->type);
-        $this->assertEquals('ES', $restriction->location->countryCode);
-        $this->assertEquals('2020-10-19T10:08:53.777Z', $restriction->updatedAt);
-        $this->assertEquals(1, count($restriction->guidelines));
-        $this->assertEquals('use_of_mask', $restriction->guidelines[0]->category->id);
-        $this->assertEquals('Use of masks', $restriction->guidelines[0]->category->name);
-        $this->assertEquals('required', $restriction->guidelines[0]->subCategory->id);
-        $this->assertEquals('Required', $restriction->guidelines[0]->subCategory->name);
-        $this->assertEquals('Use of masks is required', $restriction->guidelines[0]->summary);
-        $this->assertEquals('Use of masks in all the public areas is required, including open spaces. You might face fines up to €3000 if stopped by the police without mask.', $restriction->guidelines[0]->details);
-        $this->assertEquals('1/3', $restriction->guidelines[0]->severity);
-        $this->assertEquals('Spain Travel Health', $restriction->infoSource->name);
-        $this->assertEquals('https://www.spth.gob.es/', $restriction->infoSource->url);
+        $summary = $this->travelSafe->localSummary('ES', 'country_code');
+        $this->assertTrue(is_a($summary, Summary::class));
+        $this->assertEquals('While traveling in Spain you will be required to follow the guidelines introduced by the local government. These regulations are based on risk levels and aimed at improving your safety.', $summary->summary);
+        $this->assertEquals('', $summary->details);
+        $this->assertEquals('high', $summary->riskLevel->id);
+        $this->assertEquals('High', $summary->riskLevel->name);
+        $this->assertEquals('Covid cases are multiplying', $summary->riskLevel->details);
+        $this->assertEquals('Spain', $summary->location->name);
+        $this->assertEquals('country', $summary->location->type);
+        $this->assertEquals('ES', $summary->location->countryCode);
+        $this->assertEquals('2020-10-19T10:08:53.777Z', $summary->updatedAt);
+        $this->assertEquals(1, count($summary->guidelines));
+        $this->assertEquals('use_of_mask', $summary->guidelines[0]->category->id);
+        $this->assertEquals('Use of masks', $summary->guidelines[0]->category->name);
+        $this->assertEquals('required', $summary->guidelines[0]->subCategory->id);
+        $this->assertEquals('Required', $summary->guidelines[0]->subCategory->name);
+        $this->assertEquals('Use of masks is required', $summary->guidelines[0]->summary);
+        $this->assertEquals('Use of masks in all the public areas is required, including open spaces. You might face fines up to €3000 if stopped by the police without mask.', $summary->guidelines[0]->details);
+        $this->assertEquals('1/3', $summary->guidelines[0]->severity);
+        $this->assertEquals('Spain Travel Health', $summary->infoSource->name);
+        $this->assertEquals('https://www.spth.gob.es/', $summary->infoSource->url);
     }
 
     public function testAirlineSafetyMeasures()
