@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c51077c6b2f07b9a49a1d3f48d8837ea",
+    "content-hash": "fc3745c90256dfa9c74dc3ebde79a4a9",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -246,16 +246,16 @@
         },
         {
             "name": "json-mapper/json-mapper",
-            "version": "2.4.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JsonMapper/JsonMapper.git",
-                "reference": "72ab4df01c1dc98a9036f784c7b48726293fe31a"
+                "reference": "07071ccf5af578973002ae0cc4f86d411dd51571"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JsonMapper/JsonMapper/zipball/72ab4df01c1dc98a9036f784c7b48726293fe31a",
-                "reference": "72ab4df01c1dc98a9036f784c7b48726293fe31a",
+                "url": "https://api.github.com/repos/JsonMapper/JsonMapper/zipball/07071ccf5af578973002ae0cc4f86d411dd51571",
+                "reference": "07071ccf5af578973002ae0cc4f86d411dd51571",
                 "shasum": ""
             },
             "require": {
@@ -294,9 +294,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JsonMapper/JsonMapper/issues",
-                "source": "https://github.com/JsonMapper/JsonMapper/tree/2.4.0"
+                "source": "https://github.com/JsonMapper/JsonMapper/tree/2.3.1"
             },
-            "time": "2021-04-15T20:22:40+00:00"
+            "time": "2021-03-30T19:28:40+00:00"
         },
         {
             "name": "kamermans/guzzle-oauth2-subscriber",
