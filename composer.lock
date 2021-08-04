@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e717b690231227c04349986196f32aec",
+    "content-hash": "7f46248a3f2b8d7edfc8ef05453a84a6",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -246,23 +246,23 @@
         },
         {
             "name": "json-mapper/json-mapper",
-            "version": "2.3.1",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JsonMapper/JsonMapper.git",
-                "reference": "07071ccf5af578973002ae0cc4f86d411dd51571"
+                "reference": "0e5b369bb492d984f9942b5bbe83411826c071e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JsonMapper/JsonMapper/zipball/07071ccf5af578973002ae0cc4f86d411dd51571",
-                "reference": "07071ccf5af578973002ae0cc4f86d411dd51571",
+                "url": "https://api.github.com/repos/JsonMapper/JsonMapper/zipball/0e5b369bb492d984f9942b5bbe83411826c071e4",
+                "reference": "0e5b369bb492d984f9942b5bbe83411826c071e4",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "myclabs/php-enum": "^1.7",
                 "nikic/php-parser": "^4.10",
-                "php": "^7.2 || ^8.0",
+                "php": "^7.1 || ^8.0",
                 "psr/log": "^1.1",
                 "psr/simple-cache": "^1.0",
                 "symfony/polyfill-php73": "^1.18"
@@ -272,8 +272,12 @@
                 "php-coveralls/php-coveralls": "^2.4",
                 "phpstan/phpstan": "^0.12.14",
                 "phpstan/phpstan-phpunit": "^0.12.17",
-                "phpunit/phpunit": "^8.5 || ^9.0",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.0",
                 "squizlabs/php_codesniffer": "^3.5"
+            },
+            "suggest": {
+                "json-mapper/laravel-package": "Use JsonMapper directly with Laravel",
+                "json-mapper/symfony-bundle": "Use JsonMapper directly with Symfony"
             },
             "type": "library",
             "autoload": {
@@ -286,6 +290,7 @@
                 "MIT"
             ],
             "description": "Map JSON structures to PHP classes",
+            "homepage": "https://jsonmapper.net",
             "keywords": [
                 "json",
                 "jsonmapper",
@@ -293,10 +298,11 @@
                 "middleware"
             ],
             "support": {
+                "docs": "https://jsonmapper.net",
                 "issues": "https://github.com/JsonMapper/JsonMapper/issues",
-                "source": "https://github.com/JsonMapper/JsonMapper/tree/2.3.1"
+                "source": "https://github.com/JsonMapper/JsonMapper"
             },
-            "time": "2021-03-30T19:28:40+00:00"
+            "time": "2021-07-15T06:05:04+00:00"
         },
         {
             "name": "kamermans/guzzle-oauth2-subscriber",
