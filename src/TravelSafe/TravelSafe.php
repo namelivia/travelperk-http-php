@@ -9,7 +9,7 @@ use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\TravelSafe\AirlineMeasures\AirlineMeasure;
 use Namelivia\TravelPerk\TravelSafe\Restrictions\Restriction;
-use Namelivia\TravelPerk\TravelSafe\Summary\Summary;
+use Namelivia\TravelPerk\TravelSafe\LocalSummary\Summary;
 
 class TravelSafe
 {
