@@ -69,7 +69,7 @@ class CostCenters
      */
     public function modify(string $id): UpdateCostCenterRequest
     {
-        return new UpdateCostCenterRequest($id, $this->travelPerk);
+        return new UpdateCostCenterRequest($id, $this->travelPerk, $this->mapper);
     }
 
     /**
@@ -85,6 +85,6 @@ class CostCenters
      */
     public function setUsers(string $id): SetUsersForCostCenterRequest
     {
-        return new SetUsersForCostCenterRequest($id, $this->travelPerk);
+        return new SetUsersForCostCenterRequest($id, $this->travelPerk, $this->mapper);
     }
 }

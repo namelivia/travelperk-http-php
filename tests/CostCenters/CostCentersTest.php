@@ -77,11 +77,9 @@ class CostCentersTest extends TestCase
         $this->travelPerk->shouldReceive('patch')
             ->once()
             ->with('cost_centers/1a', ['name' => 'newName', 'archive' => false])
-            ->andReturn('{"data": "costCenterUpdated"}');
-        $this->assertEquals(
-            (object) ['data' => 'costCenterUpdated'],
-            $this->costCenters->modify($id)->setName('newName')->setArchive(false)->save()
-        );
+            ->andReturn(file_get_contents('tests/stubs/cost_center.json'));
+        $costCenter = $this->costCenters->modify($id)->setName('newName')->setArchive(false)->save();
+        $this->assertEqualsCostCenterStub($costCenter);
     }
 
     public function testCreatingACostCenter()
@@ -119,7 +117,6 @@ class CostCentersTest extends TestCase
             ])
             ->andReturn(file_get_contents('tests/stubs/cost_center.json'));
         $costCenter = $this->costCenters->setUsers($id)->setIds([1, 2, 3, 4])->save();
-        //TODO: The mapper is missing here
-        //$this->assertEqualsCostCenterStub($costCenter);
+        $this->assertEqualsCostCenterStub($costCenter);
     }
 }

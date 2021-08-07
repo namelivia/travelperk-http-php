@@ -18,23 +18,6 @@ class Trips
         $this->mapper = $mapper;
     }
 
-    //TODO: This is temporary
-    private function execute(string $method, string $url, string $class, array $params = null)
-    {
-        $result = new $class();
-        if (is_null($params)) {
-            $response = $this->travelPerk->{$method}($url);
-        } else {
-            $response = $this->travelPerk->{$method}($url, $params);
-        }
-        $this->mapper->mapObject(
-            json_decode($response),
-            $result
-        );
-
-        return $result;
-    }
-
     /**
      * Query trips.
      */
