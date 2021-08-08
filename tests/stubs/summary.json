@@ -4,7 +4,8 @@
   "risk_level": {
     "id": "high",
     "name": "High",
-    "details": "Covid cases are multiplying"
+    "details": "Covid cases are multiplying",
+    "data": {"r_number": "0.892057388196839"}
   },
   "location": {
     "name": "Spain",

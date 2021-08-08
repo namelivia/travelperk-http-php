@@ -89,6 +89,7 @@ class TravelSafeTest extends TestCase
         $this->assertEquals('high', $summary->riskLevel->id);
         $this->assertEquals('High', $summary->riskLevel->name);
         $this->assertEquals('Covid cases are multiplying', $summary->riskLevel->details);
+        $this->assertEquals('0.892057388196839', $summary->riskLevel->data->r_number);
         $this->assertEquals('Spain', $summary->location->name);
         $this->assertEquals('country', $summary->location->type);
         $this->assertEquals('ES', $summary->location->countryCode);
