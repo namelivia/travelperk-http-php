@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\CostCenters;
 
+use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
 use Namelivia\TravelPerk\CostCenters\CostCenters\CostCenterDetail;
-use JsonMapper\JsonMapper;
 
 class UpdateCostCenterRequest
 {
