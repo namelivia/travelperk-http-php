@@ -62,7 +62,7 @@ class BookingsTest extends TestCase
         $this->assertEquals(-56.0, $bookingsPage->bookings[1]->location->latitude);
         $this->assertEquals(-62.0, $bookingsPage->bookings[1]->location->longitude);
         $this->assertEquals(null, $bookingsPage->bookings[1]->location->iataCode);
-        $this->assertEquals(null, $bookingsPage->bookings[1]->location->legs);
+        $this->assertEquals(null, $bookingsPage->bookings[1]->legs);
 
         $this->assertEquals('70', $bookingsPage->bookings[2]->id);
         $this->assertEquals('2021-03-06T00:00:00+00:00', $bookingsPage->bookings[2]->start);

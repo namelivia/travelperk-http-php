@@ -40,7 +40,9 @@ class CreateUserQuery
         $decoded = json_decode($response);
         $decoded->enterprise_extension = $decoded->{'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User'};
         $decoded->travelperk_extension = $decoded->{'urn:ietf:params:scim:schemas:extension:travelperk:2.0:User'};
-        $decoded->enterprise_extension->manager->ref = $decoded->enterprise_extension->manager->{'$ref'};
+        if ($decoded->enterprise_extension->manager) {
+            $decoded->enterprise_extension->manager->ref = $decoded->enterprise_extension->manager->{'$ref'};
+        }
         //TODO
 
         $this->mapper->mapObject(
