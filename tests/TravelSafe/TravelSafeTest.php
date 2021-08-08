@@ -10,8 +10,8 @@ use JsonMapper\JsonMapperFactory;
 use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\TravelSafe\TravelSafe;
 use Namelivia\TravelPerk\TravelSafe\Summary\Summary;
+use Namelivia\TravelPerk\TravelSafe\TravelSafe;
 
 class TravelSafeTest extends TestCase
 {
