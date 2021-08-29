@@ -33,4 +33,4 @@ jobs:
         with:
           image: travelperk-http-php-testing:latest
           shell: sh
-          run: sh vendor/bin/phpunit --coverage-clover clover.xml
+          run: sh vendor/bin/phpunit
