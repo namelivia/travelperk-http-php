@@ -33,4 +33,4 @@ jobs:
         with:
           image: travelperk-http-php-testing:latest
           shell: sh
-          run: sh vendor/bin/phpunit
+          run: sh /usr/src/app/vendor/bin/phpunit
