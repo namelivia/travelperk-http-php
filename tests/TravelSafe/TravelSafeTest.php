@@ -85,6 +85,7 @@ class TravelSafeTest extends TestCase
             ->andReturn(file_get_contents('tests/stubs/summary.json'));
         $summary = $this->travelSafe->localSummary('ES', 'country_code');
         $this->assertTrue(is_a($summary, Summary::class));
+        $this->assertEquals('872aca1b-04ca-47d2-83d8-493b4c7b6148', $summary->id);
         $this->assertEquals('While traveling in Spain you will be required to follow the guidelines introduced by the local government. These regulations are based on risk levels and aimed at improving your safety.', $summary->summary);
         $this->assertEquals('', $summary->details);
         $this->assertEquals('high', $summary->riskLevel->id);
