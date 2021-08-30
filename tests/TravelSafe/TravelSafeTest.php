@@ -43,6 +43,7 @@ class TravelSafeTest extends TestCase
             'country_code',
             Carbon::today()
         );
+        $this->assertEquals('e7975c43-b098-4530-ad3e-59615b8572ac', $restriction->id);
         $this->assertEquals('France', $restriction->origin->name);
         $this->assertEquals('country', $restriction->origin->type);
         $this->assertEquals('FR', $restriction->origin->countryCode);
