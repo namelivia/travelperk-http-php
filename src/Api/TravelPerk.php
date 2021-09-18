@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Namelivia\TravelPerk\Api;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 use JsonMapper\JsonMapper;
 
 class TravelPerk
@@ -43,40 +44,60 @@ class TravelPerk
 
     public function get($url): string
     {
-        return $this->client->get(
-            $this->baseUrl.$url
-        )->getBody()->getContents();
+        try {
+            return $this->client->get(
+                $this->baseUrl.$url
+            )->getBody()->getContents();
+        } catch (ClientException $e) {
+            throw new TravelPerkException(json_decode($e->getResponse()->getContents())['details']);
+        }
     }
 
     public function post($url, array $params): string
     {
-        return $this->client->post(
-            $this->baseUrl.$url,
-            [\GuzzleHttp\RequestOptions::JSON => $params]
-        )->getBody()->getContents();
+        try {
+            return $this->client->post(
+                $this->baseUrl.$url,
+                [\GuzzleHttp\RequestOptions::JSON => $params]
+            )->getBody()->getContents();
+        } catch (ClientException $e) {
+            throw new TravelPerkException(json_decode($e->getResponse()->getContents())['details']);
+        }
     }
 
     public function patch($url, array $params): string
     {
-        return $this->client->patch(
-            $this->baseUrl.$url,
-            [\GuzzleHttp\RequestOptions::JSON => $params]
-        )->getBody()->getContents();
+        try {
+            return $this->client->patch(
+                $this->baseUrl.$url,
+                [\GuzzleHttp\RequestOptions::JSON => $params]
+            )->getBody()->getContents();
+        } catch (ClientException $e) {
+            throw new TravelPerkException(json_decode($e->getResponse()->getContents())['details']);
+        }
     }
 
     public function put($url, array $params): string
     {
-        return $this->client->put(
-            $this->baseUrl.$url,
-            [\GuzzleHttp\RequestOptions::JSON => $params]
-        )->getBody()->getContents();
+        try {
+            return $this->client->put(
+                $this->baseUrl.$url,
+                [\GuzzleHttp\RequestOptions::JSON => $params]
+            )->getBody()->getContents();
+        } catch (ClientException $e) {
+            throw new TravelPerkException(json_decode($e->getResponse()->getContents())['details']);
+        }
     }
 
     public function delete($url): string
     {
-        return $this->client->delete(
-            $this->baseUrl.$url
-        )->getBody()->getContents();
+        try {
+            return $this->client->delete(
+                $this->baseUrl.$url
+            )->getBody()->getContents();
+        } catch (ClientException $e) {
+            throw new TravelPerkException(json_decode($e->getResponse()->getContents())['details']);
+        }
     }
 
     public function setAuthorizationCode(string $authorizationCode): TravelPerk
