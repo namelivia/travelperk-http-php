@@ -143,7 +143,7 @@ class TravelPerkTest extends TestCase
         $sandboxApi = new TravelPerk($this->client, true, Mockery::mock(JsonMapper::class));
         $this->client->shouldReceive('get')
             ->once()
-            ->with('https://sandbox.travelperk.com/sampleurl')
+            ->with('https://api.sandbox-travelperk.com/sampleurl')
             ->andReturn($this->responseMock);
         $this->responseMock->shouldReceive('getBody->getContents')
             ->once()

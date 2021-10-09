@@ -10,7 +10,7 @@ use JsonMapper\JsonMapper;
 class TravelPerk
 {
     const BASE_URL = 'https://api.travelperk.com/';
-    const SANDBOX_BASE_URL = 'https://sandbox.travelperk.com/';
+    const SANDBOX_BASE_URL = 'https://api.sandbox-travelperk.com/';
 
     private $baseUrl;
     private $client;
