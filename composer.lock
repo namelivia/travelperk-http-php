@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b59f21ebdc697d234b1ff586b2313f05",
+    "content-hash": "1b5d43251eed8ca8b3f645c1da78839a",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -411,20 +411,20 @@
         },
         {
             "name": "namelivia/travelperk-php-api-types",
-            "version": "1.2.13",
+            "version": "1.2.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/namelivia/travelperk-php-api-types.git",
-                "reference": "da3b90dd9b1fea3c2a0b6b732d6cf1f74141dbad"
+                "reference": "4894917428e492f3108f028943b3c8c4083c47f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/namelivia/travelperk-php-api-types/zipball/da3b90dd9b1fea3c2a0b6b732d6cf1f74141dbad",
-                "reference": "da3b90dd9b1fea3c2a0b6b732d6cf1f74141dbad",
+                "url": "https://api.github.com/repos/namelivia/travelperk-php-api-types/zipball/4894917428e492f3108f028943b3c8c4083c47f6",
+                "reference": "4894917428e492f3108f028943b3c8c4083c47f6",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3|^8.0"
+                "php": "^7.4|^8.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
@@ -454,9 +454,9 @@
             ],
             "support": {
                 "issues": "https://github.com/namelivia/travelperk-php-api-types/issues",
-                "source": "https://github.com/namelivia/travelperk-php-api-types/tree/1.2.13"
+                "source": "https://github.com/namelivia/travelperk-php-api-types/tree/fetch"
             },
-            "time": "2021-08-30T11:41:14+00:00"
+            "time": "2021-12-08T09:10:42+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3563,7 +3563,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.4|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
