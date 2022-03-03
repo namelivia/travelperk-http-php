@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\GreenPerk;
 
-use Carbon\Carbon;
 use JsonMapper\JsonMapper;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\GreenPerk\Emissions;
-use Namelivia\TravelPerk\GreenPerk\HotelEmissions;
 
 class GreenPerk
 {
@@ -33,9 +30,9 @@ class GreenPerk
 
         //TODO: This won't go here. Ugly fix!
         $response = str_replace([
-            'CO2e_kg'
+            'CO2e_kg',
         ], [
-            'co2e_kg'
+            'co2e_kg',
         ], $response);
         //TODO
 
