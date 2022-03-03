@@ -19,7 +19,7 @@ class HotelEmissionsParams
     {
         return http_build_query([
             'country_code'                        => $this->countryCode,
-            'num_nights'                         => $this->numNights,
+            'num_nights'                          => $this->numNights,
         ]);
     }
 }

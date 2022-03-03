@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Namelivia\TravelPerk\Tests;
 
-use Carbon\Carbon;
 use JsonMapper\Enums\TextNotation;
 use JsonMapper\JsonMapperFactory;
 use JsonMapper\Middleware\CaseConversion;
 use Mockery;
 use Namelivia\TravelPerk\Api\TravelPerk;
-use Namelivia\TravelPerk\GreenPerk\Summary\Summary;
 use Namelivia\TravelPerk\GreenPerk\GreenPerk;
 
 class GreenPerkTest extends TestCase
@@ -55,7 +53,7 @@ class GreenPerkTest extends TestCase
                 'origin_id=c44ba069-4109-4b40-815c-bf519c2c2844&destination_id=637d125e-9d00-478a-822c-e60c6e219227&vendor=eurostar'
             )
             ->andReturn(file_get_contents('tests/stubs/emissions.json'));
-        $emissions= $this->greenPerk->trainEmissions(
+        $emissions = $this->greenPerk->trainEmissions(
             'c44ba069-4109-4b40-815c-bf519c2c2844',
             '637d125e-9d00-478a-822c-e60c6e219227',
             'eurostar'
@@ -73,7 +71,7 @@ class GreenPerkTest extends TestCase
                 'acriss_code=MCFD&num_days=2&distance_per_day=100'
             )
             ->andReturn(file_get_contents('tests/stubs/emissions.json'));
-        $emissions= $this->greenPerk->carEmissions(
+        $emissions = $this->greenPerk->carEmissions(
             'MCFD',
             2,
             100
@@ -91,7 +89,7 @@ class GreenPerkTest extends TestCase
                 'country_code=ES&num_nights=2'
             )
             ->andReturn(file_get_contents('tests/stubs/hotel_emissions.json'));
-        $emissions= $this->greenPerk->hotelEmissions(
+        $emissions = $this->greenPerk->hotelEmissions(
             'ES',
             2
         );

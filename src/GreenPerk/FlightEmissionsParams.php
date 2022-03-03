@@ -22,9 +22,9 @@ class FlightEmissionsParams
     public function asUrlParam(): string
     {
         return http_build_query([
-            'origin'                        => $this->origin,
-            'destination'                         => $this->destination,
-            'cabin_class'                          => $this->cabinClass,
+            'origin'                                => $this->origin,
+            'destination'                           => $this->destination,
+            'cabin_class'                           => $this->cabinClass,
             'airline_code'                          => $this->airlineCode,
         ]);
     }

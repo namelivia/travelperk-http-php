@@ -20,9 +20,9 @@ class TrainEmissionsParams
     public function asUrlParam(): string
     {
         return http_build_query(array_filter([
-            'origin_id'                        => $this->originId,
+            'origin_id'                              => $this->originId,
             'destination_id'                         => $this->destinationId,
-            'vendor'                          => $this->vendor ? $this->vendor : null,
+            'vendor'                                 => $this->vendor ? $this->vendor : null,
         ]));
     }
 }

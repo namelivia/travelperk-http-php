@@ -20,8 +20,8 @@ class CarEmissionsParams
     public function asUrlParam(): string
     {
         return http_build_query(array_filter([
-            'acriss_code'                        => $this->acrissCode,
-            'num_days'                         => $this->numDays,
+            'acriss_code'                               => $this->acrissCode,
+            'num_days'                                  => $this->numDays,
             'distance_per_day'                          => $this->distancePerDay ? $this->distancePerDay : null,
         ]));
     }
