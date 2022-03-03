@@ -18,6 +18,7 @@ class TravelPerk
     private $scim;
     private $webhooks;
     private $travelSafe;
+    private $greenPerk;
     private $users;
     private $trips;
     private $costCenters;
@@ -30,6 +31,7 @@ class TravelPerk
         $this->scim = new SCIM($this, $mapper);
         $this->webhooks = new WebhooksAPI($this, $mapper);
         $this->travelSafe = new TravelSafeAPI($this, $mapper);
+        $this->greenPerk = new GreenPerkAPI($this, $mapper);
         $this->users = new UsersAPI($this, $mapper);
         $this->trips = new TripsAPI($this, $mapper);
         $this->costCenters = new CostCentersAPI($this, $mapper);
@@ -104,6 +106,11 @@ class TravelPerk
     public function travelSafe(): TravelSafeAPI
     {
         return $this->travelSafe;
+    }
+
+    public function greenPerk(): GreenPerkAPI
+    {
+        return $this->greenPerk;
     }
 
     public function users(): UsersAPI

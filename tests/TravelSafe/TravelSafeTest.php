@@ -16,7 +16,7 @@ use Namelivia\TravelPerk\TravelSafe\TravelSafe;
 class TravelSafeTest extends TestCase
 {
     private $travelPerk;
-    private $travelsef;
+    private $travelSafe;
 
     public function setUp(): void
     {

@@ -9,7 +9,7 @@ use Namelivia\TravelPerk\TravelSafe\TravelSafe;
 
 class TravelSafeAPI
 {
-    private $webhooks;
+    private $travelSafe;
 
     public function __construct(TravelPerk $travelPerk, JsonMapper $mapper)
     {

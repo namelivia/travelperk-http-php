@@ -123,6 +123,11 @@ class TravelPerkTest extends TestCase
         $this->assertTrue($this->travelPerk->travelSafe() instanceof \Namelivia\TravelPerk\Api\TravelSafeAPI);
     }
 
+    public function testGettingAGreenPerkInstance()
+    {
+        $this->assertTrue($this->travelPerk->greenPerk() instanceof \Namelivia\TravelPerk\Api\GreenPerkAPI);
+    }
+
     public function testGettingAUsersInstance()
     {
         $this->assertTrue($this->travelPerk->users() instanceof \Namelivia\TravelPerk\Api\UsersAPI);
